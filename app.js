@@ -1070,7 +1070,7 @@ function renderDiagnostics() {
               <span class="font-bold text-white font-mono">${win11PCs.length} PCs (Cumple)</span>
             </div>
             <div class="w-full h-2 bg-slate-950 rounded-full overflow-hidden p-0.5 border border-white/5">
-              <div class="h-full bg-cyan-400 rounded-full" style="width: ${(win11PCs.length / 26) * 100}%"></div>
+              <div class="h-full bg-cyan-400 rounded-full" style="width: ${(win11PCs.length / FLEET_DATA.length) * 100}%"></div>
             </div>
 
             <div class="flex justify-between items-center text-slate-300 pt-2">
@@ -1078,12 +1078,12 @@ function renderDiagnostics() {
               <span class="font-bold text-amber-400 font-mono">${win10PCs.length} PCs (EOL Oct 2025)</span>
             </div>
             <div class="w-full h-2 bg-slate-950 rounded-full overflow-hidden p-0.5 border border-white/5">
-              <div class="h-full bg-amber-400 rounded-full" style="width: ${(win10PCs.length / 26) * 100}%"></div>
+              <div class="h-full bg-amber-400 rounded-full" style="width: ${(win10PCs.length / FLEET_DATA.length) * 100}%"></div>
             </div>
 
             <div class="flex justify-between items-center text-slate-300 pt-2">
-              <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-purple-400"></span> Windows Server 2019:</span>
-              <span class="font-bold text-purple-300 font-mono">1 Servidor DC</span>
+              <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-purple-400"></span> Windows Server & NVR OS:</span>
+              <span class="font-bold text-purple-300 font-mono">3 Servidores Dedicados</span>
             </div>
           </div>
 
@@ -1533,45 +1533,45 @@ function renderNetworkTopology() {
           </div>
           <h2 class="text-xl md:text-2xl font-black text-white">Diagrama de Red & Enlaces Físicos Gigabit</h2>
           <p class="text-xs text-slate-300 mt-1 max-w-2xl">
-            Mapa interactivo de conmutación desde el Gateway ISP hasta el Servidor de Dominio DC, NVR de Seguridad, Puntos de Acceso Wi-Fi y los 26 nodos de estaciones de trabajo. Haz clic en cualquier nodo para ejecutar un Test Ping ICMP en tiempo real.
+            Mapa interactivo de conmutación desde el Gateway ISP hasta los 3 Servidores Dedicados (DC01, SAP SQL, NVR Backup), Puntos de Acceso Wi-Fi y los 28 nodos de la infraestructura corporativa. Haz clic en cualquier nodo para ejecutar un Test Ping ICMP en tiempo real.
           </p>
         </div>
         <div class="flex flex-wrap items-center gap-3 shrink-0">
-          <button onclick="TwinsModal.showPing('192.168.18.200', 'Servidor Active Directory DC')" class="cyber-btn-primary px-5 py-3.5 rounded-xl text-xs flex items-center gap-2">
+          <button onclick="TwinsModal.showPing('192.168.18.200', 'Servidor DC01 Active Directory')" class="cyber-btn-primary px-5 py-3.5 rounded-xl text-xs flex items-center gap-2">
             <i data-lucide="activity" class="w-4 h-4"></i>
-            <span>Test Enlace Servidor DC</span>
+            <span>Test Enlace DC01</span>
           </button>
         </div>
       </div>
 
-      <!-- Core Infrastructure Nodes Grid -->
+      <!-- Core Infrastructure Nodes Grid (3 Servidores + Master IT) -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
-        <div class="vantage-card p-4 space-y-2 border-cyan-500/30 cursor-pointer hover:border-cyan-400 transition-all" onclick="TwinsModal.showPing('192.168.18.1', 'Gateway Router ISP')">
-          <div class="flex items-center justify-between">
-            <span class="badge-online text-[10px] font-bold px-2 py-0.5 rounded font-mono">192.168.18.1</span>
-            <i data-lucide="globe" class="w-4 h-4 text-cyan-400"></i>
-          </div>
-          <div class="text-sm font-black text-white">Gateway Router ISP</div>
-          <div class="text-[11px] text-slate-400">Fibra Óptica Simétrica (1ms)</div>
-        </div>
-
-        <div class="vantage-card p-4 space-y-2 border-emerald-500/30 cursor-pointer hover:border-emerald-400 transition-all" onclick="TwinsModal.showPing('192.168.18.200', 'Servidor Active Directory DC')">
+        <div class="vantage-card p-4 space-y-2 border-emerald-500/30 cursor-pointer hover:border-emerald-400 transition-all" onclick="TwinsModal.showPing('192.168.18.200', 'Servidor DC01 Active Directory')">
           <div class="flex items-center justify-between">
             <span class="badge-online text-[10px] font-bold px-2 py-0.5 rounded font-mono">192.168.18.200</span>
             <i data-lucide="server" class="w-4 h-4 text-[#00ff88]"></i>
           </div>
-          <div class="text-sm font-black text-white">Servidor Dominio DC</div>
-          <div class="text-[11px] text-emerald-400 font-medium">Active Directory • DNS • SMB</div>
+          <div class="text-sm font-black text-white">Servidor DC01 Principal</div>
+          <div class="text-[11px] text-emerald-400 font-medium">Active Directory • DNS • SMB (10.4TB)</div>
         </div>
 
-        <div class="vantage-card p-4 space-y-2 border-purple-500/30 cursor-pointer hover:border-purple-400 transition-all" onclick="TwinsModal.showPing('192.168.18.89', 'NVR Hikvision Cámaras')">
+        <div class="vantage-card p-4 space-y-2 border-cyan-500/30 cursor-pointer hover:border-cyan-400 transition-all" onclick="TwinsModal.showPing('192.168.18.201', 'Servidor SAP Business One & SQL')">
           <div class="flex items-center justify-between">
-            <span class="badge-online text-[10px] font-bold px-2 py-0.5 rounded font-mono">192.168.18.89</span>
-            <i data-lucide="video" class="w-4 h-4 text-purple-400"></i>
+            <span class="badge-online text-[10px] font-bold px-2 py-0.5 rounded font-mono">192.168.18.201</span>
+            <i data-lucide="database" class="w-4 h-4 text-cyan-400"></i>
           </div>
-          <div class="text-sm font-black text-white">NVR Cámaras Seguridad</div>
-          <div class="text-[11px] text-slate-400">Hikvision 16CH • H.265+</div>
+          <div class="text-sm font-black text-white">Servidor SAP B1 & SQL</div>
+          <div class="text-[11px] text-cyan-300 font-medium">ERP SAP • SQL Server • API Ventas</div>
+        </div>
+
+        <div class="vantage-card p-4 space-y-2 border-purple-500/30 cursor-pointer hover:border-purple-400 transition-all" onclick="TwinsModal.showPing('192.168.18.202', 'Servidor NVR CCTV & Backup')">
+          <div class="flex items-center justify-between">
+            <span class="badge-online text-[10px] font-bold px-2 py-0.5 rounded font-mono">192.168.18.202</span>
+            <i data-lucide="shield-check" class="w-4 h-4 text-purple-400"></i>
+          </div>
+          <div class="text-sm font-black text-white">Servidor NVR & Backup</div>
+          <div class="text-[11px] text-purple-300 font-medium">16CH Hikvision • GTX 1660Ti • Veeam</div>
         </div>
 
         <div class="vantage-card p-4 space-y-2 border-amber-500/30 cursor-pointer hover:border-amber-400 transition-all" onclick="TwinsModal.showPing('192.168.18.106', 'Master IT Station (ARCNTID002)')">
@@ -1592,22 +1592,22 @@ function renderNetworkTopology() {
             <i data-lucide="share-2" class="w-4 h-4"></i>
             <span>ESQUEMA DE INTERCONEXIÓN FÍSICA & SUBREDES</span>
           </div>
-          <span class="text-[11px] font-mono text-slate-400">Subred: 192.168.18.0 /24 • VLAN Default</span>
+          <span class="text-[11px] font-mono text-slate-400">Subred: 192.168.18.0 /24 • VLAN Default • Dominio: utilestwins.com</span>
         </div>
 
-        <div class="w-full min-w-[750px] h-[480px] bg-[#02050f] rounded-2xl border border-white/5 relative p-4 flex flex-col justify-between overflow-hidden shadow-inner">
+        <div class="w-full min-w-[750px] h-[520px] bg-[#02050f] rounded-2xl border border-white/5 relative p-4 flex flex-col justify-between overflow-hidden shadow-inner">
           
           <!-- Layer 1: WAN & Gateway -->
           <div class="flex items-center justify-center gap-12 z-10">
             <div class="topology-node px-4 py-2.5 rounded-xl bg-slate-900 border border-cyan-500/40 text-center shadow-[0_0_15px_rgba(0,240,255,0.2)]" onclick="TwinsModal.showPing('192.168.18.1', 'Gateway ISP')">
-              <div class="text-[10px] text-cyan-400 font-mono font-bold">WAN FIBRA ÓPTICA</div>
+              <div class="text-[10px] text-cyan-400 font-mono font-bold">WAN FIBRA ÓPTICA (1000 Mbps)</div>
               <div class="text-xs font-black text-white">Gateway Router (192.168.18.1)</div>
             </div>
           </div>
 
           <!-- Connecting Trunk Line -->
           <div class="flex justify-center z-10">
-            <div class="w-0.5 h-8 bg-gradient-to-b from-cyan-400 to-blue-500"></div>
+            <div class="w-0.5 h-6 bg-gradient-to-b from-cyan-400 to-blue-500"></div>
           </div>
 
           <!-- Layer 2: Core Switch 24P Gigabit -->
@@ -1617,46 +1617,46 @@ function renderNetworkTopology() {
                 <span class="w-2 h-2 rounded-full bg-[#00ff88] pulse-led"></span>
                 <span class="text-xs font-mono font-black text-white tracking-widest uppercase">SWITCH CORE GIGABIT 24P (RACK PRINCIPAL TI)</span>
               </div>
-              <div class="text-[10px] text-slate-400 font-mono">1000 Mbps Full Duplex • Backplane 48 Gbps</div>
+              <div class="text-[10px] text-slate-400 font-mono">1000 Mbps Full Duplex • Backplane 48 Gbps • Cat6/Cat6A UTP</div>
             </div>
           </div>
 
           <!-- Connecting Trunk Line Distribution -->
           <div class="flex justify-center z-10">
-            <div class="w-0.5 h-8 bg-gradient-to-b from-blue-500 to-purple-500"></div>
+            <div class="w-0.5 h-6 bg-gradient-to-b from-blue-500 to-purple-500"></div>
           </div>
 
           <!-- Layer 3: Department Clustered Switches / VLANs -->
           <div class="grid grid-cols-5 gap-3 z-10 text-center text-xs">
             
-            <div class="topology-node p-3 rounded-xl bg-slate-900/90 border border-cyan-500/30 hover:border-cyan-400" onclick="TwinsModal.showPing('192.168.18.200', 'Servidor Dominio DC')">
-              <div class="text-[10px] font-mono text-cyan-400 font-bold mb-1">SERVIDORES</div>
-              <div class="text-white font-bold text-xs">Active Directory DC</div>
-              <div class="text-[10px] text-slate-400 font-mono mt-1">.200 (1 PC)</div>
+            <div class="topology-node p-3 rounded-xl bg-slate-900/90 border border-cyan-500/30 hover:border-cyan-400" onclick="switchTab('fleet'); document.querySelector('[data-cat=servers]').click();">
+              <div class="text-[10px] font-mono text-cyan-400 font-bold mb-1">SERVIDORES (3)</div>
+              <div class="text-white font-bold text-xs">DC01 + SAP + NVR</div>
+              <div class="text-[10px] text-slate-400 font-mono mt-1">.200, .201, .202</div>
             </div>
 
             <div class="topology-node p-3 rounded-xl bg-slate-900/90 border border-purple-500/30 hover:border-purple-400" onclick="switchTab('fleet'); document.querySelector('[data-cat=design]').click();">
-              <div class="text-[10px] font-mono text-purple-400 font-bold mb-1">MARKETING & DISEÑO</div>
+              <div class="text-[10px] font-mono text-purple-400 font-bold mb-1">MARKETING & DISEÑO (9)</div>
               <div class="text-white font-bold text-xs">Workstations RTX</div>
-              <div class="text-[10px] text-slate-400 font-mono mt-1">.101 - .110 (9 PCs)</div>
+              <div class="text-[10px] text-slate-400 font-mono mt-1">.70 - .78 (9 PCs)</div>
             </div>
 
             <div class="topology-node p-3 rounded-xl bg-slate-900/90 border border-emerald-500/30 hover:border-emerald-400" onclick="switchTab('fleet'); document.querySelector('[data-cat=admin]').click();">
-              <div class="text-[10px] font-mono text-emerald-400 font-bold mb-1">ADMINISTRACIÓN</div>
-              <div class="text-white font-bold text-xs">Contabilidad & RRHH</div>
-              <div class="text-[10px] text-slate-400 font-mono mt-1">.201 - .226 (11 PCs)</div>
+              <div class="text-[10px] font-mono text-emerald-400 font-bold mb-1">ADMINISTRACIÓN (11)</div>
+              <div class="text-white font-bold text-xs">Contabilidad & Roberto</div>
+              <div class="text-[10px] text-slate-400 font-mono mt-1">.17, .22, .43, .220-.227</div>
             </div>
 
             <div class="topology-node p-3 rounded-xl bg-slate-900/90 border border-amber-500/30 hover:border-amber-400" onclick="switchTab('fleet'); document.querySelector('[data-cat=sales]').click();">
-              <div class="text-[10px] font-mono text-amber-400 font-bold mb-1">VENTAS & ALMACÉN</div>
-              <div class="text-white font-bold text-xs">Facturación & Kárdex</div>
-              <div class="text-[10px] text-slate-400 font-mono mt-1">.51 - .88 (4 PCs)</div>
+              <div class="text-[10px] font-mono text-amber-400 font-bold mb-1">VENTAS (3)</div>
+              <div class="text-white font-bold text-xs">Facturación & Caja</div>
+              <div class="text-[10px] text-slate-400 font-mono mt-1">.12, .42, .100 (3 PCs)</div>
             </div>
 
-            <div class="topology-node p-3 rounded-xl bg-slate-900/90 border border-rose-500/30 hover:border-rose-400" onclick="TwinsModal.showPing('192.168.18.89', 'NVR Hikvision')">
-              <div class="text-[10px] font-mono text-rose-400 font-bold mb-1">SEGURIDAD & IOT</div>
-              <div class="text-white font-bold text-xs">NVR Cámaras 16CH</div>
-              <div class="text-[10px] text-slate-400 font-mono mt-1">.89 (1 NVR + APs)</div>
+            <div class="topology-node p-3 rounded-xl bg-slate-900/90 border border-rose-500/30 hover:border-rose-400" onclick="switchTab('fleet'); document.querySelector('[data-cat=warehouse]').click();">
+              <div class="text-[10px] font-mono text-rose-400 font-bold mb-1">ALMACÉN & TI (2)</div>
+              <div class="text-white font-bold text-xs">Kárdex & Master IT</div>
+              <div class="text-[10px] text-slate-400 font-mono mt-1">.79 (Alm) & .106 (TI)</div>
             </div>
 
           </div>
@@ -1664,11 +1664,11 @@ function renderNetworkTopology() {
           <!-- Bottom Micro Fleet Nodes Map -->
           <div class="p-3 rounded-xl bg-slate-950/80 border border-white/5 flex items-center justify-between text-xs z-10">
             <span class="text-slate-400 flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-[#00ff88]"></span> 26 Equipos Conectados en Segmento Local
+              <span class="w-2 h-2 rounded-full bg-[#00ff88]"></span> 28 Nodos Totales (25 Workstations + 3 Servidores) en Dominio utilestwins.com
             </span>
             <div class="flex items-center gap-2">
               <button onclick="switchTab('fleet')" class="px-3 py-1.5 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/30 text-cyan-300 font-bold text-xs transition-colors">
-                Ver Cuadrícula de 26 PCs →
+                Ver Catálogo de 28 Nodos →
               </button>
             </div>
           </div>
@@ -1697,12 +1697,12 @@ async function runFleetDiagnosticScan() {
   if (btn) btn.disabled = true;
 
   const steps = [
-    { p: 15, msg: 'Comprobando conexión con Servidor de Dominio (192.168.18.200)... OK (1ms)' },
-    { p: 35, msg: 'Analizando módulos de memoria RAM y configuraciones de canales en 26 PCs...' },
-    { p: 55, msg: 'Detección de Single Channel: 10 equipos identificados con posible mejora.' },
+    { p: 15, msg: 'Comprobando conexión con los 3 Servidores (DC01 .200, SAP .201, NVR .202)... OK (1ms)' },
+    { p: 35, msg: 'Analizando módulos de memoria RAM y configuraciones de canales en 28 nodos corporativos...' },
+    { p: 55, msg: 'Detección de Single Channel: 10 equipos identificados con optimización recomendada.' },
     { p: 75, msg: 'Verificando unidades NVMe, SSD y HDD (SMART health)... Alerta en ARCNMRKD009.' },
-    { p: 90, msg: 'Auditando parches de Windows 11 Build 26200 y compatibilidad de seguridad...' },
-    { p: 100, msg: '¡Escaneo de Flota Completado! 26 PCs analizadas. Salud General: 92%' }
+    { p: 90, msg: 'Auditando parches de Windows 11 Build 26200 y compatibilidad de Active Directory...' },
+    { p: 100, msg: '¡Escaneo de Flota Completado! 28 nodos (25 Workstations + 3 Servidores) analizados. Salud General: 96%' }
   ];
 
   logs.innerHTML = '';

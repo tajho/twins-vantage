@@ -1,49 +1,473 @@
 [
   {
-    "id": "ARCNADMD007",
-    "computerName": "ARCNADMD007",
+    "id": "ARCNMRKD008",
+    "computerName": "ARCNMRKD008",
     "status": "En Linea",
     "isOnline": true,
-    "ip": "192.168.18.43",
-    "mac": "30-56-0f-54-8b-3e",
-    "activeUser": "hugo",
-    "fullUser": "UTILESTWINS\\hugo",
-    "department": "Administracion",
-    "category": "admin",
-    "formFactor": "Torre de Oficina",
-    "motherboard": "Micro-Star International Co., Ltd. PRO H610M-S DDR4",
-    "cpu": "12th Gen Intel(R) Core(TM) i5-12400",
-    "cpuShort": "Intel Core i5-12400 (12th Gen)",
+    "ip": "192.168.18.70",
+    "mac": "d8-43-ae-9d-cb-1f",
+    "activeUser": "frank",
+    "fullUser": "UTILESTWINS\\frank",
+    "department": "Marketing y Diseno",
+    "category": "design",
+    "formFactor": "Torre Creator RTX",
+    "motherboard": "Gigabyte Technology Co., Ltd. B450M DS3H V2",
+    "cpu": "AMD Ryzen 5 5600G with Radeon Graphics",
+    "cpuShort": "AMD Ryzen 5 5600G (6C/12T)",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 15.8,
-    "ramModules": "16 GB @ 3200MHz (Kingston)",
+    "ramTotalGB": 16,
+    "ramModules": "16 GB @ 2666MHz (Unknown)",
     "ramChannels": "Single Channel (1 modulo)",
     "ramChannelType": "single",
-    "gpu": "Intel(R) UHD Graphics 730",
+    "gpu": "AMD Radeon(TM) Graphics",
     "gpuType": "integrated",
-    "storage": "KINGSTON SNV3S1000G (932 GB)",
-    "diskSpace": "C: (785 GB libre de 930 GB)",
+    "storage": "WDC WD10EZEX-00BBHA0 (932 GB) + WDC WDS480G2G0C-00AJM0 (447 GB)",
+    "storageType": "SSD SATA / HDD",
+    "diskSpace": "C: (159 GB libre de 446 GB)",
     "disks": [
       {
         "drive": "C:",
-        "freeGB": 785,
-        "totalGB": 930,
-        "percentFree": 84
+        "freeGB": 159,
+        "totalGB": 446,
+        "percentFree": 36
+      }
+    ],
+    "monitor": "LG UltraWide 29\" IPS (2560x1080)",
+    "resolution": "2560x1080 @ 75Hz",
+    "os": "Microsoft Windows 10 Pro (Build 19045)",
+    "healthScore": 88,
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Pérdida de Ancho de Banda (Single Channel)",
+        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
+      }
+    ],
+    "deviceVisual": "creator_tower",
+    "notes": ""
+  },
+  {
+    "id": "ARCNMRKD009",
+    "computerName": "ARCNMRKD009",
+    "status": "En Linea",
+    "isOnline": true,
+    "ip": "192.168.18.71",
+    "mac": "d8-43-ae-9d-cb-1f",
+    "activeUser": "Administrador (MKT-Render)",
+    "fullUser": "UTILESTWINS\\Administrador (MKT-Render)",
+    "department": "Marketing y Diseno",
+    "category": "design",
+    "formFactor": "Torre Creator RTX",
+    "motherboard": "ASUSTeK COMPUTER INC. PRIME Z270-A",
+    "cpu": "Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz",
+    "cpuShort": "Intel Core i7-7700 (4C/8T)",
+    "coresThreads": "4 Nucleos / 8 Hilos",
+    "ramTotalGB": 16,
+    "ramModules": "8 GB @ 2400MHz (Kingston) + 16 GB @ 2400MHz (Kingston) + 16 GB @ 2400MHz (Corsair)",
+    "ramChannels": "Dual Channel (3 modulos)",
+    "ramChannelType": "dual",
+    "gpu": "Intel(R) HD Graphics 630",
+    "gpuType": "integrated",
+    "storage": "TOSHIBA HDWD110 (932 GB) + TOSHIBA EXTERNAL_USB USB Device (1863 GB) + KINGSTON SA400S37240G (224 GB) + SanDisk SSD G5 BICS4 (466 GB)",
+    "storageType": "SSD SATA / HDD",
+    "diskSpace": "C: (1 GB libre de 176 GB)",
+    "disks": [
+      {
+        "drive": "C:",
+        "freeGB": 1,
+        "totalGB": 176,
+        "percentFree": 1
       }
     ],
     "monitor": "Samsung S24R350 24\" IPS FHD",
     "resolution": "1920x1080 @ 60Hz",
+    "os": "Microsoft Windows 10 Pro (Build 19045)",
+    "healthScore": 68,
+    "alerts": [
+      {
+        "type": "critical",
+        "title": "Espacio Crítico en Partición C:",
+        "desc": "Partición del sistema por debajo del umbral de seguridad de 15 GB. Requiere purga de temporales WinRM."
+      }
+    ],
+    "deviceVisual": "creator_tower",
+    "notes": ""
+  },
+  {
+    "id": "ARCNMRKD010",
+    "computerName": "ARCNMRKD010",
+    "status": "En Linea",
+    "isOnline": true,
+    "ip": "192.168.18.72",
+    "mac": "d8-43-ae-9d-cb-1f",
+    "activeUser": "luz",
+    "fullUser": "UTILESTWINS\\luz",
+    "department": "Marketing y Diseno",
+    "category": "design",
+    "formFactor": "Torre Creator RTX",
+    "motherboard": "ASUSTeK COMPUTER INC. TUF GAMING X570-PLUS (WI-FI)",
+    "cpu": "AMD Ryzen 7 5700X 8-Core Processor",
+    "cpuShort": "AMD Ryzen 7 5700X (8C/16T)",
+    "coresThreads": "8 Nucleos / 16 Hilos",
+    "ramTotalGB": 16,
+    "ramModules": "16 GB @ 2400MHz (Kingston) + 16 GB @ 2400MHz (Kingston)",
+    "ramChannels": "Dual Channel (2 modulos)",
+    "ramChannelType": "dual",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "gpuType": "dedicated",
+    "storage": "KINGSTON SNV2S1000G (932 GB)",
+    "storageType": "NVMe Gen4 1TB",
+    "diskSpace": "C: (117 GB libre de 443 GB)",
+    "disks": [
+      {
+        "drive": "C:",
+        "freeGB": 117,
+        "totalGB": 443,
+        "percentFree": 26
+      }
+    ],
+    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
+    "resolution": "2560x1440 @ 75Hz (Calman Verified)",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 89,
+    "healthScore": 95,
+    "alerts": [
+      {
+        "type": "optimal",
+        "title": "Hardware Íntegro & Telemetría OK",
+        "desc": "Todos los subsistemas de CPU, memoria y almacenamiento SMART operan sin anomalías."
+      }
+    ],
+    "deviceVisual": "creator_tower",
+    "notes": ""
+  },
+  {
+    "id": "ARCNMRKD011",
+    "computerName": "ARCNMRKD011",
+    "status": "En Linea",
+    "isOnline": true,
+    "ip": "192.168.18.73",
+    "mac": "d8-43-ae-9d-cb-1f",
+    "activeUser": "adrian",
+    "fullUser": "UTILESTWINS\\adrian",
+    "department": "Marketing y Diseno",
+    "category": "design",
+    "formFactor": "Torre Creator RTX",
+    "motherboard": "Micro-Star International Co., Ltd. MAG B560 TOMAHAWK WIFI (MS-7D15)",
+    "cpu": "11th Gen Intel(R) Core(TM) i5-11400F @ 2.60GHz",
+    "cpuShort": "Intel Core i5-11400F (11va Gen)",
+    "coresThreads": "6 Nucleos / 12 Hilos",
+    "ramTotalGB": 16,
+    "ramModules": "8 GB @ 3467MHz (A-DATA Technology) + 8 GB @ 3467MHz (A-DATA Technology) + 8 GB @ 3467MHz (A-DATA Technology) + 8 GB @ 3467MHz (A-DATA Technology)",
+    "ramChannels": "Dual Channel (4 modulos)",
+    "ramChannelType": "dual",
+    "gpu": "NVIDIA GeForce RTX 3060 Ti",
+    "gpuType": "dedicated",
+    "storage": "WD Green SN350 1TB (932 GB)",
+    "storageType": "SSD SATA / HDD",
+    "diskSpace": "C: (41 GB libre de 343 GB)",
+    "disks": [
+      {
+        "drive": "C:",
+        "freeGB": 41,
+        "totalGB": 343,
+        "percentFree": 12
+      }
+    ],
+    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
+    "resolution": "2560x1440 @ 75Hz (Calman Verified)",
+    "os": "Microsoft Windows 11 Pro (Build 26200)",
+    "healthScore": 95,
+    "alerts": [
+      {
+        "type": "optimal",
+        "title": "Hardware Íntegro & Telemetría OK",
+        "desc": "Todos los subsistemas de CPU, memoria y almacenamiento SMART operan sin anomalías."
+      }
+    ],
+    "deviceVisual": "creator_tower",
+    "notes": ""
+  },
+  {
+    "id": "ARCNMRKD012",
+    "computerName": "ARCNMRKD012",
+    "status": "En Linea",
+    "isOnline": true,
+    "ip": "192.168.18.74",
+    "mac": "d8-43-ae-9d-cb-1f",
+    "activeUser": "anjali",
+    "fullUser": "UTILESTWINS\\anjali",
+    "department": "Marketing y Diseno",
+    "category": "design",
+    "formFactor": "Torre Creator RTX",
+    "motherboard": "ASUSTeK COMPUTER INC. TUF GAMING X570-PLUS (WI-FI)",
+    "cpu": "AMD Ryzen 7 5700X 8-Core Processor",
+    "cpuShort": "AMD Ryzen 7 5700X (8C/16T)",
+    "coresThreads": "8 Nucleos / 16 Hilos",
+    "ramTotalGB": 16,
+    "ramModules": "16 GB @ 3600MHz (A-DATA) + 16 GB @ 3600MHz (A-DATA)",
+    "ramChannels": "Dual Channel (2 modulos)",
+    "ramChannelType": "dual",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "gpuType": "dedicated",
+    "storage": "WDC WD10EZEX-00BBHA0 (932 GB) + WDC WD10EZEX-08WN4A0 (932 GB) + KINGSTON SNV2S1000G (932 GB)",
+    "storageType": "NVMe Gen4 1TB",
+    "diskSpace": "C: (451 GB libre de 930 GB)",
+    "disks": [
+      {
+        "drive": "C:",
+        "freeGB": 451,
+        "totalGB": 930,
+        "percentFree": 48
+      }
+    ],
+    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
+    "resolution": "2560x1440 @ 75Hz (Calman Verified)",
+    "os": "Microsoft Windows 11 Pro (Build 26200)",
+    "healthScore": 95,
+    "alerts": [
+      {
+        "type": "optimal",
+        "title": "Hardware Íntegro & Telemetría OK",
+        "desc": "Todos los subsistemas de CPU, memoria y almacenamiento SMART operan sin anomalías."
+      }
+    ],
+    "deviceVisual": "creator_tower",
+    "notes": ""
+  },
+  {
+    "id": "ARCNMRKD013",
+    "computerName": "ARCNMRKD013",
+    "status": "En Linea",
+    "isOnline": true,
+    "ip": "192.168.18.75",
+    "mac": "d8-43-ae-9d-cb-1f",
+    "activeUser": "zahir",
+    "fullUser": "UTILESTWINS\\zahir",
+    "department": "Marketing y Diseno",
+    "category": "design",
+    "formFactor": "Torre Creator RTX",
+    "motherboard": "ASUSTeK COMPUTER INC. TUF GAMING X570-PLUS (WI-FI)",
+    "cpu": "AMD Ryzen 7 5700X 8-Core Processor",
+    "cpuShort": "AMD Ryzen 7 5700X (8C/16T)",
+    "coresThreads": "8 Nucleos / 16 Hilos",
+    "ramTotalGB": 16,
+    "ramModules": "8 GB @ 3600MHz (A-DATA) + 8 GB @ 3600MHz (A-DATA) + 8 GB @ 3600MHz (A-DATA) + 8 GB @ 3600MHz (A-DATA)",
+    "ramChannels": "Dual Channel (4 modulos)",
+    "ramChannelType": "dual",
+    "gpu": "NVIDIA GeForce RTX 3060",
+    "gpuType": "dedicated",
+    "storage": "WDC WD20EZBX-00AYRA0 (1863 GB) + KINGSTON SNV2S1000G (932 GB)",
+    "storageType": "NVMe Gen4 1TB",
+    "diskSpace": "C: (208 GB libre de 930 GB)",
+    "disks": [
+      {
+        "drive": "C:",
+        "freeGB": 208,
+        "totalGB": 930,
+        "percentFree": 22
+      }
+    ],
+    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
+    "resolution": "2560x1440 @ 75Hz (Calman Verified)",
+    "os": "Microsoft Windows 11 Pro (Build 26200)",
+    "healthScore": 95,
+    "alerts": [
+      {
+        "type": "optimal",
+        "title": "Hardware Íntegro & Telemetría OK",
+        "desc": "Todos los subsistemas de CPU, memoria y almacenamiento SMART operan sin anomalías."
+      }
+    ],
+    "deviceVisual": "creator_tower",
+    "notes": ""
+  },
+  {
+    "id": "ARCNMRKD014",
+    "computerName": "ARCNMRKD014",
+    "status": "En Linea",
+    "isOnline": true,
+    "ip": "192.168.18.76",
+    "mac": "d8-43-ae-9d-cb-1f",
+    "activeUser": "sergio",
+    "fullUser": "UTILESTWINS\\sergio",
+    "department": "Marketing y Diseno",
+    "category": "design",
+    "formFactor": "Torre Creator RTX",
+    "motherboard": "N/D",
+    "cpu": "N/D",
+    "cpuShort": "N/D",
+    "coresThreads": "N/D",
+    "ramTotalGB": 16,
+    "ramModules": "N/D",
+    "ramChannels": "N/D",
+    "ramChannelType": "single",
+    "gpu": "N/D",
+    "gpuType": "integrated",
+    "storage": "N/D",
+    "storageType": "SSD SATA / HDD",
+    "diskSpace": "N/D",
+    "disks": [
+      {
+        "drive": "C:",
+        "freeGB": 500,
+        "totalGB": 930,
+        "percentFree": 54
+      }
+    ],
+    "monitor": "Samsung S24R350 24\" IPS FHD",
+    "resolution": "1920x1080 @ 60Hz",
+    "os": "Windows 10 Pro",
+    "healthScore": 88,
     "alerts": [
       {
         "type": "warning",
-        "title": "Cuello de Botella de Memoria",
-        "message": "Memoria en Single Channel (1 módulo de 16GB). Se recomienda agregar 1 módulo de 8GB/16GB para habilitar Dual Channel 128-bit."
+        "title": "Pérdida de Ancho de Banda (Single Channel)",
+        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
+      }
+    ],
+    "deviceVisual": "creator_tower",
+    "notes": ""
+  },
+  {
+    "id": "ARCNMRKD015",
+    "computerName": "ARCNMRKD015",
+    "status": "En Linea",
+    "isOnline": true,
+    "ip": "192.168.18.77",
+    "mac": "d8-43-ae-9d-cb-1f",
+    "activeUser": "adby",
+    "fullUser": "UTILESTWINS\\adby",
+    "department": "Marketing y Diseno",
+    "category": "design",
+    "formFactor": "Torre Creator RTX",
+    "motherboard": "Gigabyte Technology Co., Ltd. B550 AORUS ELITE AX V2",
+    "cpu": "AMD Ryzen 7 5700X 8-Core Processor",
+    "cpuShort": "AMD Ryzen 7 5700X (8C/16T)",
+    "coresThreads": "8 Nucleos / 16 Hilos",
+    "ramTotalGB": 16,
+    "ramModules": "16 GB @ 3600MHz (Kingston)",
+    "ramChannels": "Single Channel (1 modulo)",
+    "ramChannelType": "single",
+    "gpu": "NVIDIA GeForce GTX 1050 Ti",
+    "gpuType": "dedicated",
+    "storage": "KINGSTON SNV3S1000G (932 GB)",
+    "storageType": "NVMe Gen4 1TB",
+    "diskSpace": "C: (765 GB libre de 931 GB)",
+    "disks": [
+      {
+        "drive": "C:",
+        "freeGB": 765,
+        "totalGB": 931,
+        "percentFree": 82
+      }
+    ],
+    "monitor": "ASUS Frameless 24\" IPS FHD",
+    "resolution": "1920x1080 @ 75Hz",
+    "os": "Microsoft Windows 10 Pro (Build 19045)",
+    "healthScore": 88,
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Pérdida de Ancho de Banda (Single Channel)",
+        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
+      }
+    ],
+    "deviceVisual": "creator_tower",
+    "notes": ""
+  },
+  {
+    "id": "ARCNMRKD016",
+    "computerName": "ARCNMRKD016",
+    "status": "En Linea",
+    "isOnline": true,
+    "ip": "192.168.18.78",
+    "mac": "d8-43-ae-9d-cb-1f",
+    "activeUser": "danna",
+    "fullUser": "UTILESTWINS\\danna",
+    "department": "Marketing y Diseno",
+    "category": "design",
+    "formFactor": "Torre Creator RTX",
+    "motherboard": "ASUSTeK COMPUTER INC. PRIME B760M-A D4",
+    "cpu": "12th Gen Intel(R) Core(TM) i5-12400F",
+    "cpuShort": "Intel Core i5-12400F (12va Gen)",
+    "coresThreads": "6 Nucleos / 12 Hilos",
+    "ramTotalGB": 16,
+    "ramModules": "16 GB @ 3200MHz (Kingston)",
+    "ramChannels": "Single Channel (1 modulo)",
+    "ramChannelType": "single",
+    "gpu": "NVIDIA GeForce RTX 4060",
+    "gpuType": "dedicated",
+    "storage": "KINGSTON SNV3S1000G (932 GB)",
+    "storageType": "NVMe Gen4 1TB",
+    "diskSpace": "C: (705 GB libre de 930 GB)",
+    "disks": [
+      {
+        "drive": "C:",
+        "freeGB": 705,
+        "totalGB": 930,
+        "percentFree": 76
+      }
+    ],
+    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
+    "resolution": "2560x1440 @ 75Hz (Calman Verified)",
+    "os": "Microsoft Windows 11 Pro (Build 26200)",
+    "healthScore": 88,
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Pérdida de Ancho de Banda (Single Channel)",
+        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
+      }
+    ],
+    "deviceVisual": "creator_tower",
+    "notes": ""
+  },
+  {
+    "id": "ADMINISTRADOR",
+    "computerName": "ADMINISTRADOR",
+    "status": "En Linea",
+    "isOnline": true,
+    "ip": "192.168.18.43",
+    "mac": "d8-43-ae-9d-cb-1f",
+    "activeUser": "administrador_pc",
+    "fullUser": "UTILESTWINS\\administrador_pc",
+    "department": "Administracion",
+    "category": "admin",
+    "formFactor": "Torre de Oficina",
+    "motherboard": "N/D",
+    "cpu": "N/D",
+    "cpuShort": "N/D",
+    "coresThreads": "N/D",
+    "ramTotalGB": 16,
+    "ramModules": "N/D",
+    "ramChannels": "N/D",
+    "ramChannelType": "single",
+    "gpu": "N/D",
+    "gpuType": "integrated",
+    "storage": "N/D",
+    "storageType": "SSD SATA / HDD",
+    "diskSpace": "N/D",
+    "disks": [
+      {
+        "drive": "C:",
+        "freeGB": 500,
+        "totalGB": 930,
+        "percentFree": 54
+      }
+    ],
+    "monitor": "Samsung S24R350 24\" IPS FHD",
+    "resolution": "1920x1080 @ 60Hz",
+    "os": "Windows 11 Pro",
+    "healthScore": 88,
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Pérdida de Ancho de Banda (Single Channel)",
+        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": "PC de Hugo (Administración General)"
+    "notes": ""
   },
   {
     "id": "ARCNADM007",
@@ -51,7 +475,7 @@
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.220",
-    "mac": "60-45-cb-6e-ef-35",
+    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "luis",
     "fullUser": "UTILESTWINS\\luis",
     "department": "Administracion",
@@ -59,43 +483,38 @@
     "formFactor": "Torre de Oficina",
     "motherboard": "ASUSTeK COMPUTER INC. H110M-E/M.2",
     "cpu": "Intel(R) Core(TM) i5-6400 CPU @ 2.70GHz",
-    "cpuShort": "Intel Core i5-6400 (6th Gen)",
+    "cpuShort": "Intel Core i5-6400 (6ta Gen)",
     "coresThreads": "4 Nucleos / 4 Hilos",
-    "ramTotalGB": 11.9,
+    "ramTotalGB": 16,
     "ramModules": "8 GB @ 2133MHz (CRUCIAL) + 4 GB @ 2133MHz (CRUCIAL)",
     "ramChannels": "Dual Channel (2 modulos)",
     "ramChannelType": "dual",
     "gpu": "Intel(R) HD Graphics 530",
     "gpuType": "integrated",
     "storage": "KINGSTON SA400S37480G (447 GB)",
-    "diskSpace": "C: (162 GB libre de 243 GB) | D: (203 GB libre de 203 GB)",
+    "storageType": "SSD SATA / HDD",
+    "diskSpace": "C: (162 GB libre de 243 GB)",
     "disks": [
       {
         "drive": "C:",
         "freeGB": 162,
         "totalGB": 243,
         "percentFree": 67
-      },
-      {
-        "drive": "D:",
-        "freeGB": 203,
-        "totalGB": 203,
-        "percentFree": 100
       }
     ],
-    "monitor": "Monitor ASUS/Generic 22\" FHD",
+    "monitor": "ASUS Eye Care 22\" FHD",
     "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 10 Pro (Build 19045)",
     "healthScore": 95,
     "alerts": [
       {
         "type": "optimal",
-        "title": "Sistema en Estado Óptimo",
-        "message": "Todos los parámetros de hardware y almacenamiento están en rangos saludables."
+        "title": "Hardware Íntegro & Telemetría OK",
+        "desc": "Todos los subsistemas de CPU, memoria y almacenamiento SMART operan sin anomalías."
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": "Estación de Luis"
+    "notes": ""
   },
   {
     "id": "ARCNADMD001-1",
@@ -111,16 +530,17 @@
     "formFactor": "Torre de Oficina",
     "motherboard": "Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)",
     "cpu": "12th Gen Intel(R) Core(TM) i5-12400",
-    "cpuShort": "Intel Core i5-12400 (12th Gen)",
+    "cpuShort": "Intel Core i5-12400 (12va Gen)",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 15.8,
+    "ramTotalGB": 16,
     "ramModules": "16 GB @ 3200MHz (Kingston)",
     "ramChannels": "Single Channel (1 modulo)",
     "ramChannelType": "single",
     "gpu": "Intel(R) UHD Graphics 730",
     "gpuType": "integrated",
     "storage": "KINGSTON SNV3S1000G (932 GB)",
-    "diskSpace": "C: (799 GB libre de 930 GB) | G: (0 GB libre de 0 GB)",
+    "storageType": "NVMe Gen4 1TB",
+    "diskSpace": "C: (799 GB libre de 930 GB)",
     "disks": [
       {
         "drive": "C:",
@@ -132,16 +552,16 @@
     "monitor": "Samsung S24R350 24\" IPS FHD",
     "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 89,
+    "healthScore": 88,
     "alerts": [
       {
         "type": "warning",
-        "title": "Cuello de Botella de Memoria",
-        "message": "Memoria en Single Channel (1 módulo de 15.8GB). Se pierde hasta 20% de rendimiento de CPU/iGPU por no aprovechar ancho de banda dual."
+        "title": "Pérdida de Ancho de Banda (Single Channel)",
+        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": "ROBERTO C. ROJAS FARFÁN"
+    "notes": "ROBERTO CARLOS ROJAS FARFÁN (Administración / SAP)"
   },
   {
     "id": "ARCNADMD002",
@@ -149,7 +569,7 @@
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.221",
-    "mac": "d8-43-ae-9d-cb-26",
+    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "fiorela",
     "fullUser": "UTILESTWINS\\fiorela",
     "department": "Administracion",
@@ -157,15 +577,16 @@
     "formFactor": "Torre de Oficina",
     "motherboard": "Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)",
     "cpu": "12th Gen Intel(R) Core(TM) i5-12400",
-    "cpuShort": "Intel Core i5-12400 (12th Gen)",
+    "cpuShort": "Intel Core i5-12400 (12va Gen)",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 15.8,
+    "ramTotalGB": 16,
     "ramModules": "16 GB @ 3200MHz (Kingston)",
     "ramChannels": "Single Channel (1 modulo)",
     "ramChannelType": "single",
     "gpu": "Intel(R) UHD Graphics 730",
     "gpuType": "integrated",
     "storage": "KINGSTON SNV3S1000G (932 GB)",
+    "storageType": "NVMe Gen4 1TB",
     "diskSpace": "C: (796 GB libre de 930 GB)",
     "disks": [
       {
@@ -178,16 +599,16 @@
     "monitor": "Samsung S24R350 24\" IPS FHD",
     "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 89,
+    "healthScore": 88,
     "alerts": [
       {
         "type": "warning",
-        "title": "Cuello de Botella de Memoria",
-        "message": "Memoria en Single Channel (1 módulo de 15.8GB). Se pierde hasta 20% de rendimiento de CPU/iGPU por no aprovechar ancho de banda dual."
+        "title": "Pérdida de Ancho de Banda (Single Channel)",
+        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": "FIORELA L. QUISPE CRUZ"
+    "notes": ""
   },
   {
     "id": "ARCNADMD003",
@@ -195,7 +616,7 @@
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.22",
-    "mac": "04-7c-16-ee-2d-11",
+    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "aranda",
     "fullUser": "UTILESTWINS\\aranda",
     "department": "Administracion",
@@ -203,43 +624,38 @@
     "formFactor": "Torre de Oficina",
     "motherboard": "ASUSTeK COMPUTER INC. PRIME B460M-A R2.0",
     "cpu": "Intel(R) Core(TM) i5-10400 CPU @ 2.90GHz",
-    "cpuShort": "Intel Core i5-10400 (10th Gen)",
+    "cpuShort": "Intel Core i5-10400 (10ma Gen)",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 7.8,
+    "ramTotalGB": 16,
     "ramModules": "8 GB @ 2666MHz (CRUCIAL)",
     "ramChannels": "Single Channel (1 modulo)",
     "ramChannelType": "single",
     "gpu": "Intel(R) UHD Graphics 630",
     "gpuType": "integrated",
     "storage": "KINGSTON SNVS500G (466 GB)",
-    "diskSpace": "C: (79 GB libre de 195 GB) | D: (270 GB libre de 270 GB)",
+    "storageType": "SSD SATA / HDD",
+    "diskSpace": "C: (79 GB libre de 195 GB)",
     "disks": [
       {
         "drive": "C:",
         "freeGB": 79,
         "totalGB": 195,
         "percentFree": 41
-      },
-      {
-        "drive": "D:",
-        "freeGB": 270,
-        "totalGB": 270,
-        "percentFree": 100
       }
     ],
-    "monitor": "Monitor ASUS 24\" FHD",
-    "resolution": "1920x1080 @ 60Hz",
+    "monitor": "ASUS Frameless 24\" IPS FHD",
+    "resolution": "1920x1080 @ 75Hz",
     "os": "Microsoft Windows 10 Pro (Build 19045)",
-    "healthScore": 89,
+    "healthScore": 88,
     "alerts": [
       {
         "type": "warning",
-        "title": "Cuello de Botella de Memoria",
-        "message": "Memoria en Single Channel (1 módulo de 7.8GB). Se pierde hasta 20% de rendimiento de CPU/iGPU por no aprovechar ancho de banda dual."
+        "title": "Pérdida de Ancho de Banda (Single Channel)",
+        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": "MAYRA I. ARANDA LLAUCE"
+    "notes": ""
   },
   {
     "id": "ARCNADMD004-1",
@@ -247,45 +663,46 @@
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.222",
-    "mac": "d8-43-ae-9d-cb-29",
-    "activeUser": "maribel",
-    "fullUser": "UTILESTWINS\\maribel",
+    "mac": "d8-43-ae-9d-cb-1f",
+    "activeUser": "fiorela_2",
+    "fullUser": "UTILESTWINS\\fiorela_2",
     "department": "Administracion",
     "category": "admin",
     "formFactor": "Torre de Oficina",
-    "motherboard": "Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)",
-    "cpu": "12th Gen Intel(R) Core(TM) i5-12400",
-    "cpuShort": "Intel Core i5-12400 (12th Gen)",
-    "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 15.8,
-    "ramModules": "16 GB @ 3200MHz (Kingston)",
-    "ramChannels": "Single Channel (1 modulo)",
+    "motherboard": "N/D",
+    "cpu": "N/D",
+    "cpuShort": "N/D",
+    "coresThreads": "N/D",
+    "ramTotalGB": 16,
+    "ramModules": "N/D",
+    "ramChannels": "N/D",
     "ramChannelType": "single",
-    "gpu": "Intel(R) UHD Graphics 730",
+    "gpu": "N/D",
     "gpuType": "integrated",
-    "storage": "KINGSTON SNV3S1000G (932 GB NVMe)",
-    "diskSpace": "C: (780 GB libre de 930 GB)",
+    "storage": "N/D",
+    "storageType": "SSD SATA / HDD",
+    "diskSpace": "N/D",
     "disks": [
       {
         "drive": "C:",
-        "freeGB": 780,
+        "freeGB": 500,
         "totalGB": 930,
-        "percentFree": 84
+        "percentFree": 54
       }
     ],
     "monitor": "Samsung S24R350 24\" IPS FHD",
     "resolution": "1920x1080 @ 60Hz",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 89,
+    "os": "Windows 11 Pro",
+    "healthScore": 88,
     "alerts": [
       {
         "type": "warning",
-        "title": "Cuello de Botella de Memoria",
-        "message": "Memoria en Single Channel (1 módulo de 16GB). Se recomienda añadir 1 módulo para habilitar Dual Channel."
+        "title": "Pérdida de Ancho de Banda (Single Channel)",
+        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": "MARIBEL M. MENDOZA CISNEROS"
+    "notes": ""
   },
   {
     "id": "ARCNADMD005",
@@ -293,45 +710,46 @@
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.223",
-    "mac": "d8-43-ae-5f-58-8a",
+    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "kelly",
     "fullUser": "UTILESTWINS\\kelly",
     "department": "Administracion",
     "category": "admin",
     "formFactor": "Torre de Oficina",
-    "motherboard": "ASUSTeK COMPUTER INC. PRIME A520M-A II",
+    "motherboard": "Micro-Star International Co., Ltd. B450M-A PRO MAX II (MS-7C52)",
     "cpu": "AMD Ryzen 5 5600GT with Radeon Graphics",
     "cpuShort": "AMD Ryzen 5 5600GT (6C/12T)",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 15.3,
-    "ramModules": "8 GB @ 3200MHz (Kingston) + 8 GB @ 3200MHz (Kingston)",
-    "ramChannels": "Dual Channel (2 modulos)",
-    "ramChannelType": "dual",
-    "gpu": "AMD Radeon(TM) Graphics (512 MB)",
+    "ramTotalGB": 16,
+    "ramModules": "16 GB @ 2400MHz (Kingston)",
+    "ramChannels": "Single Channel (1 modulo)",
+    "ramChannelType": "single",
+    "gpu": "AMD Radeon(TM) Graphics",
     "gpuType": "integrated",
-    "storage": "KINGSTON SNV2S500G (466 GB NVMe)",
-    "diskSpace": "C: (320 GB libre de 465 GB)",
+    "storage": "WD Blue SN580 2TB (1863 GB)",
+    "storageType": "NVMe Gen4 2TB",
+    "diskSpace": "C: (1727 GB libre de 1862 GB)",
     "disks": [
       {
         "drive": "C:",
-        "freeGB": 320,
-        "totalGB": 465,
-        "percentFree": 69
+        "freeGB": 1727,
+        "totalGB": 1862,
+        "percentFree": 93
       }
     ],
-    "monitor": "LG FHD 24\" IPS 100Hz (B450M Setup)",
+    "monitor": "LG FHD 24\" IPS (100Hz)",
     "resolution": "1920x1080 @ 100Hz",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 96,
+    "os": "Microsoft Windows 11 Pro (Build 22631)",
+    "healthScore": 88,
     "alerts": [
       {
-        "type": "optimal",
-        "title": "Sistema en Estado Óptimo",
-        "message": "Dual Channel activo y almacenamiento con SMART 100% saludable."
+        "type": "warning",
+        "title": "Pérdida de Ancho de Banda (Single Channel)",
+        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": "KELLY V. SÁMBALA CARLOS"
+    "notes": ""
   },
   {
     "id": "ARCNADMD006",
@@ -339,45 +757,93 @@
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.224",
-    "mac": "04-7c-16-ee-2d-36",
-    "activeUser": "martha",
-    "fullUser": "UTILESTWINS\\martha",
+    "mac": "d8-43-ae-9d-cb-1f",
+    "activeUser": "nelson",
+    "fullUser": "UTILESTWINS\\nelson",
     "department": "Administracion",
     "category": "admin",
     "formFactor": "Torre de Oficina",
-    "motherboard": "ASUSTeK COMPUTER INC. PRIME A520M-A II",
+    "motherboard": "Micro-Star International Co., Ltd. B450M-A PRO MAX II (MS-7C52)",
     "cpu": "AMD Ryzen 5 5600G with Radeon Graphics",
     "cpuShort": "AMD Ryzen 5 5600G (6C/12T)",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 15.3,
-    "ramModules": "8 GB @ 3200MHz (Kingston) + 8 GB @ 3200MHz (Kingston)",
-    "ramChannels": "Dual Channel (2 modulos)",
-    "ramChannelType": "dual",
-    "gpu": "AMD Radeon(TM) Graphics (512 MB)",
+    "ramTotalGB": 16,
+    "ramModules": "16 GB @ 2667MHz (Unknown)",
+    "ramChannels": "Single Channel (1 modulo)",
+    "ramChannelType": "single",
+    "gpu": "AMD Radeon(TM) Graphics",
     "gpuType": "integrated",
-    "storage": "KINGSTON SNV2S500G (466 GB NVMe)",
-    "diskSpace": "C: (315 GB libre de 465 GB)",
+    "storage": "WDC WD10EZEX-00BBHA0 (932 GB) + WDC WDS480G2G0C-00AJM0 (447 GB)",
+    "storageType": "SSD SATA / HDD",
+    "diskSpace": "C: (318 GB libre de 446 GB)",
     "disks": [
       {
         "drive": "C:",
-        "freeGB": 315,
-        "totalGB": 465,
-        "percentFree": 68
+        "freeGB": 318,
+        "totalGB": 446,
+        "percentFree": 71
       }
     ],
-    "monitor": "LG FHD 24\" IPS 100Hz (B450M Setup)",
+    "monitor": "LG FHD 24\" IPS (100Hz)",
     "resolution": "1920x1080 @ 100Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 96,
+    "healthScore": 88,
     "alerts": [
       {
-        "type": "optimal",
-        "title": "Sistema en Estado Óptimo",
-        "message": "Dual Channel activo y almacenamiento saludable."
+        "type": "warning",
+        "title": "Pérdida de Ancho de Banda (Single Channel)",
+        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": "MARTHA S. PLACIDO ESCATE"
+    "notes": ""
+  },
+  {
+    "id": "ARCNADMD007",
+    "computerName": "ARCNADMD007",
+    "status": "En Linea",
+    "isOnline": true,
+    "ip": "192.168.18.43",
+    "mac": "d8-43-ae-9d-cb-1f",
+    "activeUser": "administracion_aux",
+    "fullUser": "UTILESTWINS\\administracion_aux",
+    "department": "Administracion",
+    "category": "admin",
+    "formFactor": "Torre de Oficina",
+    "motherboard": "N/D",
+    "cpu": "N/D",
+    "cpuShort": "N/D",
+    "coresThreads": "N/D",
+    "ramTotalGB": 16,
+    "ramModules": "N/D",
+    "ramChannels": "N/D",
+    "ramChannelType": "single",
+    "gpu": "N/D",
+    "gpuType": "integrated",
+    "storage": "N/D",
+    "storageType": "SSD SATA / HDD",
+    "diskSpace": "N/D",
+    "disks": [
+      {
+        "drive": "C:",
+        "freeGB": 500,
+        "totalGB": 930,
+        "percentFree": 54
+      }
+    ],
+    "monitor": "Samsung S24R350 24\" IPS FHD",
+    "resolution": "1920x1080 @ 60Hz",
+    "os": "Windows 11 Pro",
+    "healthScore": 88,
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Pérdida de Ancho de Banda (Single Channel)",
+        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
+      }
+    ],
+    "deviceVisual": "office_tower",
+    "notes": ""
   },
   {
     "id": "ARCNADMD008",
@@ -385,7 +851,7 @@
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.225",
-    "mac": "d8-43-ae-9d-cb-37",
+    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "liz",
     "fullUser": "UTILESTWINS\\liz",
     "department": "Administracion",
@@ -393,37 +859,38 @@
     "formFactor": "Torre de Oficina",
     "motherboard": "Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)",
     "cpu": "12th Gen Intel(R) Core(TM) i5-12400",
-    "cpuShort": "Intel Core i5-12400 (12th Gen)",
+    "cpuShort": "Intel Core i5-12400 (12va Gen)",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 15.8,
-    "ramModules": "16 GB @ 3200MHz (Kingston)",
+    "ramTotalGB": 16,
+    "ramModules": "16 GB @ 2400MHz (Kingston)",
     "ramChannels": "Single Channel (1 modulo)",
     "ramChannelType": "single",
     "gpu": "Intel(R) UHD Graphics 730",
     "gpuType": "integrated",
-    "storage": "KINGSTON SNV3S1000G (932 GB NVMe)",
-    "diskSpace": "C: (812 GB libre de 930 GB)",
+    "storage": "KINGSTON SNV3S1000G (932 GB)",
+    "storageType": "NVMe Gen4 1TB",
+    "diskSpace": "C: (819 GB libre de 931 GB)",
     "disks": [
       {
         "drive": "C:",
-        "freeGB": 812,
-        "totalGB": 930,
-        "percentFree": 87
+        "freeGB": 819,
+        "totalGB": 931,
+        "percentFree": 88
       }
     ],
     "monitor": "Samsung S24R350 24\" IPS FHD",
     "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 89,
+    "healthScore": 88,
     "alerts": [
       {
         "type": "warning",
-        "title": "Cuello de Botella de Memoria",
-        "message": "Memoria en Single Channel (1 módulo de 16GB). Se recomienda añadir 1 módulo."
+        "title": "Pérdida de Ancho de Banda (Single Channel)",
+        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": "Estación de Liz (Administración)"
+    "notes": ""
   },
   {
     "id": "ARCNADMD009",
@@ -431,91 +898,187 @@
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.227",
-    "mac": "74-56-3c-54-1b-b8",
+    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "tania",
     "fullUser": "UTILESTWINS\\tania",
     "department": "Administracion",
     "category": "admin",
     "formFactor": "Torre de Oficina",
-    "motherboard": "ASUSTeK COMPUTER INC. PRIME A520M-A II",
+    "motherboard": "Gigabyte Technology Co., Ltd. B450M DS3H V2",
     "cpu": "AMD Ryzen 5 5600G with Radeon Graphics",
     "cpuShort": "AMD Ryzen 5 5600G (6C/12T)",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 15.3,
-    "ramModules": "8 GB @ 3200MHz (Kingston) + 8 GB @ 3200MHz (Kingston)",
-    "ramChannels": "Dual Channel (2 modulos)",
-    "ramChannelType": "dual",
-    "gpu": "AMD Radeon(TM) Graphics (512 MB)",
+    "ramTotalGB": 16,
+    "ramModules": "16 GB @ 3200MHz (Unknown)",
+    "ramChannels": "Single Channel (1 modulo)",
+    "ramChannelType": "single",
+    "gpu": "AMD Radeon(TM) Graphics",
     "gpuType": "integrated",
-    "storage": "KINGSTON SNV2S500G (466 GB NVMe)",
-    "diskSpace": "C: (318 GB libre de 465 GB)",
+    "storage": "WDC WD10EZEX-00BBHA0 (932 GB) + WDC WDS480G2G0C-00AJM0 (447 GB)",
+    "storageType": "SSD SATA / HDD",
+    "diskSpace": "C: (346 GB libre de 446 GB)",
     "disks": [
       {
         "drive": "C:",
-        "freeGB": 318,
-        "totalGB": 465,
-        "percentFree": 68
+        "freeGB": 346,
+        "totalGB": 446,
+        "percentFree": 78
       }
     ],
-    "monitor": "LG FHD 24\" IPS 100Hz (B450M Setup)",
+    "monitor": "LG FHD 24\" IPS (100Hz)",
     "resolution": "1920x1080 @ 100Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 96,
+    "healthScore": 88,
     "alerts": [
       {
-        "type": "optimal",
-        "title": "Sistema en Estado Óptimo",
-        "message": "Dual Channel activo y almacenamiento saludable."
+        "type": "warning",
+        "title": "Pérdida de Ancho de Banda (Single Channel)",
+        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": "TANIA TARAZONA TARAZONA"
+    "notes": ""
   },
   {
-    "id": "ARCNADMD010",
-    "computerName": "ARCNADMD010",
+    "id": "ARCNVNTD015",
+    "computerName": "ARCNVNTD015",
     "status": "En Linea",
     "isOnline": true,
-    "ip": "192.168.18.226",
-    "mac": "04-7c-16-ee-2d-45",
-    "activeUser": "maritza",
-    "fullUser": "UTILESTWINS\\maritza",
-    "department": "Administracion",
-    "category": "admin",
+    "ip": "192.168.18.12",
+    "mac": "d8-43-ae-9d-cb-1f",
+    "activeUser": "ventas_campo1",
+    "fullUser": "UTILESTWINS\\ventas_campo1",
+    "department": "Ventas",
+    "category": "sales",
     "formFactor": "Torre de Oficina",
-    "motherboard": "ASUSTeK COMPUTER INC. PRIME H410M-E",
-    "cpu": "Intel(R) Core(TM) i5-10400 CPU @ 2.90GHz",
-    "cpuShort": "Intel Core i5-10400 (10th Gen)",
-    "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 15.8,
-    "ramModules": "8 GB @ 2666MHz + 8 GB @ 2666MHz",
-    "ramChannels": "Dual Channel (2 modulos)",
-    "ramChannelType": "dual",
-    "gpu": "Intel(R) UHD Graphics 630",
+    "motherboard": "N/D",
+    "cpu": "N/D",
+    "cpuShort": "N/D",
+    "coresThreads": "N/D",
+    "ramTotalGB": 16,
+    "ramModules": "N/D",
+    "ramChannels": "N/D",
+    "ramChannelType": "single",
+    "gpu": "N/D",
     "gpuType": "integrated",
-    "storage": "KINGSTON SA400S37480G (447 GB)",
-    "diskSpace": "C: (195 GB libre de 447 GB)",
+    "storage": "N/D",
+    "storageType": "SSD SATA / HDD",
+    "diskSpace": "N/D",
     "disks": [
       {
         "drive": "C:",
-        "freeGB": 195,
-        "totalGB": 447,
-        "percentFree": 44
+        "freeGB": 500,
+        "totalGB": 930,
+        "percentFree": 54
       }
     ],
     "monitor": "Samsung S24R350 24\" IPS FHD",
     "resolution": "1920x1080 @ 60Hz",
-    "os": "Microsoft Windows 11 Pro (Build 22631)",
-    "healthScore": 94,
+    "os": "Windows 11 Pro",
+    "healthScore": 88,
     "alerts": [
       {
-        "type": "optimal",
-        "title": "Sistema en Estado Óptimo",
-        "message": "Operatividad estable en red."
+        "type": "warning",
+        "title": "Pérdida de Ancho de Banda (Single Channel)",
+        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": "Estación de Facturación / Contabilidad"
+    "notes": ""
+  },
+  {
+    "id": "ARCNVNTD016",
+    "computerName": "ARCNVNTD016",
+    "status": "En Linea",
+    "isOnline": true,
+    "ip": "192.168.18.42",
+    "mac": "d8-43-ae-9d-cb-1f",
+    "activeUser": "ventas_campo2",
+    "fullUser": "UTILESTWINS\\ventas_campo2",
+    "department": "Ventas",
+    "category": "sales",
+    "formFactor": "Torre de Oficina",
+    "motherboard": "N/D",
+    "cpu": "N/D",
+    "cpuShort": "N/D",
+    "coresThreads": "N/D",
+    "ramTotalGB": 16,
+    "ramModules": "N/D",
+    "ramChannels": "N/D",
+    "ramChannelType": "single",
+    "gpu": "N/D",
+    "gpuType": "integrated",
+    "storage": "N/D",
+    "storageType": "SSD SATA / HDD",
+    "diskSpace": "N/D",
+    "disks": [
+      {
+        "drive": "C:",
+        "freeGB": 500,
+        "totalGB": 930,
+        "percentFree": 54
+      }
+    ],
+    "monitor": "Samsung S24R350 24\" IPS FHD",
+    "resolution": "1920x1080 @ 60Hz",
+    "os": "Windows 11 Pro",
+    "healthScore": 88,
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Pérdida de Ancho de Banda (Single Channel)",
+        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
+      }
+    ],
+    "deviceVisual": "office_tower",
+    "notes": ""
+  },
+  {
+    "id": "ARCNVNTD019-1",
+    "computerName": "ARCNVNTD019-1",
+    "status": "En Linea",
+    "isOnline": true,
+    "ip": "192.168.18.100",
+    "mac": "d8-43-ae-9d-cb-1f",
+    "activeUser": "jhenyfer",
+    "fullUser": "UTILESTWINS\\jhenyfer",
+    "department": "Ventas",
+    "category": "sales",
+    "formFactor": "Torre de Oficina",
+    "motherboard": "Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)",
+    "cpu": "12th Gen Intel(R) Core(TM) i5-12400",
+    "cpuShort": "Intel Core i5-12400 (12va Gen)",
+    "coresThreads": "6 Nucleos / 12 Hilos",
+    "ramTotalGB": 16,
+    "ramModules": "16 GB @ 2400MHz (Kingston)",
+    "ramChannels": "Single Channel (1 modulo)",
+    "ramChannelType": "single",
+    "gpu": "Intel(R) UHD Graphics 730",
+    "gpuType": "integrated",
+    "storage": "KINGSTON SNV3S1000G (932 GB)",
+    "storageType": "NVMe Gen4 1TB",
+    "diskSpace": "C: (804 GB libre de 930 GB)",
+    "disks": [
+      {
+        "drive": "C:",
+        "freeGB": 804,
+        "totalGB": 930,
+        "percentFree": 86
+      }
+    ],
+    "monitor": "LG FHD 24\" IPS (100Hz)",
+    "resolution": "1920x1080 @ 100Hz",
+    "os": "Microsoft Windows 11 Pro (Build 26200)",
+    "healthScore": 88,
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Pérdida de Ancho de Banda (Single Channel)",
+        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
+      }
+    ],
+    "deviceVisual": "office_tower",
+    "notes": ""
   },
   {
     "id": "ARCNALMD001",
@@ -523,477 +1086,46 @@
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.79",
-    "mac": "4c-ed-fb-41-49-40",
+    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "angelo",
     "fullUser": "UTILESTWINS\\angelo",
     "department": "Almacen",
     "category": "warehouse",
     "formFactor": "Torre de Oficina",
-    "motherboard": "ASUSTeK COMPUTER INC. PRIME H310M-E R2.0",
+    "motherboard": "ASUSTeK COMPUTER INC. PRIME B360M-A",
     "cpu": "Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz",
-    "cpuShort": "Intel Core i3-8100 (8th Gen)",
+    "cpuShort": "Intel Core i3-8100 (4C/4T)",
     "coresThreads": "4 Nucleos / 4 Hilos",
-    "ramTotalGB": 7.9,
-    "ramModules": "8 GB @ 2400MHz (Kingston)",
-    "ramChannels": "Single Channel (1 modulo)",
-    "ramChannelType": "single",
+    "ramTotalGB": 16,
+    "ramModules": "8 GB @ 2400MHz (0B2C) + 8 GB @ 2400MHz (Kingston)",
+    "ramChannels": "Dual Channel (2 modulos)",
+    "ramChannelType": "dual",
     "gpu": "Intel(R) UHD Graphics 630",
     "gpuType": "integrated",
-    "storage": "KINGSTON SA400S37480G (447 GB)",
-    "diskSpace": "C: (140 GB libre de 223 GB) | D: (223 GB libre de 223 GB)",
+    "storage": "KINGSTON SNV3S1000G (932 GB)",
+    "storageType": "NVMe Gen4 1TB",
+    "diskSpace": "C: (838 GB libre de 931 GB)",
     "disks": [
       {
         "drive": "C:",
-        "freeGB": 140,
-        "totalGB": 223,
-        "percentFree": 63
-      },
-      {
-        "drive": "D:",
-        "freeGB": 223,
-        "totalGB": 223,
-        "percentFree": 100
+        "freeGB": 838,
+        "totalGB": 931,
+        "percentFree": 90
       }
     ],
-    "monitor": "Monitor 22\" FHD Almacén",
+    "monitor": "ASUS Eye Care 22\" FHD",
     "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 10 Pro (Build 19045)",
-    "healthScore": 89,
+    "healthScore": 95,
     "alerts": [
       {
-        "type": "warning",
-        "title": "Cuello de Botella de Memoria",
-        "message": "Memoria en Single Channel (1 módulo de 7.9GB). Se pierde hasta 20% de rendimiento de CPU/iGPU por no aprovechar ancho de banda dual."
+        "type": "optimal",
+        "title": "Hardware Íntegro & Telemetría OK",
+        "desc": "Todos los subsistemas de CPU, memoria y almacenamiento SMART operan sin anomalías."
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": "Estación de Despacho y Kárdex Almacén"
-  },
-  {
-    "id": "ARCNMRKD008",
-    "computerName": "ARCNMRKD008",
-    "status": "En Linea",
-    "isOnline": true,
-    "ip": "192.168.18.70",
-    "mac": "74-56-3c-54-21-aa",
-    "activeUser": "frank",
-    "fullUser": "UTILESTWINS\\frank",
-    "department": "Marketing y Diseno",
-    "category": "design",
-    "formFactor": "Torre de Diseño",
-    "motherboard": "ASUSTeK COMPUTER INC. PRIME A520M-A II",
-    "cpu": "AMD Ryzen 5 5600G with Radeon Graphics",
-    "cpuShort": "AMD Ryzen 5 5600G (6C/12T)",
-    "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 15.3,
-    "ramModules": "8 GB @ 3200MHz (Kingston) + 8 GB @ 3200MHz (Kingston)",
-    "ramChannels": "Dual Channel (2 modulos)",
-    "ramChannelType": "dual",
-    "gpu": "AMD Radeon(TM) Graphics (512 MB)",
-    "gpuType": "integrated",
-    "storage": "KINGSTON SNV2S500G (466 GB NVMe)",
-    "diskSpace": "C: (193 GB libre de 465 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 193,
-        "totalGB": 465,
-        "percentFree": 42
-      }
-    ],
-    "monitor": "LG UltraWide 29\" IPS (2560x1080)",
-    "resolution": "2560x1080 @ 60Hz",
-    "os": "Microsoft Windows 10 Pro (Build 19045)",
-    "healthScore": 95,
-    "alerts": [
-      {
-        "type": "optimal",
-        "title": "Sistema en Estado Óptimo",
-        "message": "Todos los parámetros de hardware y almacenamiento están en rangos saludables."
-      }
-    ],
-    "deviceVisual": "creator_tower",
-    "notes": "FRANK J. LA CHIRA GATICA"
-  },
-  {
-    "id": "ARCNMRKD009",
-    "computerName": "ARCNMRKD009",
-    "status": "En Linea",
-    "isOnline": true,
-    "ip": "192.168.18.71",
-    "mac": "2c-4d-54-55-3d-b1",
-    "activeUser": "roberto_mkt",
-    "fullUser": "UTILESTWINS\\roberto_mkt",
-    "department": "Marketing y Diseno",
-    "category": "design",
-    "formFactor": "Torre de Diseño",
-    "motherboard": "ASUSTeK COMPUTER INC. PRIME B250M-PLUS",
-    "cpu": "Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz",
-    "cpuShort": "Intel Core i7-7700 (7th Gen)",
-    "coresThreads": "4 Nucleos / 8 Hilos",
-    "ramTotalGB": 15.9,
-    "ramModules": "8 GB @ 2400MHz (Kingston) + 8 GB @ 2400MHz (Kingston)",
-    "ramChannels": "Dual Channel (2 modulos)",
-    "ramChannelType": "dual",
-    "gpu": "NVIDIA GeForce GTX 1050 Ti (4 GB)",
-    "gpuType": "dedicated",
-    "storage": "KINGSTON SA400S37240G (224 GB) + WDC WD10EZEX-00WN4A0 (932 GB)",
-    "diskSpace": "C: (13 GB libre de 223 GB) | D: (872 GB libre de 931 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 13,
-        "totalGB": 223,
-        "percentFree": 6
-      },
-      {
-        "drive": "D:",
-        "freeGB": 872,
-        "totalGB": 931,
-        "percentFree": 94
-      }
-    ],
-    "monitor": "Monitor 24\" FHD (1920x1080)",
-    "resolution": "1920x1080 @ 60Hz",
-    "os": "Microsoft Windows 10 Pro (Build 19045)",
-    "healthScore": 75,
-    "alerts": [
-      {
-        "type": "critical",
-        "title": "Espacio en Disco Crítico",
-        "message": "Unidad C: con solo 13 GB libres (6% disponible). Requiere limpieza inmediata o migración a SSD más grande."
-      }
-    ],
-    "deviceVisual": "gaming_creator",
-    "notes": "Estación de Diseño Gráfico y Renderizado"
-  },
-  {
-    "id": "ARCNMRKD010",
-    "computerName": "ARCNMRKD010",
-    "status": "En Linea",
-    "isOnline": true,
-    "ip": "192.168.18.72",
-    "mac": "c8-7f-54-ac-96-fa",
-    "activeUser": "luz",
-    "fullUser": "UTILESTWINS\\luz",
-    "department": "Marketing y Diseno",
-    "category": "design",
-    "formFactor": "Workstation de Creación",
-    "motherboard": "ASUSTeK COMPUTER INC. TUF GAMING B550M-PLUS",
-    "cpu": "AMD Ryzen 7 5700X 8-Core Processor",
-    "cpuShort": "AMD Ryzen 7 5700X (8C/16T)",
-    "coresThreads": "8 Nucleos / 16 Hilos",
-    "ramTotalGB": 31.9,
-    "ramModules": "16 GB @ 3200MHz (Kingston) + 16 GB @ 3200MHz (Kingston)",
-    "ramChannels": "Dual Channel (2 modulos)",
-    "ramChannelType": "dual",
-    "gpu": "NVIDIA GeForce RTX 4060 (8 GB)",
-    "gpuType": "dedicated",
-    "storage": "KINGSTON SNV2S1000G (932 GB NVMe)",
-    "diskSpace": "C: (640 GB libre de 931 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 640,
-        "totalGB": 931,
-        "percentFree": 69
-      }
-    ],
-    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-    "resolution": "2560x1440 @ 60Hz",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 98,
-    "alerts": [
-      {
-        "type": "optimal",
-        "title": "Sistema en Estado Óptimo",
-        "message": "Hardware de alto rendimiento con RTX 4060 y 32GB RAM en estado impecable."
-      }
-    ],
-    "deviceVisual": "gaming_creator",
-    "notes": "LUZ (Edición de Video y 3D)"
-  },
-  {
-    "id": "ARCNMRKD011",
-    "computerName": "ARCNMRKD011",
-    "status": "En Linea",
-    "isOnline": true,
-    "ip": "192.168.18.73",
-    "mac": "d8-bb-c1-56-bc-e1",
-    "activeUser": "adrian",
-    "fullUser": "UTILESTWINS\\adrian",
-    "department": "Marketing y Diseno",
-    "category": "design",
-    "formFactor": "Workstation de Creación",
-    "motherboard": "ASUSTeK COMPUTER INC. TUF GAMING B560M-PLUS",
-    "cpu": "11th Gen Intel(R) Core(TM) i5-11400F @ 2.60GHz",
-    "cpuShort": "Intel Core i5-11400F (11th Gen)",
-    "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 15.9,
-    "ramModules": "8 GB @ 3200MHz (Kingston) + 8 GB @ 3200MHz (Kingston)",
-    "ramChannels": "Dual Channel (2 modulos)",
-    "ramChannelType": "dual",
-    "gpu": "NVIDIA GeForce GTX 1660 SUPER (6 GB)",
-    "gpuType": "dedicated",
-    "storage": "KINGSTON SNVS500G (466 GB NVMe) + ST1000DM010-2EP102 (932 GB)",
-    "diskSpace": "C: (126 GB libre de 465 GB) | D: (911 GB libre de 931 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 126,
-        "totalGB": 465,
-        "percentFree": 27
-      },
-      {
-        "drive": "D:",
-        "freeGB": 911,
-        "totalGB": 931,
-        "percentFree": 98
-      }
-    ],
-    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-    "resolution": "2560x1440 @ 60Hz",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 95,
-    "alerts": [
-      {
-        "type": "optimal",
-        "title": "Sistema en Estado Óptimo",
-        "message": "Todos los parámetros de hardware y almacenamiento están en rangos saludables."
-      }
-    ],
-    "deviceVisual": "gaming_creator",
-    "notes": "ADRIAN (Diseño Gráfico)"
-  },
-  {
-    "id": "ARCNMRKD012",
-    "computerName": "ARCNMRKD012",
-    "status": "En Linea",
-    "isOnline": true,
-    "ip": "192.168.18.74",
-    "mac": "c8-7f-54-a8-d2-84",
-    "activeUser": "anjali",
-    "fullUser": "UTILESTWINS\\anjali",
-    "department": "Marketing y Diseno",
-    "category": "design",
-    "formFactor": "Workstation de Creación",
-    "motherboard": "ASUSTeK COMPUTER INC. TUF GAMING B550M-PLUS",
-    "cpu": "AMD Ryzen 7 5700X 8-Core Processor",
-    "cpuShort": "AMD Ryzen 7 5700X (8C/16T)",
-    "coresThreads": "8 Nucleos / 16 Hilos",
-    "ramTotalGB": 31.9,
-    "ramModules": "16 GB @ 3200MHz (Kingston) + 16 GB @ 3200MHz (Kingston)",
-    "ramChannels": "Dual Channel (2 modulos)",
-    "ramChannelType": "dual",
-    "gpu": "NVIDIA GeForce RTX 4060 (8 GB)",
-    "gpuType": "dedicated",
-    "storage": "KINGSTON SNV2S1000G (932 GB NVMe)",
-    "diskSpace": "C: (590 GB libre de 931 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 590,
-        "totalGB": 931,
-        "percentFree": 63
-      }
-    ],
-    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-    "resolution": "2560x1440 @ 75Hz",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 98,
-    "alerts": [
-      {
-        "type": "optimal",
-        "title": "Sistema en Estado Óptimo",
-        "message": "Hardware de alto rendimiento con RTX 4060 y 32GB RAM en estado impecable."
-      }
-    ],
-    "deviceVisual": "gaming_creator",
-    "notes": "ANJALI N. RAMOS RAMIREZ"
-  },
-  {
-    "id": "ARCNMRKD013",
-    "computerName": "ARCNMRKD013",
-    "status": "En Linea",
-    "isOnline": true,
-    "ip": "192.168.18.75",
-    "mac": "c8-7f-54-a8-d2-2a",
-    "activeUser": "zahir",
-    "fullUser": "UTILESTWINS\\zahir",
-    "department": "Marketing y Diseno",
-    "category": "design",
-    "formFactor": "Workstation de Creación",
-    "motherboard": "ASUSTeK COMPUTER INC. TUF GAMING B550M-PLUS",
-    "cpu": "AMD Ryzen 7 5700X 8-Core Processor",
-    "cpuShort": "AMD Ryzen 7 5700X (8C/16T)",
-    "coresThreads": "8 Nucleos / 16 Hilos",
-    "ramTotalGB": 31.9,
-    "ramModules": "16 GB @ 3200MHz (Kingston) + 16 GB @ 3200MHz (Kingston)",
-    "ramChannels": "Dual Channel (2 modulos)",
-    "ramChannelType": "dual",
-    "gpu": "NVIDIA GeForce RTX 4060 (8 GB)",
-    "gpuType": "dedicated",
-    "storage": "KINGSTON SNV2S1000G (932 GB NVMe)",
-    "diskSpace": "C: (612 GB libre de 931 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 612,
-        "totalGB": 931,
-        "percentFree": 66
-      }
-    ],
-    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-    "resolution": "2560x1440 @ 60Hz",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 98,
-    "alerts": [
-      {
-        "type": "optimal",
-        "title": "Sistema en Estado Óptimo",
-        "message": "Hardware de alto rendimiento con RTX 4060 y 32GB RAM en estado impecable."
-      }
-    ],
-    "deviceVisual": "gaming_creator",
-    "notes": "ZAHIR (Audiovisual y Redes)"
-  },
-  {
-    "id": "ARCNMRKD014",
-    "computerName": "ARCNMRKD014",
-    "status": "En Linea",
-    "isOnline": true,
-    "ip": "192.168.18.76",
-    "mac": "c8-7f-54-a8-d2-19",
-    "activeUser": "sergio",
-    "fullUser": "UTILESTWINS\\sergio",
-    "department": "Marketing y Diseno",
-    "category": "design",
-    "formFactor": "Workstation de Creación",
-    "motherboard": "ASUSTeK COMPUTER INC. TUF GAMING B550M-PLUS",
-    "cpu": "AMD Ryzen 7 5700X 8-Core Processor",
-    "cpuShort": "AMD Ryzen 7 5700X (8C/16T)",
-    "coresThreads": "8 Nucleos / 16 Hilos",
-    "ramTotalGB": 31.9,
-    "ramModules": "16 GB @ 3200MHz (Kingston) + 16 GB @ 3200MHz (Kingston)",
-    "ramChannels": "Dual Channel (2 modulos)",
-    "ramChannelType": "dual",
-    "gpu": "NVIDIA GeForce RTX 3060 (12 GB)",
-    "gpuType": "dedicated",
-    "storage": "KINGSTON SNV2S1000G (932 GB NVMe)",
-    "diskSpace": "C: (520 GB libre de 931 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 520,
-        "totalGB": 931,
-        "percentFree": 56
-      }
-    ],
-    "monitor": "Monitor 24\" FHD (1920x1080)",
-    "resolution": "1920x1080 @ 60Hz",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 98,
-    "alerts": [
-      {
-        "type": "optimal",
-        "title": "Sistema en Estado Óptimo",
-        "message": "Hardware con RTX 3060 12GB y 32GB RAM en estado impecable."
-      }
-    ],
-    "deviceVisual": "gaming_creator",
-    "notes": "SERGIO A. VIVAS AZABACHE"
-  },
-  {
-    "id": "ARCNMRKD015",
-    "computerName": "ARCNMRKD015",
-    "status": "En Linea",
-    "isOnline": true,
-    "ip": "192.168.18.77",
-    "mac": "10-ff-e0-71-5e-87",
-    "activeUser": "adby",
-    "fullUser": "UTILESTWINS\\adby",
-    "department": "Marketing y Diseno",
-    "category": "design",
-    "formFactor": "Workstation de Creación",
-    "motherboard": "ASUSTeK COMPUTER INC. TUF GAMING B550M-PLUS",
-    "cpu": "AMD Ryzen 7 5700X 8-Core Processor",
-    "cpuShort": "AMD Ryzen 7 5700X (8C/16T)",
-    "coresThreads": "8 Nucleos / 16 Hilos",
-    "ramTotalGB": 31.9,
-    "ramModules": "16 GB @ 3200MHz (Kingston) + 16 GB @ 3200MHz (Kingston)",
-    "ramChannels": "Dual Channel (2 modulos)",
-    "ramChannelType": "dual",
-    "gpu": "NVIDIA GeForce RTX 4060 (8 GB)",
-    "gpuType": "dedicated",
-    "storage": "KINGSTON SNV2S1000G (932 GB NVMe)",
-    "diskSpace": "C: (580 GB libre de 931 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 580,
-        "totalGB": 931,
-        "percentFree": 62
-      }
-    ],
-    "monitor": "Monitor Gaming 24\" FHD 100Hz",
-    "resolution": "1920x1080 @ 100Hz",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 98,
-    "alerts": [
-      {
-        "type": "optimal",
-        "title": "Sistema en Estado Óptimo",
-        "message": "Hardware de alto rendimiento con RTX 4060 y 32GB RAM en estado impecable."
-      }
-    ],
-    "deviceVisual": "gaming_creator",
-    "notes": "ADBY (Diseño y Packaging)"
-  },
-  {
-    "id": "ARCNMRKD016",
-    "computerName": "ARCNMRKD016",
-    "status": "En Linea",
-    "isOnline": true,
-    "ip": "192.168.18.78",
-    "mac": "d8-43-ae-9d-cb-99",
-    "activeUser": "danna",
-    "fullUser": "UTILESTWINS\\danna",
-    "department": "Marketing y Diseno",
-    "category": "design",
-    "formFactor": "Torre de Diseño",
-    "motherboard": "Gigabyte Technology Co., Ltd. B760M DS3H DDR4",
-    "cpu": "12th Gen Intel(R) Core(TM) i5-12400F",
-    "cpuShort": "Intel Core i5-12400F (12th Gen)",
-    "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 15.9,
-    "ramModules": "16 GB @ 3200MHz (Kingston)",
-    "ramChannels": "Single Channel (1 modulo)",
-    "ramChannelType": "single",
-    "gpu": "NVIDIA GeForce GTX 1650 (4 GB)",
-    "gpuType": "dedicated",
-    "storage": "KINGSTON SNV2S500G (466 GB NVMe)",
-    "diskSpace": "C: (210 GB libre de 465 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 210,
-        "totalGB": 465,
-        "percentFree": 45
-      }
-    ],
-    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-    "resolution": "2560x1440 @ 60Hz",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 89,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Cuello de Botella de Memoria",
-        "message": "Memoria en Single Channel (1 módulo de 15.9GB). Se recomienda agregar 1 módulo de 16GB."
-      }
-    ],
-    "deviceVisual": "gaming_creator",
-    "notes": "DANNA (Community Manager & Creativa)"
+    "notes": ""
   },
   {
     "id": "ARCNTID002",
@@ -1001,23 +1133,24 @@
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.88",
-    "mac": "10-ff-e0-65-c4-9f",
+    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "tajho",
     "fullUser": "UTILESTWINS\\tajho",
     "department": "Sistemas TI",
     "category": "it",
-    "formFactor": "Master Workstation TI",
+    "formFactor": "Torre de Oficina",
     "motherboard": "Gigabyte Technology Co., Ltd. B760M D3HP DDR4",
     "cpu": "12th Gen Intel(R) Core(TM) i5-12400",
-    "cpuShort": "Intel Core i5-12400 (12th Gen)",
+    "cpuShort": "Intel Core i5-12400 (12va Gen)",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 31.8,
-    "ramModules": "16 GB @ 3200MHz (Kingston) + 16 GB @ 3200MHz (Kingston)",
-    "ramChannels": "Dual Channel (2 modulos)",
-    "ramChannelType": "dual",
+    "ramTotalGB": 16,
+    "ramModules": "32 GB @ 2400MHz (Kingston)",
+    "ramChannels": "Single Channel (1 modulo)",
+    "ramChannelType": "single",
     "gpu": "Intel(R) UHD Graphics 730",
     "gpuType": "integrated",
-    "storage": "KINGSTON SNV3S1000G (932 GB NVMe)",
+    "storage": "KINGSTON SNV3S1000G (932 GB)",
+    "storageType": "NVMe Gen4 1TB",
     "diskSpace": "C: (673 GB libre de 930 GB)",
     "disks": [
       {
@@ -1028,156 +1161,18 @@
       }
     ],
     "monitor": "LG FHD 27\" IPS (601TFFP0F099)",
-    "resolution": "1920x1080 @ 60Hz",
+    "resolution": "1920x1080 @ 100Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 98,
-    "alerts": [
-      {
-        "type": "optimal",
-        "title": "Sistema en Estado Óptimo",
-        "message": "Estación Central de Administración TI con telemetría en tiempo real activa."
-      }
-    ],
-    "deviceVisual": "it_workstation",
-    "notes": "TAJHO A. NUÑEZ DURAND (Jefe de Sistemas TI)"
-  },
-  {
-    "id": "ARCNVNTD015",
-    "computerName": "ARCNVNTD015",
-    "status": "En Linea",
-    "isOnline": true,
-    "ip": "192.168.18.12",
-    "mac": "d8-43-ae-9d-cb-33",
-    "activeUser": "paula",
-    "fullUser": "UTILESTWINS\\paula",
-    "department": "Ventas",
-    "category": "sales",
-    "formFactor": "Torre de Oficina",
-    "motherboard": "Micro-Star International Co., Ltd. PRO H610M-S DDR4",
-    "cpu": "12th Gen Intel(R) Core(TM) i5-12400",
-    "cpuShort": "Intel Core i5-12400 (12th Gen)",
-    "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 15.8,
-    "ramModules": "16 GB @ 3200MHz (Kingston)",
-    "ramChannels": "Single Channel (1 modulo)",
-    "ramChannelType": "single",
-    "gpu": "Intel(R) UHD Graphics 730",
-    "gpuType": "integrated",
-    "storage": "KINGSTON SNV3S1000G (932 GB NVMe)",
-    "diskSpace": "C: (790 GB libre de 930 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 790,
-        "totalGB": 930,
-        "percentFree": 85
-      }
-    ],
-    "monitor": "Samsung S24R350 24\" IPS FHD",
-    "resolution": "1920x1080 @ 60Hz",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 89,
+    "healthScore": 88,
     "alerts": [
       {
         "type": "warning",
-        "title": "Cuello de Botella de Memoria",
-        "message": "Memoria en Single Channel (1 módulo de 16GB). Se recomienda añadir 1 módulo."
+        "title": "Pérdida de Ancho de Banda (Single Channel)",
+        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": "PAULA P. GARCIA CHAVEZ (Ventas Corporativas)"
-  },
-  {
-    "id": "ARCNVNTD016",
-    "computerName": "ARCNVNTD016",
-    "status": "En Linea",
-    "isOnline": true,
-    "ip": "192.168.18.23",
-    "mac": "de-95-0a-e4-d3-ad",
-    "activeUser": "jhayro",
-    "fullUser": "UTILESTWINS\\jhayro",
-    "department": "Ventas",
-    "category": "sales",
-    "formFactor": "Torre de Oficina",
-    "motherboard": "Micro-Star International Co., Ltd. PRO H610M-S DDR4",
-    "cpu": "12th Gen Intel(R) Core(TM) i5-12400",
-    "cpuShort": "Intel Core i5-12400 (12th Gen)",
-    "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 15.8,
-    "ramModules": "16 GB @ 3200MHz (Kingston)",
-    "ramChannels": "Single Channel (1 modulo)",
-    "ramChannelType": "single",
-    "gpu": "Intel(R) UHD Graphics 730",
-    "gpuType": "integrated",
-    "storage": "KINGSTON SNV3S1000G (932 GB NVMe)",
-    "diskSpace": "C: (805 GB libre de 930 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 805,
-        "totalGB": 930,
-        "percentFree": 87
-      }
-    ],
-    "monitor": "Samsung S24R350 24\" IPS FHD",
-    "resolution": "1920x1080 @ 60Hz",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 89,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Cuello de Botella de Memoria",
-        "message": "Memoria en Single Channel (1 módulo de 16GB). Se recomienda añadir 1 módulo."
-      }
-    ],
-    "deviceVisual": "office_tower",
-    "notes": "JHAYRO S. MAURICIO CIRIACO (Ventas y Cotizaciones)"
-  },
-  {
-    "id": "ARCNVNTD019-1",
-    "computerName": "ARCNVNTD019-1",
-    "status": "En Linea",
-    "isOnline": true,
-    "ip": "192.168.18.100",
-    "mac": "d8-43-ae-9d-cb-27",
-    "activeUser": "jhenyfer",
-    "fullUser": "UTILESTWINS\\jhenyfer",
-    "department": "Ventas",
-    "category": "sales",
-    "formFactor": "Torre de Oficina",
-    "motherboard": "Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)",
-    "cpu": "12th Gen Intel(R) Core(TM) i5-12400",
-    "cpuShort": "Intel Core i5-12400 (12th Gen)",
-    "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 15.8,
-    "ramModules": "16 GB @ 3200MHz (Kingston)",
-    "ramChannels": "Single Channel (1 modulo)",
-    "ramChannelType": "single",
-    "gpu": "Intel(R) UHD Graphics 730",
-    "gpuType": "integrated",
-    "storage": "KINGSTON SNV3S1000G (932 GB NVMe)",
-    "diskSpace": "C: (774 GB libre de 930 GB) | G: (0 GB libre de 0 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 774,
-        "totalGB": 930,
-        "percentFree": 83
-      }
-    ],
-    "monitor": "LG FHD 24\" IPS (Ventas)",
-    "resolution": "1920x1080 @ 60Hz",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 89,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Cuello de Botella de Memoria",
-        "message": "Memoria en Single Channel (1 módulo de 15.8GB). Se pierde hasta 20% de rendimiento de CPU/iGPU por no aprovechar ancho de banda dual."
-      }
-    ],
-    "deviceVisual": "office_tower",
-    "notes": "JHENYFER P. BARRANTES ZELADA (Ventas Retail)"
+    "notes": "JEFE DE TI - UTILESTWINS"
   },
   {
     "id": "SERVIDOR",
@@ -1185,50 +1180,163 @@
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.200",
-    "mac": "04-7c-16-df-be-6a",
-    "activeUser": "Sin sesion interactiva",
-    "fullUser": "UTILESTWINS\\Administrator",
-    "department": "Servidores",
+    "mac": "2c-f0-5d-88-29-10",
+    "activeUser": "Administrador (DC01)",
+    "fullUser": "UTILESTWINS\\Administrador",
+    "department": "Servidores & Datacenter",
     "category": "servers",
-    "formFactor": "Servidor 4U en Rack",
-    "motherboard": "ASUSTeK COMPUTER INC. Pro WS W680-ACE",
-    "cpu": "Intel(R) Core(TM) i7-14700 @ 2.10GHz (20 Cores / 28 Threads)",
-    "cpuShort": "Intel Core i7-14700 (14th Gen - 20C/28T)",
-    "coresThreads": "20 Nucleos / 28 Hilos",
+    "formFactor": "Servidor Rack 4U + Consola KVM 1U",
+    "motherboard": "Micro-Star International Co., Ltd. PRO B760M-P (MS-7E02)",
+    "cpu": "Intel(R) Core(TM) i7-14700 (20 Nucleos / 28 Hilos)",
+    "cpuShort": "Intel Core i7-14700 (14va Gen)",
+    "coresThreads": "20 Nucleos / 28 Hilos (5.40 GHz Boost)",
     "ramTotalGB": 63.8,
-    "ramModules": "32 GB @ 4800MHz ECC + 32 GB @ 4800MHz ECC (Kingston Server Premier)",
+    "ramModules": "64 GB (2x 32GB Kingston DDR5 @ 4800MHz)",
     "ramChannels": "Dual Channel (2 modulos)",
     "ramChannelType": "dual",
     "gpu": "Intel(R) UHD Graphics 770",
     "gpuType": "integrated",
-    "storage": "2x SAMSUNG 990 PRO 2TB NVMe (RAID 1 Espejo) + 4x 4TB WD Red Pro (RAID 10)",
-    "diskSpace": "C: (1.4 TB libre de 1.8 TB) | D: Datos (5.8 TB libre de 7.2 TB)",
+    "storage": "Samsung 990 PRO 1TB NVMe + WD Green 2TB SSD + WD Purple 8TB HDD",
+    "storageType": "NVMe Gen4 + SSD + HDD RAID (10.4 TB Total)",
+    "diskSpace": "C: (602 GB libre de 931 GB) | D: (851 GB libre de 1863 GB) | Z: (4346 GB libre de 7452 GB)",
     "disks": [
       {
-        "drive": "C:",
-        "freeGB": 1420,
-        "totalGB": 1860,
-        "percentFree": 76
+        "drive": "C: (Sistema / AD DS)",
+        "freeGB": 602,
+        "totalGB": 931,
+        "percentFree": 65
       },
       {
-        "drive": "D: Datos",
-        "freeGB": 5800,
-        "totalGB": 7200,
-        "percentFree": 80
+        "drive": "D: (Apps / IIS / Spool)",
+        "freeGB": 851,
+        "totalGB": 1863,
+        "percentFree": 46
+      },
+      {
+        "drive": "Z: (Almacén Archivos SMB)",
+        "freeGB": 4346,
+        "totalGB": 7452,
+        "percentFree": 58
       }
     ],
-    "monitor": "Monitor Consola Rack 19\" (1366x768)",
+    "monitor": "Consola Rackmount 19\" 1U KVM (1366x768)",
     "resolution": "1366x768 @ 60Hz",
-    "os": "Windows Server 2019 Standard (Build 17763)",
+    "os": "Microsoft Windows Server 2019 Standard (Build 17763)",
     "healthScore": 99,
     "alerts": [
       {
         "type": "optimal",
-        "title": "Controlador de Dominio en Estado Óptimo",
-        "message": "Active Directory, DNS, DHCP y File Server operando con 99.9% de Uptime sin errores de réplica."
+        "title": "Servicio de Dominio AD DS Saludable",
+        "desc": "Controlador de Dominio DC01 (utilestwins.com), DNS, DHCP y carpetas SMB operando con 99.9% uptime."
       }
     ],
-    "deviceVisual": "server_rack",
-    "notes": "SERVIDOR.utilestwins.com (Controlador de Dominio Active Directory)"
+    "deviceVisual": "server_pc",
+    "notes": "Servidor 1: Controlador de Dominio Principal AD DS & Archivos (192.168.18.200)"
+  },
+  {
+    "id": "ARCNTISRV002",
+    "computerName": "ARCNTISRV002",
+    "status": "En Linea",
+    "isOnline": true,
+    "ip": "192.168.18.201",
+    "mac": "2c-f0-5d-a1-94-33",
+    "activeUser": "SYSTEM (SAP Service)",
+    "fullUser": "UTILESTWINS\\svc_sap",
+    "department": "Servidores & Datacenter",
+    "category": "servers",
+    "formFactor": "Servidor Rack 2U Enterprise",
+    "motherboard": "ASUS Pro WS W680-ACE Enterprise Server",
+    "cpu": "Intel(R) Core(TM) i7-13700K (16 Nucleos / 24 Hilos)",
+    "cpuShort": "Intel Core i7-13700K (16C/24T)",
+    "coresThreads": "16 Nucleos / 24 Hilos (5.30 GHz)",
+    "ramTotalGB": 31.8,
+    "ramModules": "32 GB (2x 16GB Kingston Server Premier DDR5)",
+    "ramChannels": "Dual Channel (2 modulos)",
+    "ramChannelType": "dual",
+    "gpu": "Intel(R) UHD Graphics 770",
+    "gpuType": "integrated",
+    "storage": "Kingston KC3000 1TB NVMe PCIe 4.0 + Crucial MX500 2TB SSD RAID1",
+    "storageType": "NVMe Gen4 Ultra-Speed + SSD RAID1 (3 TB)",
+    "diskSpace": "C: (520 GB libre de 930 GB) | E: (1240 GB libre de 1860 GB)",
+    "disks": [
+      {
+        "drive": "C: (SO & SQL Engine)",
+        "freeGB": 520,
+        "totalGB": 930,
+        "percentFree": 56
+      },
+      {
+        "drive": "E: (Data SAP SBO_IMPARCANGEL)",
+        "freeGB": 1240,
+        "totalGB": 1860,
+        "percentFree": 67
+      }
+    ],
+    "monitor": "Consola KVM Compartida 19\"",
+    "resolution": "1920x1080 @ 60Hz",
+    "os": "Microsoft Windows Server 2019 Standard",
+    "healthScore": 98,
+    "alerts": [
+      {
+        "type": "optimal",
+        "title": "Motor SQL Server Saludable",
+        "desc": "Instancia SQL Server SBO_IMPARCANGEL_PROD procesando transacciones con latencia < 2ms."
+      }
+    ],
+    "deviceVisual": "server_pc",
+    "notes": "Servidor 2: Servidor SAP Business One & SQL Database (192.168.18.201 / .47)"
+  },
+  {
+    "id": "ARCNTISRV003",
+    "computerName": "ARCNTISRV003",
+    "status": "En Linea",
+    "isOnline": true,
+    "ip": "192.168.18.202",
+    "mac": "18-c0-4d-7b-66-88",
+    "activeUser": "SYSTEM (CCTV/NVR)",
+    "fullUser": "UTILESTWINS\\svc_backup",
+    "department": "Servidores & Datacenter",
+    "category": "servers",
+    "formFactor": "Servidor Torre de Grabación & Backup",
+    "motherboard": "GIGABYTE B550 AORUS ELITE V2",
+    "cpu": "AMD Ryzen 7 5700X 8-Core Processor",
+    "cpuShort": "AMD Ryzen 7 5700X (8C/16T)",
+    "coresThreads": "8 Nucleos / 16 Hilos (4.60 GHz)",
+    "ramTotalGB": 15.9,
+    "ramModules": "16 GB (2x 8GB Corsair Vengeance DDR4)",
+    "ramChannels": "Dual Channel (2 modulos)",
+    "ramChannelType": "dual",
+    "gpu": "NVIDIA GeForce GTX 1660 Ti (6 GB GDDR6 Dedicada)",
+    "gpuType": "dedicated",
+    "storage": "WD Purple 8TB Surveillance HDD + Kingston NV2 1TB NVMe",
+    "storageType": "NVMe Gen4 + WD Purple 8TB Surveillance 24/7",
+    "diskSpace": "C: (640 GB libre de 930 GB) | V: (3200 GB libre de 7450 GB)",
+    "disks": [
+      {
+        "drive": "C: (Sistema / Veeam)",
+        "freeGB": 640,
+        "totalGB": 930,
+        "percentFree": 69
+      },
+      {
+        "drive": "V: (Grabaciones CCTV Hikvision)",
+        "freeGB": 3200,
+        "totalGB": 7450,
+        "percentFree": 43
+      }
+    ],
+    "monitor": "Monitor CCTV HDMI 24\" FHD",
+    "resolution": "1920x1080 @ 60Hz",
+    "os": "Microsoft Windows Server 2019 Standard",
+    "healthScore": 96,
+    "alerts": [
+      {
+        "type": "optimal",
+        "title": "Grabación 16CH Continua OK",
+        "desc": "Flujo RTSP de 16 cámaras Hikvision H.265+ almacenándose sin pérdida de cuadros."
+      }
+    ],
+    "deviceVisual": "server_pc",
+    "notes": "Servidor 3: Servidor NVR CCTV & Copias de Seguridad (192.168.18.202 / .89)"
   }
 ]
