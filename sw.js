@@ -1,4 +1,4 @@
-const CACHE_NAME = 'twins-vantage-v2.0';
+const CACHE_NAME = 'twins-vantage-v2.1';
 const ASSETS = [
   './',
   './index.html',
@@ -7,6 +7,8 @@ const ASSETS = [
   './device_images.js',
   './inventory_data.js',
   './three_scene.js',
+  './three_engine.js',
+  './modals.js',
   './logo_twins.png',
   './manifest.json'
 ];
@@ -31,12 +33,10 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   if (event.request.url.includes('/api/')) {
-    // Network first for live APIs
     event.respondWith(
       fetch(event.request).catch(() => caches.match(event.request))
     );
   } else {
-    // Cache first for static UI
     event.respondWith(
       caches.match(event.request).then(response => {
         return response || fetch(event.request);

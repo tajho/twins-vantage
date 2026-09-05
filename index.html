@@ -435,7 +435,7 @@
                 <span class="badge-online text-[10px] font-bold px-2 py-0.5 rounded font-mono">192.168.18.1</span>
               </div>
               <p class="text-xs text-slate-400 mb-4">Puerta de enlace principal</p>
-              <button onclick="quickPingModal('192.168.18.1', 'Gateway Router')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-white flex items-center justify-center gap-2 transition-colors border border-white/5">
+              <button onclick="TwinsModal.showPing('192.168.18.1', 'Gateway Router')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-white flex items-center justify-center gap-2 transition-colors border border-white/5">
                 <i data-lucide="activity" class="w-4 h-4 text-[#00ff88]"></i> Test Ping
               </button>
             </div>
@@ -446,7 +446,7 @@
                 <span class="badge-online text-[10px] font-bold px-2 py-0.5 rounded font-mono">192.168.18.200</span>
               </div>
               <p class="text-xs text-slate-400 mb-4">Controlador de Dominio utilestwins.com</p>
-              <button onclick="quickPingModal('192.168.18.200', 'Servidor AD')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-white flex items-center justify-center gap-2 transition-colors border border-white/5">
+              <button onclick="TwinsModal.showPing('192.168.18.200', 'Servidor Active Directory')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-white flex items-center justify-center gap-2 transition-colors border border-white/5">
                 <i data-lucide="activity" class="w-4 h-4 text-[#00ff88]"></i> Test Ping
               </button>
             </div>
@@ -457,7 +457,7 @@
                 <span class="badge-online text-[10px] font-bold px-2 py-0.5 rounded font-mono">192.168.18.89</span>
               </div>
               <p class="text-xs text-slate-400 mb-4">Grabador Hikvision de Vigilancia</p>
-              <button onclick="quickPingModal('192.168.18.89', 'NVR Hikvision')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-white flex items-center justify-center gap-2 transition-colors border border-white/5">
+              <button onclick="TwinsModal.showPing('192.168.18.89', 'NVR Hikvision Cámaras')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-white flex items-center justify-center gap-2 transition-colors border border-white/5">
                 <i data-lucide="activity" class="w-4 h-4 text-[#00ff88]"></i> Test Ping
               </button>
             </div>
@@ -507,6 +507,8 @@
   <script src="inventory_data.js"></script>
   <script src="device_images.js"></script>
   <script src="three_scene.js"></script>
+  <script src="three_engine.js"></script>
+  <script src="modals.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
