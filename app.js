@@ -764,10 +764,16 @@ function renderDiagnostics() {
             Analiza en tiempo real los 26 equipos de la red corporativa de Útiles Twins para identificar problemas de ancho de banda RAM, discos saturados y latencias hacia el Servidor de Dominio.
           </p>
         </div>
-        <button id="btnRunFullScan" onclick="runFleetDiagnosticScan()" class="cyber-btn-primary px-6 py-3.5 rounded-xl text-xs flex items-center gap-2 shrink-0">
-          <i data-lucide="play-circle" class="w-5 h-5"></i>
-          <span>Ejecutar Escaneo Completo</span>
-        </button>
+        <div class="flex flex-wrap items-center gap-3 shrink-0">
+          <button id="btnRunFullScan" onclick="runFleetDiagnosticScan()" class="cyber-btn-primary px-6 py-3.5 rounded-xl text-xs flex items-center gap-2">
+            <i data-lucide="play-circle" class="w-5 h-5"></i>
+            <span>Ejecutar Escaneo</span>
+          </button>
+          <a href="reporte_ejecutivo_flota.html" target="_blank" class="px-5 py-3.5 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 border border-purple-500/40 text-purple-300 font-bold text-xs flex items-center gap-2 transition-all">
+            <i data-lucide="file-text" class="w-4 h-4"></i>
+            <span>Informe PDF (Gerencia)</span>
+          </a>
+        </div>
       </div>
 
       <div id="scanProgressBox" class="hidden vantage-card p-5 border-cyan-500/50">
