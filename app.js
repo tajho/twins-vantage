@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const installBtn = document.getElementById('pwaInstallBtn');
     if (installBtn) {
       installBtn.classList.remove('hidden');
+      installBtn.classList.add('flex');
       installBtn.addEventListener('click', () => {
         if (deferredPrompt) {
           deferredPrompt.prompt();
