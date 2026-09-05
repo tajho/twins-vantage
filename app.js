@@ -232,14 +232,17 @@ function renderFleetOverview() {
     const masterDev = allDevices.find(d => d.id === 'ARCNTID002') || allDevices[0];
     if (masterDev) {
       twinBox.innerHTML = `
-        <div class="relative w-full h-full flex items-center justify-center p-2 group">
-          <img src="images/monitor_lg_27_ips.jpg" alt="LG 27MR400 27 Inch IPS FHD" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105">
-          <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between bg-black/85 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10 font-mono text-xs">
-            <span class="text-white font-bold flex items-center gap-1.5 truncate">
-              <i data-lucide="tv" class="w-4 h-4 text-cyan-400 shrink-0"></i>
-              <span>LG FHD 27" IPS (100Hz) — S/N: 601TFFP0F099</span>
+        <div class="relative w-full h-full flex items-center justify-center p-1 group">
+          <img src="images/setup_it_master.jpg" alt="Master IT Workstation Setup - LG 27 + PC Tower" class="w-full h-full object-cover rounded-lg transition-transform duration-700 group-hover:scale-105">
+          <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between bg-black/85 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10 font-mono text-xs shadow-lg">
+            <span class="text-white font-black flex items-center gap-2 truncate">
+              <i data-lucide="monitor" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+              <span class="truncate">Setup Físico Real: LG 27" IPS (100Hz) + Torre Gigabyte B760M / i5-12400</span>
             </span>
-            <span class="text-[#00ff88] font-bold shrink-0 ml-2">1920x1080 @ 100Hz</span>
+            <span class="text-[#00ff88] font-bold shrink-0 ml-2 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#00ff88] pulse-led"></span>
+              ONLINE
+            </span>
           </div>
         </div>
       `;
@@ -448,12 +451,12 @@ function openDeviceDrawer(deviceId) {
   const dev = allDevices.find(d => d.id === deviceId);
   if (!dev) return;
   selectedDevice = dev;
-
   const drawer = document.getElementById('deviceDrawer');
   const content = document.getElementById('drawerContent');
   if (!drawer || !content) return;
 
-  const photoUrl = getDevicePhoto(dev);
+  const setupPhotoUrl = typeof getDeviceSetupPhoto === 'function' ? getDeviceSetupPhoto(dev) : getDevicePhoto(dev);
+  const monitorPhotoUrl = typeof getDeviceMonitorPhoto === 'function' ? getDeviceMonitorPhoto(dev) : setupPhotoUrl;
 
   let disksHtml = '<p class="text-xs text-slate-500">No hay información de particiones.</p>';
   if (dev.disks && dev.disks.length > 0) {
@@ -482,32 +485,40 @@ function openDeviceDrawer(deviceId) {
         colorClass = 'border-amber-500/40 bg-amber-500/10 text-amber-300';
         icon = 'alert-circle';
       } else if (a.type === 'optimal') {
-        colorClass = 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300';
-        icon = 'check-circle-2';
+        colorClass = 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300';
+        icon = 'check-circle';
       }
       return `
-        <div class="p-3.5 rounded-xl border ${colorClass} mb-2.5 text-xs flex items-start gap-3">
+        <div class="p-3 rounded-xl border ${colorClass} flex items-start gap-2.5 text-xs mb-2">
           <i data-lucide="${icon}" class="w-4 h-4 shrink-0 mt-0.5"></i>
           <div>
-            <div class="font-bold uppercase tracking-wider text-[11px]">${a.title || 'Diagnóstico'}</div>
-            <div class="text-slate-300 mt-1 leading-relaxed">${a.message}</div>
+            <div class="font-bold">${a.title}</div>
+            <div class="text-[11px] opacity-80 mt-0.5">${a.desc}</div>
           </div>
         </div>
       `;
     }).join('');
+  } else {
+    alertsHtml = '<div class="text-xs text-[#00ff88] font-bold p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4"></i> Todos los sensores de hardware operan dentro de los parámetros normales.</div>';
   }
 
   content.innerHTML = `
     <!-- Header -->
-    <div class="p-6 border-b border-white/10 bg-[#030610]/95 sticky top-0 z-20 backdrop-blur-xl flex items-center justify-between">
+    <div class="p-6 border-b border-white/10 flex items-start justify-between bg-gradient-to-r from-[#0d152a] to-[#040711]">
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shadow-[0_0_15px_rgba(0,240,255,0.25)]">
-          <i data-lucide="monitor" class="w-5 h-5"></i>
+        <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold font-mono text-base shadow-[0_0_20px_rgba(0,240,255,0.2)]">
+          <i data-lucide="monitor" class="w-6 h-6"></i>
         </div>
         <div>
-          <h2 class="text-lg font-black text-white font-mono flex items-center gap-2">
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] font-mono font-bold bg-cyan-500/15 text-cyan-300 px-2 py-0.5 rounded border border-cyan-500/30 uppercase">
+              ID: ${dev.id}
+            </span>
+            <span class="text-[10px] font-mono text-slate-400 font-bold">IP: ${dev.ip}</span>
+          </div>
+          <h2 class="text-lg font-black text-white font-mono flex items-center gap-2 mt-0.5">
             ${dev.computerName}
-            <span class="${dev.isOnline ? 'badge-online' : 'badge-offline'} text-xs font-bold px-2 py-0.5 rounded-full">
+            <span class="text-xs font-bold px-2 py-0.5 rounded-full ${dev.isOnline ? 'badge-online' : 'badge-offline'}">
               ${dev.status}
             </span>
           </h2>
@@ -524,23 +535,32 @@ function openDeviceDrawer(deviceId) {
       
       <!-- PHOTO & 3D HARDWARE VIEWPORT -->
       <div class="vantage-card p-4 space-y-3">
-        <div class="flex items-center justify-between text-xs font-mono text-cyan-400">
-          <span class="flex items-center gap-1.5 font-bold"><i data-lucide="tv" class="w-4 h-4"></i> MONITOR REAL & SETUP</span>
-          <div class="flex items-center gap-1">
-            <button id="btnTogglePhoto" onclick="showDrawerMedia('photo')" class="px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold text-[10px] border border-cyan-500/40">FOTO REAL MONITOR</button>
-            <button id="btnToggleTwin" onclick="showDrawerMedia('twin')" class="px-2.5 py-1 rounded bg-slate-900 text-slate-400 font-bold text-[10px] border border-white/10 hover:text-white">SETUP COMPLETO</button>
-            <button id="btnToggle3D" onclick="showDrawerMedia('3d')" class="px-2.5 py-1 rounded bg-slate-900 text-slate-400 font-bold text-[10px] border border-white/10 hover:text-white">3D 360°</button>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono text-cyan-400">
+          <span class="flex items-center gap-1.5 font-bold"><i data-lucide="tv" class="w-4 h-4"></i> WORKSTATION (PANTALLA + PC AL LADO)</span>
+          <div class="flex items-center gap-1 overflow-x-auto pb-0.5 no-scrollbar">
+            <button id="btnToggleSetup" onclick="showDrawerMedia('setup')" class="px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold text-[10px] border border-cyan-500/40 shrink-0">SETUP COMPLETO</button>
+            <button id="btnToggleMonitor" onclick="showDrawerMedia('monitor')" class="px-2.5 py-1 rounded bg-slate-900 text-slate-400 font-bold text-[10px] border border-white/10 hover:text-white shrink-0">MONITOR SOLO</button>
+            <button id="btnToggleTwin" onclick="showDrawerMedia('twin')" class="px-2.5 py-1 rounded bg-slate-900 text-slate-400 font-bold text-[10px] border border-white/10 hover:text-white shrink-0">ESQUEMA SVG</button>
+            <button id="btnToggle3D" onclick="showDrawerMedia('3d')" class="px-2.5 py-1 rounded bg-slate-900 text-slate-400 font-bold text-[10px] border border-white/10 hover:text-white shrink-0">3D 360°</button>
           </div>
         </div>
 
-        <div id="drawerPhotoBox" class="w-full h-64 rounded-xl bg-[#02050e] border border-cyan-500/40 overflow-hidden shadow-inner relative flex items-center justify-center p-2">
-          <img src="${photoUrl}" alt="${dev.computerName} - ${dev.monitor}" class="w-full h-full object-contain transition-transform duration-500 hover:scale-105">
+        <div id="drawerSetupBox" class="w-full h-64 rounded-xl bg-[#02050e] border border-cyan-500/40 overflow-hidden shadow-inner relative flex items-center justify-center p-1">
+          <img src="${setupPhotoUrl}" alt="${dev.computerName} Setup" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
           <div class="absolute bottom-2 left-2 right-2 bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 flex items-center justify-between text-xs font-mono">
             <span class="text-white font-bold flex items-center gap-1.5 truncate">
               <i data-lucide="monitor" class="w-3.5 h-3.5 text-cyan-400 shrink-0"></i>
-              <span class="truncate">${dev.monitor}</span>
+              <span class="truncate">${dev.monitor} + Chasis ${dev.formFactor}</span>
             </span>
             <span class="text-[#00ff88] font-bold shrink-0 ml-2">${dev.resolution || '1920x1080'}</span>
+          </div>
+        </div>
+
+        <div id="drawerMonitorBox" class="hidden w-full h-64 rounded-xl bg-[#02050e] border border-white/10 overflow-hidden shadow-inner relative flex items-center justify-center p-2">
+          <img src="${monitorPhotoUrl}" alt="${dev.computerName} Monitor" class="w-full h-full object-contain transition-transform duration-500 hover:scale-105">
+          <div class="absolute bottom-2 left-2 right-2 bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 flex items-center justify-between text-xs font-mono">
+            <span class="text-white font-bold truncate">${dev.monitor}</span>
+            <span class="text-cyan-400 font-bold shrink-0 ml-2">Foto de Producto</span>
           </div>
         </div>
 
@@ -719,28 +739,31 @@ function openDeviceDrawer(deviceId) {
 
 function showDrawerMedia(type) {
   playTechSound('click');
+  const setupBox = document.getElementById('drawerSetupBox');
+  const monitorBox = document.getElementById('drawerMonitorBox');
   const twinBox = document.getElementById('drawerTwinBox');
-  const photoBox = document.getElementById('drawerPhotoBox');
   const threeBox = document.getElementById('drawer3DContainer');
+  
+  const btnSetup = document.getElementById('btnToggleSetup');
+  const btnMonitor = document.getElementById('btnToggleMonitor');
   const btnTwin = document.getElementById('btnToggleTwin');
-  const btnPhoto = document.getElementById('btnTogglePhoto');
   const btn3D = document.getElementById('btnToggle3D');
 
-  if (!twinBox || !photoBox || !threeBox) return;
+  const inactiveBtn = 'px-2.5 py-1 rounded bg-slate-900 text-slate-400 font-bold text-[10px] border border-white/10 hover:text-white shrink-0';
+  const activeBtn = 'px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold text-[10px] border border-cyan-500/40 shrink-0';
 
-  const inactiveBtn = 'px-2 py-1 rounded bg-slate-900 text-slate-400 font-bold text-[10px] border border-white/10 hover:text-white';
-  const activeBtn = 'px-2 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold text-[10px] border border-cyan-500/40';
-
+  if (btnSetup) btnSetup.className = inactiveBtn;
+  if (btnMonitor) btnMonitor.className = inactiveBtn;
   if (btnTwin) btnTwin.className = inactiveBtn;
-  if (btnPhoto) btnPhoto.className = inactiveBtn;
   if (btn3D) btn3D.className = inactiveBtn;
 
-  twinBox.classList.add('hidden');
-  photoBox.classList.add('hidden');
-  threeBox.classList.add('hidden');
+  if (setupBox) setupBox.classList.add('hidden');
+  if (monitorBox) monitorBox.classList.add('hidden');
+  if (twinBox) twinBox.classList.add('hidden');
+  if (threeBox) threeBox.classList.add('hidden');
 
   if (type === '3d') {
-    threeBox.classList.remove('hidden');
+    if (threeBox) threeBox.classList.remove('hidden');
     if (btn3D) btn3D.className = activeBtn;
     if (selectedDevice && typeof mountInteractive3DViewport === 'function') {
       mountInteractive3DViewport('drawer3DContainer', selectedDevice);
@@ -757,11 +780,14 @@ function showDrawerMedia(type) {
       active3DScenes.delete('drawer3DContainer');
     }
     
-    if (type === 'photo') {
-      photoBox.classList.remove('hidden');
-      if (btnPhoto) btnPhoto.className = activeBtn;
+    if (type === 'setup') {
+      if (setupBox) setupBox.classList.remove('hidden');
+      if (btnSetup) btnSetup.className = activeBtn;
+    } else if (type === 'monitor') {
+      if (monitorBox) monitorBox.classList.remove('hidden');
+      if (btnMonitor) btnMonitor.className = activeBtn;
     } else {
-      twinBox.classList.remove('hidden');
+      if (twinBox) twinBox.classList.remove('hidden');
       if (btnTwin) btnTwin.className = activeBtn;
     }
   }

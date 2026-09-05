@@ -1,4 +1,4 @@
-const CACHE_NAME = 'twins-vantage-v3.9-live';
+const CACHE_NAME = 'twins-vantage-v4.0-worldclass';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -16,7 +16,13 @@ const STATIC_ASSETS = [
   './images/monitor_samsung_s24r350.jpg',
   './images/monitor_lg_ultrawide.jpg',
   './images/monitor_asus_24_fhd.jpg',
-  './images/monitor_rack_console.jpg'
+  './images/monitor_rack_console.jpg',
+  './images/setup_it_master.jpg',
+  './images/setup_marketing_proart.jpg',
+  './images/setup_admin_samsung.jpg',
+  './images/setup_video_ultrawide.jpg',
+  './images/setup_office_asus.jpg',
+  './images/setup_server_rack.jpg'
 ];
 
 self.addEventListener('install', event => {
