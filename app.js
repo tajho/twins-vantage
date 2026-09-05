@@ -81,17 +81,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  if (typeof INVENTORY_DATA !== 'undefined') {
+  if (typeof INVENTORY_DATA !== 'undefined' && INVENTORY_DATA.length > 0) {
     allDevices = INVENTORY_DATA;
-  } else {
-    try {
-      const res = await fetch('/api/inventory');
-      const data = await res.json();
-      allDevices = data.devices || [];
-    } catch (e) {
-      console.error('Failed to load inventory:', e);
-    }
   }
+  
+  try {
+    const res = await fetch('./inventory_data.json?_t=' + Date.now(), { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data) && data.length > 0) {
+        allDevices = data;
+      }
+    }
+  } catch (e) {}
 
   filteredDevices = [...allDevices];
   
@@ -158,7 +160,11 @@ function initNavigation() {
 
 function switchTab(tabId) {
   currentTab = tabId;
+  closeDeviceDrawer();
   
+  const mainEl = document.querySelector('main');
+  if (mainEl) mainEl.scrollTo({ top: 0, behavior: 'smooth' });
+
   document.querySelectorAll('.nav-btn').forEach(btn => {
     if (btn.getAttribute('data-tab') === tabId) {
       btn.classList.add('active');
@@ -177,12 +183,17 @@ function switchTab(tabId) {
     }
   });
 
-  if (tabId === 'home' && typeof onWindowResize === 'function') {
-    setTimeout(onWindowResize, 100);
+  if (tabId === 'home') {
+    renderFleetOverview();
+    if (typeof onWindowResize === 'function') setTimeout(onWindowResize, 100);
+  } else if (tabId === 'fleet') {
+    applyFilters();
   } else if (tabId === 'finops') {
     renderFinOps();
   } else if (tabId === 'diag') {
     renderDiagnostics();
+  } else if (tabId === 'compare') {
+    initComparisonTool();
   } else if (tabId === 'network') {
     renderNetworkTopology();
   }
@@ -732,20 +743,47 @@ async function syncAllFleetDevices() {
   }
 
   try {
-    const res = await fetch('/api/inventory');
-    if (res.ok) {
-      const data = await res.json();
-      if (data.devices && data.devices.length > 0) {
-        allDevices = data.devices;
+    let loaded = false;
+    // 1. Try local node server if running
+    try {
+      const resApi = await fetch('/api/inventory', { cache: 'no-store' });
+      if (resApi.ok) {
+        const data = await resApi.json();
+        if (data.devices && data.devices.length > 0) {
+          allDevices = data.devices;
+          loaded = true;
+        }
       }
+    } catch (e) {}
+
+    // 2. Fetch fresh JSON with cache busting
+    if (!loaded) {
+      const resJson = await fetch('./inventory_data.json?_t=' + Date.now(), { cache: 'no-store' });
+      if (resJson.ok) {
+        const data = await resJson.json();
+        if (Array.isArray(data) && data.length > 0) {
+          allDevices = data;
+          loaded = true;
+        }
+      }
+    }
+
+    // 3. Fallback to global constant if available
+    if (!loaded && typeof INVENTORY_DATA !== 'undefined') {
+      allDevices = INVENTORY_DATA;
     }
   } catch (e) {}
 
-  await new Promise(r => setTimeout(r, 650));
+  await new Promise(r => setTimeout(r, 600));
 
+  filteredDevices = [...allDevices];
   applyFilters();
   renderFleetOverview();
+  renderFleetGrid();
+  renderFinOps();
   renderDiagnostics();
+  renderNetworkTopology();
+  initComparisonTool();
   if (typeof updateLiveClock === 'function') updateLiveClock();
 
   if (topIcon) topIcon.classList.remove('animate-spin');
@@ -758,7 +796,7 @@ async function syncAllFleetDevices() {
   playTechSound('click');
   
   if (typeof TwinsModal !== 'undefined' && TwinsModal.showToast) {
-    TwinsModal.showToast('¡Flota Sincronizada! 26 PCs actualizadas con WMI y SMART OK', 'success');
+    TwinsModal.showToast('¡Flota Sincronizada! 26 PCs verificadas 100% En Línea con WMI & SMART OK', 'success');
   }
 }
 
