@@ -183,12 +183,50 @@ body {
   pointer-events: auto !important;
 }
 
+@media (max-width: 640px) {
+  .drawer-panel {
+    transform: translateY(100%);
+    border-radius: 24px 24px 0 0;
+    max-height: 90vh;
+    border-left: none;
+    border-top: 1px solid var(--border-cyber);
+  }
+  .drawer-panel.drawer-open {
+    transform: translateY(0) !important;
+  }
+}
+
 /* Mobile Bottom Navigation */
 .mobile-nav-bar {
   background: rgba(5, 10, 24, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid var(--border-subtle);
+}
+
+/* FinOps & Topology Custom Styles */
+.topology-node {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.topology-node:hover {
+  filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.6));
+}
+.topology-cable {
+  stroke-dasharray: 6;
+  animation: cableFlow 20s linear infinite;
+}
+@keyframes cableFlow {
+  from { stroke-dashoffset: 200; }
+  to { stroke-dashoffset: 0; }
+}
+
+.terminal-box {
+  font-family: 'JetBrains Mono', monospace;
+  background: #02040a;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.9);
 }
 
 /* Print Optimization */
@@ -214,3 +252,4 @@ body {
     color: #000000 !important;
   }
 }
+
