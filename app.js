@@ -9,54 +9,9 @@ let currentStatusFilter = 'all';
 let selectedDevice = null;
 let livePollingInterval = null;
 let deferredPrompt = null;
-let audioEnabled = true;
-
-// Web Audio API Synthesizer
-let audioCtx = null;
-function playTechSound(type = 'click') {
-  if (!audioEnabled) return;
-  try {
-    if (!audioCtx) {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    }
-    if (audioCtx.state === 'suspended') {
-      audioCtx.resume();
-    }
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-
-    const now = audioCtx.currentTime;
-
-    if (type === 'click') {
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(1200, now);
-      osc.frequency.exponentialRampToValueAtTime(800, now + 0.05);
-      gain.gain.setValueAtTime(0.08, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
-      osc.start(now);
-      osc.stop(now + 0.05);
-    } else if (type === 'optimize') {
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(300, now);
-      osc.frequency.exponentialRampToValueAtTime(1800, now + 0.35);
-      gain.gain.setValueAtTime(0.12, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
-      osc.start(now);
-      osc.stop(now + 0.35);
-    }
-  } catch (e) {}
-}
-
-function toggleAudio() {
-  audioEnabled = !audioEnabled;
-  const icon = document.getElementById('audioIcon');
-  if (icon) {
-    icon.setAttribute('data-lucide', audioEnabled ? 'volume-2' : 'volume-x');
-    if (window.lucide) window.lucide.createIcons();
-  }
-}
+// Clean corporate silent interface - zero audio clutter
+function playTechSound() {}
+function toggleAudio() {}
 
 // Initialize on DOM Ready
 document.addEventListener('DOMContentLoaded', async () => {
@@ -666,11 +621,48 @@ function openDeviceDrawer(deviceId) {
         </div>
       </div>
 
-      <!-- Print / Export Action Bar -->
-      <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-        <button onclick="window.print()" class="cyber-btn-primary w-full py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-2">
-          <i data-lucide="printer" class="w-4 h-4"></i>
-          <span>Imprimir Ficha Técnica de Auditoría</span>
+      <!-- TI Self-Healing & Remediation Toolkit (1-Click Actions) -->
+      <div class="space-y-2">
+        <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-300 mb-2 flex items-center gap-1.5 font-mono">
+          <i data-lucide="wrench" class="w-4 h-4 text-cyan-400"></i> Centro de Remediación Rápida TI (1-Click)
+        </h3>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="TwinsModal.showRemediationAction('temp_clean', '${dev.id}')" class="p-3 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-white/5 hover:border-cyan-500/40 text-left transition-all group">
+            <div class="flex items-center gap-2 text-cyan-400 font-bold text-xs">
+              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+              <span>Limpiar Temp & Prefetch</span>
+            </div>
+            <div class="text-[10px] text-slate-400 mt-1">Purga archivos residuales C:</div>
+          </button>
+          <button onclick="TwinsModal.showRemediationAction('restart_spooler', '${dev.id}')" class="p-3 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-white/5 hover:border-emerald-500/40 text-left transition-all group">
+            <div class="flex items-center gap-2 text-emerald-400 font-bold text-xs">
+              <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+              <span>Reiniciar Spooler</span>
+            </div>
+            <div class="text-[10px] text-slate-400 mt-1">Desbloquea colas de impresión</div>
+          </button>
+          <button onclick="TwinsModal.showRemediationAction('flush_dns', '${dev.id}')" class="p-3 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-white/5 hover:border-purple-500/40 text-left transition-all group">
+            <div class="flex items-center gap-2 text-purple-400 font-bold text-xs">
+              <i data-lucide="network" class="w-3.5 h-3.5"></i>
+              <span>Flush DNS / IP Renew</span>
+            </div>
+            <div class="text-[10px] text-slate-400 mt-1">Reindexa dominio utilestwins</div>
+          </button>
+          <button onclick="TwinsModal.showRemediationAction('free_ram', '${dev.id}')" class="p-3 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-white/5 hover:border-amber-500/40 text-left transition-all group">
+            <div class="flex items-center gap-2 text-amber-400 font-bold text-xs">
+              <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+              <span>Purga RAM Standby</span>
+            </div>
+            <div class="text-[10px] text-slate-400 mt-1">Maximiza memoria libre</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Action Buttons Bar -->
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/10">
+        <button onclick="TwinsModal.showAssignmentDoc('${dev.id}')" class="cyber-btn-primary w-full py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-2">
+          <i data-lucide="file-text" class="w-4 h-4"></i>
+          <span>Generar Acta de Asignación (PDF)</span>
         </button>
         <button onclick="TwinsModal.showPing('${dev.ip}', '${dev.computerName}')" class="w-full sm:w-auto py-3 px-5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-2 transition-colors border border-white/10 shrink-0">
           <i data-lucide="activity" class="w-4 h-4 text-[#00ff88]"></i> Test Ping
