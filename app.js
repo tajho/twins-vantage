@@ -258,12 +258,34 @@ function initSearchAndFilters() {
     });
   });
 
-  const statusSelect = document.getElementById('fleetStatusFilter');
-  if (statusSelect) {
-    statusSelect.addEventListener('change', (e) => {
-      playTechSound('click');
-      currentStatusFilter = e.target.value;
-      applyFilters();
+}
+
+function openFleetStatusPicker() {
+  const options = [
+    { value: 'all', label: 'Todos los Estados', sub: '26 computadoras registradas', icon: 'layers', badge: '26 PCs', badgeClass: 'badge-online' },
+    { value: 'online', label: 'En Línea', sub: 'Equipos con enlace activo y telemetría', icon: 'check-circle-2', badge: '26 Online', badgeClass: 'badge-online' },
+    { value: 'single_ram', label: 'Alerta: Single Channel RAM', sub: '1 módulo (Pérdida de ancho de banda 64-bit)', icon: 'alert-circle', badge: '11 PCs', badgeClass: 'badge-warning' },
+    { value: 'critical', label: 'Alerta: Espacio Disco Crítico', sub: 'Partición C: menor a 15GB libres', icon: 'alert-triangle', badge: '1 PC', badgeClass: 'badge-critical' }
+  ];
+
+  if (typeof TwinsModal !== 'undefined' && TwinsModal.showSelectModal) {
+    TwinsModal.showSelectModal({
+      title: 'ESTADO OPERATIVO DE FLOTA',
+      subtitle: 'Filtrar cuadrícula por condición de hardware',
+      selectedValue: currentStatusFilter,
+      options,
+      onSelect: (val) => {
+        currentStatusFilter = val;
+        const labels = {
+          all: 'Todos los Estados (26)',
+          online: 'En Línea (26)',
+          single_ram: 'Single Channel (11)',
+          critical: 'Disco Crítico (1)'
+        };
+        const lbl = document.getElementById('customFleetStatusLabel');
+        if (lbl) lbl.innerText = labels[val] || val;
+        applyFilters();
+      }
     });
   }
 }
@@ -864,7 +886,7 @@ function renderDiagnostics() {
   const win10PCs = allDevices.filter(d => (d.os || '').toLowerCase().includes('windows 10'));
   const win11PCs = allDevices.filter(d => (d.os || '').toLowerCase().includes('windows 11'));
 
-  const pcOptions = allDevices.map(d => `<option value="${d.id}">${d.computerName} - ${d.activeUser} (${d.ip})</option>`).join('');
+  let targetDev = allDevices.find(d => d.id === selectedRemoteTargetId) || allDevices[0];
 
   container.innerHTML = `
     <div class="space-y-6">
@@ -914,11 +936,15 @@ function renderDiagnostics() {
             </div>
             <h3 class="text-base font-black text-white">Acciones de Mantenimiento Automatizadas en 1-Clic</h3>
           </div>
-          <div class="flex items-center gap-3">
+          <div class="flex flex-col sm:flex-row sm:items-center gap-2.5 w-full lg:w-auto">
             <label class="text-xs font-bold text-slate-400 whitespace-nowrap">Estación Destino:</label>
-            <select id="remoteTargetSelect" class="bg-slate-900 border border-cyan-500/30 text-xs text-cyan-300 font-mono rounded-xl px-3.5 py-2 focus:outline-none focus:border-cyan-400 font-bold">
-              ${pcOptions}
-            </select>
+            <button id="remoteTargetBtn" onclick="openRemoteTargetPicker()" class="w-full sm:w-auto flex items-center justify-between gap-2.5 bg-slate-900 border border-cyan-500/30 hover:border-cyan-400 text-xs text-cyan-300 font-mono rounded-xl px-3.5 py-2.5 transition-all font-bold group">
+              <div class="flex items-center gap-2 truncate">
+                <i data-lucide="terminal" class="w-3.5 h-3.5 text-cyan-400 shrink-0"></i>
+                <span id="remoteTargetLabel" class="truncate">${targetDev.computerName} — ${targetDev.activeUser} (${targetDev.ip})</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-transform shrink-0 ml-1"></i>
+            </button>
           </div>
         </div>
 
@@ -1079,11 +1105,40 @@ function renderDiagnostics() {
   if (window.lucide) window.lucide.createIcons();
 }
 
+let selectedRemoteTargetId = 'ARCNTID002';
+
+function openRemoteTargetPicker() {
+  const options = allDevices.map(d => ({
+    value: d.id,
+    label: `${d.computerName} (${d.activeUser})`,
+    sub: `IP: ${d.ip} • ${d.department} • ${d.os}`,
+    icon: 'terminal',
+    badge: d.isOnline ? 'Online' : 'Offline',
+    badgeClass: d.isOnline ? 'badge-online' : 'badge-offline'
+  }));
+
+  if (typeof TwinsModal !== 'undefined' && TwinsModal.showSelectModal) {
+    TwinsModal.showSelectModal({
+      title: 'ESTACIÓN DESTINO WINRM',
+      subtitle: 'Selecciona el equipo para ejecutar acciones de mantenimiento',
+      selectedValue: selectedRemoteTargetId,
+      options,
+      onSelect: (val) => {
+        selectedRemoteTargetId = val;
+        const d = allDevices.find(dev => dev.id === val) || allDevices[0];
+        const lbl = document.getElementById('remoteTargetLabel');
+        if (lbl) lbl.innerText = `${d.computerName} — ${d.activeUser} (${d.ip})`;
+        if (typeof TwinsModal !== 'undefined' && TwinsModal.showToast) {
+          TwinsModal.showToast(`Estación destino configurada: ${d.computerName} (${d.ip})`, 'info');
+        }
+      }
+    });
+  }
+}
+
 async function executeRemoteAction(actionType) {
   playTechSound('optimize');
-  const targetSelect = document.getElementById('remoteTargetSelect');
-  const targetId = targetSelect ? targetSelect.value : 'ARCNTID002';
-  const targetDev = allDevices.find(d => d.id === targetId) || allDevices[0];
+  const targetDev = allDevices.find(d => d.id === selectedRemoteTargetId) || allDevices[0];
 
   const terminalBody = document.getElementById('terminalBody');
   const terminalTime = document.getElementById('terminalTime');
@@ -1658,48 +1713,87 @@ async function optimizeLocalSystem() {
   if (window.lucide) window.lucide.createIcons();
 }
 
+let compareDevice1Id = 'ARCNTID002';
+let compareDevice2Id = 'ARCNMRKD010';
+
 function initComparisonTool() {
-  const select1 = document.getElementById('compareSelect1');
-  const select2 = document.getElementById('compareSelect2');
-  if (!select1 || !select2) return;
-
-  const optionsHtml = allDevices.map(d => `<option value="${d.id}">${d.computerName} - ${d.activeUser} (${d.department})</option>`).join('');
-  select1.innerHTML = optionsHtml;
-  select2.innerHTML = optionsHtml;
-
-  select1.value = 'ARCNTID002';
-  select2.value = allDevices.find(d => d.id === 'ARCNMRKD010')?.id || allDevices[1]?.id;
-
-  select1.addEventListener('change', () => { playTechSound('click'); renderComparison(); });
-  select2.addEventListener('change', () => { playTechSound('click'); renderComparison(); });
-
+  if (allDevices.length > 0) {
+    if (!allDevices.some(d => d.id === compareDevice1Id)) compareDevice1Id = allDevices[0].id;
+    if (!allDevices.some(d => d.id === compareDevice2Id)) compareDevice2Id = allDevices.find(d => d.id !== compareDevice1Id)?.id || allDevices[0].id;
+  }
+  updateCompareButtons();
   renderComparison();
 }
 
-function renderComparison() {
-  const select1 = document.getElementById('compareSelect1');
-  const select2 = document.getElementById('compareSelect2');
-  const container = document.getElementById('compareResults');
-  if (!select1 || !select2 || !container) return;
+function openComparePicker(slot) {
+  const options = allDevices.map(d => ({
+    value: d.id,
+    label: `${d.computerName} (${d.activeUser})`,
+    sub: `${d.cpuShort || d.cpu} • ${d.gpu} • ${d.ramTotalGB}GB RAM • ${d.department}`,
+    icon: 'monitor',
+    badge: `${d.healthScore}% Salud`,
+    badgeClass: d.healthScore >= 90 ? 'badge-online' : 'badge-warning'
+  }));
 
-  const dev1 = allDevices.find(d => d.id === select1.value);
-  const dev2 = allDevices.find(d => d.id === select2.value);
+  const currentVal = slot === 1 ? compareDevice1Id : compareDevice2Id;
+
+  if (typeof TwinsModal !== 'undefined' && TwinsModal.showSelectModal) {
+    TwinsModal.showSelectModal({
+      title: slot === 1 ? 'SELECCIONAR EQUIPO PRIMARIO (A)' : 'SELECCIONAR EQUIPO SECUNDARIO (B)',
+      subtitle: 'Elige una computadora de la flota para contrastar hardware',
+      selectedValue: currentVal,
+      options,
+      onSelect: (val) => {
+        if (slot === 1) {
+          compareDevice1Id = val;
+        } else {
+          compareDevice2Id = val;
+        }
+        updateCompareButtons();
+        renderComparison();
+      }
+    });
+  }
+}
+
+function updateCompareButtons() {
+  const d1 = allDevices.find(d => d.id === compareDevice1Id) || allDevices[0];
+  const d2 = allDevices.find(d => d.id === compareDevice2Id) || allDevices[1] || allDevices[0];
+
+  const lbl1 = document.getElementById('compareLabel1');
+  const sub1 = document.getElementById('compareSub1');
+  const lbl2 = document.getElementById('compareLabel2');
+  const sub2 = document.getElementById('compareSub2');
+
+  if (lbl1 && d1) lbl1.innerText = `${d1.computerName} (${d1.activeUser})`;
+  if (sub1 && d1) sub1.innerText = `${d1.cpuShort || d1.cpu} • ${d1.gpu} • ${d1.ramTotalGB}GB`;
+
+  if (lbl2 && d2) lbl2.innerText = `${d2.computerName} (${d2.activeUser})`;
+  if (sub2 && d2) sub2.innerText = `${d2.cpuShort || d2.cpu} • ${d2.gpu} • ${d2.ramTotalGB}GB`;
+}
+
+function renderComparison() {
+  const container = document.getElementById('compareResults');
+  if (!container) return;
+
+  const dev1 = allDevices.find(d => d.id === compareDevice1Id) || allDevices[0];
+  const dev2 = allDevices.find(d => d.id === compareDevice2Id) || allDevices[1] || allDevices[0];
   if (!dev1 || !dev2) return;
 
-  const photo1 = getDevicePhoto(dev1);
-  const photo2 = getDevicePhoto(dev2);
-
   container.innerHTML = `
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-6">
       
       <div class="vantage-card p-5 border-cyan-500/40">
         <div class="flex items-center justify-between mb-3">
-          <h3 class="text-base font-black text-white font-mono">${dev1.computerName}</h3>
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-cyan-500/20 text-cyan-300 flex items-center justify-center font-black text-xs font-mono">A</span>
+            <h3 class="text-base font-black text-white font-mono">${dev1.computerName}</h3>
+          </div>
           <span class="badge-online text-xs font-bold px-2.5 py-0.5 rounded-full">${dev1.status}</span>
         </div>
         <p class="text-xs text-slate-400 mb-4 font-medium">${dev1.activeUser} • ${dev1.department}</p>
         
-        <div class="h-48 w-full bg-[#040711] rounded-xl border border-white/5 mb-4 shadow-inner overflow-hidden flex items-center justify-center p-1">
+        <div class="h-44 sm:h-48 w-full bg-[#040711] rounded-xl border border-white/5 mb-4 shadow-inner overflow-hidden flex items-center justify-center p-1">
           ${renderDeviceImage(dev1.deviceVisual, dev1.computerName, dev1.isOnline, dev1)}
         </div>
 
@@ -1715,12 +1809,15 @@ function renderComparison() {
 
       <div class="vantage-card p-5 border-purple-500/40">
         <div class="flex items-center justify-between mb-3">
-          <h3 class="text-base font-black text-white font-mono">${dev2.computerName}</h3>
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-purple-500/20 text-purple-300 flex items-center justify-center font-black text-xs font-mono">B</span>
+            <h3 class="text-base font-black text-white font-mono">${dev2.computerName}</h3>
+          </div>
           <span class="badge-online text-xs font-bold px-2.5 py-0.5 rounded-full">${dev2.status}</span>
         </div>
         <p class="text-xs text-slate-400 mb-4 font-medium">${dev2.activeUser} • ${dev2.department}</p>
         
-        <div class="h-48 w-full bg-[#040711] rounded-xl border border-white/5 mb-4 shadow-inner overflow-hidden flex items-center justify-center p-1">
+        <div class="h-44 sm:h-48 w-full bg-[#040711] rounded-xl border border-white/5 mb-4 shadow-inner overflow-hidden flex items-center justify-center p-1">
           ${renderDeviceImage(dev2.deviceVisual, dev2.computerName, dev2.isOnline, dev2)}
         </div>
 

@@ -1,8 +1,119 @@
-// TWINS VANTAGE ENTERPRISE — Custom Cyber-HUD Dialog & Remediation System
-// Reemplazo total de alerts/prompts por ventanas modulares y generador de actas
+// TWINS VANTAGE ENTERPRISE — Custom Cyber-HUD Dialog, Selection & Remediation System
+// Reemplazo total de selects nativos y alerts por ventanas holográficas corporativas
 
 const TwinsModal = {
-  // 1. Live Interactive Ping Diagnostic Modal
+  _currentOnSelect: null,
+  _currentOptions: null,
+  _currentSelected: null,
+
+  // 1. Custom Cyber Selection Modal (Reemplazo total de <select> nativos)
+  showSelectModal: function({ title, subtitle = '', options = [], selectedValue = '', onSelect }) {
+    const existing = document.getElementById('twinsModalContainer');
+    if (existing) existing.remove();
+
+    const modal = document.createElement('div');
+    modal.id = 'twinsModalContainer';
+    modal.className = 'fixed inset-0 z-[75] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-md animate-fade-in';
+
+    const renderList = (filterText = '') => {
+      const filtered = options.filter(opt => {
+        const text = `${opt.label} ${opt.sub || ''} ${opt.badge || ''}`.toLowerCase();
+        return text.includes(filterText.toLowerCase());
+      });
+
+      if (filtered.length === 0) {
+        return `<div class="p-6 text-center text-xs text-slate-500 font-mono">No se encontraron opciones coincidentes</div>`;
+      }
+
+      return filtered.map(opt => {
+        const isSelected = opt.value === selectedValue;
+        return `
+          <div onclick="TwinsModal.selectOption('${opt.value}')" class="p-3 sm:p-3.5 rounded-xl border ${isSelected ? 'bg-cyan-500/15 border-cyan-500/50 shadow-[0_0_15px_rgba(0,240,255,0.15)]' : 'bg-slate-900/70 border-white/5 hover:border-white/20 hover:bg-slate-800/80'} flex items-center justify-between cursor-pointer transition-all group mb-2">
+            <div class="flex items-center gap-3 truncate">
+              <div class="w-8 h-8 rounded-lg ${isSelected ? 'bg-cyan-500/20 text-cyan-300' : 'bg-slate-800 text-slate-400 group-hover:text-white'} flex items-center justify-center shrink-0">
+                <i data-lucide="${opt.icon || 'monitor'}" class="w-4 h-4"></i>
+              </div>
+              <div class="truncate">
+                <div class="text-xs font-bold ${isSelected ? 'text-cyan-300' : 'text-white group-hover:text-cyan-400'} font-mono truncate">
+                  ${opt.label}
+                </div>
+                ${opt.sub ? `<div class="text-[10px] text-slate-400 truncate mt-0.5">${opt.sub}</div>` : ''}
+              </div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0 ml-2">
+              ${opt.badge ? `<span class="text-[9px] font-mono font-bold px-2 py-0.5 rounded-full ${opt.badgeClass || 'bg-slate-800 text-slate-300'}">${opt.badge}</span>` : ''}
+              <div class="w-5 h-5 rounded-full border ${isSelected ? 'border-cyan-400 bg-cyan-400 flex items-center justify-center' : 'border-slate-600'}">
+                ${isSelected ? '<i data-lucide="check" class="w-3 h-3 text-slate-950 font-black"></i>' : ''}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    };
+
+    modal.innerHTML = `
+      <div class="vantage-card w-full sm:max-w-md max-h-[85vh] sm:max-h-[80vh] flex flex-col rounded-t-2xl sm:rounded-2xl border-cyan-500/40 bg-gradient-to-b from-[#0d152a] to-[#040711] shadow-[0_0_60px_rgba(0,240,255,0.3)]">
+        
+        <!-- Header -->
+        <div class="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between shrink-0">
+          <div>
+            <h3 class="text-sm sm:text-base font-black text-white font-mono flex items-center gap-2">
+              <i data-lucide="sliders" class="w-4 h-4 text-cyan-400"></i>
+              ${title}
+            </h3>
+            ${subtitle ? `<p class="text-[11px] text-slate-400 mt-0.5">${subtitle}</p>` : ''}
+          </div>
+          <button onclick="TwinsModal.close()" class="w-8 h-8 rounded-lg bg-slate-900 border border-white/10 text-slate-400 hover:text-white flex items-center justify-center">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        ${options.length > 5 ? `
+          <!-- Search Box -->
+          <div class="p-3 border-b border-white/5 shrink-0">
+            <div class="relative">
+              <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input type="text" id="modalPickerSearch" placeholder="Filtrar por nombre, usuario o IP..." class="w-full pl-9 pr-3 py-2 bg-slate-900 border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- Options List -->
+        <div id="modalPickerList" class="p-3 sm:p-4 overflow-y-auto flex-1 max-h-[50vh]">
+          ${renderList()}
+        </div>
+
+      </div>
+    `;
+
+    TwinsModal._currentOnSelect = onSelect;
+    TwinsModal._currentOptions = options;
+    TwinsModal._currentSelected = selectedValue;
+
+    document.body.appendChild(modal);
+    if (window.lucide) window.lucide.createIcons();
+
+    const searchInput = document.getElementById('modalPickerSearch');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const listEl = document.getElementById('modalPickerList');
+        if (listEl) {
+          listEl.innerHTML = renderList(e.target.value);
+          if (window.lucide) window.lucide.createIcons();
+        }
+      });
+      searchInput.focus();
+    }
+  },
+
+  selectOption: function(val) {
+    if (TwinsModal._currentOnSelect) {
+      TwinsModal._currentOnSelect(val);
+    }
+    TwinsModal.close();
+  },
+
+  // 2. Live Interactive Ping Diagnostic Modal
   showPing: function(targetIp, computerName) {
     const existing = document.getElementById('twinsModalContainer');
     if (existing) existing.remove();
@@ -97,47 +208,6 @@ const TwinsModal = {
       badge.className = 'badge-online text-[10px] font-bold px-2 py-0.5 rounded';
       badge.innerText = 'CONEXIÓN ESTABLE (1ms)';
     }
-  },
-
-  // 2. Optimization Holographic Modal
-  showOptimizeResult: function(result) {
-    const existing = document.getElementById('twinsModalContainer');
-    if (existing) existing.remove();
-
-    const modal = document.createElement('div');
-    modal.id = 'twinsModalContainer';
-    modal.className = 'fixed inset-0 z-[70] flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-fade-in overflow-y-auto';
-    
-    modal.innerHTML = `
-      <div class="vantage-card max-w-md w-full max-h-[90vh] overflow-y-auto p-5 sm:p-6 border-cyan-500/40 bg-gradient-to-b from-[#0d152a] to-[#040711] shadow-[0_0_60px_rgba(0,240,255,0.3)] space-y-4 sm:space-y-5 text-center">
-        <div class="w-12 h-12 sm:w-14 sm:h-14 mx-auto rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-slate-950 shadow-[0_0_25px_rgba(0,240,255,0.5)]">
-          <i data-lucide="sparkles" class="w-6 h-6 sm:w-7 sm:h-7"></i>
-        </div>
-
-        <div class="space-y-1">
-          <h3 class="text-base sm:text-lg font-black text-white font-mono">SISTEMA OPTIMIZADO</h3>
-          <p class="text-xs text-slate-400">Limpieza de memoria y depuración de caché completada</p>
-        </div>
-
-        <div class="grid grid-cols-2 gap-3 text-left">
-          <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5">
-            <div class="text-[10px] text-slate-500 font-mono">RAM LIBERADA</div>
-            <div class="text-base sm:text-lg font-black text-cyan-400 font-mono">+${result.freedRAMMB || 650} MB</div>
-          </div>
-          <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5">
-            <div class="text-[10px] text-slate-500 font-mono">TEMPORALES PURGADOS</div>
-            <div class="text-base sm:text-lg font-black text-[#00ff88] font-mono">+${result.cleanedMB || 1480} MB</div>
-          </div>
-        </div>
-
-        <button onclick="TwinsModal.close()" class="cyber-btn-primary w-full py-3 rounded-xl text-xs font-black">
-          Aceptar y Continuar
-        </button>
-      </div>
-    `;
-
-    document.body.appendChild(modal);
-    if (window.lucide) window.lucide.createIcons();
   },
 
   // 3. Official Printable Assignment Document (Acta de Asignación TI)

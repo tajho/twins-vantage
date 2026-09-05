@@ -1,4 +1,4 @@
-const CACHE_NAME = 'twins-vantage-v3.7-live';
+const CACHE_NAME = 'twins-vantage-v3.8-live';
 const STATIC_ASSETS = [
   './',
   './index.html',
