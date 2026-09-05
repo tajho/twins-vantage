@@ -1,0 +1,24 @@
+{
+  "name": "Twins Vantage Pro — Fleet & Hardware Intelligence",
+  "short_name": "TwinsVantage",
+  "description": "Centro de Diagnóstico, Hardware y Monitoreo de Flota TI de Útiles Twins",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#020408",
+  "theme_color": "#00d2ff",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "logo_twins.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo_twins.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
