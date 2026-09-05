@@ -1,4 +1,4 @@
-const CACHE_NAME = 'twins-vantage-v2.2';
+const CACHE_NAME = 'twins-vantage-v2.3';
 const ASSETS = [
   './',
   './index.html',
@@ -10,10 +10,9 @@ const ASSETS = [
   './three_engine.js',
   './modals.js',
   './logo_twins.png',
-  './images/pc_gaming_creator.jpg',
-  './images/pc_office_admin.jpg',
-  './images/pc_server_datacenter.jpg',
-  './images/pc_it_operations.jpg',
+  './images/vantage_tuf_creator.jpg',
+  './images/vantage_office_pc.jpg',
+  './images/vantage_server_pc.jpg',
   './manifest.json'
 ];
 
