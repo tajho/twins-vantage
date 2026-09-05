@@ -1547,36 +1547,36 @@ function renderNetworkTopology() {
       <!-- Core Infrastructure Nodes Grid (3 Servidores + Master IT) -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
-        <div class="vantage-card p-4 space-y-2 border-emerald-500/30 cursor-pointer hover:border-emerald-400 transition-all" onclick="TwinsModal.showPing('192.168.18.200', 'Servidor DC01 Active Directory')">
+        <div class="vantage-card p-4 space-y-2 border-emerald-500/30 cursor-pointer hover:border-emerald-400 transition-all" onclick="TwinsModal.showPing('192.168.18.200', 'SERVIDOR (Active Directory PDC / DNS / SMB)')">
           <div class="flex items-center justify-between">
             <span class="badge-online text-[10px] font-bold px-2 py-0.5 rounded font-mono">192.168.18.200</span>
             <i data-lucide="server" class="w-4 h-4 text-[#00ff88]"></i>
           </div>
-          <div class="text-sm font-black text-white">Servidor DC01 Principal</div>
-          <div class="text-[11px] text-emerald-400 font-medium">Active Directory • DNS • SMB (10.4TB)</div>
+          <div class="text-sm font-black text-white">SERVIDOR (PDC / AD)</div>
+          <div class="text-[11px] text-emerald-400 font-medium">Domain Controller • DNS • SMB (10.4TB)</div>
         </div>
 
-        <div class="vantage-card p-4 space-y-2 border-cyan-500/30 cursor-pointer hover:border-cyan-400 transition-all" onclick="TwinsModal.showPing('192.168.18.201', 'Servidor SAP Business One & SQL')">
+        <div class="vantage-card p-4 space-y-2 border-cyan-500/30 cursor-pointer hover:border-cyan-400 transition-all" onclick="TwinsModal.showPing('192.168.18.253', 'SERVERDB (SQL Server / SAP Database)')">
           <div class="flex items-center justify-between">
-            <span class="badge-online text-[10px] font-bold px-2 py-0.5 rounded font-mono">192.168.18.201</span>
+            <span class="badge-online text-[10px] font-bold px-2 py-0.5 rounded font-mono">192.168.18.253</span>
             <i data-lucide="database" class="w-4 h-4 text-cyan-400"></i>
           </div>
-          <div class="text-sm font-black text-white">Servidor SAP B1 & SQL</div>
-          <div class="text-[11px] text-cyan-300 font-medium">ERP SAP • SQL Server • API Ventas</div>
+          <div class="text-sm font-black text-white">SERVERDB (SQL Server)</div>
+          <div class="text-[11px] text-cyan-300 font-medium">Motor Base de Datos SAP • Port 1433</div>
         </div>
 
-        <div class="vantage-card p-4 space-y-2 border-purple-500/30 cursor-pointer hover:border-purple-400 transition-all" onclick="TwinsModal.showPing('192.168.18.202', 'Servidor NVR CCTV & Backup')">
+        <div class="vantage-card p-4 space-y-2 border-purple-500/30 cursor-pointer hover:border-purple-400 transition-all" onclick="TwinsModal.showPing('192.168.18.254', 'SERVERAPP (SAP B1 Application Server)')">
           <div class="flex items-center justify-between">
-            <span class="badge-online text-[10px] font-bold px-2 py-0.5 rounded font-mono">192.168.18.202</span>
-            <i data-lucide="shield-check" class="w-4 h-4 text-purple-400"></i>
+            <span class="badge-online text-[10px] font-bold px-2 py-0.5 rounded font-mono">192.168.18.254</span>
+            <i data-lucide="layers" class="w-4 h-4 text-purple-400"></i>
           </div>
-          <div class="text-sm font-black text-white">Servidor NVR & Backup</div>
-          <div class="text-[11px] text-purple-300 font-medium">16CH Hikvision • GTX 1660Ti • Veeam</div>
+          <div class="text-sm font-black text-white">SERVERAPP (SAP App / Web)</div>
+          <div class="text-[11px] text-purple-300 font-medium">SAP B1 Service Layer • Port 50000/80</div>
         </div>
 
-        <div class="vantage-card p-4 space-y-2 border-amber-500/30 cursor-pointer hover:border-amber-400 transition-all" onclick="TwinsModal.showPing('192.168.18.106', 'Master IT Station (ARCNTID002)')">
+        <div class="vantage-card p-4 space-y-2 border-amber-500/30 cursor-pointer hover:border-amber-400 transition-all" onclick="TwinsModal.showPing('192.168.18.88', 'Master IT Station (ARCNTID002)')">
           <div class="flex items-center justify-between">
-            <span class="badge-online text-[10px] font-bold px-2 py-0.5 rounded font-mono">192.168.18.106</span>
+            <span class="badge-online text-[10px] font-bold px-2 py-0.5 rounded font-mono">192.168.18.88</span>
             <i data-lucide="terminal" class="w-4 h-4 text-amber-400"></i>
           </div>
           <div class="text-sm font-black text-white">Master IT Station</div>
@@ -1631,8 +1631,8 @@ function renderNetworkTopology() {
             
             <div class="topology-node p-3 rounded-xl bg-slate-900/90 border border-cyan-500/30 hover:border-cyan-400" onclick="switchTab('fleet'); document.querySelector('[data-cat=servers]').click();">
               <div class="text-[10px] font-mono text-cyan-400 font-bold mb-1">SERVIDORES (3)</div>
-              <div class="text-white font-bold text-xs">DC01 + SAP + NVR</div>
-              <div class="text-[10px] text-slate-400 font-mono mt-1">.200, .201, .202</div>
+              <div class="text-white font-bold text-xs">DC + SQL + APP</div>
+              <div class="text-[10px] text-slate-400 font-mono mt-1">.200, .253, .254</div>
             </div>
 
             <div class="topology-node p-3 rounded-xl bg-slate-900/90 border border-purple-500/30 hover:border-purple-400" onclick="switchTab('fleet'); document.querySelector('[data-cat=design]').click();">
@@ -1656,7 +1656,7 @@ function renderNetworkTopology() {
             <div class="topology-node p-3 rounded-xl bg-slate-900/90 border border-rose-500/30 hover:border-rose-400" onclick="switchTab('fleet'); document.querySelector('[data-cat=warehouse]').click();">
               <div class="text-[10px] font-mono text-rose-400 font-bold mb-1">ALMACÉN & TI (2)</div>
               <div class="text-white font-bold text-xs">Kárdex & Master IT</div>
-              <div class="text-[10px] text-slate-400 font-mono mt-1">.79 (Alm) & .106 (TI)</div>
+              <div class="text-[10px] text-slate-400 font-mono mt-1">.79 (Alm) & .88 (TI)</div>
             </div>
 
           </div>

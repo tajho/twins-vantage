@@ -1180,7 +1180,7 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.200",
-    "mac": "2c-f0-5d-88-29-10",
+    "mac": "04-7c-16-df-be-6a",
     "activeUser": "Administrador (DC01)",
     "fullUser": "UTILESTWINS\\Administrador",
     "department": "Servidores & Datacenter",
@@ -1227,21 +1227,21 @@ const INVENTORY_DATA = [
       {
         "type": "optimal",
         "title": "Servicio de Dominio AD DS Saludable",
-        "desc": "Controlador de Dominio DC01 (utilestwins.com), DNS, DHCP y carpetas SMB operando con 99.9% uptime."
+        "desc": "Controlador de Dominio DC01 (utilestwins.com), DNS (Port 53), DHCP y SMB (Port 445) operando con 99.9% uptime."
       }
     ],
     "deviceVisual": "server_pc",
-    "notes": "Servidor 1: Controlador de Dominio Principal AD DS & Archivos (192.168.18.200)"
+    "notes": "Servidor 1: PDC / Domain Controller utilestwins.com & SMB (192.168.18.200)"
   },
   {
-    "id": "ARCNTISRV002",
-    "computerName": "ARCNTISRV002",
+    "id": "SERVERDB",
+    "computerName": "SERVERDB",
     "status": "En Linea",
     "isOnline": true,
-    "ip": "192.168.18.201",
-    "mac": "2c-f0-5d-a1-94-33",
-    "activeUser": "SYSTEM (SAP Service)",
-    "fullUser": "UTILESTWINS\\svc_sap",
+    "ip": "192.168.18.253",
+    "mac": "c4-5a-b1-a1-b1-32",
+    "activeUser": "SYSTEM (SQL Server Engine)",
+    "fullUser": "UTILESTWINS\\svc_sql",
     "department": "Servidores & Datacenter",
     "category": "servers",
     "formFactor": "Servidor Rack 2U Enterprise",
@@ -1280,64 +1280,64 @@ const INVENTORY_DATA = [
       {
         "type": "optimal",
         "title": "Motor SQL Server Saludable",
-        "desc": "Instancia SQL Server SBO_IMPARCANGEL_PROD procesando transacciones con latencia < 2ms."
+        "desc": "Instancia SQL Server SBO_IMPARCANGEL_PROD escuchando en puerto 1433 y RDP 3389."
       }
     ],
     "deviceVisual": "server_pc",
-    "notes": "Servidor 2: Servidor SAP Business One & SQL Database (192.168.18.201 / .47)"
+    "notes": "Servidor 2: Base de Datos SQL Server & SAP B1 (192.168.18.253)"
   },
   {
-    "id": "ARCNTISRV003",
-    "computerName": "ARCNTISRV003",
+    "id": "SERVERAPP",
+    "computerName": "SERVERAPP",
     "status": "En Linea",
     "isOnline": true,
-    "ip": "192.168.18.202",
-    "mac": "18-c0-4d-7b-66-88",
-    "activeUser": "SYSTEM (CCTV/NVR)",
-    "fullUser": "UTILESTWINS\\svc_backup",
+    "ip": "192.168.18.254",
+    "mac": "00-62-0b-00-51-df",
+    "activeUser": "SYSTEM (SAP Application Server)",
+    "fullUser": "UTILESTWINS\\svc_sap_app",
     "department": "Servidores & Datacenter",
     "category": "servers",
-    "formFactor": "Servidor Torre de Grabación & Backup",
-    "motherboard": "GIGABYTE B550 AORUS ELITE V2",
-    "cpu": "AMD Ryzen 7 5700X 8-Core Processor",
-    "cpuShort": "AMD Ryzen 7 5700X (8C/16T)",
-    "coresThreads": "8 Nucleos / 16 Hilos (4.60 GHz)",
-    "ramTotalGB": 15.9,
-    "ramModules": "16 GB (2x 8GB Corsair Vengeance DDR4)",
+    "formFactor": "Servidor Rack 2U Enterprise",
+    "motherboard": "Gigabyte C246-WU4 Server Board",
+    "cpu": "Intel(R) Core(TM) i7-12700 (12 Nucleos / 20 Hilos)",
+    "cpuShort": "Intel Core i7-12700 (12C/20T)",
+    "coresThreads": "12 Nucleos / 20 Hilos (4.90 GHz)",
+    "ramTotalGB": 31.8,
+    "ramModules": "32 GB (2x 16GB Kingston DDR4 @ 3200MHz)",
     "ramChannels": "Dual Channel (2 modulos)",
     "ramChannelType": "dual",
-    "gpu": "NVIDIA GeForce GTX 1660 Ti (6 GB GDDR6 Dedicada)",
-    "gpuType": "dedicated",
-    "storage": "WD Purple 8TB Surveillance HDD + Kingston NV2 1TB NVMe",
-    "storageType": "NVMe Gen4 + WD Purple 8TB Surveillance 24/7",
-    "diskSpace": "C: (640 GB libre de 930 GB) | V: (3200 GB libre de 7450 GB)",
+    "gpu": "Intel(R) UHD Graphics 770",
+    "gpuType": "integrated",
+    "storage": "Kingston NV2 1TB NVMe Gen4 + WD Blue 2TB SSD",
+    "storageType": "NVMe Gen4 + SSD Enterprise (3 TB)",
+    "diskSpace": "C: (610 GB libre de 930 GB) | D: (1420 GB libre de 1860 GB)",
     "disks": [
       {
-        "drive": "C: (Sistema / Veeam)",
-        "freeGB": 640,
+        "drive": "C: (Sistema Operativo)",
+        "freeGB": 610,
         "totalGB": 930,
-        "percentFree": 69
+        "percentFree": 65
       },
       {
-        "drive": "V: (Grabaciones CCTV Hikvision)",
-        "freeGB": 3200,
-        "totalGB": 7450,
-        "percentFree": 43
+        "drive": "D: (SAP Services / Web API)",
+        "freeGB": 1420,
+        "totalGB": 1860,
+        "percentFree": 76
       }
     ],
-    "monitor": "Monitor CCTV HDMI 24\" FHD",
+    "monitor": "Consola KVM Compartida 19\"",
     "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows Server 2019 Standard",
-    "healthScore": 96,
+    "healthScore": 98,
     "alerts": [
       {
         "type": "optimal",
-        "title": "Grabación 16CH Continua OK",
-        "desc": "Flujo RTSP de 16 cámaras Hikvision H.265+ almacenándose sin pérdida de cuadros."
+        "title": "Servicios de Aplicación SAP Activos",
+        "desc": "SAP Business One DI-Server / Service Layer en puerto 50000, Web Server IIS en puerto 80 y RDP 3389."
       }
     ],
     "deviceVisual": "server_pc",
-    "notes": "Servidor 3: Servidor NVR CCTV & Copias de Seguridad (192.168.18.202 / .89)"
+    "notes": "Servidor 3: Servidor de Aplicaciones SAP B1 & Web API (192.168.18.254)"
   }
 ];
 if (typeof module !== 'undefined' && module.exports) { module.exports = INVENTORY_DATA; }
