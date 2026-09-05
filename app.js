@@ -230,8 +230,20 @@ function renderFleetOverview() {
   const twinBox = document.getElementById('homeTwinContainer');
   if (twinBox) {
     const masterDev = allDevices.find(d => d.id === 'ARCNTID002') || allDevices[0];
-    if (masterDev && typeof generateVirtualTwinSVG === 'function') {
-      twinBox.innerHTML = generateVirtualTwinSVG(masterDev);
+    if (masterDev) {
+      twinBox.innerHTML = `
+        <div class="relative w-full h-full flex items-center justify-center p-2 group">
+          <img src="images/monitor_lg_27_ips.jpg" alt="LG 27MR400 27 Inch IPS FHD" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105">
+          <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between bg-black/85 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10 font-mono text-xs">
+            <span class="text-white font-bold flex items-center gap-1.5 truncate">
+              <i data-lucide="tv" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+              <span>LG FHD 27" IPS (100Hz) — S/N: 601TFFP0F099</span>
+            </span>
+            <span class="text-[#00ff88] font-bold shrink-0 ml-2">1920x1080 @ 100Hz</span>
+          </div>
+        </div>
+      `;
+      if (window.lucide) window.lucide.createIcons();
     }
   }
 }
@@ -513,24 +525,27 @@ function openDeviceDrawer(deviceId) {
       <!-- PHOTO & 3D HARDWARE VIEWPORT -->
       <div class="vantage-card p-4 space-y-3">
         <div class="flex items-center justify-between text-xs font-mono text-cyan-400">
-          <span class="flex items-center gap-1.5 font-bold"><i data-lucide="cpu" class="w-4 h-4"></i> HARDWARE SETUP (PANTALLA + CPU)</span>
+          <span class="flex items-center gap-1.5 font-bold"><i data-lucide="tv" class="w-4 h-4"></i> MONITOR REAL & SETUP</span>
           <div class="flex items-center gap-1">
-            <button id="btnToggleTwin" onclick="showDrawerMedia('twin')" class="px-2 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold text-[10px] border border-cyan-500/40">TWIN VIRTUAL</button>
-            <button id="btnTogglePhoto" onclick="showDrawerMedia('photo')" class="px-2 py-1 rounded bg-slate-900 text-slate-400 font-bold text-[10px] border border-white/10 hover:text-white">FOTO AISLADA</button>
-            <button id="btnToggle3D" onclick="showDrawerMedia('3d')" class="px-2 py-1 rounded bg-slate-900 text-slate-400 font-bold text-[10px] border border-white/10 hover:text-white">3D 360°</button>
+            <button id="btnTogglePhoto" onclick="showDrawerMedia('photo')" class="px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold text-[10px] border border-cyan-500/40">FOTO REAL MONITOR</button>
+            <button id="btnToggleTwin" onclick="showDrawerMedia('twin')" class="px-2.5 py-1 rounded bg-slate-900 text-slate-400 font-bold text-[10px] border border-white/10 hover:text-white">SETUP COMPLETO</button>
+            <button id="btnToggle3D" onclick="showDrawerMedia('3d')" class="px-2.5 py-1 rounded bg-slate-900 text-slate-400 font-bold text-[10px] border border-white/10 hover:text-white">3D 360°</button>
           </div>
         </div>
 
-        <div id="drawerTwinBox" class="w-full h-64 rounded-xl bg-[#040711] border border-white/10 overflow-hidden shadow-inner relative p-1 flex items-center justify-center">
+        <div id="drawerPhotoBox" class="w-full h-64 rounded-xl bg-[#02050e] border border-cyan-500/40 overflow-hidden shadow-inner relative flex items-center justify-center p-2">
+          <img src="${photoUrl}" alt="${dev.computerName} - ${dev.monitor}" class="w-full h-full object-contain transition-transform duration-500 hover:scale-105">
+          <div class="absolute bottom-2 left-2 right-2 bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 flex items-center justify-between text-xs font-mono">
+            <span class="text-white font-bold flex items-center gap-1.5 truncate">
+              <i data-lucide="monitor" class="w-3.5 h-3.5 text-cyan-400 shrink-0"></i>
+              <span class="truncate">${dev.monitor}</span>
+            </span>
+            <span class="text-[#00ff88] font-bold shrink-0 ml-2">${dev.resolution || '1920x1080'}</span>
+          </div>
+        </div>
+
+        <div id="drawerTwinBox" class="hidden w-full h-64 rounded-xl bg-[#040711] border border-white/10 overflow-hidden shadow-inner relative p-1 flex items-center justify-center">
           ${typeof generateVirtualTwinSVG === 'function' ? generateVirtualTwinSVG(dev) : ''}
-        </div>
-
-        <div id="drawerPhotoBox" class="hidden w-full h-64 rounded-xl bg-[#040711] border border-white/10 overflow-hidden shadow-inner relative">
-          <img src="${photoUrl}" alt="${dev.computerName}" class="w-full h-full object-cover">
-          <div class="absolute bottom-2 left-2 right-2 bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 flex items-center justify-between text-xs font-mono">
-            <span class="text-white font-bold">${dev.formFactor}</span>
-            <span class="text-cyan-400">${dev.monitor}</span>
-          </div>
         </div>
 
         <div id="drawer3DContainer" class="hidden w-full h-64 rounded-xl bg-[#040711] border border-cyan-500/30 overflow-hidden shadow-inner cursor-grab active:cursor-grabbing">
