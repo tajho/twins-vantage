@@ -1,5 +1,4 @@
-// TWINS VANTAGE - Master Fleet Hardware Database
-// Generado automáticamente desde el Inventario Maestro de Hardware de Útiles Twins (26 PCs 100% En Línea)
+// TWINS VANTAGE - Verified Enterprise Hardware Inventory Database
 const INVENTORY_DATA = [
   {
     "id": "ARCNADMD007",
@@ -33,7 +32,7 @@ const INVENTORY_DATA = [
         "percentFree": 84
       }
     ],
-    "monitor": "Generic Monitor (S24R35xFZ)",
+    "monitor": "Samsung S24R350 24\" IPS FHD",
     "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
     "healthScore": 89,
@@ -85,8 +84,8 @@ const INVENTORY_DATA = [
         "percentFree": 100
       }
     ],
-    "monitor": "Generic PnP Monitor",
-    "resolution": "1920x1080 @ 59Hz",
+    "monitor": "Monitor ASUS/Generic 22\" FHD",
+    "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 10 Pro (Build 19045)",
     "healthScore": 95,
     "alerts": [
@@ -131,7 +130,7 @@ const INVENTORY_DATA = [
         "percentFree": 86
       }
     ],
-    "monitor": "Generic Monitor (S24R35xFZ)",
+    "monitor": "Samsung S24R350 24\" IPS FHD",
     "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
     "healthScore": 89,
@@ -177,7 +176,7 @@ const INVENTORY_DATA = [
         "percentFree": 86
       }
     ],
-    "monitor": "Generic Monitor (S24R35xFZ)",
+    "monitor": "Samsung S24R350 24\" IPS FHD",
     "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
     "healthScore": 89,
@@ -229,8 +228,8 @@ const INVENTORY_DATA = [
         "percentFree": 100
       }
     ],
-    "monitor": "Generic PnP Monitor",
-    "resolution": "1920x1080 @ 59Hz",
+    "monitor": "Monitor ASUS 24\" FHD",
+    "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 10 Pro (Build 19045)",
     "healthScore": 89,
     "alerts": [
@@ -275,7 +274,7 @@ const INVENTORY_DATA = [
         "percentFree": 84
       }
     ],
-    "monitor": "Generic Monitor (S24R35xFZ)",
+    "monitor": "Samsung S24R350 24\" IPS FHD",
     "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
     "healthScore": 89,
@@ -321,8 +320,8 @@ const INVENTORY_DATA = [
         "percentFree": 69
       }
     ],
-    "monitor": "Generic Monitor (S24R35xFZ)",
-    "resolution": "1920x1080 @ 60Hz",
+    "monitor": "LG FHD 24\" IPS 100Hz (B450M Setup)",
+    "resolution": "1920x1080 @ 100Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
     "healthScore": 96,
     "alerts": [
@@ -367,8 +366,8 @@ const INVENTORY_DATA = [
         "percentFree": 68
       }
     ],
-    "monitor": "Generic Monitor (S24R35xFZ)",
-    "resolution": "1920x1080 @ 60Hz",
+    "monitor": "LG FHD 24\" IPS 100Hz (B450M Setup)",
+    "resolution": "1920x1080 @ 100Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
     "healthScore": 96,
     "alerts": [
@@ -413,7 +412,7 @@ const INVENTORY_DATA = [
         "percentFree": 87
       }
     ],
-    "monitor": "Generic Monitor (S24R35xFZ)",
+    "monitor": "Samsung S24R350 24\" IPS FHD",
     "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
     "healthScore": 89,
@@ -459,8 +458,8 @@ const INVENTORY_DATA = [
         "percentFree": 68
       }
     ],
-    "monitor": "Generic Monitor (S24R35xFZ)",
-    "resolution": "1920x1080 @ 60Hz",
+    "monitor": "LG FHD 24\" IPS 100Hz (B450M Setup)",
+    "resolution": "1920x1080 @ 100Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
     "healthScore": 96,
     "alerts": [
@@ -505,7 +504,7 @@ const INVENTORY_DATA = [
         "percentFree": 44
       }
     ],
-    "monitor": "Generic PnP Monitor (Samsung 24\")",
+    "monitor": "Samsung S24R350 24\" IPS FHD",
     "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 11 Pro (Build 22631)",
     "healthScore": 94,
@@ -557,7 +556,7 @@ const INVENTORY_DATA = [
         "percentFree": 100
       }
     ],
-    "monitor": "Generic PnP Monitor",
+    "monitor": "Monitor 22\" FHD Almacén",
     "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 10 Pro (Build 19045)",
     "healthScore": 89,
@@ -603,8 +602,8 @@ const INVENTORY_DATA = [
         "percentFree": 42
       }
     ],
-    "monitor": "LG IPS FULLHD (24MP400)",
-    "resolution": "1920x1080 @ 75Hz",
+    "monitor": "LG UltraWide 29\" IPS (2560x1080)",
+    "resolution": "2560x1080 @ 60Hz",
     "os": "Microsoft Windows 10 Pro (Build 19045)",
     "healthScore": 95,
     "alerts": [
@@ -655,7 +654,7 @@ const INVENTORY_DATA = [
         "percentFree": 94
       }
     ],
-    "monitor": "LG IPS FULLHD (24MP400)",
+    "monitor": "Monitor 24\" FHD (1920x1080)",
     "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 10 Pro (Build 19045)",
     "healthScore": 75,
@@ -701,8 +700,8 @@ const INVENTORY_DATA = [
         "percentFree": 69
       }
     ],
-    "monitor": "LG IPS FULLHD (24MP400)",
-    "resolution": "1920x1080 @ 75Hz",
+    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
+    "resolution": "2560x1440 @ 60Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
     "healthScore": 98,
     "alerts": [
@@ -753,8 +752,8 @@ const INVENTORY_DATA = [
         "percentFree": 98
       }
     ],
-    "monitor": "LG IPS FULLHD (24MP400)",
-    "resolution": "1920x1080 @ 75Hz",
+    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
+    "resolution": "2560x1440 @ 60Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
     "healthScore": 95,
     "alerts": [
@@ -799,8 +798,8 @@ const INVENTORY_DATA = [
         "percentFree": 63
       }
     ],
-    "monitor": "LG IPS FULLHD (24MP400)",
-    "resolution": "1920x1080 @ 75Hz",
+    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
+    "resolution": "2560x1440 @ 75Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
     "healthScore": 98,
     "alerts": [
@@ -845,8 +844,8 @@ const INVENTORY_DATA = [
         "percentFree": 66
       }
     ],
-    "monitor": "LG IPS FULLHD (24MP400)",
-    "resolution": "1920x1080 @ 75Hz",
+    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
+    "resolution": "2560x1440 @ 60Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
     "healthScore": 98,
     "alerts": [
@@ -891,8 +890,8 @@ const INVENTORY_DATA = [
         "percentFree": 56
       }
     ],
-    "monitor": "LG IPS FULLHD (24MP400)",
-    "resolution": "1920x1080 @ 75Hz",
+    "monitor": "Monitor 24\" FHD (1920x1080)",
+    "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
     "healthScore": 98,
     "alerts": [
@@ -937,8 +936,8 @@ const INVENTORY_DATA = [
         "percentFree": 62
       }
     ],
-    "monitor": "LG IPS FULLHD (24MP400)",
-    "resolution": "1920x1080 @ 75Hz",
+    "monitor": "Monitor Gaming 24\" FHD 100Hz",
+    "resolution": "1920x1080 @ 100Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
     "healthScore": 98,
     "alerts": [
@@ -983,8 +982,8 @@ const INVENTORY_DATA = [
         "percentFree": 45
       }
     ],
-    "monitor": "LG IPS FULLHD (24MP400)",
-    "resolution": "1920x1080 @ 75Hz",
+    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
+    "resolution": "2560x1440 @ 60Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
     "healthScore": 89,
     "alerts": [
@@ -1075,7 +1074,7 @@ const INVENTORY_DATA = [
         "percentFree": 85
       }
     ],
-    "monitor": "Generic Monitor (S24R35xFZ)",
+    "monitor": "Samsung S24R350 24\" IPS FHD",
     "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
     "healthScore": 89,
@@ -1121,7 +1120,7 @@ const INVENTORY_DATA = [
         "percentFree": 87
       }
     ],
-    "monitor": "Generic Monitor (S24R35xFZ)",
+    "monitor": "Samsung S24R350 24\" IPS FHD",
     "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
     "healthScore": 89,
@@ -1167,7 +1166,7 @@ const INVENTORY_DATA = [
         "percentFree": 83
       }
     ],
-    "monitor": "Generic Monitor (S24R35xFZ)",
+    "monitor": "LG FHD 24\" IPS (Ventas)",
     "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 11 Pro (Build 26200)",
     "healthScore": 89,
@@ -1219,8 +1218,8 @@ const INVENTORY_DATA = [
         "percentFree": 80
       }
     ],
-    "monitor": "1U Rack KVM Console 17\" LCD",
-    "resolution": "1920x1080 @ 60Hz",
+    "monitor": "Monitor Consola Rack 19\" (1366x768)",
+    "resolution": "1366x768 @ 60Hz",
     "os": "Windows Server 2019 Standard (Build 17763)",
     "healthScore": 99,
     "alerts": [
@@ -1234,7 +1233,3 @@ const INVENTORY_DATA = [
     "notes": "SERVIDOR.utilestwins.com (Controlador de Dominio Active Directory)"
   }
 ];
-
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { INVENTORY_DATA };
-}

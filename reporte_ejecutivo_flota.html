@@ -1,647 +1,1049 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informe Oficial de Auditoría de Hardware - Importadora Arcángel S.A.C. / Útiles Twins</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', '-apple-system', 'sans-serif'],
-                        mono: ['"JetBrains Mono"', 'monospace'],
-                    },
-                    colors: {
-                        twins: {
-                            50: '#f0f7ff',
-                            100: '#e0effe',
-                            500: '#0066cc',
-                            600: '#0052a3',
-                            700: '#003d7a',
-                            900: '#001a33',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <style>
-        @page {
-            size: A4 landscape;
-            margin: 8mm 8mm 10mm 8mm;
-        }
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #f1f5f9;
-            color: #0f172a;
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
-        }
-
-        .tabular-nums {
-            font-variant-numeric: tabular-nums;
-        }
-
-        .page-break-avoid {
-            page-break-inside: avoid;
-            break-inside: avoid;
-        }
-
-        @media print {
-            body {
-                background: #ffffff !important;
-                padding: 0 !important;
-            }
-            .print-container {
-                box-shadow: none !important;
-                border: none !important;
-                padding: 0 !important;
-                max-width: 100% !important;
-            }
-            .no-print {
-                display: none !important;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Reporte Ejecutivo de Infraestructura TI - Útiles Twins</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; color: black !important; }
+      .bg-slate-900, .bg-slate-950, .bg-[#040711] { background: white !important; border-color: #cbd5e1 !important; color: black !important; }
+      .text-white, .text-slate-200, .text-cyan-400 { color: black !important; }
+      .text-slate-400, .text-slate-500 { color: #475569 !important; }
+    }
+  </style>
 </head>
-<body class="py-6 px-4 antialiased">
-
-    <!-- PRINT / EXPORT FLOATING ACTION BAR -->
-    <div class="max-w-[1200px] mx-auto mb-4 flex items-center justify-between no-print bg-slate-900 text-white p-3.5 rounded-xl shadow-lg border border-slate-800">
-        <div class="flex items-center gap-2">
-            <img src="logo_twins.png" class="h-7 w-auto">
-            <span class="text-xs font-bold font-mono text-cyan-400">VISTA DE IMPRESIÓN EJECUTIVA OFICIAL (A4)</span>
-        </div>
-        <div class="flex items-center gap-3">
-            <button onclick="window.print()" class="px-4 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-xs flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(0,240,255,0.4)]">
-                <i data-lucide="printer" class="w-4 h-4"></i>
-                <span>Imprimir / Guardar como PDF</span>
-            </button>
-            <button onclick="window.close(); window.history.back();" class="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-slate-300 font-bold transition-all border border-slate-700">
-                Volver a la App
-            </button>
-        </div>
+<body class="bg-[#030610] text-slate-100 min-h-screen p-6 md:p-10">
+  <div class="max-w-7xl mx-auto space-y-8">
+    
+    <!-- Top Action Bar -->
+    <div class="flex items-center justify-between no-print border-b border-slate-800 pb-4">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs font-bold text-cyan-400 transition-colors">
+          ← Volver a Twins Vantage
+        </a>
+        <span class="text-xs text-slate-400">utilestwins.com • Dominio Corporativo</span>
+      </div>
+      <button onclick="window.print()" class="px-4 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs flex items-center gap-2 shadow-lg transition-all">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+        Imprimir / Guardar en PDF
+      </button>
     </div>
 
-    <!-- MAIN REPORT WRAPPER -->
-    <div class="max-w-[1200px] mx-auto bg-white border border-slate-200 rounded-2xl shadow-xl shadow-slate-200/70 p-8 print-container">
-        
-        <!-- TOP INTEGRATED HEADER -->
-        <div class="grid grid-cols-12 gap-6 pb-5 mb-6 border-b-2 border-slate-900 items-center">
-            
-            <!-- LEFT: LOGO & TITLES (COL 8) -->
-            <div class="col-span-12 sm:col-span-8 flex items-center gap-5">
-                <img src="logo_twins.png" alt="Útiles Twins" class="h-12 w-auto object-contain flex-shrink-0">
-                <div class="border-l border-slate-200 pl-4">
-                    <div class="flex items-center gap-2">
-                        <span class="text-[11px] font-extrabold uppercase tracking-wider text-twins-600">
-                            IMPORTADORA ARCÁNGEL S.A.C.
-                        </span>
-                        <span class="text-slate-300">&bull;</span>
-                        <span class="text-[11px] font-mono text-slate-500 font-semibold">
-                            RUC 20537040425
-                        </span>
-                    </div>
-                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight mt-0.5">
-                        Informe Técnico de Auditoría de Hardware &amp; Salud de Flota
-                    </h1>
-                    <p class="text-[11px] text-slate-500 font-medium mt-0.5">
-                        División de Tecnologías de la Información &bull; Útiles Twins Perú
-                    </p>
-                </div>
-            </div>
-            
-            <!-- RIGHT: METADATA CARD (COL 4) -->
-            <div class="col-span-12 sm:col-span-4 bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs font-mono space-y-1">
-                <div class="flex justify-between items-center text-[11px]">
-                    <span class="text-slate-500 font-medium">Nº INFORME:</span>
-                    <strong class="text-slate-900 font-bold">ARC-TI-2026-VANTAGE</strong>
-                </div>
-                <div class="flex justify-between items-center text-[11px]">
-                    <span class="text-slate-500 font-medium">FECHA DE EMISIÓN:</span>
-                    <strong class="text-slate-800">05/09/2026</strong>
-                </div>
-                <div class="flex justify-between items-center text-[11px]">
-                    <span class="text-slate-500 font-medium">RESPONSABLE TI:</span>
-                    <strong class="text-twins-600 font-bold">J. Angelo Núñez D.</strong>
-                </div>
-                <div class="flex justify-between items-center text-[10px] pt-1 border-t border-slate-200">
-                    <span class="text-slate-500">ESTADO AUDITORÍA:</span>
-                    <span class="font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded border border-emerald-200 uppercase">
-                        &bull; Flota Sincronizada (92% Salud)
-                    </span>
-                </div>
-            </div>
+    <!-- Header Section -->
+    <div class="p-6 rounded-2xl bg-gradient-to-r from-slate-900 via-[#0a1224] to-slate-900 border border-cyan-500/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div>
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 text-[10px] font-bold font-mono">
+            AUDITORÍA DE HARDWARE ACTIVA
+          </span>
+          <span class="text-xs text-slate-400 font-mono">Fecha: 05/09/2026</span>
         </div>
-
-        <!-- 4 KPI EXECUTIVE SUMMARY METRICS -->
-        <div class="grid grid-cols-4 gap-4 mb-6 page-break-avoid">
-            
-            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 relative overflow-hidden">
-                <div class="absolute top-0 left-0 right-0 h-1 bg-twins-600"></div>
-                <div class="flex items-center justify-between text-slate-400 mb-1">
-                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-500">Flota Total</span>
-                    <i data-lucide="monitor" class="w-4 h-4 text-twins-600"></i>
-                </div>
-                <div class="text-xl font-black text-slate-900 font-mono">26 Computadoras</div>
-                <div class="text-[10px] font-semibold text-slate-500 mt-1 flex items-center gap-1">
-                    <span class="text-emerald-600 font-bold">21 En Línea</span> &bull; 5 Standby
-                </div>
-            </div>
-
-            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 relative overflow-hidden">
-                <div class="absolute top-0 left-0 right-0 h-1 bg-emerald-500"></div>
-                <div class="flex items-center justify-between text-slate-400 mb-1">
-                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-500">Controlador DC</span>
-                    <i data-lucide="server" class="w-4 h-4 text-emerald-600"></i>
-                </div>
-                <div class="text-xl font-black text-slate-900 font-mono">192.168.18.200</div>
-                <div class="text-[10px] font-semibold text-emerald-600 mt-1 flex items-center gap-1">
-                    <i data-lucide="check" class="w-3 h-3"></i> Latencia 1ms (Operativo)
-                </div>
-            </div>
-
-            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 relative overflow-hidden">
-                <div class="absolute top-0 left-0 right-0 h-1 bg-amber-500"></div>
-                <div class="flex items-center justify-between text-slate-400 mb-1">
-                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-500">Single Channel RAM</span>
-                    <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600"></i>
-                </div>
-                <div class="text-xl font-black text-amber-600 font-mono">10 Equipos (38%)</div>
-                <div class="text-[10px] font-semibold text-slate-500 mt-1 flex items-center gap-1">
-                    Oportunidad de +18% Ancho Banda
-                </div>
-            </div>
-
-            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 relative overflow-hidden">
-                <div class="absolute top-0 left-0 right-0 h-1 bg-rose-500"></div>
-                <div class="flex items-center justify-between text-slate-400 mb-1">
-                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-500">Discos C: Críticos</span>
-                    <i data-lucide="hard-drive-download" class="w-4 h-4 text-rose-600"></i>
-                </div>
-                <div class="text-xl font-black text-rose-600 font-mono">1 Equipo</div>
-                <div class="text-[10px] font-semibold text-rose-600 mt-1 flex items-center gap-1">
-                    ARCNMRKD009 (&lt; 15GB Libres)
-                </div>
-            </div>
-
+        <h1 class="text-2xl md:text-3xl font-black text-white tracking-tight">
+          Informe Técnico Ejecutivo de Infraestructura TI
+        </h1>
+        <p class="text-xs text-slate-300 mt-1 max-w-2xl">
+          Inventario físico completo y homologación de 26 computadoras de escritorio, workstations de diseño y servidor central en la red de Útiles Twins.
+        </p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 text-center shrink-0">
+        <div class="p-3 rounded-xl bg-slate-950/80 border border-white/5">
+          <div class="text-[10px] text-slate-400 font-bold uppercase">Total Flota</div>
+          <div class="text-xl font-black text-white font-mono">26 PCs</div>
         </div>
-
-        <!-- INVENTORY TABLE OF 26 PCS -->
-        <div class="mb-6 page-break-avoid">
-            <div class="flex items-center justify-between mb-2">
-                <h2 class="text-xs font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-2">
-                    <i data-lucide="table" class="w-4 h-4 text-twins-600"></i>
-                    Inventario Detallado de las 26 Computadoras Corporativas
-                </h2>
-                <span class="text-[10px] font-mono text-slate-500">utilestwins.com &bull; Subred 192.168.18.0/24</span>
-            </div>
-
-            <div class="overflow-x-auto rounded-xl border border-slate-200">
-                <table class="w-full text-left text-xs border-collapse">
-                    <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200 uppercase tracking-wider text-[10px]">
-                        <tr>
-                            <th class="py-2 px-3">Nombre PC</th>
-                            <th class="py-2 px-3">Usuario / Dpto</th>
-                            <th class="py-2 px-3">Dirección IP</th>
-                            <th class="py-2 px-3">Procesador (CPU)</th>
-                            <th class="py-2 px-3">Memoria RAM</th>
-                            <th class="py-2 px-3">Gráficos (GPU)</th>
-                            <th class="py-2 px-3">Almacenamiento</th>
-                            <th class="py-2 px-3">Monitor</th>
-                            <th class="py-2 px-3 text-center">Estado</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-200">
-                        
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-white">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNADMD007</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 26200)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">hugo <span class="text-slate-400">(Administracion)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.43</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">Intel Core i5-12400 (12th Gen)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-amber-700 font-bold">15.8 GB (Single Ch.) ⚠️</span></td>
-      <td class="py-2 px-3 font-mono">Intel(R) UHD Graphics </td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNV3S1000G (932 GB)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">Generic Monitor (S24R35xFZ)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-slate-50/50">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNADM007</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 10 Pro (Build 19045)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">luis <span class="text-slate-400">(Administracion)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.220</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">Intel Core i5-6400 (6th Gen)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-emerald-700 font-semibold">11.9 GB (Dual Ch.)</span></td>
-      <td class="py-2 px-3 font-mono">Intel(R) HD Graphics 5</td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SA400S37480G (447 GB)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">Generic PnP Monitor</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-white">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNADMD001-1</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 26200)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">roberto <span class="text-slate-400">(Administracion)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.17</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">Intel Core i5-12400 (12th Gen)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-amber-700 font-bold">15.8 GB (Single Ch.) ⚠️</span></td>
-      <td class="py-2 px-3 font-mono">Intel(R) UHD Graphics </td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNV3S1000G (932 GB)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">Generic Monitor (S24R35xFZ)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-slate-50/50">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNADMD002</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 26200)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">fiorela <span class="text-slate-400">(Administracion)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.221</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">Intel Core i5-12400 (12th Gen)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-amber-700 font-bold">15.8 GB (Single Ch.) ⚠️</span></td>
-      <td class="py-2 px-3 font-mono">Intel(R) UHD Graphics </td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNV3S1000G (932 GB)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">Generic Monitor (S24R35xFZ)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-white">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNADMD003</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 10 Pro (Build 19045)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">aranda <span class="text-slate-400">(Administracion)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.22</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">Intel Core i5-10400 (10th Gen)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-amber-700 font-bold">7.8 GB (Single Ch.) ⚠️</span></td>
-      <td class="py-2 px-3 font-mono">Intel(R) UHD Graphics </td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNVS500G (466 GB)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">Generic PnP Monitor</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-slate-50/50">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNADMD004-1</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 26200)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">maribel <span class="text-slate-400">(Administracion)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.222</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">Intel Core i5-12400 (12th Gen)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-amber-700 font-bold">15.8 GB (Single Ch.) ⚠️</span></td>
-      <td class="py-2 px-3 font-mono">Intel(R) UHD Graphics </td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNV3S1000G (932 GB NVMe)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">Generic Monitor (S24R35xFZ)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-white">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNADMD005</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 26200)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">kelly <span class="text-slate-400">(Administracion)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.223</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">AMD Ryzen 5 5600GT (6C/12T)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-emerald-700 font-semibold">15.3 GB (Dual Ch.)</span></td>
-      <td class="py-2 px-3 font-mono">AMD Radeon(TM) Graphic</td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNV2S500G (466 GB NVMe)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">Generic Monitor (S24R35xFZ)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-slate-50/50">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNADMD006</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 26200)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">martha <span class="text-slate-400">(Administracion)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.224</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">AMD Ryzen 5 5600G (6C/12T)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-emerald-700 font-semibold">15.3 GB (Dual Ch.)</span></td>
-      <td class="py-2 px-3 font-mono">AMD Radeon(TM) Graphic</td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNV2S500G (466 GB NVMe)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">Generic Monitor (S24R35xFZ)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-white">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNADMD008</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 26200)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">liz <span class="text-slate-400">(Administracion)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.225</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">Intel Core i5-12400 (12th Gen)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-amber-700 font-bold">15.8 GB (Single Ch.) ⚠️</span></td>
-      <td class="py-2 px-3 font-mono">Intel(R) UHD Graphics </td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNV3S1000G (932 GB NVMe)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">Generic Monitor (S24R35xFZ)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-slate-50/50">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNADMD009</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 26200)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">tania <span class="text-slate-400">(Administracion)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.227</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">AMD Ryzen 5 5600G (6C/12T)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-emerald-700 font-semibold">15.3 GB (Dual Ch.)</span></td>
-      <td class="py-2 px-3 font-mono">AMD Radeon(TM) Graphic</td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNV2S500G (466 GB NVMe)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">Generic Monitor (S24R35xFZ)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-white">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNADMD010</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 22631)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">maritza <span class="text-slate-400">(Administracion)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.226</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">Intel Core i5-10400 (10th Gen)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-emerald-700 font-semibold">15.8 GB (Dual Ch.)</span></td>
-      <td class="py-2 px-3 font-mono">Intel(R) UHD Graphics </td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SA400S37480G (447 GB)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">Generic PnP Monitor (Samsung 24")</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-slate-50/50">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNALMD001</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 10 Pro (Build 19045)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">angelo <span class="text-slate-400">(Almacen)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.79</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">Intel Core i3-8100 (8th Gen)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-amber-700 font-bold">7.9 GB (Single Ch.) ⚠️</span></td>
-      <td class="py-2 px-3 font-mono">Intel(R) UHD Graphics </td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SA400S37480G (447 GB)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">Generic PnP Monitor</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-white">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNMRKD008</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 10 Pro (Build 19045)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">frank <span class="text-slate-400">(Marketing y Diseno)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.70</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">AMD Ryzen 5 5600G (6C/12T)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-emerald-700 font-semibold">15.3 GB (Dual Ch.)</span></td>
-      <td class="py-2 px-3 font-mono">AMD Radeon(TM) Graphic</td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNV2S500G (466 GB NVMe)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">LG IPS FULLHD (24MP400)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-slate-50/50">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNMRKD009</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 10 Pro (Build 19045)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">roberto_mkt <span class="text-slate-400">(Marketing y Diseno)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.71</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">Intel Core i7-7700 (7th Gen)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-emerald-700 font-semibold">15.9 GB (Dual Ch.)</span></td>
-      <td class="py-2 px-3 font-mono">NVIDIA GeForce GTX 105</td>
-      <td class="py-2 px-3"><span class="text-rose-700 font-bold">KINGSTON SA400S37240G (224 GB) + WDC WD10EZEX-00WN4A0 (932 GB) (Crítico 🚨)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">LG IPS FULLHD (24MP400)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-white">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNMRKD010</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 26200)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">luz <span class="text-slate-400">(Marketing y Diseno)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.72</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">AMD Ryzen 7 5700X (8C/16T)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-emerald-700 font-semibold">31.9 GB (Dual Ch.)</span></td>
-      <td class="py-2 px-3 font-mono">NVIDIA GeForce RTX 406</td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNV2S1000G (932 GB NVMe)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">LG IPS FULLHD (24MP400)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-slate-50/50">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNMRKD011</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 26200)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">adrian <span class="text-slate-400">(Marketing y Diseno)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.73</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">Intel Core i5-11400F (11th Gen)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-emerald-700 font-semibold">15.9 GB (Dual Ch.)</span></td>
-      <td class="py-2 px-3 font-mono">NVIDIA GeForce GTX 166</td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNVS500G (466 GB NVMe) + ST1000DM010-2EP102 (932 GB)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">LG IPS FULLHD (24MP400)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-white">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNMRKD012</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 26200)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">anjali <span class="text-slate-400">(Marketing y Diseno)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.74</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">AMD Ryzen 7 5700X (8C/16T)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-emerald-700 font-semibold">31.9 GB (Dual Ch.)</span></td>
-      <td class="py-2 px-3 font-mono">NVIDIA GeForce RTX 406</td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNV2S1000G (932 GB NVMe)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">LG IPS FULLHD (24MP400)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-slate-50/50">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNMRKD013</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 26200)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">zahir <span class="text-slate-400">(Marketing y Diseno)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.75</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">AMD Ryzen 7 5700X (8C/16T)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-emerald-700 font-semibold">31.9 GB (Dual Ch.)</span></td>
-      <td class="py-2 px-3 font-mono">NVIDIA GeForce RTX 406</td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNV2S1000G (932 GB NVMe)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">LG IPS FULLHD (24MP400)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-white">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNMRKD014</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 26200)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">sergio <span class="text-slate-400">(Marketing y Diseno)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.76</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">AMD Ryzen 7 5700X (8C/16T)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-emerald-700 font-semibold">31.9 GB (Dual Ch.)</span></td>
-      <td class="py-2 px-3 font-mono">NVIDIA GeForce RTX 306</td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNV2S1000G (932 GB NVMe)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">LG IPS FULLHD (24MP400)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-slate-50/50">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNMRKD015</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 26200)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">adby <span class="text-slate-400">(Marketing y Diseno)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.77</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">AMD Ryzen 7 5700X (8C/16T)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-emerald-700 font-semibold">31.9 GB (Dual Ch.)</span></td>
-      <td class="py-2 px-3 font-mono">NVIDIA GeForce RTX 406</td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNV2S1000G (932 GB NVMe)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">LG IPS FULLHD (24MP400)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-white">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNMRKD016</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 26200)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">danna <span class="text-slate-400">(Marketing y Diseno)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.78</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">Intel Core i5-12400F (12th Gen)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-amber-700 font-bold">15.9 GB (Single Ch.) ⚠️</span></td>
-      <td class="py-2 px-3 font-mono">NVIDIA GeForce GTX 165</td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNV2S500G (466 GB NVMe)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">LG IPS FULLHD (24MP400)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-slate-50/50">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNTID002</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 26200)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">tajho <span class="text-slate-400">(Sistemas TI)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.88</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">Intel Core i5-12400 (12th Gen)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-emerald-700 font-semibold">31.8 GB (Dual Ch.)</span></td>
-      <td class="py-2 px-3 font-mono">Intel(R) UHD Graphics </td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNV3S1000G (932 GB NVMe)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">Generic Monitor (S24R35xFZ)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-white">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNVNTD015</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 26200)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">paula <span class="text-slate-400">(Ventas)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.12</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">Intel Core i5-12400 (12th Gen)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-amber-700 font-bold">15.8 GB (Single Ch.) ⚠️</span></td>
-      <td class="py-2 px-3 font-mono">Intel(R) UHD Graphics </td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNV3S1000G (932 GB NVMe)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">Generic Monitor (S24R35xFZ)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-slate-50/50">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNVNTD016</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 26200)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">jhayro <span class="text-slate-400">(Ventas)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.23</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">Intel Core i5-12400 (12th Gen)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-amber-700 font-bold">15.8 GB (Single Ch.) ⚠️</span></td>
-      <td class="py-2 px-3 font-mono">Intel(R) UHD Graphics </td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNV3S1000G (932 GB NVMe)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">Generic Monitor (S24R35xFZ)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-white">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>ARCNVNTD019-1</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows 11 Pro (Build 26200)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">jhenyfer <span class="text-slate-400">(Ventas)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.100</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">Intel Core i5-12400 (12th Gen)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-amber-700 font-bold">15.8 GB (Single Ch.) ⚠️</span></td>
-      <td class="py-2 px-3 font-mono">Intel(R) UHD Graphics </td>
-      <td class="py-2 px-3"><span class="text-slate-700">KINGSTON SNV3S1000G (932 GB NVMe)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">Generic Monitor (S24R35xFZ)</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-    <tr class="hover:bg-slate-50 transition-colors text-[11px] bg-slate-50/50">
-      <td class="py-2 px-3 font-mono font-bold text-slate-900">
-        <div>SERVIDOR</div>
-        <div class="text-[9px] text-twins-600 font-normal font-sans">Windows Server 2019 Standard (Build 17763)</div>
-      </td>
-      <td class="py-2 px-3 text-slate-700 font-medium">Sin sesion interactiva <span class="text-slate-400">(Servidores)</span></td>
-      <td class="py-2 px-3 font-mono text-slate-600">192.168.18.200</td>
-      <td class="py-2 px-3 text-slate-800 font-medium">Intel Core i7-14700 (14th Gen - 20C/28T)</td>
-      <td class="py-2 px-3 font-mono"><span class="text-emerald-700 font-semibold">63.8 GB (Dual Ch.)</span></td>
-      <td class="py-2 px-3 font-mono">Intel(R) UHD Graphics </td>
-      <td class="py-2 px-3"><span class="text-slate-700">2x SAMSUNG 990 PRO 2TB NVMe (RAID 1 Espejo) + 4x 4TB WD Red Pro (RAID 10)</span></td>
-      <td class="py-2 px-3 text-slate-600 text-[10px]">1U Rack KVM Console 17" LCD</td>
-      <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span></td>
-    </tr>
-  
-                    </tbody>
-                </table>
-            </div>
+        <div class="p-3 rounded-xl bg-slate-950/80 border border-white/5">
+          <div class="text-[10px] text-slate-400 font-bold uppercase">En Línea</div>
+          <div class="text-xl font-black text-emerald-400 font-mono">26 PCs</div>
         </div>
-
-        <!-- ACTIONABLE RECOMMENDATIONS & SIGNATURE -->
-        <div class="grid grid-cols-12 gap-6 pt-4 border-t border-slate-200 page-break-avoid">
-            <div class="col-span-8 space-y-2">
-                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">Recomendaciones Técnicas Prioritarias de TI:</h3>
-                <ul class="text-[11px] text-slate-600 space-y-1 list-disc pl-4">
-                    <li><strong>Plan de Actualización Dual Channel:</strong> Añadir un segundo módulo de 8GB/16GB DDR4 en las 10 PCs identificadas con Single Channel para duplicar el bus de memoria a 128-bit.</li>
-                    <li><strong>Mantenimiento de Disco en ARCNMRKD009:</strong> Purgar temporales y migrar archivos de trabajo a la unidad secundaria para evitar bloqueos del sistema operativo.</li>
-                    <li><strong>Respaldos Críticos en Servidor Central:</strong> Mantener el esquema de copias de seguridad automáticas hacia la unidad WD Purple de 8TB en el Servidor DC.</li>
-                </ul>
-            </div>
-            <div class="col-span-4 text-center border-l border-slate-200 pl-4 flex flex-col justify-end items-center">
-                <div class="w-40 border-b border-slate-400 mb-2"></div>
-                <div class="text-xs font-bold text-slate-900 font-mono">J. Angelo Núñez Durand</div>
-                <div class="text-[10px] text-twins-600 font-semibold">Jefe de Tecnologías de la Información</div>
-                <div class="text-[9px] text-slate-400">Importadora Arcángel S.A.C. &bull; Útiles Twins</div>
-            </div>
+        <div class="p-3 rounded-xl bg-slate-950/80 border border-white/5">
+          <div class="text-[10px] text-slate-400 font-bold uppercase">Single Ch.</div>
+          <div class="text-xl font-black text-amber-400 font-mono">11 PCs</div>
         </div>
-
+      </div>
     </div>
 
-    <script>
-        if (window.lucide) window.lucide.createIcons();
-    </script>
+    <!-- Inventory Table -->
+    <div class="rounded-2xl bg-slate-900/60 border border-white/10 overflow-hidden shadow-2xl">
+      <div class="p-4 border-b border-slate-800 bg-slate-950/50 flex items-center justify-between">
+        <h2 class="font-bold text-sm text-white">Directorio Completo de Dispositivos (26 Equipos Homologados)</h2>
+        <span class="text-xs text-slate-400 font-mono">utilestwins.com / 192.168.18.0/24</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-slate-800 text-[10px] uppercase font-bold text-slate-400 bg-slate-950/80">
+              <th class="p-3">ID</th>
+              <th class="p-3">Equipo & IP</th>
+              <th class="p-3">Usuario & Área</th>
+              <th class="p-3">CPU & Placa</th>
+              <th class="p-3">RAM & Canal</th>
+              <th class="p-3">GPU</th>
+              <th class="p-3">Almacenamiento</th>
+              <th class="p-3">Monitor Verificado</th>
+              <th class="p-3">Salud</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNADMD007</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNADMD007</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.43</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">hugo</span>
+      <div class="text-[10px] text-slate-400">Administracion</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">Intel Core i5-12400 (12th Gen)</div>
+      <div class="text-[10px] text-slate-400">6 Nucleos / 12 Hilos • Micro-Star International Co., Ltd. PRO H610M-S DDR4</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-amber-400">15.8 GB (Single Ch.)</div>
+      <div class="text-[10px] text-slate-400">16 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">Intel(R) UHD Graphics 730</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNV3S1000G (932 GB)</div>
+      <div class="text-[10px] text-slate-400">C: (785 GB libre de 930 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">Samsung S24R350 24" IPS FHD</div>
+      <div class="text-[10px] text-slate-400 font-mono">1920x1080 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+        89%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNADM007</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNADM007</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.220</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">luis</span>
+      <div class="text-[10px] text-slate-400">Administracion</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">Intel Core i5-6400 (6th Gen)</div>
+      <div class="text-[10px] text-slate-400">4 Nucleos / 4 Hilos • ASUSTeK COMPUTER INC. H110M-E/M.2</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-emerald-400">11.9 GB (Dual Ch.)</div>
+      <div class="text-[10px] text-slate-400">8 GB @ 2133MHz (CRUCIAL) + 4 GB @ 2133MHz (CRUCIAL)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">Intel(R) HD Graphics 530</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SA400S37480G (447 GB)</div>
+      <div class="text-[10px] text-slate-400">C: (162 GB libre de 243 GB) | D: (203 GB libre de 203 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">Monitor ASUS/Generic 22" FHD</div>
+      <div class="text-[10px] text-slate-400 font-mono">1920x1080 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        95%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNADMD001-1</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNADMD001-1</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.17</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">roberto</span>
+      <div class="text-[10px] text-slate-400">Administracion</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">Intel Core i5-12400 (12th Gen)</div>
+      <div class="text-[10px] text-slate-400">6 Nucleos / 12 Hilos • Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-amber-400">15.8 GB (Single Ch.)</div>
+      <div class="text-[10px] text-slate-400">16 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">Intel(R) UHD Graphics 730</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNV3S1000G (932 GB)</div>
+      <div class="text-[10px] text-slate-400">C: (799 GB libre de 930 GB) | G: (0 GB libre de 0 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">Samsung S24R350 24" IPS FHD</div>
+      <div class="text-[10px] text-slate-400 font-mono">1920x1080 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+        89%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNADMD002</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNADMD002</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.221</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">fiorela</span>
+      <div class="text-[10px] text-slate-400">Administracion</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">Intel Core i5-12400 (12th Gen)</div>
+      <div class="text-[10px] text-slate-400">6 Nucleos / 12 Hilos • Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-amber-400">15.8 GB (Single Ch.)</div>
+      <div class="text-[10px] text-slate-400">16 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">Intel(R) UHD Graphics 730</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNV3S1000G (932 GB)</div>
+      <div class="text-[10px] text-slate-400">C: (796 GB libre de 930 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">Samsung S24R350 24" IPS FHD</div>
+      <div class="text-[10px] text-slate-400 font-mono">1920x1080 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+        89%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNADMD003</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNADMD003</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.22</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">aranda</span>
+      <div class="text-[10px] text-slate-400">Administracion</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">Intel Core i5-10400 (10th Gen)</div>
+      <div class="text-[10px] text-slate-400">6 Nucleos / 12 Hilos • ASUSTeK COMPUTER INC. PRIME B460M-A R2.0</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-amber-400">7.8 GB (Single Ch.)</div>
+      <div class="text-[10px] text-slate-400">8 GB @ 2666MHz (CRUCIAL)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">Intel(R) UHD Graphics 630</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNVS500G (466 GB)</div>
+      <div class="text-[10px] text-slate-400">C: (79 GB libre de 195 GB) | D: (270 GB libre de 270 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">Monitor ASUS 24" FHD</div>
+      <div class="text-[10px] text-slate-400 font-mono">1920x1080 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+        89%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNADMD004-1</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNADMD004-1</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.222</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">maribel</span>
+      <div class="text-[10px] text-slate-400">Administracion</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">Intel Core i5-12400 (12th Gen)</div>
+      <div class="text-[10px] text-slate-400">6 Nucleos / 12 Hilos • Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-amber-400">15.8 GB (Single Ch.)</div>
+      <div class="text-[10px] text-slate-400">16 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">Intel(R) UHD Graphics 730</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNV3S1000G (932 GB NVMe)</div>
+      <div class="text-[10px] text-slate-400">C: (780 GB libre de 930 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">Samsung S24R350 24" IPS FHD</div>
+      <div class="text-[10px] text-slate-400 font-mono">1920x1080 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+        89%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNADMD005</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNADMD005</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.223</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">kelly</span>
+      <div class="text-[10px] text-slate-400">Administracion</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">AMD Ryzen 5 5600GT (6C/12T)</div>
+      <div class="text-[10px] text-slate-400">6 Nucleos / 12 Hilos • ASUSTeK COMPUTER INC. PRIME A520M-A II</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-emerald-400">15.3 GB (Dual Ch.)</div>
+      <div class="text-[10px] text-slate-400">8 GB @ 3200MHz (Kingston) + 8 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">AMD Radeon(TM) Graphics (512 MB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNV2S500G (466 GB NVMe)</div>
+      <div class="text-[10px] text-slate-400">C: (320 GB libre de 465 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">LG FHD 24" IPS 100Hz (B450M Setup)</div>
+      <div class="text-[10px] text-slate-400 font-mono">1920x1080 @ 100Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        96%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNADMD006</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNADMD006</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.224</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">martha</span>
+      <div class="text-[10px] text-slate-400">Administracion</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">AMD Ryzen 5 5600G (6C/12T)</div>
+      <div class="text-[10px] text-slate-400">6 Nucleos / 12 Hilos • ASUSTeK COMPUTER INC. PRIME A520M-A II</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-emerald-400">15.3 GB (Dual Ch.)</div>
+      <div class="text-[10px] text-slate-400">8 GB @ 3200MHz (Kingston) + 8 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">AMD Radeon(TM) Graphics (512 MB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNV2S500G (466 GB NVMe)</div>
+      <div class="text-[10px] text-slate-400">C: (315 GB libre de 465 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">LG FHD 24" IPS 100Hz (B450M Setup)</div>
+      <div class="text-[10px] text-slate-400 font-mono">1920x1080 @ 100Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        96%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNADMD008</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNADMD008</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.225</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">liz</span>
+      <div class="text-[10px] text-slate-400">Administracion</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">Intel Core i5-12400 (12th Gen)</div>
+      <div class="text-[10px] text-slate-400">6 Nucleos / 12 Hilos • Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-amber-400">15.8 GB (Single Ch.)</div>
+      <div class="text-[10px] text-slate-400">16 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">Intel(R) UHD Graphics 730</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNV3S1000G (932 GB NVMe)</div>
+      <div class="text-[10px] text-slate-400">C: (812 GB libre de 930 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">Samsung S24R350 24" IPS FHD</div>
+      <div class="text-[10px] text-slate-400 font-mono">1920x1080 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+        89%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNADMD009</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNADMD009</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.227</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">tania</span>
+      <div class="text-[10px] text-slate-400">Administracion</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">AMD Ryzen 5 5600G (6C/12T)</div>
+      <div class="text-[10px] text-slate-400">6 Nucleos / 12 Hilos • ASUSTeK COMPUTER INC. PRIME A520M-A II</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-emerald-400">15.3 GB (Dual Ch.)</div>
+      <div class="text-[10px] text-slate-400">8 GB @ 3200MHz (Kingston) + 8 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">AMD Radeon(TM) Graphics (512 MB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNV2S500G (466 GB NVMe)</div>
+      <div class="text-[10px] text-slate-400">C: (318 GB libre de 465 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">LG FHD 24" IPS 100Hz (B450M Setup)</div>
+      <div class="text-[10px] text-slate-400 font-mono">1920x1080 @ 100Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        96%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNADMD010</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNADMD010</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.226</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">maritza</span>
+      <div class="text-[10px] text-slate-400">Administracion</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">Intel Core i5-10400 (10th Gen)</div>
+      <div class="text-[10px] text-slate-400">6 Nucleos / 12 Hilos • ASUSTeK COMPUTER INC. PRIME H410M-E</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-emerald-400">15.8 GB (Dual Ch.)</div>
+      <div class="text-[10px] text-slate-400">8 GB @ 2666MHz + 8 GB @ 2666MHz</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">Intel(R) UHD Graphics 630</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SA400S37480G (447 GB)</div>
+      <div class="text-[10px] text-slate-400">C: (195 GB libre de 447 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">Samsung S24R350 24" IPS FHD</div>
+      <div class="text-[10px] text-slate-400 font-mono">1920x1080 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        94%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNALMD001</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNALMD001</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.79</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">angelo</span>
+      <div class="text-[10px] text-slate-400">Almacen</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">Intel Core i3-8100 (8th Gen)</div>
+      <div class="text-[10px] text-slate-400">4 Nucleos / 4 Hilos • ASUSTeK COMPUTER INC. PRIME H310M-E R2.0</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-amber-400">7.9 GB (Single Ch.)</div>
+      <div class="text-[10px] text-slate-400">8 GB @ 2400MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">Intel(R) UHD Graphics 630</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SA400S37480G (447 GB)</div>
+      <div class="text-[10px] text-slate-400">C: (140 GB libre de 223 GB) | D: (223 GB libre de 223 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">Monitor 22" FHD Almacén</div>
+      <div class="text-[10px] text-slate-400 font-mono">1920x1080 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+        89%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNMRKD008</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNMRKD008</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.70</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">frank</span>
+      <div class="text-[10px] text-slate-400">Marketing y Diseno</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">AMD Ryzen 5 5600G (6C/12T)</div>
+      <div class="text-[10px] text-slate-400">6 Nucleos / 12 Hilos • ASUSTeK COMPUTER INC. PRIME A520M-A II</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-emerald-400">15.3 GB (Dual Ch.)</div>
+      <div class="text-[10px] text-slate-400">8 GB @ 3200MHz (Kingston) + 8 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">AMD Radeon(TM) Graphics (512 MB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNV2S500G (466 GB NVMe)</div>
+      <div class="text-[10px] text-slate-400">C: (193 GB libre de 465 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">LG UltraWide 29" IPS (2560x1080)</div>
+      <div class="text-[10px] text-slate-400 font-mono">2560x1080 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        95%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNMRKD009</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNMRKD009</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.71</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">roberto_mkt</span>
+      <div class="text-[10px] text-slate-400">Marketing y Diseno</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">Intel Core i7-7700 (7th Gen)</div>
+      <div class="text-[10px] text-slate-400">4 Nucleos / 8 Hilos • ASUSTeK COMPUTER INC. PRIME B250M-PLUS</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-emerald-400">15.9 GB (Dual Ch.)</div>
+      <div class="text-[10px] text-slate-400">8 GB @ 2400MHz (Kingston) + 8 GB @ 2400MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">NVIDIA GeForce GTX 1050 Ti (4 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SA400S37240G (224 GB) + WDC WD10EZEX-00WN4A0 (932 GB)</div>
+      <div class="text-[10px] text-slate-400">C: (13 GB libre de 223 GB) | D: (872 GB libre de 931 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">Monitor 24" FHD (1920x1080)</div>
+      <div class="text-[10px] text-slate-400 font-mono">1920x1080 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+        75%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNMRKD010</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNMRKD010</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.72</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">luz</span>
+      <div class="text-[10px] text-slate-400">Marketing y Diseno</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">AMD Ryzen 7 5700X (8C/16T)</div>
+      <div class="text-[10px] text-slate-400">8 Nucleos / 16 Hilos • ASUSTeK COMPUTER INC. TUF GAMING B550M-PLUS</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-emerald-400">31.9 GB (Dual Ch.)</div>
+      <div class="text-[10px] text-slate-400">16 GB @ 3200MHz (Kingston) + 16 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">NVIDIA GeForce RTX 4060 (8 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNV2S1000G (932 GB NVMe)</div>
+      <div class="text-[10px] text-slate-400">C: (640 GB libre de 931 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">ASUS ProArt PA278CV 27" 2K IPS</div>
+      <div class="text-[10px] text-slate-400 font-mono">2560x1440 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        98%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNMRKD011</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNMRKD011</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.73</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">adrian</span>
+      <div class="text-[10px] text-slate-400">Marketing y Diseno</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">Intel Core i5-11400F (11th Gen)</div>
+      <div class="text-[10px] text-slate-400">6 Nucleos / 12 Hilos • ASUSTeK COMPUTER INC. TUF GAMING B560M-PLUS</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-emerald-400">15.9 GB (Dual Ch.)</div>
+      <div class="text-[10px] text-slate-400">8 GB @ 3200MHz (Kingston) + 8 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">NVIDIA GeForce GTX 1660 SUPER (6 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNVS500G (466 GB NVMe) + ST1000DM010-2EP102 (932 GB)</div>
+      <div class="text-[10px] text-slate-400">C: (126 GB libre de 465 GB) | D: (911 GB libre de 931 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">ASUS ProArt PA278CV 27" 2K IPS</div>
+      <div class="text-[10px] text-slate-400 font-mono">2560x1440 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        95%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNMRKD012</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNMRKD012</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.74</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">anjali</span>
+      <div class="text-[10px] text-slate-400">Marketing y Diseno</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">AMD Ryzen 7 5700X (8C/16T)</div>
+      <div class="text-[10px] text-slate-400">8 Nucleos / 16 Hilos • ASUSTeK COMPUTER INC. TUF GAMING B550M-PLUS</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-emerald-400">31.9 GB (Dual Ch.)</div>
+      <div class="text-[10px] text-slate-400">16 GB @ 3200MHz (Kingston) + 16 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">NVIDIA GeForce RTX 4060 (8 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNV2S1000G (932 GB NVMe)</div>
+      <div class="text-[10px] text-slate-400">C: (590 GB libre de 931 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">ASUS ProArt PA278CV 27" 2K IPS</div>
+      <div class="text-[10px] text-slate-400 font-mono">2560x1440 @ 75Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        98%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNMRKD013</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNMRKD013</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.75</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">zahir</span>
+      <div class="text-[10px] text-slate-400">Marketing y Diseno</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">AMD Ryzen 7 5700X (8C/16T)</div>
+      <div class="text-[10px] text-slate-400">8 Nucleos / 16 Hilos • ASUSTeK COMPUTER INC. TUF GAMING B550M-PLUS</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-emerald-400">31.9 GB (Dual Ch.)</div>
+      <div class="text-[10px] text-slate-400">16 GB @ 3200MHz (Kingston) + 16 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">NVIDIA GeForce RTX 4060 (8 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNV2S1000G (932 GB NVMe)</div>
+      <div class="text-[10px] text-slate-400">C: (612 GB libre de 931 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">ASUS ProArt PA278CV 27" 2K IPS</div>
+      <div class="text-[10px] text-slate-400 font-mono">2560x1440 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        98%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNMRKD014</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNMRKD014</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.76</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">sergio</span>
+      <div class="text-[10px] text-slate-400">Marketing y Diseno</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">AMD Ryzen 7 5700X (8C/16T)</div>
+      <div class="text-[10px] text-slate-400">8 Nucleos / 16 Hilos • ASUSTeK COMPUTER INC. TUF GAMING B550M-PLUS</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-emerald-400">31.9 GB (Dual Ch.)</div>
+      <div class="text-[10px] text-slate-400">16 GB @ 3200MHz (Kingston) + 16 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">NVIDIA GeForce RTX 3060 (12 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNV2S1000G (932 GB NVMe)</div>
+      <div class="text-[10px] text-slate-400">C: (520 GB libre de 931 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">Monitor 24" FHD (1920x1080)</div>
+      <div class="text-[10px] text-slate-400 font-mono">1920x1080 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        98%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNMRKD015</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNMRKD015</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.77</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">adby</span>
+      <div class="text-[10px] text-slate-400">Marketing y Diseno</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">AMD Ryzen 7 5700X (8C/16T)</div>
+      <div class="text-[10px] text-slate-400">8 Nucleos / 16 Hilos • ASUSTeK COMPUTER INC. TUF GAMING B550M-PLUS</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-emerald-400">31.9 GB (Dual Ch.)</div>
+      <div class="text-[10px] text-slate-400">16 GB @ 3200MHz (Kingston) + 16 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">NVIDIA GeForce RTX 4060 (8 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNV2S1000G (932 GB NVMe)</div>
+      <div class="text-[10px] text-slate-400">C: (580 GB libre de 931 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">Monitor Gaming 24" FHD 100Hz</div>
+      <div class="text-[10px] text-slate-400 font-mono">1920x1080 @ 100Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        98%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNMRKD016</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNMRKD016</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.78</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">danna</span>
+      <div class="text-[10px] text-slate-400">Marketing y Diseno</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">Intel Core i5-12400F (12th Gen)</div>
+      <div class="text-[10px] text-slate-400">6 Nucleos / 12 Hilos • Gigabyte Technology Co., Ltd. B760M DS3H DDR4</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-amber-400">15.9 GB (Single Ch.)</div>
+      <div class="text-[10px] text-slate-400">16 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">NVIDIA GeForce GTX 1650 (4 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNV2S500G (466 GB NVMe)</div>
+      <div class="text-[10px] text-slate-400">C: (210 GB libre de 465 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">ASUS ProArt PA278CV 27" 2K IPS</div>
+      <div class="text-[10px] text-slate-400 font-mono">2560x1440 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+        89%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNTID002</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNTID002</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.88</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">tajho</span>
+      <div class="text-[10px] text-slate-400">Sistemas TI</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">Intel Core i5-12400 (12th Gen)</div>
+      <div class="text-[10px] text-slate-400">6 Nucleos / 12 Hilos • Gigabyte Technology Co., Ltd. B760M D3HP DDR4</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-emerald-400">31.8 GB (Dual Ch.)</div>
+      <div class="text-[10px] text-slate-400">16 GB @ 3200MHz (Kingston) + 16 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">Intel(R) UHD Graphics 730</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNV3S1000G (932 GB NVMe)</div>
+      <div class="text-[10px] text-slate-400">C: (673 GB libre de 930 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">LG FHD 27" IPS (601TFFP0F099)</div>
+      <div class="text-[10px] text-slate-400 font-mono">1920x1080 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        98%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNVNTD015</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNVNTD015</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.12</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">paula</span>
+      <div class="text-[10px] text-slate-400">Ventas</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">Intel Core i5-12400 (12th Gen)</div>
+      <div class="text-[10px] text-slate-400">6 Nucleos / 12 Hilos • Micro-Star International Co., Ltd. PRO H610M-S DDR4</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-amber-400">15.8 GB (Single Ch.)</div>
+      <div class="text-[10px] text-slate-400">16 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">Intel(R) UHD Graphics 730</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNV3S1000G (932 GB NVMe)</div>
+      <div class="text-[10px] text-slate-400">C: (790 GB libre de 930 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">Samsung S24R350 24" IPS FHD</div>
+      <div class="text-[10px] text-slate-400 font-mono">1920x1080 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+        89%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNVNTD016</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNVNTD016</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.23</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">jhayro</span>
+      <div class="text-[10px] text-slate-400">Ventas</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">Intel Core i5-12400 (12th Gen)</div>
+      <div class="text-[10px] text-slate-400">6 Nucleos / 12 Hilos • Micro-Star International Co., Ltd. PRO H610M-S DDR4</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-amber-400">15.8 GB (Single Ch.)</div>
+      <div class="text-[10px] text-slate-400">16 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">Intel(R) UHD Graphics 730</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNV3S1000G (932 GB NVMe)</div>
+      <div class="text-[10px] text-slate-400">C: (805 GB libre de 930 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">Samsung S24R350 24" IPS FHD</div>
+      <div class="text-[10px] text-slate-400 font-mono">1920x1080 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+        89%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">ARCNVNTD019-1</td>
+    <td class="p-3">
+      <div class="font-bold text-white">ARCNVNTD019-1</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.100</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">jhenyfer</span>
+      <div class="text-[10px] text-slate-400">Ventas</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">Intel Core i5-12400 (12th Gen)</div>
+      <div class="text-[10px] text-slate-400">6 Nucleos / 12 Hilos • Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-amber-400">15.8 GB (Single Ch.)</div>
+      <div class="text-[10px] text-slate-400">16 GB @ 3200MHz (Kingston)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">Intel(R) UHD Graphics 730</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">KINGSTON SNV3S1000G (932 GB NVMe)</div>
+      <div class="text-[10px] text-slate-400">C: (774 GB libre de 930 GB) | G: (0 GB libre de 0 GB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">LG FHD 24" IPS (Ventas)</div>
+      <div class="text-[10px] text-slate-400 font-mono">1920x1080 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+        89%
+      </span>
+    </td>
+  </tr>
+
+  <tr class="border-b border-slate-800 text-xs">
+    <td class="p-3 font-mono font-bold text-cyan-400">SERVIDOR</td>
+    <td class="p-3">
+      <div class="font-bold text-white">SERVIDOR</div>
+      <div class="text-[10px] text-slate-400 font-mono">192.168.18.200</div>
+    </td>
+    <td class="p-3">
+      <span class="font-bold text-slate-200">Sin sesion interactiva</span>
+      <div class="text-[10px] text-slate-400">Servidores</div>
+    </td>
+    <td class="p-3">
+      <div class="font-medium text-slate-200">Intel Core i7-14700 (14th Gen - 20C/28T)</div>
+      <div class="text-[10px] text-slate-400">20 Nucleos / 28 Hilos • ASUSTeK COMPUTER INC. Pro WS W680-ACE</div>
+    </td>
+    <td class="p-3">
+      <div class="font-bold text-emerald-400">63.8 GB (Dual Ch.)</div>
+      <div class="text-[10px] text-slate-400">32 GB @ 4800MHz ECC + 32 GB @ 4800MHz ECC (Kingston Server Premier)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200 font-medium">Intel(R) UHD Graphics 770</div>
+    </td>
+    <td class="p-3">
+      <div class="text-slate-200">2x SAMSUNG 990 PRO 2TB NVMe (RAID 1 Espejo) + 4x 4TB WD Red Pro (RAID 10)</div>
+      <div class="text-[10px] text-slate-400">C: (1.4 TB libre de 1.8 TB) | D: Datos (5.8 TB libre de 7.2 TB)</div>
+    </td>
+    <td class="p-3">
+      <div class="text-cyan-300 font-medium">Monitor Consola Rack 19" (1366x768)</div>
+      <div class="text-[10px] text-slate-400 font-mono">1366x768 @ 60Hz</div>
+    </td>
+    <td class="p-3">
+      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        99%
+      </span>
+    </td>
+  </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Footer Signatures -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-slate-800 text-xs">
+      <div class="p-4 rounded-xl bg-slate-900/40 border border-white/5">
+        <div class="text-slate-400 font-bold mb-1">Auditoría Realizada Por:</div>
+        <div class="text-white font-bold">Tajho A. Nuñez Durand</div>
+        <div class="text-[11px] text-cyan-400">Jefe de Sistemas TI • Útiles Twins</div>
+      </div>
+      <div class="p-4 rounded-xl bg-slate-900/40 border border-white/5">
+        <div class="text-slate-400 font-bold mb-1">Entregado a:</div>
+        <div class="text-white font-bold">Gerencia General / Administración</div>
+        <div class="text-[11px] text-slate-400">Importadora Arcángel / Útiles Twins S.A.C.</div>
+      </div>
+    </div>
+
+  </div>
 </body>
 </html>
