@@ -175,6 +175,53 @@ const TwinsModal = {
     }
   },
 
+  // 3. Cyber HUD Toast Notification
+  showToast: function(message, type = 'info') {
+    const existing = document.getElementById('twinsToastContainer');
+    if (existing) existing.remove();
+
+    const toast = document.createElement('div');
+    toast.id = 'twinsToastContainer';
+    toast.className = 'fixed bottom-20 md:bottom-6 right-6 z-50 animate-bounce-in max-w-sm pointer-events-none';
+
+    let icon = 'info';
+    let borderColor = 'border-cyan-500/40';
+    let textColor = 'text-cyan-300';
+    let bgGradient = 'from-[#0d152a] to-[#040711]';
+
+    if (type === 'success') {
+      icon = 'check-circle-2';
+      borderColor = 'border-emerald-500/50';
+      textColor = 'text-emerald-300';
+    } else if (type === 'warning') {
+      icon = 'alert-triangle';
+      borderColor = 'border-amber-500/50';
+      textColor = 'text-amber-300';
+    }
+
+    toast.innerHTML = `
+      <div class="vantage-card p-4 border ${borderColor} bg-gradient-to-r ${bgGradient} shadow-[0_0_30px_rgba(0,240,255,0.25)] flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-cyan-500/15 flex items-center justify-center ${textColor} shrink-0">
+          <i data-lucide="${icon}" class="w-4 h-4"></i>
+        </div>
+        <div class="text-xs font-mono ${textColor} leading-tight font-medium">
+          ${message}
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(toast);
+    if (window.lucide) window.lucide.createIcons();
+
+    setTimeout(() => {
+      if (toast && toast.parentNode) {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.4s ease';
+        setTimeout(() => toast.remove(), 400);
+      }
+    }, 3200);
+  },
+
   // Close Active Modal
   close: function() {
     playTechSound('click');

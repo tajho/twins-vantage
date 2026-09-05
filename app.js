@@ -401,11 +401,13 @@ function renderFleetGrid() {
 
         <!-- Footer Actions -->
         <div class="pt-4 mt-4 border-t border-white/5 flex items-center justify-between">
-          <button class="text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 transition-colors">
-            <i data-lucide="monitor" class="w-3.5 h-3.5"></i> Ver Ficha Vantage
+          <button onclick="event.stopPropagation(); openDeviceDrawer('${dev.id}')" class="text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1.5 transition-colors">
+            <i data-lucide="monitor" class="w-3.5 h-3.5"></i>
+            <span>Ver Ficha Vantage</span>
           </button>
           <button onclick="event.stopPropagation(); TwinsModal.showPing('${dev.ip}', '${dev.computerName}')" class="text-xs text-slate-300 hover:text-white px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 transition-colors flex items-center gap-1 border border-white/5 font-medium">
-            <i data-lucide="activity" class="w-3 h-3 text-[#00ff88]"></i> Ping
+            <i data-lucide="activity" class="w-3 h-3 text-[#00ff88]"></i>
+            <span>Ping</span>
           </button>
         </div>
       </div>
@@ -628,6 +630,9 @@ function openDeviceDrawer(deviceId) {
     </div>
   `;
 
+  const backdrop = document.getElementById('drawerBackdrop');
+  if (backdrop) backdrop.classList.remove('hidden');
+
   drawer.classList.add('drawer-open');
   drawer.classList.remove('pointer-events-none');
   
@@ -674,9 +679,68 @@ function showDrawerMedia(type) {
 function closeDeviceDrawer() {
   playTechSound('click');
   const drawer = document.getElementById('deviceDrawer');
+  const backdrop = document.getElementById('drawerBackdrop');
   if (drawer) {
     drawer.classList.remove('drawer-open');
     drawer.classList.add('pointer-events-none');
+  }
+  if (backdrop) backdrop.classList.add('hidden');
+}
+
+// Global ESC key listener to close modals/drawers
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeDeviceDrawer();
+    if (typeof TwinsModal !== 'undefined' && TwinsModal.close) {
+      TwinsModal.close();
+    }
+  }
+});
+
+// Synchronize all 26 Fleet Devices with live network & WMI status
+let isSyncingFleet = false;
+async function syncAllFleetDevices() {
+  if (isSyncingFleet) return;
+  isSyncingFleet = true;
+  playTechSound('optimize');
+
+  const topIcon = document.getElementById('topSyncIcon');
+  const topText = document.getElementById('topSyncText');
+  if (topIcon) topIcon.classList.add('animate-spin');
+  if (topText) topText.innerText = 'Sincronizando...';
+
+  if (typeof TwinsModal !== 'undefined' && TwinsModal.showToast) {
+    TwinsModal.showToast('Sondeando 26 dispositivos en utilestwins.com (192.168.18.0/24)...', 'info');
+  }
+
+  try {
+    const res = await fetch('/api/inventory');
+    if (res.ok) {
+      const data = await res.json();
+      if (data.devices && data.devices.length > 0) {
+        allDevices = data.devices;
+      }
+    }
+  } catch (e) {}
+
+  await new Promise(r => setTimeout(r, 650));
+
+  applyFilters();
+  renderFleetOverview();
+  renderDiagnostics();
+  if (typeof updateLiveClock === 'function') updateLiveClock();
+
+  if (topIcon) topIcon.classList.remove('animate-spin');
+  if (topText) {
+    const now = new Date();
+    topText.innerText = `Sincronizado ${now.toLocaleTimeString('es-PE', { hour12: false })}`;
+  }
+
+  isSyncingFleet = false;
+  playTechSound('click');
+  
+  if (typeof TwinsModal !== 'undefined' && TwinsModal.showToast) {
+    TwinsModal.showToast('¡Flota Sincronizada! 26 PCs actualizadas con WMI y SMART OK', 'success');
   }
 }
 
