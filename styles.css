@@ -37,6 +37,14 @@ body {
   background-image: radial-gradient(circle at 50% 0%, #0d1733 0%, #030610 75%);
   background-attachment: fixed;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+main {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  will-change: scroll-position;
+  transform: translateZ(0);
 }
 
 /* Custom Scrollbars */

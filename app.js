@@ -56,11 +56,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   initNavigation();
   initSearchAndFilters();
   renderFleetOverview();
-  renderFleetGrid();
-  renderFinOps();
-  renderDiagnostics();
-  renderNetworkTopology();
-  initComparisonTool();
   startLiveTelemetry();
   setInterval(updateLiveClock, 1000);
   updateLiveClock();
@@ -79,14 +74,12 @@ function updateLiveClock() {
 }
 
 function change3DTheme(theme) {
-  playTechSound('click');
   if (typeof set3DPreset === 'function') {
     set3DPreset(theme);
   }
 }
 
 function toggleRotate3D() {
-  playTechSound('click');
   if (typeof toggle3DRotation === 'function') {
     const isRotating = toggle3DRotation();
     const btn = document.getElementById('btnRotate3D');
@@ -100,21 +93,23 @@ function initNavigation() {
   const navButtons = document.querySelectorAll('.nav-btn');
   navButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      playTechSound('click');
       const tab = btn.getAttribute('data-tab');
       switchTab(tab);
     });
   });
 }
 
+const renderedTabs = new Set(['home']);
+
 function switchTab(tabId) {
   currentTab = tabId;
   closeDeviceDrawer();
   
   const mainEl = document.querySelector('main');
-  if (mainEl) mainEl.scrollTo({ top: 0, behavior: 'smooth' });
+  if (mainEl) mainEl.scrollTop = 0;
 
-  document.querySelectorAll('.nav-btn').forEach(btn => {
+  const navButtons = document.querySelectorAll('.nav-btn');
+  navButtons.forEach(btn => {
     if (btn.getAttribute('data-tab') === tabId) {
       btn.classList.add('active');
       btn.classList.add('text-cyan-400');
@@ -132,23 +127,24 @@ function switchTab(tabId) {
     }
   });
 
-  if (tabId === 'home') {
-    renderFleetOverview();
-    if (typeof onWindowResize === 'function') setTimeout(onWindowResize, 100);
-  } else if (tabId === 'fleet') {
-    applyFilters();
-  } else if (tabId === 'finops') {
-    renderFinOps();
-  } else if (tabId === 'diag') {
-    renderDiagnostics();
-  } else if (tabId === 'compare') {
-    initComparisonTool();
-  } else if (tabId === 'network') {
-    renderNetworkTopology();
-  }
-
-  if (window.lucide) {
-    window.lucide.createIcons();
+  // Lazy render only on first visit for instantaneous 0ms tab switching
+  if (!renderedTabs.has(tabId)) {
+    renderedTabs.add(tabId);
+    if (tabId === 'fleet') {
+      applyFilters();
+    } else if (tabId === 'finops') {
+      renderFinOps();
+    } else if (tabId === 'diag') {
+      renderDiagnostics();
+    } else if (tabId === 'compare') {
+      initComparisonTool();
+    } else if (tabId === 'network') {
+      renderNetworkTopology();
+    }
+    const activeView = document.getElementById(`view-${tabId}`);
+    if (window.lucide && activeView) {
+      window.lucide.createIcons({ root: activeView });
+    }
   }
 }
 
@@ -822,13 +818,27 @@ async function syncAllFleetDevices() {
   await new Promise(r => setTimeout(r, 600));
 
   filteredDevices = [...allDevices];
-  applyFilters();
+  renderedTabs.clear();
+  renderedTabs.add('home');
   renderFleetOverview();
-  renderFleetGrid();
-  renderFinOps();
-  renderDiagnostics();
-  renderNetworkTopology();
-  initComparisonTool();
+
+  if (currentTab === 'fleet') {
+    renderedTabs.add('fleet');
+    applyFilters();
+  } else if (currentTab === 'finops') {
+    renderedTabs.add('finops');
+    renderFinOps();
+  } else if (currentTab === 'diag') {
+    renderedTabs.add('diag');
+    renderDiagnostics();
+  } else if (currentTab === 'compare') {
+    renderedTabs.add('compare');
+    initComparisonTool();
+  } else if (currentTab === 'network') {
+    renderedTabs.add('network');
+    renderNetworkTopology();
+  }
+
   if (typeof updateLiveClock === 'function') updateLiveClock();
 
   if (topIcon) topIcon.classList.remove('animate-spin');
