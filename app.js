@@ -235,7 +235,15 @@ function startLiveTelemetry() {
   livePollingInterval = setInterval(fetchLiveTelemetry, 3500);
 }
 
-function renderFleetOverview() {}
+function renderFleetOverview() {
+  const twinBox = document.getElementById('homeTwinContainer');
+  if (twinBox) {
+    const masterDev = allDevices.find(d => d.id === 'ARCNTID002') || allDevices[0];
+    if (masterDev && typeof generateVirtualTwinSVG === 'function') {
+      twinBox.innerHTML = generateVirtualTwinSVG(masterDev);
+    }
+  }
+}
 
 function initSearchAndFilters() {
   const searchInput = document.getElementById('fleetSearchInput');
@@ -293,7 +301,7 @@ function applyFilters() {
   renderFleetGrid();
 }
 
-// Render Fleet Grid with Real Product Photos of Monitor + CPU
+// Render Fleet Grid with Precision Virtual Twins of Monitor + CPU
 function renderFleetGrid() {
   const container = document.getElementById('fleetGridContainer');
   const countLabel = document.getElementById('fleetResultsCount');
@@ -322,15 +330,15 @@ function renderFleetGrid() {
       : `<span class="badge-offline text-xs font-medium px-2.5 py-0.5 rounded-full flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>Apagada</span>`;
 
     const singleChannelBadge = (isOnline && dev.ramChannelType === 'single') 
-      ? `<span class="badge-warning text-[10px] font-bold px-2 py-0.5 rounded" title="Single Channel detectado">⚠️ Single Ch. RAM</span>`
+      ? `<span class="badge-warning text-[10px] font-bold px-2 py-0.5 rounded flex items-center gap-1" title="Single Channel detectado"><i data-lucide="alert-circle" class="w-3 h-3"></i> Single Ch. RAM</span>`
       : '';
 
     const gpuBadge = dev.gpuType === 'dedicated'
-      ? `<span class="bg-purple-500/20 text-purple-300 border border-purple-500/40 text-[10px] font-bold px-2 py-0.5 rounded shadow-[0_0_10px_rgba(168,85,247,0.25)]">🎮 GPU Dedicada</span>`
+      ? `<span class="bg-purple-500/20 text-purple-300 border border-purple-500/40 text-[10px] font-bold px-2 py-0.5 rounded shadow-[0_0_10px_rgba(168,85,247,0.25)] flex items-center gap-1"><i data-lucide="zap" class="w-3 h-3"></i> GPU Dedicada</span>`
       : '';
 
     const criticalBadge = dev.alerts.some(a => a.type === 'critical')
-      ? `<span class="badge-critical text-[10px] font-black px-2 py-0.5 rounded animate-pulse shadow-[0_0_12px_rgba(244,63,94,0.4)]">🚨 Disco C: Crítico</span>`
+      ? `<span class="badge-critical text-[10px] font-black px-2 py-0.5 rounded animate-pulse shadow-[0_0_12px_rgba(244,63,94,0.4)] flex items-center gap-1"><i data-lucide="alert-triangle" class="w-3 h-3"></i> Disco C: Crítico</span>`
       : '';
 
     const photoHtml = renderDeviceImage(dev.deviceVisual, dev.computerName, isOnline, dev);
@@ -884,8 +892,8 @@ function renderComparison() {
         </div>
         <p class="text-xs text-slate-400 mb-4 font-medium">${dev1.activeUser} • ${dev1.department}</p>
         
-        <div class="h-44 w-full bg-[#040711] rounded-xl border border-white/5 mb-4 shadow-inner overflow-hidden">
-          <img src="${photo1}" alt="${dev1.computerName}" class="w-full h-full object-cover">
+        <div class="h-48 w-full bg-[#040711] rounded-xl border border-white/5 mb-4 shadow-inner overflow-hidden flex items-center justify-center p-1">
+          ${renderDeviceImage(dev1.deviceVisual, dev1.computerName, dev1.isOnline, dev1)}
         </div>
 
         <div class="space-y-2.5 text-xs divide-y divide-white/5">
@@ -905,8 +913,8 @@ function renderComparison() {
         </div>
         <p class="text-xs text-slate-400 mb-4 font-medium">${dev2.activeUser} • ${dev2.department}</p>
         
-        <div class="h-44 w-full bg-[#040711] rounded-xl border border-white/5 mb-4 shadow-inner overflow-hidden">
-          <img src="${photo2}" alt="${dev2.computerName}" class="w-full h-full object-cover">
+        <div class="h-48 w-full bg-[#040711] rounded-xl border border-white/5 mb-4 shadow-inner overflow-hidden flex items-center justify-center p-1">
+          ${renderDeviceImage(dev2.deviceVisual, dev2.computerName, dev2.isOnline, dev2)}
         </div>
 
         <div class="space-y-2.5 text-xs divide-y divide-white/5">

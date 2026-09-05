@@ -115,28 +115,28 @@
         <div class="text-[10px] font-extrabold uppercase tracking-widest text-slate-500 px-3 py-2">Módulos Inteligentes</div>
         
         <button data-tab="home" class="nav-btn active w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900/60 transition-all text-left">
-          <i data-lucide="box" class="w-4 h-4 text-[#00f0ff]"></i>
-          <span>Setup 3D & Telemetría</span>
+          <i data-lucide="layout-dashboard" class="w-4 h-4 text-[#00f0ff]"></i>
+          <span>Panel de Control TI</span>
         </button>
 
         <button data-tab="fleet" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900/60 transition-all text-left">
-          <i data-lucide="layout-grid" class="w-4 h-4 text-[#38bdf8]"></i>
-          <span>Flota de PCs (26)</span>
+          <i data-lucide="monitor" class="w-4 h-4 text-[#38bdf8]"></i>
+          <span>Flota Corporativa (26 PCs)</span>
         </button>
 
         <button data-tab="diag" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900/60 transition-all text-left">
-          <i data-lucide="activity-square" class="w-4 h-4 text-[#00ff88]"></i>
-          <span>Diagnóstico & Errores</span>
+          <i data-lucide="shield-check" class="w-4 h-4 text-[#00ff88]"></i>
+          <span>Diagnóstico de Hardware</span>
         </button>
 
         <button data-tab="compare" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900/60 transition-all text-left">
-          <i data-lucide="git-compare" class="w-4 h-4 text-[#a855f7]"></i>
-          <span>Comparar Hardware</span>
+          <i data-lucide="sliders" class="w-4 h-4 text-[#a855f7]"></i>
+          <span>Comparador de Rendimiento</span>
         </button>
 
         <button data-tab="network" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900/60 transition-all text-left">
           <i data-lucide="network" class="w-4 h-4 text-[#f59e0b]"></i>
-          <span>Herramientas de Red TI</span>
+          <span>Diagnóstico de Red TI</span>
         </button>
       </div>
 
@@ -160,7 +160,7 @@
     <main class="flex-1 overflow-y-auto p-4 md:p-8">
       
       <!-- ============================================================ -->
-      <!-- TAB 1: 3D HARDWARE VIEWER & REAL-TIME TELEMETRY -->
+      <!-- TAB 1: WORKSTATION DIGITAL TWIN & REAL-TIME TELEMETRY -->
       <!-- ============================================================ -->
       <section id="view-home" class="tab-view space-y-6">
         
@@ -193,45 +193,111 @@
           </div>
         </div>
 
-        <!-- 3D INTERACTIVE HARDWARE ENGINE (THREE.JS) -->
-        <div class="vantage-card p-5 space-y-4">
-          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-            <div>
-              <div class="flex items-center gap-2 text-cyan-400 text-xs font-bold uppercase tracking-wider">
-                <i data-lucide="box" class="w-4 h-4"></i>
-                <span>Render 3D Interactivo WebGL</span>
+        <!-- MASTER WORKSTATION DIGITAL TWIN & REAL HARDWARE OVERVIEW -->
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
+          
+          <!-- Exact Digital Twin Visual Blueprint (7 cols on XL) -->
+          <div class="xl:col-span-7 vantage-card p-5 flex flex-col justify-between space-y-4">
+            <div class="flex items-center justify-between border-b border-white/5 pb-3">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#00ff88] pulse-led"></span>
+                <span class="text-xs font-mono font-bold text-white uppercase tracking-wider">Gemelo Digital en Tiempo Real</span>
+                <span class="text-[10px] font-mono bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded">Setup Físico Exacto</span>
               </div>
-              <h2 class="text-base font-extrabold text-white">Visualizador 3D de Chasis, Pantalla Curva & Componentes</h2>
+              <div class="text-[11px] font-mono text-slate-400">
+                Samsung S24R350 + Gigabyte B760M
+              </div>
             </div>
 
-            <!-- 3D Preset Controls -->
-            <div class="flex flex-wrap items-center gap-2">
-              <button onclick="change3DTheme('rgb')" class="px-3 py-1.5 rounded-lg bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 text-xs font-bold hover:bg-cyan-500/30 transition-all">
-                🌈 RGB Aurora
-              </button>
-              <button onclick="change3DTheme('it')" class="px-3 py-1.5 rounded-lg bg-blue-500/20 text-blue-300 border border-blue-500/40 text-xs font-bold hover:bg-blue-500/30 transition-all">
-                🚀 IT Cyan
-              </button>
-              <button onclick="change3DTheme('server')" class="px-3 py-1.5 rounded-lg bg-purple-500/20 text-purple-300 border border-purple-500/40 text-xs font-bold hover:bg-purple-500/30 transition-all">
-                🗄️ Server Blue
-              </button>
-              <button onclick="change3DTheme('stealth')" class="px-3 py-1.5 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-xs font-bold hover:bg-emerald-500/30 transition-all">
-                🛡️ Stealth
-              </button>
-              <button onclick="toggleRotate3D()" id="btnRotate3D" class="w-8 h-8 rounded-lg bg-slate-900 border border-white/10 text-cyan-400 hover:text-white flex items-center justify-center transition-colors" title="Alternar Rotación 360°">
-                <i data-lucide="rotate-3d" class="w-4 h-4"></i>
-              </button>
+            <div id="homeTwinContainer" class="w-full h-72 sm:h-80 rounded-xl bg-[#02050e] border border-white/5 p-2 flex items-center justify-center overflow-hidden shadow-inner">
+              <!-- Digital Twin SVG of ARCNTID002 injected dynamically via app.js -->
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1 text-xs font-mono">
+              <div class="p-2.5 rounded-lg bg-slate-900/70 border border-white/5">
+                <div class="text-[9px] text-slate-500">PANTALLA</div>
+                <div class="text-white font-bold truncate">Samsung 24" IPS</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-slate-900/70 border border-white/5">
+                <div class="text-[9px] text-slate-500">PROCESADOR</div>
+                <div class="text-cyan-400 font-bold truncate">i5-12400 (4.4GHz)</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-slate-900/70 border border-white/5">
+                <div class="text-[9px] text-slate-500">MEMORIA RAM</div>
+                <div class="text-emerald-400 font-bold truncate">32 GB Dual Ch.</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-slate-900/70 border border-white/5">
+                <div class="text-[9px] text-slate-500">UNIDAD NVME</div>
+                <div class="text-purple-400 font-bold truncate">Kingston 1TB Gen4</div>
+              </div>
             </div>
           </div>
 
-          <!-- 3D Canvas Viewport -->
-          <div id="threeCanvasContainer" class="cursor-grab active:cursor-grabbing">
-            <!-- Three.js Canvas Injected Dynamically -->
+          <!-- Master Station Health & Quick Diagnostic Matrix (5 cols on XL) -->
+          <div class="xl:col-span-5 flex flex-col justify-between gap-4">
+            
+            <div class="vantage-card p-5 space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="shield-check" class="w-5 h-5 text-[#00ff88]"></i>
+                  <h3 class="text-sm font-black text-white">Estado de Salud del Sistema</h3>
+                </div>
+                <span class="text-2xl font-black text-[#00ff88] font-mono">98%</span>
+              </div>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Todos los subsistemas de hardware operan dentro de los umbrales térmicos y de rendimiento recomendados por Lenovo Vantage.
+              </p>
+
+              <div class="space-y-2.5 text-xs divide-y divide-white/5">
+                <div class="pt-2 flex items-center justify-between">
+                  <span class="text-slate-400 flex items-center gap-2"><i data-lucide="server" class="w-3.5 h-3.5 text-cyan-400"></i> Dominio Active Directory:</span>
+                  <span class="font-mono text-[#00ff88] font-bold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#00ff88]"></span> 192.168.18.200 (1ms)</span>
+                </div>
+                <div class="pt-2 flex items-center justify-between">
+                  <span class="text-slate-400 flex items-center gap-2"><i data-lucide="memory-stick" class="w-3.5 h-3.5 text-emerald-400"></i> Ancho de Banda RAM:</span>
+                  <span class="font-mono text-emerald-400 font-bold">Dual Channel 128-bit</span>
+                </div>
+                <div class="pt-2 flex items-center justify-between">
+                  <span class="text-slate-400 flex items-center gap-2"><i data-lucide="hard-drive" class="w-3.5 h-3.5 text-purple-400"></i> Integridad SMART SSD:</span>
+                  <span class="font-mono text-[#00ff88] font-bold">100% Óptimo (0 Errores)</span>
+                </div>
+                <div class="pt-2 flex items-center justify-between">
+                  <span class="text-slate-400 flex items-center gap-2"><i data-lucide="thermometer" class="w-3.5 h-3.5 text-amber-400"></i> Temperatura CPU:</span>
+                  <span class="font-mono text-slate-200 font-bold">38 °C (Normal)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Fleet Navigation Card -->
+            <div class="vantage-card p-5 space-y-3 bg-gradient-to-r from-[#0d152a] to-[#070c1b] border-cyan-500/20">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                  <i data-lucide="monitor" class="w-4 h-4 text-cyan-400"></i> Resumen de la Red Útiles Twins
+                </span>
+                <span class="text-xs font-mono font-bold text-cyan-400">26 Equipos</span>
+              </div>
+              <div class="grid grid-cols-3 gap-2 text-center text-xs font-mono">
+                <div class="p-2 rounded-lg bg-slate-900/80 border border-white/5">
+                  <div class="text-[10px] text-slate-500">EN LÍNEA</div>
+                  <div class="text-sm font-black text-[#00ff88]">21</div>
+                </div>
+                <div class="p-2 rounded-lg bg-slate-900/80 border border-white/5">
+                  <div class="text-[10px] text-slate-500">OFFLINE</div>
+                  <div class="text-sm font-black text-slate-400">5</div>
+                </div>
+                <div class="p-2 rounded-lg bg-slate-900/80 border border-white/5">
+                  <div class="text-[10px] text-slate-500">ALERTAS</div>
+                  <div class="text-sm font-black text-amber-400">10</div>
+                </div>
+              </div>
+              <button onclick="document.querySelector('[data-tab=fleet]').click()" class="w-full py-2.5 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 text-xs font-bold transition-all flex items-center justify-center gap-2">
+                <span>Inspeccionar Catálogo de 26 PCs</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+
           </div>
-          <div class="flex items-center justify-between text-[11px] text-slate-500 px-1 font-mono">
-            <span>🖱️ Arrastra con el mouse o dedo para rotar en 360° • Rueda para Zoom</span>
-            <span class="text-cyan-400 font-bold">Shader PBR + Materiales Físicos en Vivo</span>
-          </div>
+
         </div>
 
         <!-- Realtime Telemetry Gauges Grid -->
@@ -269,8 +335,8 @@
                 </div>
                 <div>
                   <h3 class="text-xs font-extrabold text-white uppercase tracking-wider">Memoria RAM</h3>
-                  <p class="text-[11px] text-amber-400 font-semibold flex items-center gap-1">
-                    <i data-lucide="alert-circle" class="w-3 h-3"></i> Single Ch. (32GB)
+                  <p class="text-[11px] text-emerald-400 font-semibold flex items-center gap-1">
+                    <i data-lucide="check-circle-2" class="w-3 h-3 text-[#00ff88]"></i> Dual Ch. (32GB)
                   </p>
                 </div>
               </div>
@@ -332,10 +398,10 @@
               <span id="fleetResultsCount" class="text-xs text-slate-400 font-mono font-bold">Mostrando 26 dispositivos</span>
               <select id="fleetStatusFilter" class="bg-slate-900 border border-white/10 text-xs text-white rounded-xl px-3 py-2.5 focus:outline-none focus:border-cyan-400 font-medium">
                 <option value="all">Todos los Estados</option>
-                <option value="online">🟢 En Línea (21)</option>
-                <option value="offline">🔴 Offline (5)</option>
-                <option value="single_ram">⚠️ Alerta Single Channel RAM</option>
-                <option value="critical">🚨 Alerta Disco C: Crítico</option>
+                <option value="online">En Línea (21)</option>
+                <option value="offline">Standby / Apagada (5)</option>
+                <option value="single_ram">Alerta: Single Channel RAM (10)</option>
+                <option value="critical">Alerta: Espacio Disco Crítico</option>
               </select>
             </div>
 
@@ -343,26 +409,33 @@
 
           <!-- Department Category Pills -->
           <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs">
-            <button class="cat-pill bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 px-3.5 py-2 rounded-xl font-bold shrink-0 transition-all shadow-[0_0_15px_rgba(0,240,255,0.2)]" data-cat="all">
-              🏢 Todos (26)
+            <button class="cat-pill bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 px-3.5 py-2 rounded-xl font-bold shrink-0 transition-all shadow-[0_0_15px_rgba(0,240,255,0.2)] flex items-center gap-1.5" data-cat="all">
+              <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+              <span>Todos (26)</span>
             </button>
-            <button class="cat-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3.5 py-2 rounded-xl font-bold shrink-0 hover:text-white transition-all" data-cat="design">
-              🎨 Marketing y Diseño (9)
+            <button class="cat-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3.5 py-2 rounded-xl font-bold shrink-0 hover:text-white transition-all flex items-center gap-1.5" data-cat="design">
+              <i data-lucide="palette" class="w-3.5 h-3.5"></i>
+              <span>Marketing y Diseño (9)</span>
             </button>
-            <button class="cat-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3.5 py-2 rounded-xl font-bold shrink-0 hover:text-white transition-all" data-cat="admin">
-              💼 Administración (11)
+            <button class="cat-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3.5 py-2 rounded-xl font-bold shrink-0 hover:text-white transition-all flex items-center gap-1.5" data-cat="admin">
+              <i data-lucide="briefcase" class="w-3.5 h-3.5"></i>
+              <span>Administración (11)</span>
             </button>
-            <button class="cat-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3.5 py-2 rounded-xl font-bold shrink-0 hover:text-white transition-all" data-cat="sales">
-              🛒 Ventas (3)
+            <button class="cat-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3.5 py-2 rounded-xl font-bold shrink-0 hover:text-white transition-all flex items-center gap-1.5" data-cat="sales">
+              <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
+              <span>Ventas (3)</span>
             </button>
-            <button class="cat-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3.5 py-2 rounded-xl font-bold shrink-0 hover:text-white transition-all" data-cat="warehouse">
-              📦 Almacén (1)
+            <button class="cat-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3.5 py-2 rounded-xl font-bold shrink-0 hover:text-white transition-all flex items-center gap-1.5" data-cat="warehouse">
+              <i data-lucide="package" class="w-3.5 h-3.5"></i>
+              <span>Almacén (1)</span>
             </button>
-            <button class="cat-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3.5 py-2 rounded-xl font-bold shrink-0 hover:text-white transition-all" data-cat="it">
-              💻 Sistemas TI (1)
+            <button class="cat-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3.5 py-2 rounded-xl font-bold shrink-0 hover:text-white transition-all flex items-center gap-1.5" data-cat="it">
+              <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
+              <span>Sistemas TI (1)</span>
             </button>
-            <button class="cat-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3.5 py-2 rounded-xl font-bold shrink-0 hover:text-white transition-all" data-cat="servers">
-              🗄️ Servidores (1)
+            <button class="cat-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3.5 py-2 rounded-xl font-bold shrink-0 hover:text-white transition-all flex items-center gap-1.5" data-cat="servers">
+              <i data-lucide="server" class="w-3.5 h-3.5"></i>
+              <span>Servidores (1)</span>
             </button>
           </div>
         </div>
@@ -473,19 +546,19 @@
   <!-- MOBILE BOTTOM NAVIGATION (FOR PHONES & PWA) -->
   <nav class="mobile-nav-bar fixed bottom-0 inset-x-0 h-16 md:hidden flex items-center justify-around z-40 px-2 no-print">
     <button data-tab="home" class="nav-btn active flex flex-col items-center gap-1 text-[10px] font-bold text-slate-400 hover:text-cyan-400 transition-colors">
-      <i data-lucide="box" class="w-5 h-5"></i>
-      <span>3D Setup</span>
+      <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+      <span>Panel TI</span>
     </button>
     <button data-tab="fleet" class="nav-btn flex flex-col items-center gap-1 text-[10px] font-bold text-slate-400 hover:text-cyan-400 transition-colors">
-      <i data-lucide="layout-grid" class="w-5 h-5"></i>
+      <i data-lucide="monitor" class="w-5 h-5"></i>
       <span>26 PCs</span>
     </button>
     <button data-tab="diag" class="nav-btn flex flex-col items-center gap-1 text-[10px] font-bold text-slate-400 hover:text-cyan-400 transition-colors">
-      <i data-lucide="activity-square" class="w-5 h-5"></i>
+      <i data-lucide="shield-check" class="w-5 h-5"></i>
       <span>Diagnóstico</span>
     </button>
     <button data-tab="compare" class="nav-btn flex flex-col items-center gap-1 text-[10px] font-bold text-slate-400 hover:text-cyan-400 transition-colors">
-      <i data-lucide="git-compare" class="w-5 h-5"></i>
+      <i data-lucide="sliders" class="w-5 h-5"></i>
       <span>Comparar</span>
     </button>
     <button data-tab="network" class="nav-btn flex flex-col items-center gap-1 text-[10px] font-bold text-slate-400 hover:text-cyan-400 transition-colors">
