@@ -490,14 +490,19 @@ function openDeviceDrawer(deviceId) {
       <!-- PHOTO & 3D HARDWARE VIEWPORT -->
       <div class="vantage-card p-4 space-y-3">
         <div class="flex items-center justify-between text-xs font-mono text-cyan-400">
-          <span class="flex items-center gap-1.5 font-bold"><i data-lucide="camera" class="w-4 h-4"></i> HARDWARE SETUP (PANTALLA + CPU)</span>
+          <span class="flex items-center gap-1.5 font-bold"><i data-lucide="cpu" class="w-4 h-4"></i> HARDWARE SETUP (PANTALLA + CPU)</span>
           <div class="flex items-center gap-1">
-            <button id="btnTogglePhoto" onclick="showDrawerMedia('photo')" class="px-2 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold text-[10px] border border-cyan-500/40">FOTO REAL</button>
+            <button id="btnToggleTwin" onclick="showDrawerMedia('twin')" class="px-2 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold text-[10px] border border-cyan-500/40">TWIN VIRTUAL</button>
+            <button id="btnTogglePhoto" onclick="showDrawerMedia('photo')" class="px-2 py-1 rounded bg-slate-900 text-slate-400 font-bold text-[10px] border border-white/10 hover:text-white">FOTO AISLADA</button>
             <button id="btnToggle3D" onclick="showDrawerMedia('3d')" class="px-2 py-1 rounded bg-slate-900 text-slate-400 font-bold text-[10px] border border-white/10 hover:text-white">3D 360°</button>
           </div>
         </div>
 
-        <div id="drawerPhotoBox" class="w-full h-64 rounded-xl bg-[#040711] border border-white/10 overflow-hidden shadow-inner relative">
+        <div id="drawerTwinBox" class="w-full h-64 rounded-xl bg-[#040711] border border-white/10 overflow-hidden shadow-inner relative p-1 flex items-center justify-center">
+          ${typeof generateVirtualTwinSVG === 'function' ? generateVirtualTwinSVG(dev) : ''}
+        </div>
+
+        <div id="drawerPhotoBox" class="hidden w-full h-64 rounded-xl bg-[#040711] border border-white/10 overflow-hidden shadow-inner relative">
           <img src="${photoUrl}" alt="${dev.computerName}" class="w-full h-full object-cover">
           <div class="absolute bottom-2 left-2 right-2 bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 flex items-center justify-between text-xs font-mono">
             <span class="text-white font-bold">${dev.formFactor}</span>
@@ -623,26 +628,38 @@ function openDeviceDrawer(deviceId) {
 
 function showDrawerMedia(type) {
   playTechSound('click');
+  const twinBox = document.getElementById('drawerTwinBox');
   const photoBox = document.getElementById('drawerPhotoBox');
   const threeBox = document.getElementById('drawer3DContainer');
+  const btnTwin = document.getElementById('btnToggleTwin');
   const btnPhoto = document.getElementById('btnTogglePhoto');
   const btn3D = document.getElementById('btnToggle3D');
 
-  if (!photoBox || !threeBox) return;
+  if (!twinBox || !photoBox || !threeBox) return;
+
+  const inactiveBtn = 'px-2 py-1 rounded bg-slate-900 text-slate-400 font-bold text-[10px] border border-white/10 hover:text-white';
+  const activeBtn = 'px-2 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold text-[10px] border border-cyan-500/40';
+
+  if (btnTwin) btnTwin.className = inactiveBtn;
+  if (btnPhoto) btnPhoto.className = inactiveBtn;
+  if (btn3D) btn3D.className = inactiveBtn;
+
+  twinBox.classList.add('hidden');
+  photoBox.classList.add('hidden');
+  threeBox.classList.add('hidden');
 
   if (type === '3d') {
-    photoBox.classList.add('hidden');
     threeBox.classList.remove('hidden');
-    btn3D.className = 'px-2 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold text-[10px] border border-cyan-500/40';
-    btnPhoto.className = 'px-2 py-1 rounded bg-slate-900 text-slate-400 font-bold text-[10px] border border-white/10 hover:text-white';
+    if (btn3D) btn3D.className = activeBtn;
     if (selectedDevice && typeof mountInteractive3DViewport === 'function') {
       mountInteractive3DViewport('drawer3DContainer', selectedDevice);
     }
-  } else {
-    threeBox.classList.add('hidden');
+  } else if (type === 'photo') {
     photoBox.classList.remove('hidden');
-    btnPhoto.className = 'px-2 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold text-[10px] border border-cyan-500/40';
-    btn3D.className = 'px-2 py-1 rounded bg-slate-900 text-slate-400 font-bold text-[10px] border border-white/10 hover:text-white';
+    if (btnPhoto) btnPhoto.className = activeBtn;
+  } else {
+    twinBox.classList.remove('hidden');
+    if (btnTwin) btnTwin.className = activeBtn;
   }
 }
 

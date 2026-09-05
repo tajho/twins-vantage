@@ -16,6 +16,9 @@ function getDevicePhoto(dev) {
 }
 
 function renderDeviceImage(visualType, computerName, isOnline, dev) {
+  if (dev && typeof generateVirtualTwinSVG === 'function') {
+    return generateVirtualTwinSVG(dev);
+  }
   const photoUrl = dev ? getDevicePhoto(dev) : (visualType.includes('creator') || visualType.includes('gaming') ? VANTAGE_RENDERS.creator : (visualType.includes('server') ? VANTAGE_RENDERS.server : VANTAGE_RENDERS.office));
   
   return `
