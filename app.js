@@ -106,13 +106,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderNetworkTopology();
   initComparisonTool();
   startLiveTelemetry();
-
-  setTimeout(() => {
-    if (typeof init3DScene === 'function') {
-      init3DScene();
-    }
-  }, 100);
-  
   setInterval(updateLiveClock, 1000);
   updateLiveClock();
 
@@ -251,7 +244,12 @@ async function fetchLiveTelemetry() {
 
 function startLiveTelemetry() {
   fetchLiveTelemetry();
-  livePollingInterval = setInterval(fetchLiveTelemetry, 3500);
+  if (livePollingInterval) clearInterval(livePollingInterval);
+  livePollingInterval = setInterval(() => {
+    if (!document.hidden) {
+      fetchLiveTelemetry();
+    }
+  }, 8000);
 }
 
 function renderFleetOverview() {
@@ -696,12 +694,25 @@ function showDrawerMedia(type) {
     if (selectedDevice && typeof mountInteractive3DViewport === 'function') {
       mountInteractive3DViewport('drawer3DContainer', selectedDevice);
     }
-  } else if (type === 'photo') {
-    photoBox.classList.remove('hidden');
-    if (btnPhoto) btnPhoto.className = activeBtn;
   } else {
-    twinBox.classList.remove('hidden');
-    if (btnTwin) btnTwin.className = activeBtn;
+    // Cleanup 3D scene when switching away from 3D view
+    if (typeof active3DScenes !== 'undefined' && active3DScenes.has('drawer3DContainer')) {
+      const prev = active3DScenes.get('drawer3DContainer');
+      if (prev && prev.animId) cancelAnimationFrame(prev.animId);
+      if (prev && prev.renderer && prev.renderer.domElement) {
+        prev.renderer.dispose();
+        prev.renderer.domElement.remove();
+      }
+      active3DScenes.delete('drawer3DContainer');
+    }
+    
+    if (type === 'photo') {
+      photoBox.classList.remove('hidden');
+      if (btnPhoto) btnPhoto.className = activeBtn;
+    } else {
+      twinBox.classList.remove('hidden');
+      if (btnTwin) btnTwin.className = activeBtn;
+    }
   }
 }
 
@@ -714,6 +725,17 @@ function closeDeviceDrawer() {
     drawer.classList.add('pointer-events-none');
   }
   if (backdrop) backdrop.classList.add('hidden');
+
+  // Clean up 3D viewport on close to prevent background GPU/CPU rendering
+  if (typeof active3DScenes !== 'undefined' && active3DScenes.has('drawer3DContainer')) {
+    const prev = active3DScenes.get('drawer3DContainer');
+    if (prev && prev.animId) cancelAnimationFrame(prev.animId);
+    if (prev && prev.renderer && prev.renderer.domElement) {
+      prev.renderer.dispose();
+      prev.renderer.domElement.remove();
+    }
+    active3DScenes.delete('drawer3DContainer');
+  }
 }
 
 // Global ESC key listener to close modals/drawers

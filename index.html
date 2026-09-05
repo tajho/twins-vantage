@@ -39,13 +39,6 @@
     }
   </script>
 
-  <!-- Three.js + OrbitControls for 3D Hardware Render -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-
-  <!-- Canvas Confetti -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -563,12 +556,16 @@
     </div>
   </div>
 
-  <!-- Scripts -->
+  <!-- Deferred 3D & Utility Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
+
+  <!-- Core App Modules (Immediate Execution) -->
   <script src="inventory_data.js"></script>
   <script src="virtual_twin_renderer.js"></script>
   <script src="device_images.js"></script>
-  <script src="three_scene.js"></script>
-  <script src="three_engine.js"></script>
+  <script src="three_engine.js" defer></script>
   <script src="modals.js"></script>
   <script src="app.js"></script>
 </body>

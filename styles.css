@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&family=JetBrains+Mono:wght@400;500;700;800&display=swap');
 
 :root {
   --bg-abyss: #030610;
@@ -6,13 +6,12 @@
   --bg-card: #0d152a;
   --bg-card-hover: #121e3d;
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-cyber: rgba(0, 240, 255, 0.25);
+  --border-cyber: rgba(0, 240, 255, 0.35);
   --border-focus: #00f0ff;
   
   --neon-cyan: #00f0ff;
   --neon-blue: #3b82f6;
   --neon-purple: #a855f7;
-  --neon-pink: #ec4899;
   --neon-emerald: #00ff88;
   --neon-amber: #f59e0b;
   --neon-rose: #f43f5e;
@@ -21,10 +20,6 @@
   --text-lead: #e2e8f0;
   --text-muted: #94a3b8;
   --text-ghost: #475569;
-  
-  --glow-cyan: 0 0 25px rgba(0, 240, 255, 0.35);
-  --glow-purple: 0 0 25px rgba(168, 85, 247, 0.35);
-  --glow-emerald: 0 0 25px rgba(0, 255, 136, 0.35);
 }
 
 * {
@@ -39,12 +34,8 @@ body {
   color: var(--text-lead);
   min-height: 100vh;
   overflow-x: hidden;
-  background-image: 
-    radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.06) 0%, transparent 45%),
-    radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.05) 0%, transparent 45%),
-    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+  background-image: radial-gradient(circle at 50% 0%, #0d1733 0%, #030610 75%);
+  background-attachment: fixed;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -64,50 +55,33 @@ body {
   background: var(--neon-cyan);
 }
 
-/* Luxury Cyber Glass Card */
+/* Ultra-Fast Hardware-Accelerated Vantage Glass Card */
 .vantage-card {
-  background: linear-gradient(135deg, rgba(13, 21, 42, 0.75), rgba(7, 12, 27, 0.85));
+  background: #090f22;
+  background: linear-gradient(145deg, #0c142b 0%, #060b19 100%);
   border: 1px solid var(--border-subtle);
   border-radius: 16px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.15s ease;
   position: relative;
   overflow: hidden;
-}
-.vantage-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.4), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 320px;
 }
 .vantage-card:hover {
   border-color: var(--border-cyber);
-  transform: translateY(-3px);
-  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(0, 240, 255, 0.12);
-}
-.vantage-card:hover::before {
-  opacity: 1;
 }
 
 .vantage-card-static {
-  background: linear-gradient(135deg, rgba(13, 21, 42, 0.8), rgba(7, 12, 27, 0.9));
+  background: #0c142b;
   border: 1px solid var(--border-subtle);
   border-radius: 16px;
-  backdrop-filter: blur(16px);
 }
 
-/* Cyber Glow Badges */
+/* Cyber Glow Badges (Optimized without heavy text-shadows) */
 .badge-online {
   background: rgba(0, 255, 136, 0.12);
   color: #00ff88;
-  border: 1px solid rgba(0, 255, 136, 0.3);
-  text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+  border: 1px solid rgba(0, 255, 136, 0.35);
 }
 .badge-offline {
   background: rgba(148, 163, 184, 0.1);
@@ -117,26 +91,21 @@ body {
 .badge-warning {
   background: rgba(245, 158, 11, 0.15);
   color: #fbbf24;
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  text-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+  border: 1px solid rgba(245, 158, 11, 0.4);
 }
 .badge-critical {
   background: rgba(244, 63, 94, 0.18);
   color: #fb7185;
-  border: 1px solid rgba(244, 63, 94, 0.4);
-  text-shadow: 0 0 12px rgba(244, 63, 94, 0.5);
+  border: 1px solid rgba(244, 63, 94, 0.45);
 }
 
-/* Neon Pulse Animation */
-@keyframes neonPulse {
-  0%, 100% { transform: scale(1); opacity: 1; filter: drop-shadow(0 0 4px currentColor); }
-  50% { transform: scale(1.25); opacity: 0.7; filter: drop-shadow(0 0 10px currentColor); }
-}
+/* Lightweight Static Pulse Dot */
 .pulse-led {
-  animation: neonPulse 2s infinite ease-in-out;
+  display: inline-block;
+  box-shadow: 0 0 6px currentColor;
 }
 
-/* Cyber Button with Glowing Flare */
+/* Cyber Button */
 .cyber-btn-primary {
   background: linear-gradient(135deg, #00f0ff, #0284c7);
   color: #020617;
@@ -144,13 +113,11 @@ body {
   border: none;
   position: relative;
   overflow: hidden;
-  transition: all 0.25s ease;
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
+  transition: opacity 0.15s ease;
 }
 .cyber-btn-primary:hover {
   background: linear-gradient(135deg, #38bdf8, #00f0ff);
-  transform: translateY(-1px);
-  box-shadow: 0 0 30px rgba(0, 240, 255, 0.6);
+  opacity: 0.95;
 }
 
 /* Navigation Active State */
