@@ -198,49 +198,71 @@ function switchTab(tabId) {
 }
 
 async function fetchLiveTelemetry() {
-  try {
-    const res = await fetch('/api/system/live');
-    const data = await res.json();
-    if (data.success && data.live) {
-      const live = data.live;
-      
-      const cpuLoad = live.cpuLoad || Math.floor(Math.random() * 8 + 6);
-      const cpuMeter = document.getElementById('liveCpuLoad');
-      const cpuBar = document.getElementById('liveCpuBar');
-      if (cpuMeter) cpuMeter.innerText = `${cpuLoad}%`;
-      if (cpuBar) cpuBar.style.width = `${cpuLoad}%`;
+  const isGitHubPages = window.location.hostname.includes('github.io');
+  let live = null;
 
-      if (live.memPercent) {
-        const memPercent = live.memPercent;
-        const memUsed = live.memUsedGB;
-        const memTotal = live.memTotalGB;
-        const ramMeter = document.getElementById('liveRamPercent');
-        const ramBar = document.getElementById('liveRamBar');
-        const ramDetail = document.getElementById('liveRamDetail');
-        if (ramMeter) ramMeter.innerText = `${memPercent}%`;
-        if (ramBar) ramBar.style.width = `${memPercent}%`;
-        if (ramDetail) ramDetail.innerText = `${memUsed} GB / ${memTotal} GB`;
+  if (!isGitHubPages) {
+    try {
+      const res = await fetch('/api/system/live');
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && data.live) live = data.live;
       }
+    } catch (err) {}
+  }
 
-      if (live.diskCPercent) {
-        const diskPercent = live.diskCPercent;
-        const diskFree = live.diskCFreeGB;
-        const diskTotal = live.diskCTotalGB;
-        const diskMeter = document.getElementById('liveDiskPercent');
-        const diskBar = document.getElementById('liveDiskBar');
-        const diskDetail = document.getElementById('liveDiskDetail');
-        if (diskMeter) diskMeter.innerText = `${diskPercent}%`;
-        if (diskBar) diskBar.style.width = `${diskPercent}%`;
-        if (diskDetail) diskDetail.innerText = `${diskFree} GB libres de ${diskTotal} GB`;
-      }
+  // Fallback / GitHub Pages simulated live telemetry
+  if (!live) {
+    const cpuLoad = Math.floor(Math.sin(Date.now() / 4000) * 5 + 14);
+    const memPercent = 49;
+    const memUsedGB = 15.8;
+    const memTotalGB = 32;
+    const diskPercent = 49;
+    const diskFreeGB = 471;
+    const diskTotalGB = 930;
 
-      const uptimeEl = document.getElementById('liveUptime');
-      if (uptimeEl && live.uptime) uptimeEl.innerText = live.uptime;
-      
-      const hostEl = document.getElementById('liveHostInfo');
-      if (hostEl) hostEl.innerText = `Gigabyte B760M D3HP DDR4 • Intel Core i5-12400 (6C/12T) • ${live.memTotalGB || 32} GB RAM • ${live.osName || 'Windows 11 Pro'}`;
-    }
-  } catch (err) {}
+    live = {
+      cpuLoad,
+      memPercent,
+      memUsedGB,
+      memTotalGB,
+      diskCPercent: diskPercent,
+      diskCFreeGB: diskFreeGB,
+      diskCTotalGB: diskTotalGB,
+      uptime: '4d 18h 32m',
+      osName: 'Windows 11 Pro 24H2'
+    };
+  }
+
+  const cpuLoad = live.cpuLoad || 14;
+  const cpuMeter = document.getElementById('liveCpuLoad');
+  const cpuBar = document.getElementById('liveCpuBar');
+  if (cpuMeter) cpuMeter.innerText = `${cpuLoad}%`;
+  if (cpuBar) cpuBar.style.width = `${cpuLoad}%`;
+
+  if (live.memPercent) {
+    const ramMeter = document.getElementById('liveRamPercent');
+    const ramBar = document.getElementById('liveRamBar');
+    const ramDetail = document.getElementById('liveRamDetail');
+    if (ramMeter) ramMeter.innerText = `${live.memPercent}%`;
+    if (ramBar) ramBar.style.width = `${live.memPercent}%`;
+    if (ramDetail) ramDetail.innerText = `${live.memUsedGB} GB / ${live.memTotalGB} GB`;
+  }
+
+  if (live.diskCPercent) {
+    const diskMeter = document.getElementById('liveDiskPercent');
+    const diskBar = document.getElementById('liveDiskBar');
+    const diskDetail = document.getElementById('liveDiskDetail');
+    if (diskMeter) diskMeter.innerText = `${live.diskCPercent}%`;
+    if (diskBar) diskBar.style.width = `${live.diskCPercent}%`;
+    if (diskDetail) diskDetail.innerText = `${live.diskCFreeGB} GB libres de ${live.diskCTotalGB} GB`;
+  }
+
+  const uptimeEl = document.getElementById('liveUptime');
+  if (uptimeEl && live.uptime) uptimeEl.innerText = live.uptime;
+  
+  const hostEl = document.getElementById('liveHostInfo');
+  if (hostEl) hostEl.innerText = `Gigabyte B760M D3HP DDR4 • Intel Core i5-12400 (6C/12T) • ${live.memTotalGB || 32} GB RAM • ${live.osName || 'Windows 11 Pro'}`;
 }
 
 function startLiveTelemetry() {
@@ -661,8 +683,11 @@ function openDeviceDrawer(deviceId) {
   const backdrop = document.getElementById('drawerBackdrop');
   if (backdrop) backdrop.classList.remove('hidden');
 
-  drawer.classList.add('drawer-open');
-  drawer.classList.remove('pointer-events-none');
+  drawer.classList.remove('hidden');
+  requestAnimationFrame(() => {
+    drawer.classList.add('drawer-open');
+    drawer.classList.remove('pointer-events-none');
+  });
   
   if (window.lucide) window.lucide.createIcons();
 }
@@ -724,6 +749,11 @@ function closeDeviceDrawer() {
   if (drawer) {
     drawer.classList.remove('drawer-open');
     drawer.classList.add('pointer-events-none');
+    setTimeout(() => {
+      if (drawer && !drawer.classList.contains('drawer-open')) {
+        drawer.classList.add('hidden');
+      }
+    }, 360);
   }
   if (backdrop) backdrop.classList.add('hidden');
 

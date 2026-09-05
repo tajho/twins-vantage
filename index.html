@@ -43,7 +43,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Custom Luxury Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=3.4">
+  <link rel="stylesheet" href="styles.css?v=3.5">
 </head>
 <body class="flex flex-col h-screen overflow-hidden text-slate-100">
 
@@ -548,7 +548,7 @@
   <!-- DEVICE DETAIL DRAWER (LENOVO VANTAGE HARDWARE INSPECTOR) -->
   <!-- ============================================================ -->
   <div id="drawerBackdrop" onclick="closeDeviceDrawer()" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-40 hidden transition-opacity"></div>
-  <div id="deviceDrawer" class="drawer-panel fixed inset-y-0 right-0 w-full sm:w-[580px] bg-[#030610] border-l border-white/10 shadow-2xl z-50 flex flex-col overflow-y-auto pointer-events-none">
+  <div id="deviceDrawer" class="drawer-panel hidden fixed inset-y-0 right-0 w-full sm:w-[580px] bg-[#030610] border-l border-white/10 shadow-2xl z-50 flex flex-col overflow-y-auto pointer-events-none">
     <!-- Mobile swipe indicator -->
     <div class="w-12 h-1.5 bg-slate-700 rounded-full mx-auto my-2.5 sm:hidden shrink-0"></div>
     <div id="drawerContent">
@@ -562,11 +562,11 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
 
   <!-- Core App Modules (Immediate Execution) -->
-  <script src="inventory_data.js"></script>
-  <script src="virtual_twin_renderer.js"></script>
-  <script src="device_images.js"></script>
-  <script src="three_engine.js" defer></script>
-  <script src="modals.js?v=3.4"></script>
-  <script src="app.js?v=3.4"></script>
+  <script src="inventory_data.js?v=3.5"></script>
+  <script src="virtual_twin_renderer.js?v=3.5"></script>
+  <script src="device_images.js?v=3.5"></script>
+  <script src="three_engine.js?v=3.5" defer></script>
+  <script src="modals.js?v=3.5"></script>
+  <script src="app.js?v=3.5"></script>
 </body>
 </html>
