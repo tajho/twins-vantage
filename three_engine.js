@@ -1,9 +1,10 @@
 // TWINS VANTAGE PRO — Dynamic 3D Hardware Modeling Engine
-// Procedural WebGL 3D Generator for Screen & CPU Tower for all 26 Corporate PCs
+// Procedural WebGL 3D Generator for Screen & CPU Tower on EVERY card of the 26 PCs Fleet
 
-// Cache for active 3D scenes
 const active3DScenes = new Map();
+const activeCardScenes = new Map();
 
+// Helper to build the 3D computer group (Desk + Monitor + CPU Tower + Peripherals)
 function buildComputer3DGroup(dev) {
   const compGroup = new THREE.Group();
   const isOnline = dev.isOnline;
@@ -13,7 +14,7 @@ function buildComputer3DGroup(dev) {
   const hasRTX = dev.gpu && (dev.gpu.includes('RTX') || dev.gpu.includes('GeForce'));
   const hasSingleRam = dev.ramChannelType === 'single';
 
-  // Theme Accent Colors
+  // Colors
   let mainColor = 0x00f0ff;
   let accentColor = 0x3b82f6;
   let fanColor = 0x00f0ff;
@@ -31,7 +32,6 @@ function buildComputer3DGroup(dev) {
     accentColor = 0x0284c7;
     fanColor = 0x00ff88;
   } else {
-    // Admin / Sales / Warehouse
     mainColor = 0x38bdf8;
     accentColor = 0x1e293b;
     fanColor = 0x38bdf8;
@@ -43,9 +43,7 @@ function buildComputer3DGroup(dev) {
     fanColor = 0x334155;
   }
 
-  // ==========================================
-  // 1. DESK BASE
-  // ==========================================
+  // 1. Desk Surface
   const deskGeo = new THREE.BoxGeometry(4.8, 0.08, 2.6);
   const deskMat = new THREE.MeshStandardMaterial({
     color: 0x0b0f19,
@@ -64,41 +62,38 @@ function buildComputer3DGroup(dev) {
   strip.position.set(0, -0.01, 1.3);
   compGroup.add(strip);
 
-  // Extended Mousepad
+  // Mousepad
   const padGeo = new THREE.BoxGeometry(2.8, 0.008, 1.2);
   const padMat = new THREE.MeshStandardMaterial({ color: 0x05070d, roughness: 0.9 });
   const pad = new THREE.Mesh(padGeo, padMat);
   pad.position.set(-0.35, 0.004, 0.25);
   compGroup.add(pad);
 
-  // ==========================================
-  // 2. MONITOR (TAILORED TO SPEC)
-  // ==========================================
+  // 2. 3D Monitor (Tailored to Spec)
   const monitorGroup = new THREE.Group();
   monitorGroup.position.set(-0.55, 0, 0);
 
-  // Stand Base
+  // Stand Base & Arm
   const baseGeo = new THREE.CylinderGeometry(0.28, 0.32, 0.025, 32);
   const standMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.9, roughness: 0.2 });
   const base = new THREE.Mesh(baseGeo, standMat);
   base.position.set(0, 0.0125, 0);
   monitorGroup.add(base);
 
-  // Stand Arm
   const armGeo = new THREE.BoxGeometry(0.06, 0.75, 0.06);
   const arm = new THREE.Mesh(armGeo, standMat);
   arm.position.set(0, 0.38, -0.08);
   arm.rotation.x = -0.08;
   monitorGroup.add(arm);
 
-  // Screen Aspect Ratio & Size
+  // Screen Size
   let screenW = 1.9;
   let screenH = 1.05;
   if (isDesign) {
-    screenW = 2.1; // 27" 2K 1440p ProArt
+    screenW = 2.1;
     screenH = 1.15;
   } else if (isServer) {
-    screenW = 1.5; // Compact 4:3 / 16:9 console
+    screenW = 1.5;
     screenH = 1.0;
   }
 
@@ -107,7 +102,6 @@ function buildComputer3DGroup(dev) {
   const bezelMat = new THREE.MeshStandardMaterial({ color: 0x020617, roughness: 0.3 });
   const bezel = new THREE.Mesh(bezelGeo, bezelMat);
   bezel.position.set(0, 0.95, 0);
-  bezel.castShadow = true;
   monitorGroup.add(bezel);
 
   // Dynamic Texture on Screen with PC Specific Info
@@ -116,88 +110,87 @@ function buildComputer3DGroup(dev) {
   monCanvas.height = 512;
   const mCtx = monCanvas.getContext('2d');
 
-  // Draw Screen UI
   mCtx.fillStyle = isOnline ? '#040814' : '#0a0d14';
   mCtx.fillRect(0, 0, 1024, 512);
 
   if (isOnline) {
     // Header
     mCtx.fillStyle = '#0f172a';
-    mCtx.fillRect(20, 20, 984, 50);
+    mCtx.fillRect(20, 20, 984, 55);
     mCtx.fillStyle = isDesign ? '#ec4899' : '#00f0ff';
-    mCtx.font = 'bold 22px monospace';
-    mCtx.fillText(`TWINS VANTAGE • ${dev.computerName}`, 40, 52);
+    mCtx.font = 'bold 26px monospace';
+    mCtx.fillText(`${dev.computerName} • TWINS`, 40, 58);
 
-    mCtx.fillStyle = '#10b981';
-    mCtx.font = 'bold 16px monospace';
-    mCtx.fillText(`ONLINE • ${dev.ip}`, 780, 52);
+    mCtx.fillStyle = '#00ff88';
+    mCtx.font = 'bold 20px monospace';
+    mCtx.fillText(`${dev.ip}`, 780, 58);
 
     // Active User Box
     mCtx.fillStyle = '#0b132b';
-    mCtx.fillRect(40, 100, 440, 180);
+    mCtx.fillRect(40, 95, 440, 185);
     mCtx.strokeStyle = '#1e293b';
-    mCtx.strokeRect(40, 100, 440, 180);
+    mCtx.strokeRect(40, 95, 440, 185);
 
     mCtx.fillStyle = '#94a3b8';
-    mCtx.font = '16px sans-serif';
-    mCtx.fillText('USUARIO ASIGNADO:', 60, 135);
+    mCtx.font = '18px sans-serif';
+    mCtx.fillText('USUARIO:', 60, 135);
     mCtx.fillStyle = '#ffffff';
-    mCtx.font = 'bold 24px monospace';
-    mCtx.fillText(dev.activeUser.toUpperCase(), 60, 175);
+    mCtx.font = 'bold 28px monospace';
+    mCtx.fillText(dev.activeUser.toUpperCase(), 60, 180);
 
     mCtx.fillStyle = '#38bdf8';
-    mCtx.font = '15px sans-serif';
-    mCtx.fillText(`Depto: ${dev.department}`, 60, 210);
+    mCtx.font = '16px sans-serif';
+    mCtx.fillText(`${dev.department}`, 60, 220);
     mCtx.fillStyle = '#64748b';
-    mCtx.font = '13px monospace';
-    mCtx.fillText(dev.os, 60, 245);
+    mCtx.font = '14px monospace';
+    mCtx.fillText(dev.os.substring(0, 28), 60, 255);
 
     // Hardware Specs Box
     mCtx.fillStyle = '#0b132b';
-    mCtx.fillRect(510, 100, 470, 180);
+    mCtx.fillRect(510, 95, 470, 185);
     mCtx.strokeStyle = '#1e293b';
-    mCtx.strokeRect(510, 100, 470, 180);
+    mCtx.strokeRect(510, 95, 470, 185);
 
     mCtx.fillStyle = '#94a3b8';
-    mCtx.font = '16px sans-serif';
-    mCtx.fillText('PROCESADOR & GRÁFICOS:', 530, 135);
+    mCtx.font = '18px sans-serif';
+    mCtx.fillText('HARDWARE:', 530, 135);
     mCtx.fillStyle = '#00f0ff';
-    mCtx.font = 'bold 16px monospace';
-    mCtx.fillText(dev.cpuShort || dev.cpu, 530, 170);
+    mCtx.font = 'bold 18px monospace';
+    mCtx.fillText(dev.cpuShort || dev.cpu, 530, 175);
 
     mCtx.fillStyle = '#a855f7';
-    mCtx.font = 'bold 16px monospace';
-    mCtx.fillText(dev.gpu, 530, 205);
+    mCtx.font = 'bold 18px monospace';
+    mCtx.fillText(dev.gpu, 530, 215);
 
-    mCtx.fillStyle = '#10b981';
-    mCtx.font = 'bold 15px monospace';
-    mCtx.fillText(`RAM: ${dev.ramTotalGB} GB (${dev.ramChannels})`, 530, 240);
+    mCtx.fillStyle = '#00ff88';
+    mCtx.font = 'bold 18px monospace';
+    mCtx.fillText(`RAM: ${dev.ramTotalGB} GB (${dev.ramChannels.split(' ')[0]})`, 530, 255);
 
-    // Telemetry Waveform Bottom
+    // Waveform Bottom
     mCtx.fillStyle = '#070d1e';
-    mCtx.fillRect(40, 310, 940, 160);
+    mCtx.fillRect(40, 305, 940, 170);
     mCtx.strokeStyle = '#1e2c4a';
-    mCtx.strokeRect(40, 310, 940, 160);
+    mCtx.strokeRect(40, 305, 940, 170);
 
-    mCtx.fillStyle = '#64748b';
-    mCtx.font = '14px monospace';
-    mCtx.fillText('DISCO & ALMACENAMIENTO: ' + dev.storage, 60, 345);
+    mCtx.fillStyle = '#94a3b8';
+    mCtx.font = '16px monospace';
+    mCtx.fillText('DISCO: ' + dev.storage, 60, 345);
 
-    // Disk progress bar
+    // Disk bar
     mCtx.fillStyle = '#1e293b';
-    mCtx.fillRect(60, 365, 900, 20);
+    mCtx.fillRect(60, 365, 900, 25);
     mCtx.fillStyle = dev.alerts.some(a => a.type === 'critical') ? '#ef4444' : '#00f0ff';
-    mCtx.fillRect(60, 365, 650, 20);
+    mCtx.fillRect(60, 365, 680, 25);
 
     mCtx.fillStyle = '#ffffff';
-    mCtx.font = 'bold 14px monospace';
-    mCtx.fillText(dev.diskSpace || 'Partición C: Óptima', 60, 420);
+    mCtx.font = 'bold 16px monospace';
+    mCtx.fillText(dev.diskSpace || 'Partición C: Óptima', 60, 435);
   } else {
-    mCtx.fillStyle = '#334155';
-    mCtx.font = 'bold 36px monospace';
+    mCtx.fillStyle = '#475569';
+    mCtx.font = 'bold 42px monospace';
     mCtx.textAlign = 'center';
-    mCtx.fillText('EQUIPO EN STANDBY / OFFLINE', 512, 240);
-    mCtx.font = '20px monospace';
+    mCtx.fillText('EQUIPO EN STANDBY', 512, 230);
+    mCtx.font = '24px monospace';
     mCtx.fillText(dev.computerName, 512, 290);
     mCtx.textAlign = 'start';
   }
@@ -211,9 +204,7 @@ function buildComputer3DGroup(dev) {
 
   compGroup.add(monitorGroup);
 
-  // ==========================================
-  // 3. CPU TOWER CHASSIS (TAILORED TO SPEC)
-  // ==========================================
+  // 3. 3D CPU Tower Chassis
   const towerGroup = new THREE.Group();
   towerGroup.position.set(1.15, 0, -0.05);
 
@@ -231,7 +222,6 @@ function buildComputer3DGroup(dev) {
     towerD = 1.45;
   }
 
-  // Chassis Metal Case
   const caseGeo = new THREE.BoxGeometry(towerW, towerH, towerD);
   const caseMat = new THREE.MeshStandardMaterial({
     color: isServer ? 0x090d16 : 0x0f172a,
@@ -243,7 +233,7 @@ function buildComputer3DGroup(dev) {
   pcCase.castShadow = true;
   towerGroup.add(pcCase);
 
-  // Tempered Glass Window (Left Side)
+  // Tempered Glass Window
   if (!isServer) {
     const glassGeo = new THREE.BoxGeometry(0.015, towerH - 0.2, towerD - 0.15);
     const glassMat = new THREE.MeshPhysicalMaterial({
@@ -267,7 +257,7 @@ function buildComputer3DGroup(dev) {
   front.position.set(0, towerH / 2, towerD / 2 + 0.01);
   towerGroup.add(front);
 
-  // Dual/Triple RGB Front Rings
+  // RGB Fan Rings
   if (isOnline) {
     const fanCount = isDesign || isServer ? 3 : 2;
     for (let i = 0; i < fanCount; i++) {
@@ -279,7 +269,7 @@ function buildComputer3DGroup(dev) {
     }
   }
 
-  // Internal Hardware (Motherboard + GPU + RAM + Liquid Cooler)
+  // Internal Components
   if (!isServer && isOnline) {
     // Motherboard
     const moboGeo = new THREE.BoxGeometry(0.03, 0.9, 0.9);
@@ -288,7 +278,7 @@ function buildComputer3DGroup(dev) {
     mobo.position.set(0.18, towerH / 2 + 0.1, 0);
     towerGroup.add(mobo);
 
-    // CPU Liquid Cooler Pump
+    // Liquid Cooler Pump
     const pumpGeo = new THREE.CylinderGeometry(0.09, 0.09, 0.06, 32);
     const pumpMat = new THREE.MeshStandardMaterial({ color: 0x090d16, roughness: 0.2 });
     const pump = new THREE.Mesh(pumpGeo, pumpMat);
@@ -296,7 +286,7 @@ function buildComputer3DGroup(dev) {
     pump.position.set(0.14, towerH / 2 + 0.25, -0.08);
     towerGroup.add(pump);
 
-    // Pump Glowing Ring
+    // Pump Ring
     const pumpRingGeo = new THREE.TorusGeometry(0.07, 0.012, 16, 32);
     const pumpRingMat = new THREE.MeshBasicMaterial({ color: accentColor });
     const pumpRing = new THREE.Mesh(pumpRingGeo, pumpRingMat);
@@ -304,7 +294,7 @@ function buildComputer3DGroup(dev) {
     pumpRing.position.set(0.1, towerH / 2 + 0.25, -0.08);
     towerGroup.add(pumpRing);
 
-    // RAM Sticks (1 or 2 or 4 sticks)
+    // RAM Sticks
     const numSticks = dev.ramModules.includes('4 modulos') ? 4 : (hasSingleRam ? 1 : 2);
     for (let i = 0; i < numSticks; i++) {
       const ramGeo = new THREE.BoxGeometry(0.02, 0.25, 0.035);
@@ -314,7 +304,7 @@ function buildComputer3DGroup(dev) {
       towerGroup.add(ram);
     }
 
-    // Dedicated GPU (GeForce RTX)
+    // Dedicated GPU
     if (hasRTX) {
       const gpuGeo = new THREE.BoxGeometry(0.24, 0.18, 0.72);
       const gpuMat = new THREE.MeshStandardMaterial({ color: 0x1e1b4b, metalness: 0.9, roughness: 0.2 });
@@ -322,7 +312,6 @@ function buildComputer3DGroup(dev) {
       gpu.position.set(0.04, towerH / 2 - 0.12, -0.04);
       towerGroup.add(gpu);
 
-      // GPU Side LED (GEFORCE RTX)
       const gpuLedGeo = new THREE.BoxGeometry(0.015, 0.025, 0.6);
       const gpuLedMat = new THREE.MeshBasicMaterial({ color: mainColor });
       const gpuLed = new THREE.Mesh(gpuLedGeo, gpuLedMat);
@@ -331,29 +320,9 @@ function buildComputer3DGroup(dev) {
     }
   }
 
-  // Server Drive Bays Indicator (If Server)
-  if (isServer) {
-    for (let b = 0; b < 4; b++) {
-      const bayGeo = new THREE.BoxGeometry(towerW - 0.1, 0.14, 0.02);
-      const bayMat = new THREE.MeshStandardMaterial({ color: 0x1e293b });
-      const bay = new THREE.Mesh(bayGeo, bayMat);
-      bay.position.set(0, 1.25 - (b * 0.18), towerD / 2 + 0.02);
-      towerGroup.add(bay);
-
-      // Status LED
-      const ledGeo = new THREE.SphereGeometry(0.015, 8, 8);
-      const ledMat = new THREE.MeshBasicMaterial({ color: b === 3 ? 0xa855f7 : 0x00ff88 });
-      const led = new THREE.Mesh(ledGeo, ledMat);
-      led.position.set(towerW / 2 - 0.1, 1.25 - (b * 0.18), towerD / 2 + 0.035);
-      towerGroup.add(led);
-    }
-  }
-
   compGroup.add(towerGroup);
 
-  // ==========================================
-  // 4. KEYBOARD & MOUSE
-  // ==========================================
+  // 4. Keyboard & Mouse
   const kbGeo = new THREE.BoxGeometry(0.95, 0.03, 0.38);
   const kbMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, metalness: 0.7, roughness: 0.3 });
   const kb = new THREE.Mesh(kbGeo, kbMat);
@@ -377,12 +346,82 @@ function buildComputer3DGroup(dev) {
   return compGroup;
 }
 
-// Interactive 3D Viewport Launcher for Detail Drawer / Hero
+// Mount 3D Viewport on an Individual Card in the 26 PCs Fleet Grid
+function mountCard3DViewport(containerId, deviceData) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  // Cleanup old instance if present
+  if (activeCardScenes.has(containerId)) {
+    const old = activeCardScenes.get(containerId);
+    if (old.animId) cancelAnimationFrame(old.animId);
+    if (old.renderer && old.renderer.domElement) {
+      old.renderer.dispose();
+      old.renderer.domElement.remove();
+    }
+    activeCardScenes.delete(containerId);
+  }
+
+  const width = container.clientWidth || 280;
+  const height = container.clientHeight || 160;
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x040711);
+
+  const camera = new THREE.PerspectiveCamera(38, width / height, 0.1, 50);
+  camera.position.set(3.8, 2.4, 4.2);
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.25;
+
+  container.innerHTML = '';
+  container.appendChild(renderer.domElement);
+
+  // Lighting
+  const ambient = new THREE.AmbientLight(0x0f172a, 2.2);
+  scene.add(ambient);
+
+  const keyLight = new THREE.DirectionalLight(0xffffff, 2.0);
+  keyLight.position.set(5, 7, 4);
+  scene.add(keyLight);
+
+  const neonPoint = new THREE.PointLight(deviceData.isOnline ? 0x00f0ff : 0x475569, 2.5, 6);
+  neonPoint.position.set(0.6, 1.2, 0.4);
+  scene.add(neonPoint);
+
+  const grid = new THREE.GridHelper(12, 16, 0x00f0ff, 0x1e293b);
+  grid.position.y = -0.05;
+  scene.add(grid);
+
+  // Add 3D Model
+  const model = buildComputer3DGroup(deviceData);
+  scene.add(model);
+
+  let animId = null;
+  let rotationSpeed = 0.008;
+
+  function renderLoop() {
+    animId = requestAnimationFrame(renderLoop);
+    model.rotation.y += rotationSpeed;
+    renderer.render(scene, camera);
+  }
+  renderLoop();
+
+  // Mouse hover speed up
+  container.addEventListener('mouseenter', () => { rotationSpeed = 0.02; });
+  container.addEventListener('mouseleave', () => { rotationSpeed = 0.008; });
+
+  activeCardScenes.set(containerId, { scene, camera, renderer, animId });
+}
+
+// Mount Interactive 3D Viewport on Drawer
 function mountInteractive3DViewport(containerId, deviceData) {
   const container = document.getElementById(containerId);
   if (!container) return null;
 
-  // Cleanup existing scene on this container
   if (active3DScenes.has(containerId)) {
     const prev = active3DScenes.get(containerId);
     if (prev.animId) cancelAnimationFrame(prev.animId);
@@ -424,7 +463,6 @@ function mountInteractive3DViewport(containerId, deviceData) {
     controls.autoRotateSpeed = 1.2;
   }
 
-  // Lights
   const ambient = new THREE.AmbientLight(0x0f172a, 2.0);
   scene.add(ambient);
 
@@ -440,7 +478,6 @@ function mountInteractive3DViewport(containerId, deviceData) {
   floorGrid.position.y = -0.05;
   scene.add(floorGrid);
 
-  // Add 3D Model
   const model = buildComputer3DGroup(deviceData);
   scene.add(model);
 

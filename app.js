@@ -1,5 +1,5 @@
 // TWINS VANTAGE PRO — Fleet & Hardware Intelligence System
-// Integrated with Three.js 3D Procedural Engine & Custom Holographic Modals
+// 3D WebGL Multi-Card Fleet Engine & Holographic Modals
 
 let allDevices = [];
 let filteredDevices = [];
@@ -11,7 +11,7 @@ let livePollingInterval = null;
 let deferredPrompt = null;
 let audioEnabled = true;
 
-// Web Audio API Synthesizer for High-Tech Sound FX
+// Web Audio API Synthesizer
 let audioCtx = null;
 function playTechSound(type = 'click') {
   if (!audioEnabled) return;
@@ -45,14 +45,6 @@ function playTechSound(type = 'click') {
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
       osc.start(now);
       osc.stop(now + 0.35);
-    } else if (type === 'alert') {
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(440, now);
-      osc.frequency.setValueAtTime(880, now + 0.1);
-      gain.gain.setValueAtTime(0.1, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
-      osc.start(now);
-      osc.stop(now + 0.25);
     }
   } catch (e) {}
 }
@@ -68,14 +60,12 @@ function toggleAudio() {
 
 // Initialize on DOM Ready
 document.addEventListener('DOMContentLoaded', async () => {
-  // 1. PWA Service Worker Registration
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js')
-      .then(reg => console.log('Service Worker Registered:', reg.scope))
-      .catch(err => console.log('Service Worker Failed:', err));
+      .then(reg => console.log('SW Registered'))
+      .catch(err => console.log('SW Failed', err));
   }
 
-  // PWA Install Prompt
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
@@ -85,15 +75,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       installBtn.addEventListener('click', () => {
         if (deferredPrompt) {
           deferredPrompt.prompt();
-          deferredPrompt.userChoice.then((choiceResult) => {
-            deferredPrompt = null;
-          });
+          deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
         }
       });
     }
   });
 
-  // 2. Load Inventory Dataset
   if (typeof INVENTORY_DATA !== 'undefined') {
     allDevices = INVENTORY_DATA;
   } else {
@@ -102,7 +89,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const data = await res.json();
       allDevices = data.devices || [];
     } catch (e) {
-      console.error('Failed to load inventory from API:', e);
+      console.error('Failed to load inventory:', e);
     }
   }
 
@@ -123,11 +110,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }, 100);
   
-  // Update Live Clock
   setInterval(updateLiveClock, 1000);
   updateLiveClock();
 
-  // Initialize Lucide Icons
   if (window.lucide) {
     window.lucide.createIcons();
   }
@@ -141,7 +126,6 @@ function updateLiveClock() {
   }
 }
 
-// 3D Scene Controls (Home)
 function change3DTheme(theme) {
   playTechSound('click');
   if (typeof set3DPreset === 'function') {
@@ -160,7 +144,6 @@ function toggleRotate3D() {
   }
 }
 
-// Navigation Tabs
 function initNavigation() {
   const navButtons = document.querySelectorAll('.nav-btn');
   navButtons.forEach(btn => {
@@ -193,7 +176,10 @@ function switchTab(tabId) {
     }
   });
 
-  if (tabId === 'home' && typeof onWindowResize === 'function') {
+  if (tabId === 'fleet') {
+    // Re-mount 3D viewports on fleet cards
+    setTimeout(mountAllFleet3DScenes, 100);
+  } else if (tabId === 'home' && typeof onWindowResize === 'function') {
     setTimeout(onWindowResize, 100);
   }
 
@@ -254,16 +240,13 @@ function startLiveTelemetry() {
   livePollingInterval = setInterval(fetchLiveTelemetry, 3500);
 }
 
-function renderFleetOverview() {
-  const total = allDevices.length;
-  const online = allDevices.filter(d => d.isOnline).length;
-}
+function renderFleetOverview() {}
 
 // Search and Department Filters
 function initSearchAndFilters() {
   const searchInput = document.getElementById('fleetSearchInput');
   if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
+    searchInput.addEventListener('input', () => {
       applyFilters();
     });
   }
@@ -316,14 +299,14 @@ function applyFilters() {
   renderFleetGrid();
 }
 
-// Render Fleet Grid
+// Render Fleet Grid with REAL 3D VIEWPORTS on EVERY Card!
 function renderFleetGrid() {
   const container = document.getElementById('fleetGridContainer');
   const countLabel = document.getElementById('fleetResultsCount');
   if (!container) return;
 
   if (countLabel) {
-    countLabel.innerText = `Mostrando ${filteredDevices.length} de ${allDevices.length} dispositivos`;
+    countLabel.innerText = `Mostrando ${filteredDevices.length} de ${allDevices.length} computadoras en 3D`;
   }
 
   if (filteredDevices.length === 0) {
@@ -338,13 +321,11 @@ function renderFleetGrid() {
     return;
   }
 
-  container.innerHTML = filteredDevices.map((dev, idx) => {
+  container.innerHTML = filteredDevices.map((dev) => {
     const isOnline = dev.isOnline;
     const statusBadge = isOnline 
       ? `<span class="badge-online text-xs font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#00ff88] pulse-led"></span>En Línea</span>`
       : `<span class="badge-offline text-xs font-medium px-2.5 py-0.5 rounded-full flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>Apagada</span>`;
-
-    const svgRender = renderDeviceImage(dev.deviceVisual, dev.computerName, isOnline);
 
     const singleChannelBadge = (isOnline && dev.ramChannelType === 'single') 
       ? `<span class="badge-warning text-[10px] font-bold px-2 py-0.5 rounded" title="Single Channel detectado">⚠️ Single Ch. RAM</span>`
@@ -381,11 +362,11 @@ function renderFleetGrid() {
             </div>
           </div>
 
-          <!-- Visual Hardware Preview -->
-          <div class="h-32 w-full bg-[#040711] rounded-xl p-2 flex items-center justify-center border border-white/5 mb-3.5 overflow-hidden shadow-inner relative group-hover:border-cyan-500/30 transition-colors">
-            ${svgRender}
-            <div class="absolute bottom-1.5 right-2 bg-slate-950/80 px-2 py-0.5 rounded text-[9px] font-mono font-bold text-cyan-400 border border-white/10 flex items-center gap-1">
-              <i data-lucide="box" class="w-3 h-3"></i> 3D Ready
+          <!-- 3D WebGL Real Canvas Container for THIS PC -->
+          <div class="relative w-full h-40 bg-[#040711] rounded-xl border border-white/5 mb-3.5 overflow-hidden shadow-inner group-hover:border-cyan-500/40 transition-colors">
+            <div id="card3DContainer_${dev.id}" class="w-full h-full"></div>
+            <div class="absolute bottom-2 left-2 bg-slate-950/80 px-2 py-0.5 rounded text-[9px] font-mono font-bold text-cyan-400 border border-white/10 pointer-events-none flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 pulse-led"></span> 3D LIVE
             </div>
           </div>
 
@@ -420,7 +401,7 @@ function renderFleetGrid() {
         <!-- Footer Actions -->
         <div class="pt-4 mt-4 border-t border-white/5 flex items-center justify-between">
           <button class="text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 transition-colors">
-            <i data-lucide="box" class="w-3.5 h-3.5"></i> Inspeccionar 3D
+            <i data-lucide="box" class="w-3.5 h-3.5"></i> Ficha & 3D 360°
           </button>
           <button onclick="event.stopPropagation(); TwinsModal.showPing('${dev.ip}', '${dev.computerName}')" class="text-xs text-slate-300 hover:text-white px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 transition-colors flex items-center gap-1 border border-white/5 font-medium">
             <i data-lucide="activity" class="w-3 h-3 text-[#00ff88]"></i> Ping
@@ -431,6 +412,17 @@ function renderFleetGrid() {
   }).join('');
 
   if (window.lucide) window.lucide.createIcons();
+
+  // Mount 3D viewports on every card
+  setTimeout(mountAllFleet3DScenes, 50);
+}
+
+function mountAllFleet3DScenes() {
+  if (typeof mountCard3DViewport !== 'function') return;
+  filteredDevices.forEach(dev => {
+    const containerId = `card3DContainer_${dev.id}`;
+    mountCard3DViewport(containerId, dev);
+  });
 }
 
 // Open Device Detail Drawer with Dedicated 3D Interactive Viewport
@@ -444,7 +436,6 @@ function openDeviceDrawer(deviceId) {
   const content = document.getElementById('drawerContent');
   if (!drawer || !content) return;
 
-  // Build Disks Progress Bars
   let disksHtml = '<p class="text-xs text-slate-500">No hay información de particiones.</p>';
   if (dev.disks && dev.disks.length > 0) {
     disksHtml = dev.disks.map(d => `
@@ -460,7 +451,6 @@ function openDeviceDrawer(deviceId) {
     `).join('');
   }
 
-  // Alerts List
   let alertsHtml = '';
   if (dev.alerts && dev.alerts.length > 0) {
     alertsHtml = dev.alerts.map(a => {
@@ -639,7 +629,6 @@ function openDeviceDrawer(deviceId) {
   
   if (window.lucide) window.lucide.createIcons();
 
-  // Mount 3D Scene specifically for this device
   setTimeout(() => {
     if (typeof mountInteractive3DViewport === 'function') {
       mountInteractive3DViewport('drawer3DContainer', dev);
@@ -667,7 +656,6 @@ function renderDiagnostics() {
   container.innerHTML = `
     <div class="space-y-6">
       
-      <!-- Diagnostic Action Banner -->
       <div class="vantage-card p-6 border-cyan-500/30 bg-gradient-to-r from-[#070c1b] via-[#0d152a] to-[#091530] flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
           <div class="flex items-center gap-2 text-cyan-400 text-xs font-bold uppercase tracking-wider mb-1">
@@ -684,7 +672,6 @@ function renderDiagnostics() {
         </button>
       </div>
 
-      <!-- Scan Live Progress Area (hidden by default) -->
       <div id="scanProgressBox" class="hidden vantage-card p-5 border-cyan-500/50">
         <div class="flex items-center justify-between text-xs font-bold text-white mb-2 font-mono">
           <span id="scanStatusText">Iniciando escaneo de hardware en utilestwins.com...</span>
@@ -696,10 +683,8 @@ function renderDiagnostics() {
         <div id="scanLogList" class="space-y-1 font-mono text-[11px] text-slate-400 max-h-32 overflow-y-auto"></div>
       </div>
 
-      <!-- Analysis Sections Grid -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         
-        <!-- 1. Single Channel Bottleneck -->
         <div class="vantage-card p-5">
           <div class="flex items-center justify-between mb-3">
             <h3 class="text-sm font-black text-white flex items-center gap-2">
@@ -726,7 +711,6 @@ function renderDiagnostics() {
           </div>
         </div>
 
-        <!-- 2. Critical Storage Space -->
         <div class="vantage-card p-5">
           <div class="flex items-center justify-between mb-3">
             <h3 class="text-sm font-black text-white flex items-center gap-2">
@@ -762,7 +746,6 @@ function renderDiagnostics() {
   if (window.lucide) window.lucide.createIcons();
 }
 
-// Animated Fleet Diagnostic Scanner
 async function runFleetDiagnosticScan() {
   playTechSound('click');
   const box = document.getElementById('scanProgressBox');
@@ -813,7 +796,6 @@ async function runFleetDiagnosticScan() {
   if (btn) btn.disabled = false;
 }
 
-// Optimize System Action
 async function optimizeLocalSystem() {
   playTechSound('optimize');
   const btn = document.getElementById('btnOptimize');
@@ -835,7 +817,6 @@ async function optimizeLocalSystem() {
   if (window.lucide) window.lucide.createIcons();
 }
 
-// Side-by-Side Comparison Tool
 function initComparisonTool() {
   const select1 = document.getElementById('compareSelect1');
   const select2 = document.getElementById('compareSelect2');
@@ -867,7 +848,6 @@ function renderComparison() {
   container.innerHTML = `
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
       
-      <!-- Device 1 -->
       <div class="vantage-card p-5 border-cyan-500/40">
         <div class="flex items-center justify-between mb-3">
           <h3 class="text-base font-black text-white font-mono">${dev1.computerName}</h3>
@@ -875,9 +855,7 @@ function renderComparison() {
         </div>
         <p class="text-xs text-slate-400 mb-4 font-medium">${dev1.activeUser} • ${dev1.department}</p>
         
-        <div class="h-36 bg-[#040711] rounded-xl p-2 flex items-center justify-center border border-white/5 mb-4 shadow-inner">
-          ${renderDeviceImage(dev1.deviceVisual, dev1.computerName, dev1.isOnline)}
-        </div>
+        <div id="compare3DContainer_1" class="h-44 w-full bg-[#040711] rounded-xl border border-white/5 mb-4 shadow-inner"></div>
 
         <div class="space-y-2.5 text-xs divide-y divide-white/5">
           <div class="pt-2 flex justify-between"><span class="text-slate-400 font-medium">CPU:</span> <span class="font-bold text-white">${dev1.cpuShort}</span></div>
@@ -889,7 +867,6 @@ function renderComparison() {
         </div>
       </div>
 
-      <!-- Device 2 -->
       <div class="vantage-card p-5 border-purple-500/40">
         <div class="flex items-center justify-between mb-3">
           <h3 class="text-base font-black text-white font-mono">${dev2.computerName}</h3>
@@ -897,9 +874,7 @@ function renderComparison() {
         </div>
         <p class="text-xs text-slate-400 mb-4 font-medium">${dev2.activeUser} • ${dev2.department}</p>
         
-        <div class="h-36 bg-[#040711] rounded-xl p-2 flex items-center justify-center border border-white/5 mb-4 shadow-inner">
-          ${renderDeviceImage(dev2.deviceVisual, dev2.computerName, dev2.isOnline)}
-        </div>
+        <div id="compare3DContainer_2" class="h-44 w-full bg-[#040711] rounded-xl border border-white/5 mb-4 shadow-inner"></div>
 
         <div class="space-y-2.5 text-xs divide-y divide-white/5">
           <div class="pt-2 flex justify-between"><span class="text-slate-400 font-medium">CPU:</span> <span class="font-bold text-white">${dev2.cpuShort}</span></div>
@@ -915,4 +890,11 @@ function renderComparison() {
   `;
 
   if (window.lucide) window.lucide.createIcons();
+
+  setTimeout(() => {
+    if (typeof mountCard3DViewport === 'function') {
+      mountCard3DViewport('compare3DContainer_1', dev1);
+      mountCard3DViewport('compare3DContainer_2', dev2);
+    }
+  }, 100);
 }
