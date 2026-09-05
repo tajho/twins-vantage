@@ -1,4 +1,4 @@
-const CACHE_NAME = 'twins-vantage-v3.2-live';
+const CACHE_NAME = 'twins-vantage-v3.4-live';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -32,12 +32,11 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Network-First for Data & Dynamic files, Stale-While-Revalidate for Assets
+// Network-First for core code & data, cache fallback for offline
 self.addEventListener('fetch', event => {
   const url = event.request.url;
 
-  // Always Network-First for inventory data, json, and live APIs
-  if (url.includes('inventory_data') || url.includes('/api/') || url.endsWith('.json')) {
+  if (url.includes('.json') || url.includes('.css') || url.includes('.js') || url.includes('.html') || event.request.mode === 'navigate') {
     event.respondWith(
       fetch(event.request)
         .then(response => {
@@ -50,18 +49,9 @@ self.addEventListener('fetch', event => {
         .catch(() => caches.match(event.request))
     );
   } else {
-    // Stale-While-Revalidate for other static assets
     event.respondWith(
       caches.match(event.request).then(cached => {
-        const fetchPromise = fetch(event.request).then(networkResponse => {
-          if (networkResponse && networkResponse.status === 200) {
-            const clone = networkResponse.clone();
-            caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-          }
-          return networkResponse;
-        }).catch(() => cached);
-
-        return cached || fetchPromise;
+        return cached || fetch(event.request);
       })
     );
   }
