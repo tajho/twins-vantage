@@ -603,6 +603,16 @@ function openDeviceDrawer(deviceId) {
             <span class="col-span-2 text-slate-300 font-mono text-[11px]">${dev.storage}</span>
           </div>
 
+          <div class="p-3.5 grid grid-cols-3 gap-2">
+            <span class="text-slate-400 font-medium">Sistema Operativo:</span>
+            <div class="col-span-2">
+              <div class="text-white font-semibold font-mono text-[11px] flex items-center gap-1.5">
+                <i data-lucide="app-window" class="w-3.5 h-3.5 text-cyan-400"></i>
+                <span>${dev.os || 'Microsoft Windows 11 Pro'}</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
