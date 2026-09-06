@@ -154,6 +154,55 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  if (pathname === '/api/fleet/live-status') {
+    try {
+      // Execute fast parallel ping across all 28 registered IPs via PowerShell .NET Tasks
+      const ips = inventoryData.map(d => d.ip).filter(ip => ip && !ip.includes('x')).join(',');
+      const script = `
+        $ips = "${ips}".Split(',');
+        $res = [System.Collections.Generic.List[PSCustomObject]]::new();
+        $tasks = $ips | ForEach-Object {
+          $target = $_.Trim();
+          [System.Threading.Tasks.Task]::Run([Action]{
+            $p = New-Object System.Net.NetworkInformation.Ping;
+            try {
+              $reply = $p.Send($target, 350);
+              $isUp = ($reply.Status -eq [System.Net.NetworkInformation.IPStatus]::Success);
+              $rtt = if ($isUp) { $reply.RoundtripTime } else { $null };
+              $obj = [PSCustomObject]@{ ip = $target; online = $isUp; rttMs = $rtt };
+              [System.Threading.Monitor]::Enter($res);
+              try { $res.Add($obj) } finally { [System.Threading.Monitor]::Exit($res) }
+            } catch {}
+          })
+        };
+        [System.Threading.Tasks.Task]::WaitAll($tasks);
+        $res | ConvertTo-Json -Compress
+      `;
+
+      const result = await runPowerShell(script);
+      let fleetStatus = [];
+      if (result.stdout) {
+        try {
+          fleetStatus = JSON.parse(result.stdout);
+        } catch (e) {
+          fleetStatus = [];
+        }
+      }
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({
+        success: true,
+        timestamp: new Date().toISOString(),
+        total: inventoryData.length,
+        fleetStatus
+      }));
+    } catch (err) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: false, error: err.message }));
+    }
+    return;
+  }
+
   if (pathname === '/api/system/optimize' && req.method === 'POST') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({

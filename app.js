@@ -148,28 +148,57 @@ function switchTab(tabId) {
   }
 }
 
+const LOCAL_BRIDGE_URL = 'http://192.168.18.88:3000';
+let isConnectedToLocalBridge = false;
+
 async function fetchLiveTelemetry() {
   const isGitHubPages = window.location.hostname.includes('github.io');
   let live = null;
 
-  if (!isGitHubPages) {
+  // Try direct origin first, then try local bridge if on GitHub Pages
+  const endpoints = isGitHubPages 
+    ? [`${LOCAL_BRIDGE_URL}/api/system/live`, '/api/system/live']
+    : ['/api/system/live', `${LOCAL_BRIDGE_URL}/api/system/live`];
+
+  for (const ep of endpoints) {
     try {
-      const res = await fetch('/api/system/live');
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 2000);
+      const res = await fetch(ep, { signal: controller.signal });
+      clearTimeout(timeoutId);
       if (res.ok) {
         const data = await res.json();
-        if (data.success && data.live) live = data.live;
+        if (data.success && data.live) {
+          live = data.live;
+          isConnectedToLocalBridge = true;
+          break;
+        }
       }
     } catch (err) {}
   }
 
-  // Fallback / GitHub Pages simulated live telemetry
+  // Also query live fleet status for real Online/Offline ICMP states if bridge is active
+  if (isConnectedToLocalBridge) {
+    try {
+      const bridgeUrl = isGitHubPages ? LOCAL_BRIDGE_URL : '';
+      const fleetRes = await fetch(`${bridgeUrl}/api/fleet/live-status`);
+      if (fleetRes.ok) {
+        const fleetData = await fleetRes.json();
+        if (fleetData.success && Array.isArray(fleetData.fleetStatus)) {
+          updateFleetOnlineStatuses(fleetData.fleetStatus);
+        }
+      }
+    } catch (e) {}
+  }
+
+  // Fallback / Snapshot mode when device is outside company LAN
   if (!live) {
-    const cpuLoad = Math.floor(Math.sin(Date.now() / 4000) * 5 + 14);
-    const memPercent = 49;
-    const memUsedGB = 15.8;
+    const cpuLoad = 12;
+    const memPercent = 48;
+    const memUsedGB = 15.4;
     const memTotalGB = 32;
-    const diskPercent = 49;
-    const diskFreeGB = 471;
+    const diskPercent = 48;
+    const diskFreeGB = 482;
     const diskTotalGB = 930;
 
     live = {
@@ -180,12 +209,12 @@ async function fetchLiveTelemetry() {
       diskCPercent: diskPercent,
       diskCFreeGB: diskFreeGB,
       diskCTotalGB: diskTotalGB,
-      uptime: '4d 18h 32m',
+      uptime: 'Activo (Auditado)',
       osName: 'Windows 11 Pro 24H2'
     };
   }
 
-  const cpuLoad = live.cpuLoad || 14;
+  const cpuLoad = live.cpuLoad || 12;
   const cpuMeter = document.getElementById('liveCpuLoad');
   const cpuBar = document.getElementById('liveCpuBar');
   if (cpuMeter) cpuMeter.innerText = `${cpuLoad}%`;
@@ -214,6 +243,30 @@ async function fetchLiveTelemetry() {
   
   const hostEl = document.getElementById('liveHostInfo');
   if (hostEl) hostEl.innerText = `Gigabyte B760M D3HP DDR4 • Intel Core i5-12400 (6C/12T) • ${live.memTotalGB || 32} GB RAM • ${live.osName || 'Windows 11 Pro'}`;
+}
+
+function updateFleetOnlineStatuses(liveStatuses) {
+  const statusMap = new Map();
+  liveStatuses.forEach(s => statusMap.set(s.ip, s));
+
+  let onlineCount = 0;
+  let offlineCount = 0;
+
+  allDevices.forEach(dev => {
+    const liveInfo = statusMap.get(dev.ip);
+    if (liveInfo !== undefined) {
+      dev.isOnline = liveInfo.online;
+      dev.status = liveInfo.online ? 'En Linea' : 'Desconectado';
+      dev.rttMs = liveInfo.rttMs;
+    }
+    if (dev.isOnline) onlineCount++;
+    else offlineCount++;
+  });
+
+  // Re-render current view if fleet tab is active
+  if (currentTab === 'fleet') {
+    applyFilters();
+  }
 }
 
 function startLiveTelemetry() {
