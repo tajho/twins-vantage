@@ -8,7 +8,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const { exec } = require('child_process');
+const { exec, execFile } = require('child_process');
 
 const CONFIG = {
   PORT: process.env.PORT || 3000,
@@ -67,30 +67,33 @@ let currentTelemetryState = {
 // 2. PowerShell .NET Asynchronous Parallel Network Scanner
 function scanNetworkParallel() {
   return new Promise((resolve) => {
-    const ipList = fleetInventory.map(d => d.ip).filter(ip => ip && !ip.includes('x')).join(',');
+    const ipList = fleetInventory.map(d => d.ip).filter(ip => ip && !ip.includes('x'));
     
     const psScript = `
-      $ips = "${ipList}".Split(',');
-      $res = [System.Collections.Generic.List[PSCustomObject]]::new();
-      $tasks = $ips | ForEach-Object {
-        $target = $_.Trim();
-        [System.Threading.Tasks.Task]::Run([Action]{
-          $p = New-Object System.Net.NetworkInformation.Ping;
-          try {
-            $reply = $p.Send($target, 280);
-            $isUp = ($reply.Status -eq [System.Net.NetworkInformation.IPStatus]::Success);
-            $rtt = if ($isUp) { $reply.RoundtripTime } else { $null };
-            $obj = [PSCustomObject]@{ ip = $target; online = $isUp; rttMs = $rtt };
-            [System.Threading.Monitor]::Enter($res);
-            try { $res.Add($obj) } finally { [System.Threading.Monitor]::Exit($res) }
-          } catch {}
-        })
-      };
-      [System.Threading.Tasks.Task]::WaitAll($tasks);
-      $res | ConvertTo-Json -Compress
+      $ips = "${ipList.join(',')}".Split(',')
+      $pings = foreach ($ip in $ips) {
+        $clean = $ip.Trim()
+        if ($clean) {
+          $p = New-Object System.Net.NetworkInformation.Ping
+          @{ IP = $clean; Task = $p.SendPingAsync($clean, 500); Ping = $p }
+        }
+      }
+      [System.Threading.Tasks.Task]::WaitAll($pings.Task)
+      $results = foreach ($item in $pings) {
+        $r = $item.Task.Result
+        $isUp = ($r.Status -eq [System.Net.NetworkInformation.IPStatus]::Success)
+        $item.Ping.Dispose()
+        [PSCustomObject]@{
+          ip = $item.IP
+          online = $isUp
+          rttMs = if ($isUp) { $r.RoundtripTime } else { $null }
+        }
+      }
+      $results | ConvertTo-Json -Compress
     `;
 
-    exec(`powershell -NoProfile -NonInteractive -Command "${psScript.replace(/"/g, '\"')}"`, { timeout: 6000 }, (error, stdout) => {
+    const b64 = Buffer.from(psScript, 'utf16le').toString('base64');
+    execFile('powershell', ['-NoProfile', '-NonInteractive', '-EncodedCommand', b64], { timeout: 8000 }, (error, stdout) => {
       if (error || !stdout) {
         resolve([]);
       } else {
@@ -109,34 +112,35 @@ function scanNetworkParallel() {
 function queryLocalHardware() {
   return new Promise((resolve) => {
     const psScript = `
-      $os = Get-CimInstance Win32_OperatingSystem;
-      $cpu = Get-CimInstance Win32_Processor;
-      $memTotal = [math]::Round($os.TotalVisibleMemorySize / 1MB, 1);
-      $memFree = [math]::Round($os.FreePhysicalMemory / 1MB, 1);
-      $memUsed = [math]::Round($memTotal - $memFree, 1);
-      $memPercent = [math]::Round(($memUsed / $memTotal) * 100);
-      $diskC = Get-PSDrive C;
-      $diskUsed = [math]::Round($diskC.Used / 1GB, 1);
-      $diskFree = [math]::Round($diskC.Free / 1GB, 1);
-      $diskTotal = [math]::Round(($diskC.Used + $diskC.Free) / 1GB, 1);
-      $diskPercent = [math]::Round(($diskUsed / $diskTotal) * 100);
-      $uptime = (Get-Date) - $os.LastBootUpTime;
-      $uptimeStr = [string]::Format('{0}d {1}h {2}m', $uptime.Days, $uptime.Hours, $uptime.Minutes);
+      $os = Get-CimInstance Win32_OperatingSystem
+      $cpu = Get-CimInstance Win32_Processor
+      $memTotal = [math]::Round($os.TotalVisibleMemorySize / 1MB, 1)
+      $memFree = [math]::Round($os.FreePhysicalMemory / 1MB, 1)
+      $memUsed = [math]::Round($memTotal - $memFree, 1)
+      $memPercent = [math]::Round(($memUsed / $memTotal) * 100)
+      $diskC = Get-PSDrive C
+      $diskUsed = [math]::Round($diskC.Used / 1GB, 1)
+      $diskFree = [math]::Round($diskC.Free / 1GB, 1)
+      $diskTotal = [math]::Round(($diskC.Used + $diskC.Free) / 1GB, 1)
+      $diskPercent = [math]::Round(($diskUsed / $diskTotal) * 100)
+      $uptime = (Get-Date) - $os.LastBootUpTime
+      $uptimeStr = [string]::Format('{0}d {1}h {2}m', $uptime.Days, $uptime.Hours, $uptime.Minutes)
       
-      @{
-        cpuLoad = [int]$cpu.LoadPercentage;
-        memTotalGB = [double]$memTotal;
-        memUsedGB = [double]$memUsed;
-        memPercent = [int]$memPercent;
-        diskCFreeGB = [double]$diskFree;
-        diskCTotalGB = [double]$diskTotal;
-        diskCPercent = [int]$diskPercent;
-        uptime = $uptimeStr;
-        osName = $os.Caption;
+      [PSCustomObject]@{
+        cpuLoad = [int]$cpu.LoadPercentage
+        memTotalGB = [double]$memTotal
+        memUsedGB = [double]$memUsed
+        memPercent = [int]$memPercent
+        diskCFreeGB = [double]$diskFree
+        diskCTotalGB = [double]$diskTotal
+        diskCPercent = [int]$diskPercent
+        uptime = $uptimeStr
+        osName = $os.Caption
       } | ConvertTo-Json -Compress
     `;
 
-    exec(`powershell -NoProfile -NonInteractive -Command "${psScript.replace(/"/g, '\"')}"`, { timeout: 4000 }, (error, stdout) => {
+    const b64 = Buffer.from(psScript, 'utf16le').toString('base64');
+    execFile('powershell', ['-NoProfile', '-NonInteractive', '-EncodedCommand', b64], { timeout: 6000 }, (error, stdout) => {
       if (error || !stdout) {
         resolve(null);
       } else {

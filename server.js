@@ -1,7 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const { exec } = require('child_process');
+const { exec, execFile } = require('child_process');
 
 const PORT = process.env.PORT || 3000;
 const PUBLIC_DIR = path.join(__dirname);
@@ -29,12 +29,13 @@ const MIME_TYPES = {
 
 // Helper to run PowerShell commands safely
 function runPowerShell(cmd) {
-  return new Promise((resolve, reject) => {
-    exec(`powershell -NoProfile -NonInteractive -Command "${cmd.replace(/"/g, '\"')}"`, { timeout: 8000 }, (error, stdout, stderr) => {
+  return new Promise((resolve) => {
+    const b64 = Buffer.from(cmd, 'utf16le').toString('base64');
+    execFile('powershell', ['-NoProfile', '-NonInteractive', '-EncodedCommand', b64], { timeout: 8000 }, (error, stdout, stderr) => {
       if (error) {
         resolve({ error: error.message, stdout: stdout || '' });
       } else {
-        resolve({ error: null, stdout: stdout.trim() });
+        resolve({ error: null, stdout: (stdout || '').trim() });
       }
     });
   });
@@ -156,27 +157,28 @@ const server = http.createServer(async (req, res) => {
 
   if (pathname === '/api/fleet/live-status') {
     try {
-      // Execute fast parallel ping across all 28 registered IPs via PowerShell .NET Tasks
-      const ips = inventoryData.map(d => d.ip).filter(ip => ip && !ip.includes('x')).join(',');
+      const ipList = inventoryData.map(d => d.ip).filter(ip => ip && !ip.includes('x'));
       const script = `
-        $ips = "${ips}".Split(',');
-        $res = [System.Collections.Generic.List[PSCustomObject]]::new();
-        $tasks = $ips | ForEach-Object {
-          $target = $_.Trim();
-          [System.Threading.Tasks.Task]::Run([Action]{
-            $p = New-Object System.Net.NetworkInformation.Ping;
-            try {
-              $reply = $p.Send($target, 350);
-              $isUp = ($reply.Status -eq [System.Net.NetworkInformation.IPStatus]::Success);
-              $rtt = if ($isUp) { $reply.RoundtripTime } else { $null };
-              $obj = [PSCustomObject]@{ ip = $target; online = $isUp; rttMs = $rtt };
-              [System.Threading.Monitor]::Enter($res);
-              try { $res.Add($obj) } finally { [System.Threading.Monitor]::Exit($res) }
-            } catch {}
-          })
-        };
-        [System.Threading.Tasks.Task]::WaitAll($tasks);
-        $res | ConvertTo-Json -Compress
+        $ips = "${ipList.join(',')}".Split(',')
+        $pings = foreach ($ip in $ips) {
+          $clean = $ip.Trim()
+          if ($clean) {
+            $p = New-Object System.Net.NetworkInformation.Ping
+            @{ IP = $clean; Task = $p.SendPingAsync($clean, 500); Ping = $p }
+          }
+        }
+        [System.Threading.Tasks.Task]::WaitAll($pings.Task)
+        $results = foreach ($item in $pings) {
+          $r = $item.Task.Result
+          $isUp = ($r.Status -eq [System.Net.NetworkInformation.IPStatus]::Success)
+          $item.Ping.Dispose()
+          [PSCustomObject]@{
+            ip = $item.IP
+            online = $isUp
+            rttMs = if ($isUp) { $r.RoundtripTime } else { $null }
+          }
+        }
+        $results | ConvertTo-Json -Compress
       `;
 
       const result = await runPowerShell(script);
