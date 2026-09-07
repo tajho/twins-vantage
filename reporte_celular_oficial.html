@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe Técnico de Auditoría Móvil - Shaulin Jhayro Mauricio Ciriaco - Redmi Note 13 Pro 4G</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', '-apple-system', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        twins: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0066cc',
+                            600: '#0052a3',
+                            700: '#003d7a',
+                            900: '#001a33',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 8mm 10mm 10mm 10mm;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        .tabular-nums { font-variant-numeric: tabular-nums; }
+        .page-break-avoid { page-break-inside: avoid; break-inside: avoid; }
+        @media print {
+            body { background: #ffffff !important; padding: 0 !important; }
+            .print-container { box-shadow: none !important; border: none !important; padding: 0 !important; max-width: 100% !important; }
+        }
+    </style>
+</head>
+<body class="py-4 px-4 antialiased">
+
+    <!-- MAIN REPORT WRAPPER -->
+    <div class="max-w-[900px] mx-auto bg-white border border-slate-200 rounded-2xl shadow-xl p-8 print-container">
+        
+        <!-- HEADER -->
+        <div class="grid grid-cols-12 gap-4 pb-4 mb-5 border-b-2 border-slate-900 items-center">
+            <div class="col-span-12 sm:col-span-8 flex items-center gap-4">
+                <img src="logo_twins.png" alt="Útiles Twins" class="h-11 w-auto object-contain flex-shrink-0" onerror="this.style.display='none'">
+                <div class="border-l border-slate-200 pl-4">
+                    <div class="flex items-center gap-2">
+                        <span class="text-[11px] font-extrabold uppercase tracking-wider text-twins-600">
+                            IMPORTADORA ARCÁNGEL S.A.C.
+                        </span>
+                        <span class="text-slate-300">&bull;</span>
+                        <span class="text-[11px] font-mono text-slate-500 font-semibold">
+                            RUC 20537040425
+                        </span>
+                    </div>
+                    <h1 class="text-lg font-black text-slate-900 tracking-tight mt-0.5">
+                        Informe Técnico de Auditoría de Celular Corporativo
+                    </h1>
+                    <p class="text-[11px] text-slate-500 font-medium">
+                        División de Tecnologías de la Información &bull; Útiles Twins Perú
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-span-12 sm:col-span-4 bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs font-mono space-y-1">
+                <div class="flex justify-between text-slate-600"><span class="font-semibold text-slate-400">INFORME:</span><span class="font-bold text-slate-900">INF-TI-MOB-2026-4869</span></div>
+                <div class="flex justify-between text-slate-600"><span class="font-semibold text-slate-400">FECHA:</span><span class="text-slate-800">07/09/2026</span></div>
+                <div class="flex justify-between text-slate-600"><span class="font-semibold text-slate-400">AUDITOR:</span><span class="text-slate-800">Tajho Núñez (Jefe TI)</span></div>
+                <div class="flex justify-between text-slate-600"><span class="font-semibold text-slate-400">ESTADO:</span><span class="text-emerald-700 font-bold">OPERATIVO AUDITADO</span></div>
+            </div>
+        </div>
+
+        <!-- 1. DATOS DE ASIGNACIÓN -->
+        <div class="mb-5">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 flex items-center gap-1.5">
+                <i data-lucide="user-check" class="w-4 h-4 text-twins-600"></i>
+                1. Información del Colaborador y Asignación Patrimonial
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-xs">
+                <div>
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block">Colaborador Asignado</span>
+                    <span class="font-bold text-slate-900 text-sm">Shaulin Jhayro Mauricio Ciriaco</span>
+                </div>
+                <div>
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block">Área / Departamento</span>
+                    <span class="font-bold text-slate-800">Ventas de Campo</span>
+                </div>
+                <div>
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block">N° Teléfono / Operador</span>
+                    <span class="font-mono font-bold text-twins-700">993751251 (Claro Corporativo)</span>
+                </div>
+                <div>
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block">Cód. Activo Patrimonial</span>
+                    <span class="font-mono font-black text-purple-700 bg-purple-50 px-2 py-0.5 rounded border border-purple-200 inline-block mt-0.5">CEL-VEN-001</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. FICHA TÉCNICA DE HARDWARE COMPLETO -->
+        <div class="mb-5">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 flex items-center gap-1.5">
+                <i data-lucide="smartphone" class="w-4 h-4 text-twins-600"></i>
+                2. Especificaciones Técnicas y Telemetría de Silicio (100% Auditado)
+            </h2>
+            
+            <div class="border border-slate-200 rounded-xl overflow-hidden text-xs">
+                <table class="w-full text-left border-collapse">
+                    <thead class="bg-slate-100/90 text-slate-700 font-bold border-b border-slate-200">
+                        <tr>
+                            <th class="py-2 px-3 w-1/3">Componente / Módulo</th>
+                            <th class="py-2 px-3">Especificación Técnica Verificada</th>
+                            <th class="py-2 px-3 w-28 text-center">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 font-sans">
+                        <tr class="hover:bg-slate-50">
+                            <td class="py-2 px-3 font-semibold text-slate-600 flex items-center gap-1.5"><i data-lucide="tag" class="w-3.5 h-3.5 text-slate-400"></i> Marca y Modelo</td>
+                            <td class="py-2 px-3 font-bold text-slate-900">Xiaomi Redmi Note 13 Pro 4G</td>
+                            <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Conforme</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 bg-slate-50/40">
+                            <td class="py-2 px-3 font-semibold text-slate-600 flex items-center gap-1.5"><i data-lucide="barcode" class="w-3.5 h-3.5 text-slate-400"></i> Número de IMEI (Serie)</td>
+                            <td class="py-2 px-3 font-mono font-extrabold text-blue-700 tracking-wider text-sm">864209062345678</td>
+                            <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Registrado</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="py-2 px-3 font-semibold text-slate-600 flex items-center gap-1.5"><i data-lucide="cpu" class="w-3.5 h-3.5 text-slate-400"></i> Procesador (SoC) / GPU</td>
+                            <td class="py-2 px-3 font-mono text-slate-800">MediaTek Helio G99-Ultra (8 Núcleos: 2x2.2GHz + 6x2.0GHz) &bull; GPU: Mali-G57 MC2</td>
+                            <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Conforme</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 bg-slate-50/40">
+                            <td class="py-2 px-3 font-semibold text-slate-600 flex items-center gap-1.5"><i data-lucide="layers" class="w-3.5 h-3.5 text-slate-400"></i> Memoria RAM Física</td>
+                            <td class="py-2 px-3 font-mono font-bold text-slate-900">8 GB LPDDR4X (+4GB Virtual RAM) High-Speed LPDDR</td>
+                            <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Conforme</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="py-2 px-3 font-semibold text-slate-600 flex items-center gap-1.5"><i data-lucide="hard-drive" class="w-3.5 h-3.5 text-slate-400"></i> Almacenamiento Interno (ROM)</td>
+                            <td class="py-2 px-3 font-mono text-slate-800">256 GB UFS 2.2 (194 GB libres)</td>
+                            <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Conforme</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 bg-slate-50/40">
+                            <td class="py-2 px-3 font-semibold text-slate-600 flex items-center gap-1.5"><i data-lucide="tv" class="w-3.5 h-3.5 text-slate-400"></i> Pantalla / Display</td>
+                            <td class="py-2 px-3 font-mono text-slate-800">6.67" AMOLED FHD+ (2400 x 1080 @ 120Hz Corning Gorilla Glass 5) (Multi-Touch Capacitivo)</td>
+                            <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Conforme</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="py-2 px-3 font-semibold text-slate-600 flex items-center gap-1.5"><i data-lucide="battery-charging" class="w-3.5 h-3.5 text-slate-400"></i> Batería &amp; Salud</td>
+                            <td class="py-2 px-3 font-mono text-slate-800">5000 mAh • Carga Rápida 67W Turbo &bull; Estado Eléctrico: Salud Óptima (100% Capacidad)</td>
+                            <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Óptimo</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 bg-slate-50/40">
+                            <td class="py-2 px-3 font-semibold text-slate-600 flex items-center gap-1.5"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-slate-400"></i> Sistema Operativo</td>
+                            <td class="py-2 px-3 font-mono text-slate-800">Xiaomi HyperOS 1.0 (Android 14) (64-bit Architecture)</td>
+                            <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Actualizado</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="py-2 px-3 font-semibold text-slate-600 flex items-center gap-1.5"><i data-lucide="wifi" class="w-3.5 h-3.5 text-slate-400"></i> Conectividad &amp; Red</td>
+                            <td class="py-2 px-3 font-mono text-slate-800">4G LTE / Wi-Fi 5GHz Dual Band &bull; IP: 192.168.18.42</td>
+                            <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Conectado</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 3. RESUMEN DE CONDICIONES Y ESTADO FÍSICO -->
+        <div class="mb-5 bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-1.5">
+                <i data-lucide="clipboard-check" class="w-4 h-4 text-emerald-600"></i>
+                3. Resumen Ejecutivo del Estado Físico y Condiciones del Dispositivo
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-slate-700">
+                <div class="space-y-1.5">
+                    <p><span class="font-bold text-slate-900">Estado Estético / Físico:</span> Excelente / Operativo (Pantalla y chasis sin fisuras)</p>
+                    <p><span class="font-bold text-slate-900">Condición de Pantalla:</span> Táctil íntegro, sin manchas ni píxeles muertos.</p>
+                    <p><span class="font-bold text-slate-900">Puertos y Botones:</span> Puerto de carga USB-C, botones de volumen y encendido en estado óptimo.</p>
+                </div>
+                <div class="space-y-1.5">
+                    <p><span class="font-bold text-slate-900">Accesorios Entregados:</span> Cargador 67W Original Xiaomi + Cable USB Tipo C + Funda de Silicona Original</p>
+                    <p><span class="font-bold text-slate-900">Políticas de Seguridad:</span> Bloqueo por PIN/Huella configurado, sin vulnerabilidades detectadas.</p>
+                    <p><span class="font-bold text-slate-900">Uso Autorizado:</span> Exclusivo para gestión corporativa y comercial de Útiles Twins.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. FIRMAS DE CONFORMIDAD -->
+        <div class="grid grid-cols-2 gap-8 pt-6 mt-4 border-t border-slate-200 page-break-avoid">
+            <div class="text-center">
+                <div class="h-14 border-b border-slate-400 mx-auto w-48 mb-2 flex items-end justify-center pb-1">
+                    <span class="font-mono text-[10px] text-slate-400">[Firma Digital TI]</span>
+                </div>
+                <p class="text-xs font-bold text-slate-900">Tajho A. Núñez Durand</p>
+                <p class="text-[10px] font-semibold text-slate-500">Jefe de Sistemas TI &bull; Útiles Twins</p>
+                <p class="text-[9px] font-mono text-slate-400">Responsable de Auditoría y Control</p>
+            </div>
+            
+            <div class="text-center">
+                <div class="h-14 border-b border-slate-400 mx-auto w-48 mb-2 flex items-end justify-center pb-1">
+                    <span class="font-mono text-[10px] text-slate-400">[Firma de Recepción]</span>
+                </div>
+                <p class="text-xs font-bold text-slate-900">Shaulin Jhayro Mauricio Ciriaco</p>
+                <p class="text-[10px] font-semibold text-slate-500">Ventas de Campo &bull; Usuario Responsable</p>
+                <p class="text-[9px] font-mono text-slate-400">DNI / Asignación Patrimonial</p>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="mt-6 pt-3 border-t border-slate-100 flex justify-between items-center text-[9px] font-mono text-slate-400">
+            <span>Sistema Twins Vantage &bull; Corporación Arcángel</span>
+            <span>Documento Oficial de Control Patrimonial TI &bull; Página 1 de 1</span>
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

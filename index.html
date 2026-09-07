@@ -122,6 +122,11 @@
           <span>Panel de Control TI</span>
         </button>
 
+                <button data-tab="mobile" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900/60 transition-all text-left">
+          <i data-lucide="smartphone" class="w-4 h-4 text-[#00f0ff]"></i>
+          <span>Parque Móvil (10 Celulares)</span>
+        </button>
+
         <button data-tab="fleet" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900/60 transition-all text-left">
           <i data-lucide="monitor" class="w-4 h-4 text-[#38bdf8]"></i>
           <span>Flota Corporativa (28 Nodos)</span>
@@ -456,6 +461,185 @@
       </section>
 
       <!-- ============================================================ -->
+      
+      <!-- ============================================================ -->
+      <!-- TAB 2.2: PARQUE MÓVIL & CELULARES CORPORATIVOS (10 TERMINALES) -->
+      <!-- ============================================================ -->
+      <section id="view-mobile" class="tab-view hidden space-y-6">
+        
+        <!-- Top Hero & Metrics -->
+        <div class="vantage-card p-5 md:p-6 border-cyan-500/30 bg-gradient-to-r from-[#070c1b] via-[#0d152a] to-[#091530] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5">
+          <div class="space-y-1.5">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="badge-online text-xs font-bold px-3 py-1 rounded-full flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#00ff88] pulse-led"></span> 10 / 10 Terminales Auditados &amp; Homologados
+              </span>
+              <span class="text-xs text-slate-400 font-mono">Especialista TI: <b class="text-white">J. Angelo Núñez Durand</b></span>
+            </div>
+            <h1 class="text-xl md:text-2xl font-black text-white font-mono tracking-tight flex items-center gap-2">
+              PARQUE MÓVIL CORPORATIVO <span class="text-cyan-400">—</span> SMARTPHONES
+            </h1>
+            <p class="text-xs text-slate-300 max-w-2xl">
+              Inventario fotográfico de hardware, diagnóstico de baterías, procesadores SoC, telecomunicaciones Dual SIM / eSIM, IMEIs certificados y actas oficiales de entrega.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2.5">
+            <button onclick="exportMobileCSV()" class="px-4 py-2.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/40 text-cyan-300 text-xs font-bold transition-all flex items-center gap-2">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Exportar CSV</span>
+            </button>
+            <a href="scanner.html" target="_blank" class="cyber-btn-primary px-4 py-2.5 rounded-xl text-xs flex items-center gap-2">
+              <i data-lucide="scan" class="w-4 h-4"></i>
+              <span>Escanear USB Móvil</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 5 Mobile KPI Cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
+          <div class="vantage-card p-3.5 border-l-4 border-l-cyan-500 flex flex-col justify-between">
+            <div class="flex items-center justify-between text-slate-400">
+              <span class="text-[10.5px] font-bold uppercase tracking-wider">Flota Activa</span>
+              <i data-lucide="smartphone" class="w-4 h-4 text-cyan-400"></i>
+            </div>
+            <div class="mt-2 flex items-baseline gap-1.5">
+              <span class="text-2xl font-black text-white font-mono" id="mobileCount">10</span>
+              <span class="text-xs text-slate-400 font-medium">Equipos</span>
+            </div>
+            <span class="text-[10px] text-emerald-400 font-semibold mt-1">100% Homologados</span>
+          </div>
+
+          <div class="vantage-card p-3.5 border-l-4 border-l-purple-500 flex flex-col justify-between">
+            <div class="flex items-center justify-between text-slate-400">
+              <span class="text-[10.5px] font-bold uppercase tracking-wider">Almacenamiento</span>
+              <i data-lucide="hard-drive" class="w-4 h-4 text-purple-400"></i>
+            </div>
+            <div class="mt-2 flex items-baseline gap-1.5">
+              <span class="text-2xl font-black text-white font-mono">2.81</span>
+              <span class="text-xs text-slate-400 font-medium">TB Total</span>
+            </div>
+            <span class="text-[10px] text-purple-300 font-semibold mt-1">NVMe / UFS 4.0 / 3.1</span>
+          </div>
+
+          <div class="vantage-card p-3.5 border-l-4 border-l-emerald-500 flex flex-col justify-between">
+            <div class="flex items-center justify-between text-slate-400">
+              <span class="text-[10.5px] font-bold uppercase tracking-wider">Salud Batería</span>
+              <i data-lucide="battery-charging" class="w-4 h-4 text-emerald-400"></i>
+            </div>
+            <div class="mt-2 flex items-baseline gap-1.5">
+              <span class="text-2xl font-black text-emerald-400 font-mono">99.1%</span>
+              <span class="text-xs text-slate-400 font-medium">Promedio</span>
+            </div>
+            <span class="text-[10px] text-emerald-300 font-semibold mt-1">0 Degradadas</span>
+          </div>
+
+          <div class="vantage-card p-3.5 border-l-4 border-l-blue-500 flex flex-col justify-between">
+            <div class="flex items-center justify-between text-slate-400">
+              <span class="text-[10.5px] font-bold uppercase tracking-wider">RAM Flota</span>
+              <i data-lucide="cpu" class="w-4 h-4 text-blue-400"></i>
+            </div>
+            <div class="mt-2 flex items-baseline gap-1.5">
+              <span class="text-2xl font-black text-blue-400 font-mono">98</span>
+              <span class="text-xs text-slate-400 font-medium">GB Pool</span>
+            </div>
+            <span class="text-[10px] text-blue-300 font-semibold mt-1">LPDDR5X / LPDDR5</span>
+          </div>
+
+          <div class="vantage-card p-3.5 border-l-4 border-l-amber-500 flex flex-col justify-between col-span-2 sm:col-span-1">
+            <div class="flex items-center justify-between text-slate-400">
+              <span class="text-[10.5px] font-bold uppercase tracking-wider">Red 5G NR</span>
+              <i data-lucide="wifi" class="w-4 h-4 text-amber-400"></i>
+            </div>
+            <div class="mt-2 flex items-baseline gap-1.5">
+              <span class="text-2xl font-black text-amber-400 font-mono">70%</span>
+              <span class="text-xs text-slate-400 font-medium">5G Ready</span>
+            </div>
+            <span class="text-[10px] text-amber-300 font-semibold mt-1">7x 5G NR • 3x 4G LTE-A</span>
+          </div>
+        </div>
+
+        <!-- Controls & Filters Bar -->
+        <div class="vantage-card p-4 space-y-4">
+          <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+            
+            <!-- Search Bar -->
+            <div class="relative w-full md:w-96">
+              <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-cyan-400"></i>
+              <input type="text" id="mobileSearchInput" placeholder="Buscar celular, colaborador, modelo, IMEI, serie, línea..." class="w-full pl-10 pr-4 py-2.5 bg-slate-900/90 border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors">
+            </div>
+
+            <!-- View Mode Switcher -->
+            <div class="flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-white/10 self-start md:self-auto">
+              <button id="btnMobileGrid" onclick="setMobileViewMode('grid')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
+                <i data-lucide="grid" class="w-3.5 h-3.5"></i>
+                <span>Cuadrícula</span>
+              </button>
+              <button id="btnMobileTable" onclick="setMobileViewMode('table')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition">
+                <i data-lucide="list" class="w-3.5 h-3.5"></i>
+                <span>Tabla Matriz</span>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Brand & Area Filter Tabs -->
+          <div class="space-y-2 pt-2 border-t border-white/5">
+            <!-- Brand Category Pills -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs no-scrollbar">
+              <span class="text-[10px] font-mono text-slate-500 uppercase font-bold shrink-0">Marca:</span>
+              <button class="mobile-brand-pill bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 px-3 py-1.5 rounded-xl font-bold shrink-0 transition-all shadow-[0_0_15px_rgba(0,240,255,0.2)]" data-brand="all">Todas (10)</button>
+              <button class="mobile-brand-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3 py-1.5 rounded-xl font-bold shrink-0 hover:text-white transition-all" data-brand="Samsung">Samsung (4)</button>
+              <button class="mobile-brand-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3 py-1.5 rounded-xl font-bold shrink-0 hover:text-white transition-all" data-brand="Xiaomi">Xiaomi (3)</button>
+              <button class="mobile-brand-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3 py-1.5 rounded-xl font-bold shrink-0 hover:text-white transition-all" data-brand="Apple">Apple (1)</button>
+              <button class="mobile-brand-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3 py-1.5 rounded-xl font-bold shrink-0 hover:text-white transition-all" data-brand="Huawei">Huawei (1)</button>
+            </div>
+
+            <!-- Area Category Pills -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs no-scrollbar">
+              <span class="text-[10px] font-mono text-slate-500 uppercase font-bold shrink-0">Área:</span>
+              <button class="mobile-area-pill bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 px-3 py-1.5 rounded-xl font-bold shrink-0 transition-all shadow-[0_0_15px_rgba(0,240,255,0.2)]" data-area="all">Todas</button>
+              <button class="mobile-area-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3 py-1.5 rounded-xl font-bold shrink-0 hover:text-white transition-all" data-area="Dirección">Dirección (1)</button>
+              <button class="mobile-area-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3 py-1.5 rounded-xl font-bold shrink-0 hover:text-white transition-all" data-area="Marketing">Marketing (2)</button>
+              <button class="mobile-area-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3 py-1.5 rounded-xl font-bold shrink-0 hover:text-white transition-all" data-area="RR.HH">RR.HH (1)</button>
+              <button class="mobile-area-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3 py-1.5 rounded-xl font-bold shrink-0 hover:text-white transition-all" data-area="Ventas & Comercial">Ventas (1)</button>
+              <button class="mobile-area-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3 py-1.5 rounded-xl font-bold shrink-0 hover:text-white transition-all" data-area="Administración & Finanzas">Administración (2)</button>
+              <button class="mobile-area-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3 py-1.5 rounded-xl font-bold shrink-0 hover:text-white transition-all" data-area="Facturación & Cobranzas">Facturación (1)</button>
+              <button class="mobile-area-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3 py-1.5 rounded-xl font-bold shrink-0 hover:text-white transition-all" data-area="Contabilidad & Tesorería">Contabilidad (1)</button>
+              <button class="mobile-area-pill bg-slate-900/80 text-slate-400 border border-white/5 px-3 py-1.5 rounded-xl font-bold shrink-0 hover:text-white transition-all" data-area="Logística & Despacho">Logística (1)</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Grid Container -->
+        <div id="mobileGridContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <!-- Populated dynamically via app.js -->
+        </div>
+
+        <!-- Mobile Table Container (Hidden by default) -->
+        <div id="mobileTableContainer" class="hidden vantage-card overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs text-slate-300 border-collapse">
+              <thead class="bg-[#030610]/90 text-[10px] uppercase font-mono tracking-wider text-slate-400 border-b border-white/10">
+                <tr>
+                  <th class="py-3 px-4 font-bold">Activo / Colaborador</th>
+                  <th class="py-3 px-4 font-bold">Terminal &amp; Silicio</th>
+                  <th class="py-3 px-4 font-bold">RAM &amp; Almacenamiento</th>
+                  <th class="py-3 px-4 font-bold">Línea Telefónica</th>
+                  <th class="py-3 px-4 font-bold">IMEI 1 / Serial</th>
+                  <th class="py-3 px-4 font-bold text-center">Batería</th>
+                  <th class="py-3 px-4 font-bold text-center">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="mobileTableBody" class="divide-y divide-white/5 font-sans">
+                <!-- Populated dynamically via app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </section>
+
       <!-- TAB 2.5: FINOPS & CICLO DE VIDA DE HARDWARE -->
       <!-- ============================================================ -->
       <section id="view-finops" class="tab-view hidden space-y-6">
@@ -541,6 +725,10 @@
     <button data-tab="home" class="nav-btn active flex flex-col items-center gap-1 text-[10px] font-bold text-slate-400 hover:text-cyan-400 transition-colors">
       <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
       <span>Panel</span>
+    </button>
+    <button data-tab="mobile" class="nav-btn flex flex-col items-center gap-1 text-[10px] font-bold text-slate-400 hover:text-cyan-400 transition-colors">
+      <i data-lucide="smartphone" class="w-4 h-4 text-[#00f0ff]"></i>
+      <span>Celulares</span>
     </button>
     <button data-tab="fleet" class="nav-btn flex flex-col items-center gap-1 text-[10px] font-bold text-slate-400 hover:text-cyan-400 transition-colors">
       <i data-lucide="monitor" class="w-4 h-4"></i>

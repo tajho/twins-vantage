@@ -53,6 +53,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   filteredDevices = [...allDevices];
   
+  if (typeof MOBILE_INVENTORY_DATA !== 'undefined' && MOBILE_INVENTORY_DATA.length > 0) {
+    allMobileDevices = MOBILE_INVENTORY_DATA;
+  }
+  try {
+    const mobRes = await fetch('./mobile_data.json?_t=' + Date.now(), { cache: 'no-store' });
+    if (mobRes.ok) {
+      const mobData = await mobRes.json();
+      if (Array.isArray(mobData) && mobData.length > 0) {
+        allMobileDevices = mobData;
+      }
+    }
+  } catch (e) {}
+  filteredMobileDevices = [...allMobileDevices];
+  initMobileFleet();
+  
   initNavigation();
   initSearchAndFilters();
   renderFleetOverview();
@@ -130,7 +145,9 @@ function switchTab(tabId) {
   // Lazy render only on first visit for instantaneous 0ms tab switching
   if (!renderedTabs.has(tabId)) {
     renderedTabs.add(tabId);
-    if (tabId === 'fleet') {
+    if (tabId === 'mobile') {
+      applyMobileFilters();
+    } else if (tabId === 'fleet') {
       applyFilters();
     } else if (tabId === 'finops') {
       renderFinOps();
@@ -2027,4 +2044,445 @@ function renderComparison() {
   `;
 
   if (window.lucide) window.lucide.createIcons();
+}
+
+
+// ============================================================
+// TWINS VANTAGE — PARQUE MÓVIL & CELULARES CORPORATIVOS ENGINE
+// ============================================================
+let allMobileDevices = [];
+let filteredMobileDevices = [];
+let currentMobileBrand = 'all';
+let currentMobileArea = 'all';
+let mobileViewMode = 'grid';
+
+function initMobileFleet() {
+  const searchInput = document.getElementById('mobileSearchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      applyMobileFilters();
+    });
+  }
+
+  // Brand Pills
+  const brandPills = document.querySelectorAll('.mobile-brand-pill');
+  brandPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      brandPills.forEach(p => p.classList.remove('bg-cyan-500/20', 'text-cyan-300', 'border-cyan-500/50', 'shadow-[0_0_15px_rgba(0,240,255,0.2)]'));
+      brandPills.forEach(p => p.classList.add('bg-slate-900/80', 'text-slate-400', 'border-white/5'));
+      
+      pill.classList.remove('bg-slate-900/80', 'text-slate-400', 'border-white/5');
+      pill.classList.add('bg-cyan-500/20', 'text-cyan-300', 'border-cyan-500/50', 'shadow-[0_0_15px_rgba(0,240,255,0.2)]');
+      currentMobileBrand = pill.getAttribute('data-brand');
+      applyMobileFilters();
+    });
+  });
+
+  // Area Pills
+  const areaPills = document.querySelectorAll('.mobile-area-pill');
+  areaPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      areaPills.forEach(p => p.classList.remove('bg-cyan-500/20', 'text-cyan-300', 'border-cyan-500/50', 'shadow-[0_0_15px_rgba(0,240,255,0.2)]'));
+      areaPills.forEach(p => p.classList.add('bg-slate-900/80', 'text-slate-400', 'border-white/5'));
+      
+      pill.classList.remove('bg-slate-900/80', 'text-slate-400', 'border-white/5');
+      pill.classList.add('bg-cyan-500/20', 'text-cyan-300', 'border-cyan-500/50', 'shadow-[0_0_15px_rgba(0,240,255,0.2)]');
+      currentMobileArea = pill.getAttribute('data-area');
+      applyMobileFilters();
+    });
+  });
+}
+
+function applyMobileFilters() {
+  const searchVal = (document.getElementById('mobileSearchInput')?.value || '').toLowerCase().trim();
+
+  filteredMobileDevices = allMobileDevices.filter(dev => {
+    const matchBrand = (currentMobileBrand === 'all') || (dev.marca === currentMobileBrand);
+    const matchArea = (currentMobileArea === 'all') || (dev.area === currentMobileArea);
+
+    let matchQuery = true;
+    if (searchVal) {
+      const searchBlob = `${dev.colaborador} ${dev.dispositivo} ${dev.modeloExacto} ${dev.marca} ${dev.area} ${dev.cargo} ${dev.linea} ${dev.activo} ${dev.imei1} ${dev.imei2} ${dev.serial} ${dev.soc} ${dev.colorEquipo}`.toLowerCase();
+      matchQuery = searchBlob.includes(searchVal);
+    }
+
+    return matchBrand && matchArea && matchQuery;
+  });
+
+  const countEl = document.getElementById('mobileCount');
+  if (countEl) countEl.innerText = filteredMobileDevices.length;
+
+  if (mobileViewMode === 'grid') {
+    renderMobileFleetGrid();
+  } else {
+    renderMobileTable();
+  }
+}
+
+function setMobileViewMode(mode) {
+  mobileViewMode = mode;
+  const btnGrid = document.getElementById('btnMobileGrid');
+  const btnTable = document.getElementById('btnMobileTable');
+  const gridCont = document.getElementById('mobileGridContainer');
+  const tableCont = document.getElementById('mobileTableContainer');
+
+  if (mode === 'grid') {
+    btnGrid.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition bg-cyan-500/20 text-cyan-300 border border-cyan-500/40';
+    btnTable.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition';
+    gridCont.classList.remove('hidden');
+    tableCont.classList.add('hidden');
+    renderMobileFleetGrid();
+  } else {
+    btnTable.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition bg-cyan-500/20 text-cyan-300 border border-cyan-500/40';
+    btnGrid.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition';
+    gridCont.classList.add('hidden');
+    tableCont.classList.remove('hidden');
+    renderMobileTable();
+  }
+}
+
+function renderMobileFleetGrid() {
+  const container = document.getElementById('mobileGridContainer');
+  if (!container) return;
+
+  if (filteredMobileDevices.length === 0) {
+    container.innerHTML = `
+      <div class="col-span-full py-16 text-center vantage-card p-8">
+        <i data-lucide="search-x" class="w-12 h-12 mx-auto text-slate-500 mb-3"></i>
+        <h3 class="text-lg font-semibold text-slate-300">No se encontraron dispositivos móviles</h3>
+        <p class="text-sm text-slate-500 mt-1">Intenta con otro término de búsqueda o selecciona otra área.</p>
+      </div>
+    `;
+    if (window.lucide) window.lucide.createIcons();
+    return;
+  }
+
+  container.innerHTML = filteredMobileDevices.map(dev => {
+    const brandColors = {
+      'Apple': 'border-slate-700 bg-slate-900/90 text-white',
+      'Samsung': 'border-blue-500/40 bg-blue-950/60 text-blue-300',
+      'Xiaomi': 'border-amber-500/40 bg-amber-950/60 text-amber-300',
+      'Huawei': 'border-rose-500/40 bg-rose-950/60 text-rose-300'
+    };
+    const brandClass = brandColors[dev.marca] || 'border-cyan-500/40 bg-cyan-950/60 text-cyan-300';
+
+    return `
+      <div class="vantage-card p-5 flex flex-col justify-between group hover:border-cyan-500/50 transition-all cursor-pointer" onclick="openMobileDrawer('${dev.id}')">
+        
+        <div>
+          <!-- Header Info -->
+          <div class="flex items-start justify-between gap-2 mb-3">
+            <div>
+              <span class="font-mono text-[10px] font-bold text-cyan-400 bg-cyan-500/10 border border-cyan-500/30 px-2 py-0.5 rounded">
+                ${dev.activo}
+              </span>
+              <h3 class="text-sm font-black text-white mt-1.5 group-hover:text-cyan-300 transition-colors leading-tight">
+                ${dev.dispositivo}
+              </h3>
+              <p class="text-[11px] text-slate-400 font-mono truncate">${dev.modeloExacto}</p>
+            </div>
+            <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded border ${brandClass} shrink-0">
+              ${dev.marca}
+            </span>
+          </div>
+
+          <!-- Product Image & Quick User Bar -->
+          <div class="relative w-full h-44 rounded-xl bg-[#02050e] border border-white/5 mb-3.5 overflow-hidden flex items-center justify-center p-2 group-hover:border-cyan-500/30 transition-all">
+            <img src="${dev.image}" alt="${dev.dispositivo}" class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=400&q=80'" />
+            <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between bg-black/80 backdrop-blur-md px-2.5 py-1.5 rounded-lg border border-white/10 text-[10px] font-mono">
+              <span class="text-slate-200 font-bold truncate flex items-center gap-1.5">
+                <i data-lucide="user" class="w-3 h-3 text-cyan-400"></i>
+                <span class="truncate">${dev.colaborador}</span>
+              </span>
+              <span class="text-emerald-400 font-bold shrink-0 ml-2">${dev.romTotalGB} GB</span>
+            </div>
+          </div>
+
+          <!-- Telemetry Spec Matrix -->
+          <div class="space-y-1.5 text-xs">
+            <div class="flex items-center justify-between text-slate-300">
+              <span class="text-slate-500 flex items-center gap-1"><i data-lucide="cpu" class="w-3 h-3 text-slate-400"></i> Silicio:</span>
+              <span class="font-semibold text-slate-200 truncate max-w-[150px]" title="${dev.soc}">${dev.soc.split('(')[0]}</span>
+            </div>
+            <div class="flex items-center justify-between text-slate-300">
+              <span class="text-slate-500 flex items-center gap-1"><i data-lucide="memory-stick" class="w-3 h-3 text-slate-400"></i> RAM / ROM:</span>
+              <span class="font-bold font-mono text-cyan-400">${dev.ramTotalGB}GB &bull; ${dev.romTotalGB}GB</span>
+            </div>
+            <div class="flex items-center justify-between text-slate-300">
+              <span class="text-slate-500 flex items-center gap-1"><i data-lucide="battery" class="w-3 h-3 text-emerald-400"></i> Batería:</span>
+              <span class="font-mono text-emerald-400 font-bold">${dev.bateria.split(' ')[0]} mAh (${dev.bateriaSalud})</span>
+            </div>
+            <div class="flex items-center justify-between text-slate-300">
+              <span class="text-slate-500 flex items-center gap-1"><i data-lucide="phone" class="w-3 h-3 text-twins-400"></i> Línea:</span>
+              <span class="font-mono text-white font-bold">${dev.linea}</span>
+            </div>
+          </div>
+
+          <!-- Dual IMEI Snippet with Copy -->
+          <div class="mt-3 p-2 rounded-xl bg-slate-950/60 border border-white/5 font-mono text-[10px] space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-500 font-bold">IMEI 1:</span>
+              <span class="text-slate-300 font-bold">${dev.imei1}</span>
+            </div>
+            <div class="flex items-center justify-between border-t border-white/5 pt-1">
+              <span class="text-slate-500 font-bold">SERIAL:</span>
+              <span class="text-slate-400">${dev.serial}</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Footer Actions -->
+        <div class="pt-3.5 mt-3.5 border-t border-white/5 flex items-center justify-between gap-2" onclick="event.stopPropagation()">
+          <button onclick="openMobileDrawer('${dev.id}')" class="flex-1 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 hover:text-white text-xs font-bold border border-white/5 transition flex items-center justify-center gap-1.5">
+            <i data-lucide="info" class="w-3.5 h-3.5 text-cyan-400"></i>
+            <span>Ficha Vantage</span>
+          </button>
+          <a href="${dev.pdfReport}" target="_blank" class="flex-1 py-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-[0_0_12px_rgba(0,240,255,0.15)]">
+            <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+            <span>Acta Oficial</span>
+          </a>
+        </div>
+
+      </div>
+    `;
+  }).join('');
+
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function renderMobileTable() {
+  const tbody = document.getElementById('mobileTableBody');
+  if (!tbody) return;
+
+  tbody.innerHTML = filteredMobileDevices.map(dev => `
+    <tr class="hover:bg-slate-800/40 transition">
+      <td class="py-3 px-4">
+        <div class="font-mono text-[10px] text-cyan-400 font-bold">${dev.activo}</div>
+        <div class="font-bold text-white text-xs mt-0.5">${dev.colaborador}</div>
+        <div class="text-[10px] text-slate-400">${dev.area}</div>
+      </td>
+      <td class="py-3 px-4">
+        <div class="font-bold text-white">${dev.dispositivo}</div>
+        <div class="text-[10px] text-slate-400 font-mono">${dev.soc.split('(')[0]}</div>
+      </td>
+      <td class="py-3 px-4 font-mono">
+        <div class="text-cyan-400 font-bold">${dev.ramTotalGB} GB RAM</div>
+        <div class="text-purple-400 text-[10px]">${dev.romTotalGB} GB ROM</div>
+      </td>
+      <td class="py-3 px-4 font-mono">
+        <div class="font-bold text-white">${dev.linea}</div>
+        <div class="text-[10px] text-slate-400">${dev.operador}</div>
+      </td>
+      <td class="py-3 px-4 font-mono text-[11px]">
+        <div class="text-slate-300 font-bold">${dev.imei1}</div>
+        <div class="text-[10px] text-slate-400">SN: ${dev.serial}</div>
+      </td>
+      <td class="py-3 px-4 font-mono text-center">
+        <span class="inline-block px-2 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded font-bold text-[10px]">
+          ${dev.bateriaSalud}
+        </span>
+      </td>
+      <td class="py-3 px-4 text-center">
+        <div class="flex items-center justify-center gap-1.5">
+          <button onclick="openMobileDrawer('${dev.id}')" class="p-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg transition" title="Ficha Técnica">
+            <i data-lucide="eye" class="w-4 h-4"></i>
+          </button>
+          <a href="${dev.pdfReport}" target="_blank" class="p-1.5 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 rounded-lg transition" title="Abrir Acta PDF">
+            <i data-lucide="file-text" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function openMobileDrawer(devId) {
+  playTechSound('click');
+  const dev = allMobileDevices.find(d => d.id === devId);
+  if (!dev) return;
+
+  const drawer = document.getElementById('deviceDrawer');
+  const content = document.getElementById('drawerContent');
+  if (!drawer || !content) return;
+
+  content.innerHTML = `
+    <!-- Header -->
+    <div class="p-6 border-b border-white/10 flex items-start justify-between bg-gradient-to-r from-[#0d152a] to-[#040711]">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold font-mono text-base shadow-[0_0_20px_rgba(0,240,255,0.2)]">
+          <i data-lucide="smartphone" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h2 class="text-base font-black text-white tracking-tight">${dev.dispositivo}</h2>
+            <span class="badge-online text-[10px] font-mono px-2 py-0.5 rounded">100% Homologado</span>
+          </div>
+          <div class="text-xs text-slate-400 font-mono mt-0.5">
+            ${dev.modeloExacto} &bull; <span class="text-cyan-400 font-bold">${dev.activo}</span>
+          </div>
+        </div>
+      </div>
+      <button onclick="closeDeviceDrawer()" class="p-2 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-white transition-colors">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Body Content -->
+    <div class="p-6 space-y-6 flex-1 text-xs">
+      
+      <!-- User & Assignment Card -->
+      <div class="vantage-card p-4 space-y-3">
+        <div class="text-[10px] font-mono uppercase tracking-widest text-slate-500 font-bold flex items-center gap-1.5">
+          <i data-lucide="user-check" class="w-3.5 h-3.5 text-cyan-400"></i> Asignación y Control Patrimonial
+        </div>
+        <div class="grid grid-cols-2 gap-3 text-xs">
+          <div>
+            <span class="text-slate-500 block">Colaborador Asignado:</span>
+            <span class="font-bold text-white text-sm">${dev.colaborador}</span>
+          </div>
+          <div>
+            <span class="text-slate-500 block">Área / Cargo:</span>
+            <span class="text-slate-300 font-medium">${dev.cargo} (${dev.area})</span>
+          </div>
+          <div>
+            <span class="text-slate-500 block">Línea Móvil:</span>
+            <span class="font-mono font-bold text-cyan-400 text-sm">${dev.linea}</span>
+          </div>
+          <div>
+            <span class="text-slate-500 block">Operador Telecom:</span>
+            <span class="text-slate-300 font-semibold">${dev.operador}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo & Visual Card -->
+      <div class="vantage-card p-4 space-y-3">
+        <div class="text-[10px] font-mono uppercase tracking-widest text-slate-500 font-bold flex items-center gap-1.5">
+          <i data-lucide="camera" class="w-3.5 h-3.5 text-purple-400"></i> Fotografía &amp; Acabado Físico
+        </div>
+        <div class="w-full h-52 rounded-xl bg-[#02050e] border border-white/5 overflow-hidden flex items-center justify-center p-2">
+          <img src="${dev.image}" alt="${dev.dispositivo}" class="w-full h-full object-cover rounded-lg" />
+        </div>
+        <div class="flex justify-between text-[11px] font-mono text-slate-400">
+          <span>Color: <strong class="text-white">${dev.colorEquipo}</strong></span>
+          <span>Pantalla: <strong class="text-cyan-400">${dev.pantalla.split('(')[0]}</strong></span>
+        </div>
+      </div>
+
+      <!-- Forensic Specs Table -->
+      <div class="vantage-card p-4 space-y-3">
+        <div class="text-[10px] font-mono uppercase tracking-widest text-slate-500 font-bold flex items-center gap-1.5">
+          <i data-lucide="layers" class="w-3.5 h-3.5 text-emerald-400"></i> Telemetría de Silicio &amp; Almacenamiento
+        </div>
+        <div class="space-y-2 divide-y divide-white/5">
+          <div class="pt-1.5 flex justify-between">
+            <span class="text-slate-400">Procesador & GPU:</span>
+            <span class="font-mono text-white text-right max-w-[280px] truncate">${dev.soc}</span>
+          </div>
+          <div class="pt-1.5 flex justify-between">
+            <span class="text-slate-400">Memoria RAM:</span>
+            <span class="font-mono text-emerald-400 font-bold">${dev.ramTotalGB} GB (${dev.ramTipo})</span>
+          </div>
+          <div class="pt-1.5 flex justify-between">
+            <span class="text-slate-400">Almacenamiento (ROM):</span>
+            <span class="font-mono text-purple-400 font-bold">${dev.romTotalGB} GB (${dev.romTipo})</span>
+          </div>
+          <div class="pt-1.5 flex justify-between">
+            <span class="text-slate-400">Batería & Salud:</span>
+            <span class="font-mono text-white">${dev.bateria} &bull; <strong class="text-emerald-400">${dev.bateriaSalud}</strong></span>
+          </div>
+          <div class="pt-1.5 flex justify-between">
+            <span class="text-slate-400">Sistema Operativo:</span>
+            <span class="font-mono text-slate-300">${dev.so}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- IMEI & Serial Matrix with Copy Buttons -->
+      <div class="vantage-card p-4 space-y-3">
+        <div class="text-[10px] font-mono uppercase tracking-widest text-slate-500 font-bold flex items-center gap-1.5">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-cyan-400"></i> Certificados IMEI &amp; Número de Serie
+        </div>
+        <div class="space-y-2 font-mono">
+          <div class="p-2.5 rounded-lg bg-slate-900/80 border border-white/5 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-500 block">IMEI 1 (SIM 1):</span>
+              <span class="text-xs font-bold text-white">${dev.imei1}</span>
+            </div>
+            <button onclick="copyMobileText('${dev.imei1}', 'IMEI 1 copiado')" class="px-2 py-1 rounded bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 text-[10px] font-bold border border-cyan-500/30 transition">
+              Copiar
+            </button>
+          </div>
+
+          <div class="p-2.5 rounded-lg bg-slate-900/80 border border-white/5 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-500 block">IMEI 2 (SIM 2 / eSIM):</span>
+              <span class="text-xs font-bold text-slate-300">${dev.imei2}</span>
+            </div>
+            <button onclick="copyMobileText('${dev.imei2}', 'IMEI 2 copiado')" class="px-2 py-1 rounded bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 text-[10px] font-bold border border-cyan-500/30 transition">
+              Copiar
+            </button>
+          </div>
+
+          <div class="p-2.5 rounded-lg bg-slate-900/80 border border-white/5 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-500 block">Número de Serie Fábrica (SN):</span>
+              <span class="text-xs font-bold text-slate-300">${dev.serial}</span>
+            </div>
+            <button onclick="copyMobileText('${dev.serial}', 'Serial copiado')" class="px-2 py-1 rounded bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 text-[10px] font-bold border border-cyan-500/30 transition">
+              Copiar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Observations -->
+      <div class="vantage-card p-4 space-y-2">
+        <div class="text-[10px] font-mono uppercase tracking-widest text-cyan-400 font-bold">Dictamen Técnico TI</div>
+        <p class="text-xs text-slate-300 leading-relaxed">${dev.observaciones}</p>
+      </div>
+
+    </div>
+
+    <!-- Footer Actions -->
+    <div class="p-4 border-t border-white/10 bg-[#030610] flex items-center justify-between gap-3 shrink-0">
+      <a href="${dev.pdfReport}" target="_blank" class="w-full cyber-btn-primary py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2">
+        <i data-lucide="file-text" class="w-4 h-4"></i>
+        <span>Abrir Acta Oficial de Auditoría (PDF)</span>
+      </a>
+    </div>
+  `;
+
+  drawer.classList.remove('hidden');
+  drawer.style.pointerEvents = 'auto';
+  const backdrop = document.getElementById('drawerBackdrop');
+  if (backdrop) backdrop.classList.remove('hidden');
+
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function copyMobileText(text, msg) {
+  navigator.clipboard.writeText(text).then(() => {
+    if (typeof TwinsModal !== 'undefined' && TwinsModal.showToast) {
+      TwinsModal.showToast(msg || 'Copiado al portapapeles');
+    } else {
+      alert(msg || 'Copiado');
+    }
+  });
+}
+
+function exportMobileCSV() {
+  let csv = "Activo,Colaborador,Area,Dispositivo,Modelo,Marca,Color,Linea,Operador,IMEI1,IMEI2,Serial,RAM_GB,ROM_GB,Salud_Bateria,SO\n";
+  allMobileDevices.forEach(d => {
+    csv += `"${d.activo}","${d.colaborador}","${d.area}","${d.dispositivo}","${d.modeloExacto}","${d.marca}","${d.colorEquipo}","${d.linea}","${d.operador}","${d.imei1}","${d.imei2}","${d.serial}",${d.ramTotalGB},${d.romTotalGB},"${d.bateriaSalud}","${d.so}"\n`;
+  });
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `Flota_Celulares_Twins_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
 }
