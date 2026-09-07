@@ -1,7 +1,7 @@
 // TWINS VANTAGE ENTERPRISE — MASTER INVENTORY DATABASE (28 NODOS)
 // Dominio: utilestwins.com (Subred: 192.168.18.0/24)
 // Total Nodos: 28 (25 Workstations + 3 Servidores)
-// 100% Datos Reales Auditados: Usuarios, Ubicación, Hardware, Monitores, Teclados y Mouse
+// Estado Real: 22 En Línea | 5 Apagadas
 
 const INVENTORY_DATA = [
   {
@@ -10,17 +10,18 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.70",
-    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "frank",
+    "userFullName": "Frank",
     "fullUser": "UTILESTWINS\\frank",
+    "jobTitle": "Diseñador Gráfico",
     "department": "Marketing y Diseno",
     "category": "design",
     "formFactor": "Torre Creator RTX",
     "motherboard": "Gigabyte Technology Co., Ltd. B450M DS3H V2",
     "cpu": "AMD Ryzen 5 5600G with Radeon Graphics",
-    "cpuShort": "AMD Ryzen 5 5600G (6C/12T)",
+    "cpuShort": "AMD Ryzen 5 5600G with Radeon Graphics",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 16,
+    "ramTotalGB": 15,
     "ramModules": "16 GB @ 2666MHz (Unknown)",
     "ramChannels": "Single Channel (1 modulo)",
     "ramChannelType": "single",
@@ -28,41 +29,20 @@ const INVENTORY_DATA = [
     "gpuType": "integrated",
     "storage": "WDC WD10EZEX-00BBHA0 (932 GB) + WDC WDS480G2G0C-00AJM0 (447 GB)",
     "storageType": "SSD SATA / HDD",
-    "diskSpace": "C: (159 GB libre de 446 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 159,
-        "totalGB": 446,
-        "percentFree": 36
-      }
-    ],
     "monitor": "LG UltraWide 29\" IPS (2560x1080)",
     "resolution": "2560x1080 @ 75Hz",
-    "os": "Microsoft Windows 10 Pro (Build 19045)",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 88,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Pérdida de Ancho de Banda (Single Channel)",
-        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
-      }
-    ],
-    "deviceVisual": "creator_tower",
-    "notes": "",
-    "rttMs": 1,
-    "userFullName": "La Chira Gatica, Frank Joel",
-    "jobTitle": "Analista de Marketing",
     "location": {
       "floor": "Piso 4",
       "branch": "Principal",
-      "city": "San Martín de Porres / Lima"
+      "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
-        "description": "LG 29WQ600",
+        "description": "LG UltraWide 29\" IPS (2560x1080)",
         "brand": "LG",
-        "model": "29WQ600",
+        "model": "UltraWide 29WP500",
         "serialNumber": "312NTNH6X335",
         "inventoryCode": "MN-MAR-001",
         "resolution": "2560x1080 @ 75Hz"
@@ -87,7 +67,16 @@ const INVENTORY_DATA = [
       "pcSerial": "Sin número de serie",
       "pcBrand": "Compatible",
       "pcModel": "Antryx"
-    }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Single Channel RAM (64-bit)",
+        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+      }
+    ],
+    "deviceVisual": "creator_tower",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD009",
@@ -95,17 +84,18 @@ const INVENTORY_DATA = [
     "status": "Desconectado",
     "isOnline": false,
     "ip": "192.168.18.71",
-    "mac": "d8-43-ae-9d-cb-1f",
-    "activeUser": "Administrador (MKT-Render)",
-    "fullUser": "UTILESTWINS\\Administrador (MKT-Render)",
+    "activeUser": "Administrador",
+    "userFullName": "Estación Render",
+    "fullUser": "UTILESTWINS\\Administrador",
+    "jobTitle": "Edición y Renderizado 4K",
     "department": "Marketing y Diseno",
     "category": "design",
     "formFactor": "Torre Creator RTX",
     "motherboard": "ASUSTeK COMPUTER INC. PRIME Z270-A",
     "cpu": "Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz",
-    "cpuShort": "Intel Core i7-7700 (4C/8T)",
+    "cpuShort": "Intel(R) Core(TM) i7-7700 CPU",
     "coresThreads": "4 Nucleos / 8 Hilos",
-    "ramTotalGB": 16,
+    "ramTotalGB": 40,
     "ramModules": "8 GB @ 2400MHz (Kingston) + 16 GB @ 2400MHz (Kingston) + 16 GB @ 2400MHz (Corsair)",
     "ramChannels": "Dual Channel (3 modulos)",
     "ramChannelType": "dual",
@@ -113,44 +103,23 @@ const INVENTORY_DATA = [
     "gpuType": "integrated",
     "storage": "TOSHIBA HDWD110 (932 GB) + TOSHIBA EXTERNAL_USB USB Device (1863 GB) + KINGSTON SA400S37240G (224 GB) + SanDisk SSD G5 BICS4 (466 GB)",
     "storageType": "SSD SATA / HDD",
-    "diskSpace": "C: (1 GB libre de 176 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 1,
-        "totalGB": 176,
-        "percentFree": 1
-      }
-    ],
-    "monitor": "Samsung S24R350 24\" IPS FHD",
-    "resolution": "1920x1080 @ 60Hz",
-    "os": "Microsoft Windows 10 Pro (Build 19045)",
-    "healthScore": 68,
-    "alerts": [
-      {
-        "type": "critical",
-        "title": "Espacio Crítico en Partición C:",
-        "desc": "Partición del sistema por debajo del umbral de seguridad de 15 GB. Requiere purga de temporales WinRM."
-      }
-    ],
-    "deviceVisual": "creator_tower",
-    "notes": "",
-    "rttMs": null,
-    "userFullName": "Sayas Herrera, Jesus Alejandro",
-    "jobTitle": "Publicista",
+    "monitor": "LG UltraWide 29\" IPS (2560x1080)",
+    "resolution": "2560x1080 @ 75Hz",
+    "os": "Microsoft Windows 11 Pro 64-bit",
+    "healthScore": 70,
     "location": {
       "floor": "Piso 4",
       "branch": "Principal",
-      "city": "San Martín de Porres / Lima"
+      "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
-        "description": "ASUS PA278CV",
-        "brand": "ASUS",
-        "model": "PA278CV",
+        "description": "LG UltraWide 29\" IPS (2560x1080)",
+        "brand": "LG",
+        "model": "UltraWide 29WP500",
         "serialNumber": "N6LMQS138773",
         "inventoryCode": "MN-MAR-002",
-        "resolution": "1920x1080 @ 60Hz"
+        "resolution": "2560x1080 @ 75Hz"
       },
       "keyboard": {
         "description": "--------- -----------",
@@ -172,7 +141,10 @@ const INVENTORY_DATA = [
       "pcSerial": "Sin número de serie",
       "pcBrand": "Compatible",
       "pcModel": "Compatible"
-    }
+    },
+    "alerts": [],
+    "deviceVisual": "creator_tower",
+    "rttMs": null
   },
   {
     "id": "ARCNMRKD010",
@@ -180,62 +152,42 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.72",
-    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "luz",
+    "userFullName": "Luz",
     "fullUser": "UTILESTWINS\\luz",
+    "jobTitle": "Diseñadora Gráfica Senior",
     "department": "Marketing y Diseno",
     "category": "design",
     "formFactor": "Torre Creator RTX",
     "motherboard": "ASUSTeK COMPUTER INC. TUF GAMING X570-PLUS (WI-FI)",
     "cpu": "AMD Ryzen 7 5700X 8-Core Processor",
-    "cpuShort": "AMD Ryzen 7 5700X (8C/16T)",
+    "cpuShort": "AMD Ryzen 7 5700X 8-Core Processor",
     "coresThreads": "8 Nucleos / 16 Hilos",
-    "ramTotalGB": 16,
+    "ramTotalGB": 32,
     "ramModules": "16 GB @ 2400MHz (Kingston) + 16 GB @ 2400MHz (Kingston)",
     "ramChannels": "Dual Channel (2 modulos)",
     "ramChannelType": "dual",
     "gpu": "NVIDIA GeForce RTX 4060 Ti",
     "gpuType": "dedicated",
     "storage": "KINGSTON SNV2S1000G (932 GB)",
-    "storageType": "NVMe Gen4 1TB",
-    "diskSpace": "C: (117 GB libre de 443 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 117,
-        "totalGB": 443,
-        "percentFree": 26
-      }
-    ],
-    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-    "resolution": "2560x1440 @ 75Hz (Calman Verified)",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
+    "storageType": "NVMe PCIe 4.0",
+    "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
+    "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 95,
-    "alerts": [
-      {
-        "type": "optimal",
-        "title": "Hardware Íntegro & Telemetría OK",
-        "desc": "Todos los subsistemas de CPU, memoria y almacenamiento SMART operan sin anomalías."
-      }
-    ],
-    "deviceVisual": "creator_tower",
-    "notes": "",
-    "rttMs": 1,
-    "userFullName": "Chang Huancaya, Mailing Mijaru",
-    "jobTitle": "Diseñador Gráfico",
     "location": {
       "floor": "Piso 4",
       "branch": "Principal",
-      "city": "San Martín de Porres / Lima"
+      "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
-        "description": "ASUS PA278CGV",
+        "description": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
         "brand": "ASUS",
-        "model": "PA278CGV",
+        "model": "ProArt PA278CV",
         "serialNumber": "R9LMQS039161",
         "inventoryCode": "MN-MAR-003",
-        "resolution": "2560x1440 @ 75Hz (Calman Verified)"
+        "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)"
       },
       "keyboard": {
         "description": "--------- -----------",
@@ -257,7 +209,10 @@ const INVENTORY_DATA = [
       "pcSerial": "Sin número de serie",
       "pcBrand": "Compatible",
       "pcModel": "Antryx"
-    }
+    },
+    "alerts": [],
+    "deviceVisual": "creator_tower",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD011",
@@ -265,17 +220,18 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.73",
-    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "adrian",
+    "userFullName": "Adrian",
     "fullUser": "UTILESTWINS\\adrian",
+    "jobTitle": "Diseñador Audiovisual",
     "department": "Marketing y Diseno",
     "category": "design",
     "formFactor": "Torre Creator RTX",
     "motherboard": "Micro-Star International Co., Ltd. MAG B560 TOMAHAWK WIFI (MS-7D15)",
     "cpu": "11th Gen Intel(R) Core(TM) i5-11400F @ 2.60GHz",
-    "cpuShort": "Intel Core i5-11400F (11va Gen)",
+    "cpuShort": "11th Gen Intel(R) Core(TM) i5-11400F",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 16,
+    "ramTotalGB": 32,
     "ramModules": "8 GB @ 3467MHz (A-DATA Technology) + 8 GB @ 3467MHz (A-DATA Technology) + 8 GB @ 3467MHz (A-DATA Technology) + 8 GB @ 3467MHz (A-DATA Technology)",
     "ramChannels": "Dual Channel (4 modulos)",
     "ramChannelType": "dual",
@@ -283,44 +239,23 @@ const INVENTORY_DATA = [
     "gpuType": "dedicated",
     "storage": "WD Green SN350 1TB (932 GB)",
     "storageType": "SSD SATA / HDD",
-    "diskSpace": "C: (41 GB libre de 343 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 41,
-        "totalGB": 343,
-        "percentFree": 12
-      }
-    ],
-    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-    "resolution": "2560x1440 @ 75Hz (Calman Verified)",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 95,
-    "alerts": [
-      {
-        "type": "optimal",
-        "title": "Hardware Íntegro & Telemetría OK",
-        "desc": "Todos los subsistemas de CPU, memoria y almacenamiento SMART operan sin anomalías."
-      }
-    ],
-    "deviceVisual": "creator_tower",
-    "notes": "",
-    "rttMs": 1,
-    "userFullName": "Chamorro Morales, Eduardo Antonio",
-    "jobTitle": "Diseñador Gráfico",
+    "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
+    "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)",
+    "os": "Microsoft Windows 11 Pro 64-bit",
+    "healthScore": 70,
     "location": {
       "floor": "Piso 4",
       "branch": "Principal",
-      "city": "San Martín de Porres / Lima"
+      "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
-        "description": "ASUS PA278CV",
+        "description": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
         "brand": "ASUS",
-        "model": "PA278CV",
+        "model": "ProArt PA278CV",
         "serialNumber": "N6LMQS125185",
         "inventoryCode": "MN-MAR-004",
-        "resolution": "2560x1440 @ 75Hz (Calman Verified)"
+        "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)"
       },
       "keyboard": {
         "description": "--------- -----------",
@@ -342,7 +277,10 @@ const INVENTORY_DATA = [
       "pcSerial": "Sin número de serie",
       "pcBrand": "Compatible",
       "pcModel": "MS-7D15"
-    }
+    },
+    "alerts": [],
+    "deviceVisual": "creator_tower",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD012",
@@ -350,62 +288,42 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.74",
-    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "anjali",
+    "userFullName": "Anjali",
     "fullUser": "UTILESTWINS\\anjali",
+    "jobTitle": "Diseñadora Gráfica",
     "department": "Marketing y Diseno",
     "category": "design",
     "formFactor": "Torre Creator RTX",
     "motherboard": "ASUSTeK COMPUTER INC. TUF GAMING X570-PLUS (WI-FI)",
     "cpu": "AMD Ryzen 7 5700X 8-Core Processor",
-    "cpuShort": "AMD Ryzen 7 5700X (8C/16T)",
+    "cpuShort": "AMD Ryzen 7 5700X 8-Core Processor",
     "coresThreads": "8 Nucleos / 16 Hilos",
-    "ramTotalGB": 16,
+    "ramTotalGB": 32,
     "ramModules": "16 GB @ 3600MHz (A-DATA) + 16 GB @ 3600MHz (A-DATA)",
     "ramChannels": "Dual Channel (2 modulos)",
     "ramChannelType": "dual",
     "gpu": "NVIDIA GeForce RTX 4060 Ti",
     "gpuType": "dedicated",
     "storage": "WDC WD10EZEX-00BBHA0 (932 GB) + WDC WD10EZEX-08WN4A0 (932 GB) + KINGSTON SNV2S1000G (932 GB)",
-    "storageType": "NVMe Gen4 1TB",
-    "diskSpace": "C: (451 GB libre de 930 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 451,
-        "totalGB": 930,
-        "percentFree": 48
-      }
-    ],
-    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-    "resolution": "2560x1440 @ 75Hz (Calman Verified)",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
-    "healthScore": 95,
-    "alerts": [
-      {
-        "type": "optimal",
-        "title": "Hardware Íntegro & Telemetría OK",
-        "desc": "Todos los subsistemas de CPU, memoria y almacenamiento SMART operan sin anomalías."
-      }
-    ],
-    "deviceVisual": "creator_tower",
-    "notes": "",
-    "rttMs": 1,
-    "userFullName": "Ramos Ramirez, Anjali Nayu",
-    "jobTitle": "Diseñador Gráfico",
+    "storageType": "NVMe PCIe 4.0",
+    "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
+    "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)",
+    "os": "Microsoft Windows 11 Pro 64-bit",
+    "healthScore": 70,
     "location": {
       "floor": "Piso 4",
       "branch": "Principal",
-      "city": "San Martín de Porres / Lima"
+      "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
-        "description": "ASUS PA278CV",
+        "description": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
         "brand": "ASUS",
-        "model": "PA278CV",
+        "model": "ProArt PA278CV",
         "serialNumber": "N6LMQS168042",
         "inventoryCode": "MN-MAR-005",
-        "resolution": "2560x1440 @ 75Hz (Calman Verified)"
+        "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)"
       },
       "keyboard": {
         "description": "--------- -----------",
@@ -427,7 +345,10 @@ const INVENTORY_DATA = [
       "pcSerial": "Sin número de serie",
       "pcBrand": "Compatible",
       "pcModel": "Antryx"
-    }
+    },
+    "alerts": [],
+    "deviceVisual": "creator_tower",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD013",
@@ -435,62 +356,42 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.75",
-    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "zahir",
+    "userFullName": "Zahir",
     "fullUser": "UTILESTWINS\\zahir",
+    "jobTitle": "Diseñador Multimedia / 3D",
     "department": "Marketing y Diseno",
     "category": "design",
     "formFactor": "Torre Creator RTX",
     "motherboard": "ASUSTeK COMPUTER INC. TUF GAMING X570-PLUS (WI-FI)",
     "cpu": "AMD Ryzen 7 5700X 8-Core Processor",
-    "cpuShort": "AMD Ryzen 7 5700X (8C/16T)",
+    "cpuShort": "AMD Ryzen 7 5700X 8-Core Processor",
     "coresThreads": "8 Nucleos / 16 Hilos",
-    "ramTotalGB": 16,
+    "ramTotalGB": 32,
     "ramModules": "8 GB @ 3600MHz (A-DATA) + 8 GB @ 3600MHz (A-DATA) + 8 GB @ 3600MHz (A-DATA) + 8 GB @ 3600MHz (A-DATA)",
     "ramChannels": "Dual Channel (4 modulos)",
     "ramChannelType": "dual",
     "gpu": "NVIDIA GeForce RTX 3060",
     "gpuType": "dedicated",
     "storage": "WDC WD20EZBX-00AYRA0 (1863 GB) + KINGSTON SNV2S1000G (932 GB)",
-    "storageType": "NVMe Gen4 1TB",
-    "diskSpace": "C: (208 GB libre de 930 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 208,
-        "totalGB": 930,
-        "percentFree": 22
-      }
-    ],
-    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-    "resolution": "2560x1440 @ 75Hz (Calman Verified)",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
+    "storageType": "NVMe PCIe 4.0",
+    "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
+    "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 95,
-    "alerts": [
-      {
-        "type": "optimal",
-        "title": "Hardware Íntegro & Telemetría OK",
-        "desc": "Todos los subsistemas de CPU, memoria y almacenamiento SMART operan sin anomalías."
-      }
-    ],
-    "deviceVisual": "creator_tower",
-    "notes": "",
-    "rttMs": 1,
-    "userFullName": "Baldeón Onofre, Susana",
-    "jobTitle": "Diseñador Gráfico",
     "location": {
       "floor": "Piso 4",
       "branch": "Principal",
-      "city": "San Martín de Porres / Lima"
+      "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
-        "description": "ASUS PA278CV",
+        "description": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
         "brand": "ASUS",
-        "model": "PA278CV",
+        "model": "ProArt PA278CV",
         "serialNumber": "N6LMQS138650",
         "inventoryCode": "MN-MAR-006",
-        "resolution": "2560x1440 @ 75Hz (Calman Verified)"
+        "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)"
       },
       "keyboard": {
         "description": "--------- -----------",
@@ -512,7 +413,10 @@ const INVENTORY_DATA = [
       "pcSerial": "Sin número de serie",
       "pcBrand": "Compatible",
       "pcModel": "Compatible"
-    }
+    },
+    "alerts": [],
+    "deviceVisual": "creator_tower",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD014",
@@ -520,9 +424,10 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.76",
-    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "sergio",
+    "userFullName": "Sergio / Aaron",
     "fullUser": "UTILESTWINS\\sergio",
+    "jobTitle": "Diseñador Gráfico",
     "department": "Marketing y Diseno",
     "category": "design",
     "formFactor": "Torre Creator RTX",
@@ -538,44 +443,23 @@ const INVENTORY_DATA = [
     "gpuType": "integrated",
     "storage": "N/D",
     "storageType": "SSD SATA / HDD",
-    "diskSpace": "N/D",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 500,
-        "totalGB": 930,
-        "percentFree": 54
-      }
-    ],
-    "monitor": "Samsung S24R350 24\" IPS FHD",
-    "resolution": "1920x1080 @ 60Hz",
-    "os": "Windows 10 Pro",
+    "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
+    "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 88,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Pérdida de Ancho de Banda (Single Channel)",
-        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
-      }
-    ],
-    "deviceVisual": "creator_tower",
-    "notes": "",
-    "rttMs": 1,
-    "userFullName": "Vivas Azabache, Sergio Aaron",
-    "jobTitle": "Realizador Audiovisual",
     "location": {
       "floor": "Piso 4",
       "branch": "Principal",
-      "city": "San Martín de Porres / Lima"
+      "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
-        "description": "LG PA278CV",
-        "brand": "LG",
-        "model": "PA278CV",
+        "description": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
+        "brand": "ASUS",
+        "model": "ProArt PA278CV",
         "serialNumber": "N6LMQS125182",
         "inventoryCode": "MN-MAR-007",
-        "resolution": "1920x1080 @ 60Hz"
+        "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)"
       },
       "keyboard": {
         "description": "--------- -----------",
@@ -597,7 +481,16 @@ const INVENTORY_DATA = [
       "pcSerial": "Sin número de serie",
       "pcBrand": "Compatible",
       "pcModel": "Antryx"
-    }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Single Channel RAM (64-bit)",
+        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+      }
+    ],
+    "deviceVisual": "creator_tower",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD015",
@@ -605,15 +498,16 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.77",
-    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "adby",
+    "userFullName": "Adby",
     "fullUser": "UTILESTWINS\\adby",
+    "jobTitle": "Diseñadora Publicitaria",
     "department": "Marketing y Diseno",
     "category": "design",
     "formFactor": "Torre Creator RTX",
     "motherboard": "Gigabyte Technology Co., Ltd. B550 AORUS ELITE AX V2",
     "cpu": "AMD Ryzen 7 5700X 8-Core Processor",
-    "cpuShort": "AMD Ryzen 7 5700X (8C/16T)",
+    "cpuShort": "AMD Ryzen 7 5700X 8-Core Processor",
     "coresThreads": "8 Nucleos / 16 Hilos",
     "ramTotalGB": 16,
     "ramModules": "16 GB @ 3600MHz (Kingston)",
@@ -622,67 +516,55 @@ const INVENTORY_DATA = [
     "gpu": "NVIDIA GeForce GTX 1050 Ti",
     "gpuType": "dedicated",
     "storage": "KINGSTON SNV3S1000G (932 GB)",
-    "storageType": "NVMe Gen4 1TB",
-    "diskSpace": "C: (765 GB libre de 931 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 765,
-        "totalGB": 931,
-        "percentFree": 82
-      }
-    ],
-    "monitor": "ASUS Frameless 24\" IPS FHD",
-    "resolution": "1920x1080 @ 75Hz",
-    "os": "Microsoft Windows 10 Pro (Build 19045)",
+    "storageType": "NVMe PCIe 4.0",
+    "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
+    "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 88,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Pérdida de Ancho de Banda (Single Channel)",
-        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
-      }
-    ],
-    "deviceVisual": "creator_tower",
-    "notes": "",
-    "rttMs": 1,
-    "userFullName": "adby",
-    "jobTitle": "Marketing y Diseno",
     "location": {
-      "floor": "Piso 4 - Principal",
+      "floor": "Piso 4",
       "branch": "Sede Principal (San Martín de Porres / Lima)",
       "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
-        "description": "ASUS Frameless 24\" IPS FHD",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": "",
-        "resolution": "1920x1080 @ 75Hz"
+        "description": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
+        "brand": "ASUS",
+        "model": "ProArt PA278CV",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D",
+        "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)"
       },
       "keyboard": {
-        "description": "Teclado USB Estándar Corporativo",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       },
       "mouse": {
-        "description": "Mouse Óptico USB",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech M90 / B100 USB",
+        "brand": "Logitech",
+        "model": "M90 / B100 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       }
     },
     "assetCodes": {
-      "pcCode": "",
-      "pcSerial": "N/D",
+      "pcCode": "PC-DESIGN-015",
+      "pcSerial": "Sin número de serie (Custom Build)",
       "pcBrand": "Compatible / Custom Build",
       "pcModel": "Gigabyte Technology Co., Ltd. B550 AORUS ELITE AX V2"
-    }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Single Channel RAM (64-bit)",
+        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+      }
+    ],
+    "deviceVisual": "creator_tower",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD016",
@@ -690,15 +572,16 @@ const INVENTORY_DATA = [
     "status": "Desconectado",
     "isOnline": false,
     "ip": "192.168.18.78",
-    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "danna",
+    "userFullName": "Danna",
     "fullUser": "UTILESTWINS\\danna",
+    "jobTitle": "Asistente de Marketing",
     "department": "Marketing y Diseno",
     "category": "design",
     "formFactor": "Torre Creator RTX",
     "motherboard": "ASUSTeK COMPUTER INC. PRIME B760M-A D4",
     "cpu": "12th Gen Intel(R) Core(TM) i5-12400F",
-    "cpuShort": "Intel Core i5-12400F (12va Gen)",
+    "cpuShort": "12th Gen Intel(R) Core(TM) i5-12400F",
     "coresThreads": "6 Nucleos / 12 Hilos",
     "ramTotalGB": 16,
     "ramModules": "16 GB @ 3200MHz (Kingston)",
@@ -707,237 +590,55 @@ const INVENTORY_DATA = [
     "gpu": "NVIDIA GeForce RTX 4060",
     "gpuType": "dedicated",
     "storage": "KINGSTON SNV3S1000G (932 GB)",
-    "storageType": "NVMe Gen4 1TB",
-    "diskSpace": "C: (705 GB libre de 930 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 705,
-        "totalGB": 930,
-        "percentFree": 76
-      }
-    ],
-    "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-    "resolution": "2560x1440 @ 75Hz (Calman Verified)",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
+    "storageType": "NVMe PCIe 4.0",
+    "monitor": "LG FHD 24\" IPS 100Hz (1920x1080)",
+    "resolution": "1920x1080 @ 100Hz",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 88,
+    "location": {
+      "floor": "Piso 4",
+      "branch": "Sede Principal (San Martín de Porres / Lima)",
+      "city": "Lima, Perú"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "LG FHD 24\" IPS 100Hz (1920x1080)",
+        "brand": "LG",
+        "model": "24MR400",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D",
+        "resolution": "1920x1080 @ 100Hz"
+      },
+      "keyboard": {
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
+      },
+      "mouse": {
+        "description": "Logitech M90 / B100 USB",
+        "brand": "Logitech",
+        "model": "M90 / B100 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
+      }
+    },
+    "assetCodes": {
+      "pcCode": "PC-DESIGN-016",
+      "pcSerial": "Sin número de serie (Custom Build)",
+      "pcBrand": "Compatible / Custom Build",
+      "pcModel": "ASUSTeK COMPUTER INC. PRIME B760M-A D4"
+    },
     "alerts": [
       {
         "type": "warning",
-        "title": "Pérdida de Ancho de Banda (Single Channel)",
-        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
+        "title": "Single Channel RAM (64-bit)",
+        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
       }
     ],
     "deviceVisual": "creator_tower",
-    "notes": "",
-    "rttMs": null,
-    "userFullName": "danna",
-    "jobTitle": "Marketing y Diseno",
-    "location": {
-      "floor": "Piso 4 - Principal",
-      "branch": "Sede Principal (San Martín de Porres / Lima)",
-      "city": "Lima, Perú"
-    },
-    "peripherals": {
-      "monitor": {
-        "description": "ASUS ProArt PA278CV 27\" 2K IPS",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": "",
-        "resolution": "2560x1440 @ 75Hz (Calman Verified)"
-      },
-      "keyboard": {
-        "description": "Teclado USB Estándar Corporativo",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
-      },
-      "mouse": {
-        "description": "Mouse Óptico USB",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
-      }
-    },
-    "assetCodes": {
-      "pcCode": "",
-      "pcSerial": "N/D",
-      "pcBrand": "Compatible / Custom Build",
-      "pcModel": "ASUSTeK COMPUTER INC. PRIME B760M-A D4"
-    }
-  },
-  {
-    "id": "ADMINISTRADOR",
-    "computerName": "ADMINISTRADOR",
-    "status": "En Linea",
-    "isOnline": true,
-    "ip": "192.168.18.43",
-    "mac": "d8-43-ae-9d-cb-1f",
-    "activeUser": "administrador_pc",
-    "fullUser": "UTILESTWINS\\administrador_pc",
-    "department": "Administracion",
-    "category": "admin",
-    "formFactor": "Torre de Oficina",
-    "motherboard": "N/D",
-    "cpu": "N/D",
-    "cpuShort": "N/D",
-    "coresThreads": "N/D",
-    "ramTotalGB": 16,
-    "ramModules": "N/D",
-    "ramChannels": "N/D",
-    "ramChannelType": "single",
-    "gpu": "N/D",
-    "gpuType": "integrated",
-    "storage": "N/D",
-    "storageType": "SSD SATA / HDD",
-    "diskSpace": "N/D",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 500,
-        "totalGB": 930,
-        "percentFree": 54
-      }
-    ],
-    "monitor": "Samsung S24R350 24\" IPS FHD",
-    "resolution": "1920x1080 @ 60Hz",
-    "os": "Windows 11 Pro",
-    "healthScore": 88,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Pérdida de Ancho de Banda (Single Channel)",
-        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
-      }
-    ],
-    "deviceVisual": "office_tower",
-    "notes": "",
-    "rttMs": 1,
-    "userFullName": "administrador_pc",
-    "jobTitle": "Administracion",
-    "location": {
-      "floor": "Piso 4 - Principal",
-      "branch": "Sede Principal (San Martín de Porres / Lima)",
-      "city": "Lima, Perú"
-    },
-    "peripherals": {
-      "monitor": {
-        "description": "Samsung S24R350 24\" IPS FHD",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": "",
-        "resolution": "1920x1080 @ 60Hz"
-      },
-      "keyboard": {
-        "description": "Teclado USB Estándar Corporativo",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
-      },
-      "mouse": {
-        "description": "Mouse Óptico USB",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
-      }
-    },
-    "assetCodes": {
-      "pcCode": "",
-      "pcSerial": "N/D",
-      "pcBrand": "Compatible / Custom Build",
-      "pcModel": "N/D"
-    }
-  },
-  {
-    "id": "ARCNADM007",
-    "computerName": "ARCNADM007",
-    "status": "En Linea",
-    "isOnline": true,
-    "ip": "192.168.18.220",
-    "mac": "d8-43-ae-9d-cb-1f",
-    "activeUser": "luis",
-    "fullUser": "UTILESTWINS\\luis",
-    "department": "Administracion",
-    "category": "admin",
-    "formFactor": "Torre de Oficina",
-    "motherboard": "ASUSTeK COMPUTER INC. H110M-E/M.2",
-    "cpu": "Intel(R) Core(TM) i5-6400 CPU @ 2.70GHz",
-    "cpuShort": "Intel Core i5-6400 (6ta Gen)",
-    "coresThreads": "4 Nucleos / 4 Hilos",
-    "ramTotalGB": 16,
-    "ramModules": "8 GB @ 2133MHz (CRUCIAL) + 4 GB @ 2133MHz (CRUCIAL)",
-    "ramChannels": "Dual Channel (2 modulos)",
-    "ramChannelType": "dual",
-    "gpu": "Intel(R) HD Graphics 530",
-    "gpuType": "integrated",
-    "storage": "KINGSTON SA400S37480G (447 GB)",
-    "storageType": "SSD SATA / HDD",
-    "diskSpace": "C: (162 GB libre de 243 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 162,
-        "totalGB": 243,
-        "percentFree": 67
-      }
-    ],
-    "monitor": "ASUS Eye Care 22\" FHD",
-    "resolution": "1920x1080 @ 60Hz",
-    "os": "Microsoft Windows 10 Pro (Build 19045)",
-    "healthScore": 95,
-    "alerts": [
-      {
-        "type": "optimal",
-        "title": "Hardware Íntegro & Telemetría OK",
-        "desc": "Todos los subsistemas de CPU, memoria y almacenamiento SMART operan sin anomalías."
-      }
-    ],
-    "deviceVisual": "office_tower",
-    "notes": "",
-    "rttMs": 1,
-    "userFullName": "luis",
-    "jobTitle": "Administracion",
-    "location": {
-      "floor": "Piso 4 - Principal",
-      "branch": "Sede Principal (San Martín de Porres / Lima)",
-      "city": "Lima, Perú"
-    },
-    "peripherals": {
-      "monitor": {
-        "description": "ASUS Eye Care 22\" FHD",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": "",
-        "resolution": "1920x1080 @ 60Hz"
-      },
-      "keyboard": {
-        "description": "Teclado USB Estándar Corporativo",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
-      },
-      "mouse": {
-        "description": "Mouse Óptico USB",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
-      }
-    },
-    "assetCodes": {
-      "pcCode": "",
-      "pcSerial": "N/D",
-      "pcBrand": "Compatible / Custom Build",
-      "pcModel": "ASUSTeK COMPUTER INC. H110M-E/M.2"
-    }
+    "rttMs": null
   },
   {
     "id": "ARCNADMD001-1",
@@ -945,15 +646,16 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.17",
-    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "roberto",
+    "userFullName": "Rojas Farfán, Roberto Carlos",
     "fullUser": "UTILESTWINS\\roberto",
-    "department": "Administracion",
+    "jobTitle": "Asistente Contable",
+    "department": "Administración y Finanzas",
     "category": "admin",
-    "formFactor": "Torre de Oficina",
+    "formFactor": "Desktop Corporativo",
     "motherboard": "Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)",
     "cpu": "12th Gen Intel(R) Core(TM) i5-12400",
-    "cpuShort": "Intel Core i5-12400 (12va Gen)",
+    "cpuShort": "12th Gen Intel(R) Core(TM) i5-12400",
     "coresThreads": "6 Nucleos / 12 Hilos",
     "ramTotalGB": 16,
     "ramModules": "16 GB @ 3200MHz (Kingston)",
@@ -962,67 +664,55 @@ const INVENTORY_DATA = [
     "gpu": "Intel(R) UHD Graphics 730",
     "gpuType": "integrated",
     "storage": "KINGSTON SNV3S1000G (932 GB)",
-    "storageType": "NVMe Gen4 1TB",
-    "diskSpace": "C: (799 GB libre de 930 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 799,
-        "totalGB": 930,
-        "percentFree": 86
-      }
-    ],
-    "monitor": "Samsung S24R350 24\" IPS FHD",
+    "storageType": "NVMe PCIe 4.0",
+    "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
     "resolution": "1920x1080 @ 60Hz",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 88,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Pérdida de Ancho de Banda (Single Channel)",
-        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
-      }
-    ],
-    "deviceVisual": "office_tower",
-    "notes": "ROBERTO CARLOS ROJAS FARFÁN (Administración / SAP)",
-    "rttMs": 1,
-    "userFullName": "roberto",
-    "jobTitle": "Administracion",
     "location": {
-      "floor": "Piso 4 - Principal",
+      "floor": "Piso 4",
       "branch": "Sede Principal (San Martín de Porres / Lima)",
       "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
-        "description": "Samsung S24R350 24\" IPS FHD",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": "",
+        "description": "Samsung S24R350 24\" IPS FHD (1920x1080)",
+        "brand": "Samsung",
+        "model": "S24R350FZN",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D",
         "resolution": "1920x1080 @ 60Hz"
       },
       "keyboard": {
-        "description": "Teclado USB Estándar Corporativo",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       },
       "mouse": {
-        "description": "Mouse Óptico USB",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech M90 / B100 USB",
+        "brand": "Logitech",
+        "model": "M90 / B100 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       }
     },
     "assetCodes": {
-      "pcCode": "",
-      "pcSerial": "N/D",
+      "pcCode": "PC-ADMIN-0011",
+      "pcSerial": "Sin número de serie (Custom Build)",
       "pcBrand": "Compatible / Custom Build",
       "pcModel": "Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)"
-    }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Single Channel RAM (64-bit)",
+        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+      }
+    ],
+    "deviceVisual": "admin_pc",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD002",
@@ -1030,15 +720,16 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.221",
-    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "fiorela",
+    "userFullName": "Quispe Cruz, Lyly Fiorela",
     "fullUser": "UTILESTWINS\\fiorela",
-    "department": "Administracion",
+    "jobTitle": "Analista Contable",
+    "department": "Administración y Finanzas",
     "category": "admin",
-    "formFactor": "Torre de Oficina",
+    "formFactor": "Desktop Corporativo",
     "motherboard": "Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)",
     "cpu": "12th Gen Intel(R) Core(TM) i5-12400",
-    "cpuShort": "Intel Core i5-12400 (12va Gen)",
+    "cpuShort": "12th Gen Intel(R) Core(TM) i5-12400",
     "coresThreads": "6 Nucleos / 12 Hilos",
     "ramTotalGB": 16,
     "ramModules": "16 GB @ 3200MHz (Kingston)",
@@ -1047,36 +738,15 @@ const INVENTORY_DATA = [
     "gpu": "Intel(R) UHD Graphics 730",
     "gpuType": "integrated",
     "storage": "KINGSTON SNV3S1000G (932 GB)",
-    "storageType": "NVMe Gen4 1TB",
-    "diskSpace": "C: (796 GB libre de 930 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 796,
-        "totalGB": 930,
-        "percentFree": 86
-      }
-    ],
-    "monitor": "Samsung S24R350 24\" IPS FHD",
+    "storageType": "NVMe PCIe 4.0",
+    "monitor": "Samsung S24R350FZN",
     "resolution": "1920x1080 @ 60Hz",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 88,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Pérdida de Ancho de Banda (Single Channel)",
-        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
-      }
-    ],
-    "deviceVisual": "office_tower",
-    "notes": "",
-    "rttMs": 1,
-    "userFullName": "Quispe Cruz, Lyly Fiorela",
-    "jobTitle": "Analista Contable",
     "location": {
       "floor": "Piso 4",
       "branch": "Principal",
-      "city": "San Martín de Porres / Lima"
+      "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
@@ -1107,7 +777,16 @@ const INVENTORY_DATA = [
       "pcSerial": "Sin número de serie",
       "pcBrand": "Compatible",
       "pcModel": "Compatible"
-    }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Single Channel RAM (64-bit)",
+        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+      }
+    ],
+    "deviceVisual": "admin_pc",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD003",
@@ -1115,53 +794,33 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.22",
-    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "aranda",
+    "userFullName": "Aranda Llauce, Mayra Isolina",
     "fullUser": "UTILESTWINS\\aranda",
-    "department": "Administracion",
+    "jobTitle": "Asistente de Créditos y Cobranzas",
+    "department": "Administración y Finanzas",
     "category": "admin",
-    "formFactor": "Torre de Oficina",
+    "formFactor": "Desktop Corporativo",
     "motherboard": "ASUSTeK COMPUTER INC. PRIME B460M-A R2.0",
     "cpu": "Intel(R) Core(TM) i5-10400 CPU @ 2.90GHz",
-    "cpuShort": "Intel Core i5-10400 (10ma Gen)",
+    "cpuShort": "Intel(R) Core(TM) i5-10400 CPU",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 16,
+    "ramTotalGB": 8,
     "ramModules": "8 GB @ 2666MHz (CRUCIAL)",
     "ramChannels": "Single Channel (1 modulo)",
     "ramChannelType": "single",
     "gpu": "Intel(R) UHD Graphics 630",
     "gpuType": "integrated",
     "storage": "KINGSTON SNVS500G (466 GB)",
-    "storageType": "SSD SATA / HDD",
-    "diskSpace": "C: (79 GB libre de 195 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 79,
-        "totalGB": 195,
-        "percentFree": 41
-      }
-    ],
-    "monitor": "ASUS Frameless 24\" IPS FHD",
-    "resolution": "1920x1080 @ 75Hz",
-    "os": "Microsoft Windows 10 Pro (Build 19045)",
+    "storageType": "NVMe PCIe 4.0",
+    "monitor": "Samsung S24R350FZN",
+    "resolution": "1920x1080 @ 59Hz",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 88,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Pérdida de Ancho de Banda (Single Channel)",
-        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
-      }
-    ],
-    "deviceVisual": "office_tower",
-    "notes": "",
-    "rttMs": 1,
-    "userFullName": "Aranda Llauce, Mayra Isolina",
-    "jobTitle": "Asistente de Créditos y Cobranzas",
     "location": {
       "floor": "Piso 4",
       "branch": "Principal",
-      "city": "San Martín de Porres / Lima"
+      "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
@@ -1170,7 +829,7 @@ const INVENTORY_DATA = [
         "model": "S24R350FZN",
         "serialNumber": "4PMFH4CW808919B",
         "inventoryCode": "MN-ADM-003",
-        "resolution": "1920x1080 @ 75Hz"
+        "resolution": "1920x1080 @ 59Hz"
       },
       "keyboard": {
         "description": "LOGITECH -----------",
@@ -1192,7 +851,16 @@ const INVENTORY_DATA = [
       "pcSerial": "Sin número de serie",
       "pcBrand": "Compatible",
       "pcModel": "Asus"
-    }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Single Channel RAM (64-bit)",
+        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+      }
+    ],
+    "deviceVisual": "admin_pc",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD004-1",
@@ -1200,12 +868,13 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.222",
-    "mac": "d8-43-ae-9d-cb-1f",
-    "activeUser": "fiorela_2",
-    "fullUser": "UTILESTWINS\\fiorela_2",
-    "department": "Administracion",
+    "activeUser": "maribel",
+    "userFullName": "Mendoza Cisneros, Maribel Micaela",
+    "fullUser": "UTILESTWINS\\maribel",
+    "jobTitle": "Asistente de Créditos y Cobranzas",
+    "department": "Administración y Finanzas",
     "category": "admin",
-    "formFactor": "Torre de Oficina",
+    "formFactor": "Desktop Corporativo",
     "motherboard": "N/D",
     "cpu": "N/D",
     "cpuShort": "N/D",
@@ -1218,66 +887,54 @@ const INVENTORY_DATA = [
     "gpuType": "integrated",
     "storage": "N/D",
     "storageType": "SSD SATA / HDD",
-    "diskSpace": "N/D",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 500,
-        "totalGB": 930,
-        "percentFree": 54
-      }
-    ],
-    "monitor": "Samsung S24R350 24\" IPS FHD",
-    "resolution": "1920x1080 @ 60Hz",
-    "os": "Windows 11 Pro",
+    "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
+    "resolution": "N/D",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 88,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Pérdida de Ancho de Banda (Single Channel)",
-        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
-      }
-    ],
-    "deviceVisual": "office_tower",
-    "notes": "",
-    "rttMs": 1,
-    "userFullName": "fiorela_2",
-    "jobTitle": "Administracion",
     "location": {
-      "floor": "Piso 4 - Principal",
+      "floor": "Piso 4",
       "branch": "Sede Principal (San Martín de Porres / Lima)",
       "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
-        "description": "Samsung S24R350 24\" IPS FHD",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": "",
-        "resolution": "1920x1080 @ 60Hz"
+        "description": "Samsung S24R350 24\" IPS FHD (1920x1080)",
+        "brand": "Samsung",
+        "model": "S24R350FZN",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D",
+        "resolution": "N/D"
       },
       "keyboard": {
-        "description": "Teclado USB Estándar Corporativo",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       },
       "mouse": {
-        "description": "Mouse Óptico USB",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech M90 / B100 USB",
+        "brand": "Logitech",
+        "model": "M90 / B100 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       }
     },
     "assetCodes": {
-      "pcCode": "",
-      "pcSerial": "N/D",
+      "pcCode": "PC-ADMIN-0041",
+      "pcSerial": "Sin número de serie (Custom Build)",
       "pcBrand": "Compatible / Custom Build",
       "pcModel": "N/D"
-    }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Single Channel RAM (64-bit)",
+        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+      }
+    ],
+    "deviceVisual": "admin_pc",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD005",
@@ -1285,53 +942,33 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.223",
-    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "kelly",
+    "userFullName": "Símbala Carlos, Kelly Vanessa",
     "fullUser": "UTILESTWINS\\kelly",
-    "department": "Administracion",
+    "jobTitle": "Asistente de Créditos y Cobranzas",
+    "department": "Administración y Finanzas",
     "category": "admin",
-    "formFactor": "Torre de Oficina",
+    "formFactor": "Desktop Corporativo",
     "motherboard": "Micro-Star International Co., Ltd. B450M-A PRO MAX II (MS-7C52)",
     "cpu": "AMD Ryzen 5 5600GT with Radeon Graphics",
-    "cpuShort": "AMD Ryzen 5 5600GT (6C/12T)",
+    "cpuShort": "AMD Ryzen 5 5600GT with Radeon Graphics",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 16,
+    "ramTotalGB": 15,
     "ramModules": "16 GB @ 2400MHz (Kingston)",
     "ramChannels": "Single Channel (1 modulo)",
     "ramChannelType": "single",
     "gpu": "AMD Radeon(TM) Graphics",
     "gpuType": "integrated",
     "storage": "WD Blue SN580 2TB (1863 GB)",
-    "storageType": "NVMe Gen4 2TB",
-    "diskSpace": "C: (1727 GB libre de 1862 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 1727,
-        "totalGB": 1862,
-        "percentFree": 93
-      }
-    ],
-    "monitor": "LG FHD 24\" IPS (100Hz)",
+    "storageType": "SSD SATA / HDD",
+    "monitor": "LG 24MS500",
     "resolution": "1920x1080 @ 100Hz",
-    "os": "Microsoft Windows 11 Pro (Build 22631)",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 88,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Pérdida de Ancho de Banda (Single Channel)",
-        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
-      }
-    ],
-    "deviceVisual": "office_tower",
-    "notes": "",
-    "rttMs": 1,
-    "userFullName": "Símbala Carlos, Kelly Vanessa",
-    "jobTitle": "Asistente de Créditos y Cobranzas",
     "location": {
       "floor": "Piso 4",
       "branch": "Principal",
-      "city": "San Martín de Porres / Lima"
+      "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
@@ -1362,7 +999,16 @@ const INVENTORY_DATA = [
       "pcSerial": "Sin número de serie",
       "pcBrand": "Compatible",
       "pcModel": "Micro-star"
-    }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Single Channel RAM (64-bit)",
+        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+      }
+    ],
+    "deviceVisual": "admin_pc",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD006",
@@ -1370,17 +1016,18 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.224",
-    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "nelson",
+    "userFullName": "Nelson / Martha Placido",
     "fullUser": "UTILESTWINS\\nelson",
-    "department": "Administracion",
+    "jobTitle": "Auxiliar de Cobranzas",
+    "department": "Administración y Finanzas",
     "category": "admin",
-    "formFactor": "Torre de Oficina",
+    "formFactor": "Desktop Corporativo",
     "motherboard": "Micro-Star International Co., Ltd. B450M-A PRO MAX II (MS-7C52)",
     "cpu": "AMD Ryzen 5 5600G with Radeon Graphics",
-    "cpuShort": "AMD Ryzen 5 5600G (6C/12T)",
+    "cpuShort": "AMD Ryzen 5 5600G with Radeon Graphics",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 16,
+    "ramTotalGB": 15,
     "ramModules": "16 GB @ 2667MHz (Unknown)",
     "ramChannels": "Single Channel (1 modulo)",
     "ramChannelType": "single",
@@ -1388,35 +1035,14 @@ const INVENTORY_DATA = [
     "gpuType": "integrated",
     "storage": "WDC WD10EZEX-00BBHA0 (932 GB) + WDC WDS480G2G0C-00AJM0 (447 GB)",
     "storageType": "SSD SATA / HDD",
-    "diskSpace": "C: (318 GB libre de 446 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 318,
-        "totalGB": 446,
-        "percentFree": 71
-      }
-    ],
-    "monitor": "LG FHD 24\" IPS (100Hz)",
+    "monitor": "Samsung S24R350FZN",
     "resolution": "1920x1080 @ 100Hz",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 88,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Pérdida de Ancho de Banda (Single Channel)",
-        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
-      }
-    ],
-    "deviceVisual": "office_tower",
-    "notes": "",
-    "rttMs": 1,
-    "userFullName": "Placido Escate, Martha Sofia",
-    "jobTitle": "Auxiliar de Cobranzas",
     "location": {
       "floor": "Piso 4",
       "branch": "Principal",
-      "city": "San Martín de Porres / Lima"
+      "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
@@ -1447,7 +1073,84 @@ const INVENTORY_DATA = [
       "pcSerial": "Sin número de serie",
       "pcBrand": "Compatible",
       "pcModel": "Compatible"
-    }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Single Channel RAM (64-bit)",
+        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+      }
+    ],
+    "deviceVisual": "admin_pc",
+    "rttMs": 1
+  },
+  {
+    "id": "ARCNADM007",
+    "computerName": "ARCNADM007",
+    "status": "En Linea",
+    "isOnline": true,
+    "ip": "192.168.18.220",
+    "activeUser": "luis",
+    "userFullName": "Aramburu Bautista, Luis Alberto",
+    "fullUser": "UTILESTWINS\\luis",
+    "jobTitle": "Asistente Administrativo",
+    "department": "Administración y Finanzas",
+    "category": "admin",
+    "formFactor": "Desktop Corporativo",
+    "motherboard": "ASUSTeK COMPUTER INC. H110M-E/M.2",
+    "cpu": "Intel(R) Core(TM) i5-6400 CPU @ 2.70GHz",
+    "cpuShort": "Intel(R) Core(TM) i5-6400 CPU",
+    "coresThreads": "4 Nucleos / 4 Hilos",
+    "ramTotalGB": 12,
+    "ramModules": "8 GB @ 2133MHz (CRUCIAL) + 4 GB @ 2133MHz (CRUCIAL)",
+    "ramChannels": "Dual Channel (2 modulos)",
+    "ramChannelType": "dual",
+    "gpu": "Intel(R) HD Graphics 530",
+    "gpuType": "integrated",
+    "storage": "KINGSTON SA400S37480G (447 GB)",
+    "storageType": "SSD SATA / HDD",
+    "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
+    "resolution": "1920x1080 @ 59Hz",
+    "os": "Microsoft Windows 11 Pro 64-bit",
+    "healthScore": 95,
+    "location": {
+      "floor": "Piso 4",
+      "branch": "Sede Principal (San Martín de Porres / Lima)",
+      "city": "Lima, Perú"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "Samsung S24R350 24\" IPS FHD (1920x1080)",
+        "brand": "Samsung",
+        "model": "S24R350FZN",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D",
+        "resolution": "1920x1080 @ 59Hz"
+      },
+      "keyboard": {
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
+      },
+      "mouse": {
+        "description": "Logitech M90 / B100 USB",
+        "brand": "Logitech",
+        "model": "M90 / B100 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
+      }
+    },
+    "assetCodes": {
+      "pcCode": "PC-ADMIN-007",
+      "pcSerial": "Sin número de serie (Custom Build)",
+      "pcBrand": "Compatible / Custom Build",
+      "pcModel": "ASUSTeK COMPUTER INC. H110M-E/M.2"
+    },
+    "alerts": [],
+    "deviceVisual": "admin_pc",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD007",
@@ -1455,12 +1158,13 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.43",
-    "mac": "d8-43-ae-9d-cb-1f",
-    "activeUser": "administracion_aux",
-    "fullUser": "UTILESTWINS\\administracion_aux",
-    "department": "Administracion",
+    "activeUser": "hugo",
+    "userFullName": "Hugo",
+    "fullUser": "UTILESTWINS\\hugo",
+    "jobTitle": "Administración General",
+    "department": "Administración y Finanzas",
     "category": "admin",
-    "formFactor": "Torre de Oficina",
+    "formFactor": "Desktop Corporativo",
     "motherboard": "N/D",
     "cpu": "N/D",
     "cpuShort": "N/D",
@@ -1473,66 +1177,54 @@ const INVENTORY_DATA = [
     "gpuType": "integrated",
     "storage": "N/D",
     "storageType": "SSD SATA / HDD",
-    "diskSpace": "N/D",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 500,
-        "totalGB": 930,
-        "percentFree": 54
-      }
-    ],
-    "monitor": "Samsung S24R350 24\" IPS FHD",
-    "resolution": "1920x1080 @ 60Hz",
-    "os": "Windows 11 Pro",
+    "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
+    "resolution": "N/D",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 88,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Pérdida de Ancho de Banda (Single Channel)",
-        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
-      }
-    ],
-    "deviceVisual": "office_tower",
-    "notes": "",
-    "rttMs": 1,
-    "userFullName": "administracion_aux",
-    "jobTitle": "Administracion",
     "location": {
-      "floor": "Piso 4 - Principal",
+      "floor": "Piso 4",
       "branch": "Sede Principal (San Martín de Porres / Lima)",
       "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
-        "description": "Samsung S24R350 24\" IPS FHD",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": "",
-        "resolution": "1920x1080 @ 60Hz"
+        "description": "Samsung S24R350 24\" IPS FHD (1920x1080)",
+        "brand": "Samsung",
+        "model": "S24R350FZN",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D",
+        "resolution": "N/D"
       },
       "keyboard": {
-        "description": "Teclado USB Estándar Corporativo",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       },
       "mouse": {
-        "description": "Mouse Óptico USB",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech M90 / B100 USB",
+        "brand": "Logitech",
+        "model": "M90 / B100 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       }
     },
     "assetCodes": {
-      "pcCode": "",
-      "pcSerial": "N/D",
+      "pcCode": "PC-ADMIN-007",
+      "pcSerial": "Sin número de serie (Custom Build)",
       "pcBrand": "Compatible / Custom Build",
       "pcModel": "N/D"
-    }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Single Channel RAM (64-bit)",
+        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+      }
+    ],
+    "deviceVisual": "admin_pc",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD008",
@@ -1540,15 +1232,16 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.225",
-    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "liz",
+    "userFullName": "Liz",
     "fullUser": "UTILESTWINS\\liz",
-    "department": "Administracion",
+    "jobTitle": "Asistente de Facturación",
+    "department": "Administración y Finanzas",
     "category": "admin",
-    "formFactor": "Torre de Oficina",
+    "formFactor": "Desktop Corporativo",
     "motherboard": "Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)",
     "cpu": "12th Gen Intel(R) Core(TM) i5-12400",
-    "cpuShort": "Intel Core i5-12400 (12va Gen)",
+    "cpuShort": "12th Gen Intel(R) Core(TM) i5-12400",
     "coresThreads": "6 Nucleos / 12 Hilos",
     "ramTotalGB": 16,
     "ramModules": "16 GB @ 2400MHz (Kingston)",
@@ -1557,67 +1250,55 @@ const INVENTORY_DATA = [
     "gpu": "Intel(R) UHD Graphics 730",
     "gpuType": "integrated",
     "storage": "KINGSTON SNV3S1000G (932 GB)",
-    "storageType": "NVMe Gen4 1TB",
-    "diskSpace": "C: (819 GB libre de 931 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 819,
-        "totalGB": 931,
-        "percentFree": 88
-      }
-    ],
-    "monitor": "Samsung S24R350 24\" IPS FHD",
+    "storageType": "NVMe PCIe 4.0",
+    "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
     "resolution": "1920x1080 @ 60Hz",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 88,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Pérdida de Ancho de Banda (Single Channel)",
-        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
-      }
-    ],
-    "deviceVisual": "office_tower",
-    "notes": "",
-    "rttMs": 1,
-    "userFullName": "liz",
-    "jobTitle": "Administracion",
     "location": {
-      "floor": "Piso 4 - Principal",
+      "floor": "Piso 4",
       "branch": "Sede Principal (San Martín de Porres / Lima)",
       "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
-        "description": "Samsung S24R350 24\" IPS FHD",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": "",
+        "description": "Samsung S24R350 24\" IPS FHD (1920x1080)",
+        "brand": "Samsung",
+        "model": "S24R350FZN",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D",
         "resolution": "1920x1080 @ 60Hz"
       },
       "keyboard": {
-        "description": "Teclado USB Estándar Corporativo",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       },
       "mouse": {
-        "description": "Mouse Óptico USB",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech M90 / B100 USB",
+        "brand": "Logitech",
+        "model": "M90 / B100 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       }
     },
     "assetCodes": {
-      "pcCode": "",
-      "pcSerial": "N/D",
+      "pcCode": "PC-ADMIN-008",
+      "pcSerial": "Sin número de serie (Custom Build)",
       "pcBrand": "Compatible / Custom Build",
       "pcModel": "Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)"
-    }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Single Channel RAM (64-bit)",
+        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+      }
+    ],
+    "deviceVisual": "admin_pc",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD009",
@@ -1625,17 +1306,18 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.227",
-    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "tania",
+    "userFullName": "Tania",
     "fullUser": "UTILESTWINS\\tania",
-    "department": "Administracion",
+    "jobTitle": "Tesorería & Finanzas",
+    "department": "Administración y Finanzas",
     "category": "admin",
-    "formFactor": "Torre de Oficina",
+    "formFactor": "Desktop Corporativo",
     "motherboard": "Gigabyte Technology Co., Ltd. B450M DS3H V2",
     "cpu": "AMD Ryzen 5 5600G with Radeon Graphics",
-    "cpuShort": "AMD Ryzen 5 5600G (6C/12T)",
+    "cpuShort": "AMD Ryzen 5 5600G with Radeon Graphics",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 16,
+    "ramTotalGB": 15,
     "ramModules": "16 GB @ 3200MHz (Unknown)",
     "ramChannels": "Single Channel (1 modulo)",
     "ramChannelType": "single",
@@ -1643,66 +1325,54 @@ const INVENTORY_DATA = [
     "gpuType": "integrated",
     "storage": "WDC WD10EZEX-00BBHA0 (932 GB) + WDC WDS480G2G0C-00AJM0 (447 GB)",
     "storageType": "SSD SATA / HDD",
-    "diskSpace": "C: (346 GB libre de 446 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 346,
-        "totalGB": 446,
-        "percentFree": 78
-      }
-    ],
-    "monitor": "LG FHD 24\" IPS (100Hz)",
+    "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
     "resolution": "1920x1080 @ 100Hz",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 88,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Pérdida de Ancho de Banda (Single Channel)",
-        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
-      }
-    ],
-    "deviceVisual": "office_tower",
-    "notes": "",
-    "rttMs": 1,
-    "userFullName": "tania",
-    "jobTitle": "Administracion",
     "location": {
-      "floor": "Piso 4 - Principal",
+      "floor": "Piso 4",
       "branch": "Sede Principal (San Martín de Porres / Lima)",
       "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
-        "description": "LG FHD 24\" IPS (100Hz)",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": "",
+        "description": "Samsung S24R350 24\" IPS FHD (1920x1080)",
+        "brand": "Samsung",
+        "model": "S24R350FZN",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D",
         "resolution": "1920x1080 @ 100Hz"
       },
       "keyboard": {
-        "description": "Teclado USB Estándar Corporativo",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       },
       "mouse": {
-        "description": "Mouse Óptico USB",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech M90 / B100 USB",
+        "brand": "Logitech",
+        "model": "M90 / B100 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       }
     },
     "assetCodes": {
-      "pcCode": "",
-      "pcSerial": "N/D",
+      "pcCode": "PC-ADMIN-009",
+      "pcSerial": "Sin número de serie (Custom Build)",
       "pcBrand": "Compatible / Custom Build",
       "pcModel": "Gigabyte Technology Co., Ltd. B450M DS3H V2"
-    }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Single Channel RAM (64-bit)",
+        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+      }
+    ],
+    "deviceVisual": "admin_pc",
+    "rttMs": 1
   },
   {
     "id": "ARCNVNTD015",
@@ -1710,12 +1380,13 @@ const INVENTORY_DATA = [
     "status": "Desconectado",
     "isOnline": false,
     "ip": "192.168.18.12",
-    "mac": "d8-43-ae-9d-cb-1f",
-    "activeUser": "ventas_campo1",
-    "fullUser": "UTILESTWINS\\ventas_campo1",
+    "activeUser": "paula",
+    "userFullName": "Garcia Chavez, Paula Patricia",
+    "fullUser": "UTILESTWINS\\paula",
+    "jobTitle": "Vendedor de Campo",
     "department": "Ventas",
     "category": "sales",
-    "formFactor": "Torre de Oficina",
+    "formFactor": "Desktop Corporativo",
     "motherboard": "N/D",
     "cpu": "N/D",
     "cpuShort": "N/D",
@@ -1728,35 +1399,14 @@ const INVENTORY_DATA = [
     "gpuType": "integrated",
     "storage": "N/D",
     "storageType": "SSD SATA / HDD",
-    "diskSpace": "N/D",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 500,
-        "totalGB": 930,
-        "percentFree": 54
-      }
-    ],
-    "monitor": "Samsung S24R350 24\" IPS FHD",
-    "resolution": "1920x1080 @ 60Hz",
-    "os": "Windows 11 Pro",
+    "monitor": "LG 24MS500",
+    "resolution": "N/D",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 88,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Pérdida de Ancho de Banda (Single Channel)",
-        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
-      }
-    ],
-    "deviceVisual": "office_tower",
-    "notes": "",
-    "rttMs": null,
-    "userFullName": "Garcia Chavez, Paula Patricia",
-    "jobTitle": "Vendedor de Campo",
     "location": {
       "floor": "Piso 4",
       "branch": "Principal",
-      "city": "San Martín de Porres / Lima"
+      "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
@@ -1765,7 +1415,7 @@ const INVENTORY_DATA = [
         "model": "24MS500",
         "serialNumber": "406NTVSB4983",
         "inventoryCode": "MN-VN-002",
-        "resolution": "1920x1080 @ 60Hz"
+        "resolution": "N/D"
       },
       "keyboard": {
         "description": "LOGITECH K120",
@@ -1787,7 +1437,16 @@ const INVENTORY_DATA = [
       "pcSerial": "------------------",
       "pcBrand": "Compatible",
       "pcModel": "Compatible"
-    }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Single Channel RAM (64-bit)",
+        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+      }
+    ],
+    "deviceVisual": "admin_pc",
+    "rttMs": null
   },
   {
     "id": "ARCNVNTD016",
@@ -1795,12 +1454,13 @@ const INVENTORY_DATA = [
     "status": "Desconectado",
     "isOnline": false,
     "ip": "192.168.18.42",
-    "mac": "d8-43-ae-9d-cb-1f",
-    "activeUser": "ventas_campo2",
-    "fullUser": "UTILESTWINS\\ventas_campo2",
+    "activeUser": "jhayro",
+    "userFullName": "Mauricio Ciriaco, Shaulin Jhayro",
+    "fullUser": "UTILESTWINS\\jhayro",
+    "jobTitle": "Vendedor de Campo",
     "department": "Ventas",
     "category": "sales",
-    "formFactor": "Torre de Oficina",
+    "formFactor": "Desktop Corporativo",
     "motherboard": "N/D",
     "cpu": "N/D",
     "cpuShort": "N/D",
@@ -1813,35 +1473,14 @@ const INVENTORY_DATA = [
     "gpuType": "integrated",
     "storage": "N/D",
     "storageType": "SSD SATA / HDD",
-    "diskSpace": "N/D",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 500,
-        "totalGB": 930,
-        "percentFree": 54
-      }
-    ],
-    "monitor": "Samsung S24R350 24\" IPS FHD",
-    "resolution": "1920x1080 @ 60Hz",
-    "os": "Windows 11 Pro",
+    "monitor": "Samsung LS20D300NHPE",
+    "resolution": "N/D",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 88,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Pérdida de Ancho de Banda (Single Channel)",
-        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
-      }
-    ],
-    "deviceVisual": "office_tower",
-    "notes": "",
-    "rttMs": null,
-    "userFullName": "Mauricio Ciriaco, Shaulin Jhayro",
-    "jobTitle": "Vendedor de Campo",
     "location": {
       "floor": "Piso 4",
       "branch": "Principal",
-      "city": "San Martín de Porres / Lima"
+      "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
@@ -1850,7 +1489,7 @@ const INVENTORY_DATA = [
         "model": "LS20D300NHPE",
         "serialNumber": "ZZCWH4LJ10664P",
         "inventoryCode": "MN-VEN-001",
-        "resolution": "1920x1080 @ 60Hz"
+        "resolution": "N/D"
       },
       "keyboard": {
         "description": "MICROSOFT -----------",
@@ -1872,7 +1511,16 @@ const INVENTORY_DATA = [
       "pcSerial": "Sin número de serie",
       "pcBrand": "Compatible",
       "pcModel": "Compatible"
-    }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Single Channel RAM (64-bit)",
+        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+      }
+    ],
+    "deviceVisual": "admin_pc",
+    "rttMs": null
   },
   {
     "id": "ARCNVNTD019-1",
@@ -1880,15 +1528,16 @@ const INVENTORY_DATA = [
     "status": "Desconectado",
     "isOnline": false,
     "ip": "192.168.18.100",
-    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "jhenyfer",
+    "userFullName": "Jhenyfer",
     "fullUser": "UTILESTWINS\\jhenyfer",
+    "jobTitle": "Coordinadora de Ventas",
     "department": "Ventas",
     "category": "sales",
-    "formFactor": "Torre de Oficina",
+    "formFactor": "Desktop Corporativo",
     "motherboard": "Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)",
     "cpu": "12th Gen Intel(R) Core(TM) i5-12400",
-    "cpuShort": "Intel Core i5-12400 (12va Gen)",
+    "cpuShort": "12th Gen Intel(R) Core(TM) i5-12400",
     "coresThreads": "6 Nucleos / 12 Hilos",
     "ramTotalGB": 16,
     "ramModules": "16 GB @ 2400MHz (Kingston)",
@@ -1897,67 +1546,55 @@ const INVENTORY_DATA = [
     "gpu": "Intel(R) UHD Graphics 730",
     "gpuType": "integrated",
     "storage": "KINGSTON SNV3S1000G (932 GB)",
-    "storageType": "NVMe Gen4 1TB",
-    "diskSpace": "C: (804 GB libre de 930 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 804,
-        "totalGB": 930,
-        "percentFree": 86
-      }
-    ],
-    "monitor": "LG FHD 24\" IPS (100Hz)",
-    "resolution": "1920x1080 @ 100Hz",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
+    "storageType": "NVMe PCIe 4.0",
+    "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
+    "resolution": "1920x1080 @ 60Hz",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 88,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Pérdida de Ancho de Banda (Single Channel)",
-        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
-      }
-    ],
-    "deviceVisual": "office_tower",
-    "notes": "",
-    "rttMs": null,
-    "userFullName": "jhenyfer",
-    "jobTitle": "Ventas",
     "location": {
-      "floor": "Piso 4 - Principal",
+      "floor": "Piso 4",
       "branch": "Sede Principal (San Martín de Porres / Lima)",
       "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
-        "description": "LG FHD 24\" IPS (100Hz)",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": "",
-        "resolution": "1920x1080 @ 100Hz"
+        "description": "Samsung S24R350 24\" IPS FHD (1920x1080)",
+        "brand": "Samsung",
+        "model": "S24R350FZN",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D",
+        "resolution": "1920x1080 @ 60Hz"
       },
       "keyboard": {
-        "description": "Teclado USB Estándar Corporativo",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       },
       "mouse": {
-        "description": "Mouse Óptico USB",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech M90 / B100 USB",
+        "brand": "Logitech",
+        "model": "M90 / B100 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       }
     },
     "assetCodes": {
-      "pcCode": "",
-      "pcSerial": "N/D",
+      "pcCode": "PC-SALES-0191",
+      "pcSerial": "Sin número de serie (Custom Build)",
       "pcBrand": "Compatible / Custom Build",
       "pcModel": "Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)"
-    }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Single Channel RAM (64-bit)",
+        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+      }
+    ],
+    "deviceVisual": "admin_pc",
+    "rttMs": null
   },
   {
     "id": "ARCNALMD001",
@@ -1965,15 +1602,16 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.79",
-    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "angelo",
+    "userFullName": "Angelo / Juan Carlos Oblitas",
     "fullUser": "UTILESTWINS\\angelo",
-    "department": "Almacen",
+    "jobTitle": "Operario de Almacén",
+    "department": "Almacén",
     "category": "warehouse",
-    "formFactor": "Torre de Oficina",
+    "formFactor": "Desktop Corporativo",
     "motherboard": "ASUSTeK COMPUTER INC. PRIME B360M-A",
     "cpu": "Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz",
-    "cpuShort": "Intel Core i3-8100 (4C/4T)",
+    "cpuShort": "Intel(R) Core(TM) i3-8100 CPU",
     "coresThreads": "4 Nucleos / 4 Hilos",
     "ramTotalGB": 16,
     "ramModules": "8 GB @ 2400MHz (0B2C) + 8 GB @ 2400MHz (Kingston)",
@@ -1982,40 +1620,19 @@ const INVENTORY_DATA = [
     "gpu": "Intel(R) UHD Graphics 630",
     "gpuType": "integrated",
     "storage": "KINGSTON SNV3S1000G (932 GB)",
-    "storageType": "NVMe Gen4 1TB",
-    "diskSpace": "C: (838 GB libre de 931 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 838,
-        "totalGB": 931,
-        "percentFree": 90
-      }
-    ],
-    "monitor": "ASUS Eye Care 22\" FHD",
+    "storageType": "NVMe PCIe 4.0",
+    "monitor": "LG 22M38H-B 22\" FHD",
     "resolution": "1920x1080 @ 60Hz",
-    "os": "Microsoft Windows 10 Pro (Build 19045)",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 95,
-    "alerts": [
-      {
-        "type": "optimal",
-        "title": "Hardware Íntegro & Telemetría OK",
-        "desc": "Todos los subsistemas de CPU, memoria y almacenamiento SMART operan sin anomalías."
-      }
-    ],
-    "deviceVisual": "office_tower",
-    "notes": "",
-    "rttMs": 1,
-    "userFullName": "Oblitas Salva, Juan Carlos",
-    "jobTitle": "Operario de Almacén",
     "location": {
       "floor": "Piso 1",
       "branch": "Principal",
-      "city": "San Martín de Porres / Lima"
+      "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
-        "description": "LG 22M38H-B",
+        "description": "LG 22M38H-B 22\" FHD",
         "brand": "LG",
         "model": "22M38H-B",
         "serialNumber": "701NTHMBQ713",
@@ -2042,7 +1659,10 @@ const INVENTORY_DATA = [
       "pcSerial": "Sin número de serie",
       "pcBrand": "Compatible",
       "pcModel": "Compatible"
-    }
+    },
+    "alerts": [],
+    "deviceVisual": "admin_pc",
+    "rttMs": 1
   },
   {
     "id": "ARCNTID002",
@@ -2050,84 +1670,73 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.88",
-    "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "tajho",
+    "userFullName": "Tajho (Jefe TI)",
     "fullUser": "UTILESTWINS\\tajho",
+    "jobTitle": "Jefe de Sistemas TI",
     "department": "Sistemas TI",
     "category": "it",
-    "formFactor": "Torre de Oficina",
+    "formFactor": "Desktop Corporativo",
     "motherboard": "Gigabyte Technology Co., Ltd. B760M D3HP DDR4",
     "cpu": "12th Gen Intel(R) Core(TM) i5-12400",
-    "cpuShort": "Intel Core i5-12400 (12va Gen)",
+    "cpuShort": "12th Gen Intel(R) Core(TM) i5-12400",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 16,
+    "ramTotalGB": 32,
     "ramModules": "32 GB @ 2400MHz (Kingston)",
     "ramChannels": "Single Channel (1 modulo)",
     "ramChannelType": "single",
     "gpu": "Intel(R) UHD Graphics 730",
     "gpuType": "integrated",
     "storage": "KINGSTON SNV3S1000G (932 GB)",
-    "storageType": "NVMe Gen4 1TB",
-    "diskSpace": "C: (673 GB libre de 930 GB)",
-    "disks": [
-      {
-        "drive": "C:",
-        "freeGB": 673,
-        "totalGB": 930,
-        "percentFree": 72
-      }
-    ],
-    "monitor": "LG FHD 27\" IPS (601TFFP0F099)",
+    "storageType": "NVMe PCIe 4.0",
+    "monitor": "LG FHD 27\" IPS (601TFFP0F099) 100Hz",
     "resolution": "1920x1080 @ 100Hz",
-    "os": "Microsoft Windows 11 Pro (Build 26200)",
+    "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 88,
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Pérdida de Ancho de Banda (Single Channel)",
-        "desc": "1 módulo de 64-bit detectado. Instalar segundo módulo DDR4 habilitará 128-bit (+18% velocidad en multitarea)."
-      }
-    ],
-    "deviceVisual": "office_tower",
-    "notes": "JEFE DE TI - UTILESTWINS",
-    "rttMs": 1,
-    "userFullName": "tajho",
-    "jobTitle": "Sistemas TI",
     "location": {
-      "floor": "Piso 4 - Principal",
+      "floor": "Piso 4",
       "branch": "Sede Principal (San Martín de Porres / Lima)",
       "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
-        "description": "LG FHD 27\" IPS (601TFFP0F099)",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": "",
+        "description": "LG FHD 27\" IPS (601TFFP0F099) 100Hz",
+        "brand": "LG",
+        "model": "27MR400-B",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D",
         "resolution": "1920x1080 @ 100Hz"
       },
       "keyboard": {
-        "description": "Teclado USB Estándar Corporativo",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       },
       "mouse": {
-        "description": "Mouse Óptico USB",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech M90 / B100 USB",
+        "brand": "Logitech",
+        "model": "M90 / B100 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       }
     },
     "assetCodes": {
-      "pcCode": "",
-      "pcSerial": "N/D",
+      "pcCode": "PC-IT-002",
+      "pcSerial": "Sin número de serie (Custom Build)",
       "pcBrand": "Compatible / Custom Build",
       "pcModel": "Gigabyte Technology Co., Ltd. B760M D3HP DDR4"
-    }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Single Channel RAM (64-bit)",
+        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+      }
+    ],
+    "deviceVisual": "admin_pc",
+    "rttMs": 1
   },
   {
     "id": "SERVIDOR",
@@ -2135,96 +1744,67 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.200",
-    "mac": "04-7c-16-df-be-6a",
-    "activeUser": "Administrador (DC01)",
+    "activeUser": "Administrador",
+    "userFullName": "SERVIDOR (DC01)",
     "fullUser": "UTILESTWINS\\Administrador",
+    "jobTitle": "Domain Controller & File Server",
     "department": "Servidores & Datacenter",
     "category": "servers",
-    "formFactor": "Servidor Rack 4U + Consola KVM 1U",
+    "formFactor": "Servidor Rackmount",
     "motherboard": "Micro-Star International Co., Ltd. PRO B760M-P (MS-7E02)",
-    "cpu": "Intel(R) Core(TM) i7-14700 (20 Nucleos / 28 Hilos)",
-    "cpuShort": "Intel Core i7-14700 (14va Gen)",
-    "coresThreads": "20 Nucleos / 28 Hilos (5.40 GHz Boost)",
-    "ramTotalGB": 63.8,
-    "ramModules": "64 GB (2x 32GB Kingston DDR5 @ 4800MHz)",
+    "cpu": "Intel(R) Core(TM) i7-14700",
+    "cpuShort": "Intel(R) Core(TM) i7-14700",
+    "coresThreads": "20 Nucleos / 28 Hilos",
+    "ramTotalGB": 64,
+    "ramModules": "32 GB @ 4800MHz (Kingston) + 32 GB @ 4800MHz (Kingston)",
     "ramChannels": "Dual Channel (2 modulos)",
     "ramChannelType": "dual",
     "gpu": "Intel(R) UHD Graphics 770",
     "gpuType": "integrated",
-    "storage": "Samsung 990 PRO 1TB NVMe + WD Green 2TB SSD + WD Purple 8TB HDD",
-    "storageType": "NVMe Gen4 + SSD + HDD RAID (10.4 TB Total)",
-    "diskSpace": "C: (602 GB libre de 931 GB) | D: (851 GB libre de 1863 GB) | Z: (4346 GB libre de 7452 GB)",
-    "disks": [
-      {
-        "drive": "C: (Sistema / AD DS)",
-        "freeGB": 602,
-        "totalGB": 931,
-        "percentFree": 65
-      },
-      {
-        "drive": "D: (Apps / IIS / Spool)",
-        "freeGB": 851,
-        "totalGB": 1863,
-        "percentFree": 46
-      },
-      {
-        "drive": "Z: (Almacén Archivos SMB)",
-        "freeGB": 4346,
-        "totalGB": 7452,
-        "percentFree": 58
-      }
-    ],
-    "monitor": "Consola Rackmount 19\" 1U KVM (1366x768)",
-    "resolution": "1366x768 @ 60Hz",
-    "os": "Microsoft Windows Server 2019 Standard (Build 17763)",
-    "healthScore": 99,
-    "alerts": [
-      {
-        "type": "optimal",
-        "title": "Servicio de Dominio AD DS Saludable",
-        "desc": "Controlador de Dominio DC01 (utilestwins.com), DNS (Port 53), DHCP y SMB (Port 445) operando con 99.9% uptime."
-      }
-    ],
-    "deviceVisual": "server_pc",
-    "notes": "Servidor 1: PDC / Domain Controller utilestwins.com & SMB (192.168.18.200)",
-    "rttMs": 1,
-    "userFullName": "Administrador (DC01)",
-    "jobTitle": "Servidores & Datacenter",
+    "storage": "Samsung SSD 990 PRO 1TB (932 GB) + WD Green SN350 2TB (1863 GB) + WDC WD8002PURP-85C9JY0 (7452 GB)",
+    "storageType": "NVMe PCIe 4.0",
+    "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
+    "resolution": "1366x768 @ 59Hz",
+    "os": "Microsoft Windows 11 Pro 64-bit",
+    "healthScore": 95,
     "location": {
-      "floor": "Piso 4 - Principal",
+      "floor": "Piso 4",
       "branch": "Sede Principal (San Martín de Porres / Lima)",
       "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
-        "description": "Consola Rackmount 19\" 1U KVM (1366x768)",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": "",
-        "resolution": "1366x768 @ 60Hz"
+        "description": "Samsung S24R350 24\" IPS FHD (1920x1080)",
+        "brand": "Samsung",
+        "model": "S24R350FZN",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D",
+        "resolution": "1366x768 @ 59Hz"
       },
       "keyboard": {
-        "description": "Teclado USB Estándar Corporativo",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       },
       "mouse": {
-        "description": "Mouse Óptico USB",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech M90 / B100 USB",
+        "brand": "Logitech",
+        "model": "M90 / B100 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       }
     },
     "assetCodes": {
-      "pcCode": "",
-      "pcSerial": "N/D",
+      "pcCode": "PC-SERVERS-",
+      "pcSerial": "Sin número de serie (Custom Build)",
       "pcBrand": "Compatible / Custom Build",
       "pcModel": "Micro-Star International Co., Ltd. PRO B760M-P (MS-7E02)"
-    }
+    },
+    "alerts": [],
+    "deviceVisual": "server_rack",
+    "rttMs": 1
   },
   {
     "id": "SERVERDB",
@@ -2232,90 +1812,67 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.253",
-    "mac": "c4-5a-b1-a1-b1-32",
-    "activeUser": "SYSTEM (SQL Server Engine)",
-    "fullUser": "UTILESTWINS\\svc_sql",
+    "activeUser": "SYSTEM",
+    "userFullName": "SERVERDB (SQL Engine)",
+    "fullUser": "UTILESTWINS\\SYSTEM",
+    "jobTitle": "MS SQL Server SAP Business One",
     "department": "Servidores & Datacenter",
     "category": "servers",
-    "formFactor": "Servidor Rack 2U Enterprise",
-    "motherboard": "ASUS Pro WS W680-ACE Enterprise Server",
-    "cpu": "Intel(R) Core(TM) i7-13700K (16 Nucleos / 24 Hilos)",
-    "cpuShort": "Intel Core i7-13700K (16C/24T)",
-    "coresThreads": "16 Nucleos / 24 Hilos (5.30 GHz)",
-    "ramTotalGB": 31.8,
-    "ramModules": "32 GB (2x 16GB Kingston Server Premier DDR5)",
+    "formFactor": "Servidor Rackmount",
+    "motherboard": "Micro-Star PRO H610M-S DDR4",
+    "cpu": "Intel Core i5-12400 (6C/12T)",
+    "cpuShort": "Intel Core i5-12400 (6C/12T)",
+    "coresThreads": "6 Núcleos / 12 Hilos",
+    "ramTotalGB": 32,
+    "ramModules": "32 GB @ 3200MHz (Kingston)",
     "ramChannels": "Dual Channel (2 modulos)",
     "ramChannelType": "dual",
-    "gpu": "Intel(R) UHD Graphics 770",
+    "gpu": "Intel(R) UHD Graphics 730",
     "gpuType": "integrated",
-    "storage": "Kingston KC3000 1TB NVMe PCIe 4.0 + Crucial MX500 2TB SSD RAID1",
-    "storageType": "NVMe Gen4 Ultra-Speed + SSD RAID1 (3 TB)",
-    "diskSpace": "C: (520 GB libre de 930 GB) | E: (1240 GB libre de 1860 GB)",
-    "disks": [
-      {
-        "drive": "C: (SO & SQL Engine)",
-        "freeGB": 520,
-        "totalGB": 930,
-        "percentFree": 56
-      },
-      {
-        "drive": "E: (Data SAP SBO_IMPARCANGEL)",
-        "freeGB": 1240,
-        "totalGB": 1860,
-        "percentFree": 67
-      }
-    ],
-    "monitor": "Consola KVM Compartida 19\"",
+    "storage": "KINGSTON SNV3S1000G (932 GB NVMe)",
+    "storageType": "NVMe PCIe 4.0",
+    "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
     "resolution": "1920x1080 @ 60Hz",
-    "os": "Microsoft Windows Server 2019 Standard",
-    "healthScore": 98,
-    "alerts": [
-      {
-        "type": "optimal",
-        "title": "Motor SQL Server Saludable",
-        "desc": "Instancia SQL Server SBO_IMPARCANGEL_PROD escuchando en puerto 1433 y RDP 3389."
-      }
-    ],
-    "deviceVisual": "server_pc",
-    "notes": "Servidor 2: Base de Datos SQL Server & SAP B1 (192.168.18.253)",
-    "rttMs": 1,
-    "userFullName": "SYSTEM (SQL Server Engine)",
-    "jobTitle": "Servidores & Datacenter",
+    "os": "Microsoft Windows 11 Pro 64-bit",
+    "healthScore": 95,
     "location": {
-      "floor": "Piso 4 - Principal",
+      "floor": "Piso 4",
       "branch": "Sede Principal (San Martín de Porres / Lima)",
       "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
-        "description": "Consola KVM Compartida 19\"",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": "",
+        "description": "Samsung S24R350 24\" IPS FHD (1920x1080)",
+        "brand": "Samsung",
+        "model": "S24R350FZN",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D",
         "resolution": "1920x1080 @ 60Hz"
       },
       "keyboard": {
-        "description": "Teclado USB Estándar Corporativo",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       },
       "mouse": {
-        "description": "Mouse Óptico USB",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech M90 / B100 USB",
+        "brand": "Logitech",
+        "model": "M90 / B100 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       }
     },
     "assetCodes": {
-      "pcCode": "",
-      "pcSerial": "N/D",
+      "pcCode": "PC-SERVERS-",
+      "pcSerial": "Sin número de serie (Custom Build)",
       "pcBrand": "Compatible / Custom Build",
-      "pcModel": "ASUS Pro WS W680-ACE Enterprise Server"
-    }
+      "pcModel": "Micro-Star PRO H610M-S DDR4"
+    },
+    "alerts": [],
+    "deviceVisual": "server_rack",
+    "rttMs": 1
   },
   {
     "id": "SERVERAPP",
@@ -2323,90 +1880,67 @@ const INVENTORY_DATA = [
     "status": "En Linea",
     "isOnline": true,
     "ip": "192.168.18.254",
-    "mac": "00-62-0b-00-51-df",
-    "activeUser": "SYSTEM (SAP Application Server)",
-    "fullUser": "UTILESTWINS\\svc_sap_app",
+    "activeUser": "SYSTEM",
+    "userFullName": "SERVERAPP (SAP Application)",
+    "fullUser": "UTILESTWINS\\SYSTEM",
+    "jobTitle": "SAP Business One Application Server",
     "department": "Servidores & Datacenter",
     "category": "servers",
-    "formFactor": "Servidor Rack 2U Enterprise",
-    "motherboard": "Gigabyte C246-WU4 Server Board",
-    "cpu": "Intel(R) Core(TM) i7-12700 (12 Nucleos / 20 Hilos)",
-    "cpuShort": "Intel Core i7-12700 (12C/20T)",
-    "coresThreads": "12 Nucleos / 20 Hilos (4.90 GHz)",
-    "ramTotalGB": 31.8,
-    "ramModules": "32 GB (2x 16GB Kingston DDR4 @ 3200MHz)",
+    "formFactor": "Servidor Rackmount",
+    "motherboard": "Micro-Star PRO H610M-S DDR4",
+    "cpu": "Intel Core i5-12400 (6C/12T)",
+    "cpuShort": "Intel Core i5-12400 (6C/12T)",
+    "coresThreads": "6 Núcleos / 12 Hilos",
+    "ramTotalGB": 32,
+    "ramModules": "32 GB @ 3200MHz (Kingston)",
     "ramChannels": "Dual Channel (2 modulos)",
     "ramChannelType": "dual",
-    "gpu": "Intel(R) UHD Graphics 770",
+    "gpu": "Intel(R) UHD Graphics 730",
     "gpuType": "integrated",
-    "storage": "Kingston NV2 1TB NVMe Gen4 + WD Blue 2TB SSD",
-    "storageType": "NVMe Gen4 + SSD Enterprise (3 TB)",
-    "diskSpace": "C: (610 GB libre de 930 GB) | D: (1420 GB libre de 1860 GB)",
-    "disks": [
-      {
-        "drive": "C: (Sistema Operativo)",
-        "freeGB": 610,
-        "totalGB": 930,
-        "percentFree": 65
-      },
-      {
-        "drive": "D: (SAP Services / Web API)",
-        "freeGB": 1420,
-        "totalGB": 1860,
-        "percentFree": 76
-      }
-    ],
-    "monitor": "Consola KVM Compartida 19\"",
+    "storage": "KINGSTON SNV3S1000G (932 GB NVMe)",
+    "storageType": "NVMe PCIe 4.0",
+    "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
     "resolution": "1920x1080 @ 60Hz",
-    "os": "Microsoft Windows Server 2019 Standard",
-    "healthScore": 98,
-    "alerts": [
-      {
-        "type": "optimal",
-        "title": "Servicios de Aplicación SAP Activos",
-        "desc": "SAP Business One DI-Server / Service Layer en puerto 50000, Web Server IIS en puerto 80 y RDP 3389."
-      }
-    ],
-    "deviceVisual": "server_pc",
-    "notes": "Servidor 3: Servidor de Aplicaciones SAP B1 & Web API (192.168.18.254)",
-    "rttMs": 1,
-    "userFullName": "SYSTEM (SAP Application Server)",
-    "jobTitle": "Servidores & Datacenter",
+    "os": "Microsoft Windows 11 Pro 64-bit",
+    "healthScore": 95,
     "location": {
-      "floor": "Piso 4 - Principal",
+      "floor": "Piso 4",
       "branch": "Sede Principal (San Martín de Porres / Lima)",
       "city": "Lima, Perú"
     },
     "peripherals": {
       "monitor": {
-        "description": "Consola KVM Compartida 19\"",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": "",
+        "description": "Samsung S24R350 24\" IPS FHD (1920x1080)",
+        "brand": "Samsung",
+        "model": "S24R350FZN",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D",
         "resolution": "1920x1080 @ 60Hz"
       },
       "keyboard": {
-        "description": "Teclado USB Estándar Corporativo",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       },
       "mouse": {
-        "description": "Mouse Óptico USB",
-        "brand": "",
-        "model": "",
-        "serialNumber": "",
-        "inventoryCode": ""
+        "description": "Logitech M90 / B100 USB",
+        "brand": "Logitech",
+        "model": "M90 / B100 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
       }
     },
     "assetCodes": {
-      "pcCode": "",
-      "pcSerial": "N/D",
+      "pcCode": "PC-SERVERS-",
+      "pcSerial": "Sin número de serie (Custom Build)",
       "pcBrand": "Compatible / Custom Build",
-      "pcModel": "Gigabyte C246-WU4 Server Board"
-    }
+      "pcModel": "Micro-Star PRO H610M-S DDR4"
+    },
+    "alerts": [],
+    "deviceVisual": "server_rack",
+    "rttMs": 1
   }
 ];
 
