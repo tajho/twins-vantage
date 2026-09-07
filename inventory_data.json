@@ -43,18 +43,18 @@
         "resolution": "2560x1080 @ 59Hz"
       },
       "keyboard": {
-        "description": "LOGITECH -----------",
+        "description": "LOGITECH K120 USB",
         "brand": "LOGITECH",
-        "model": "-----------",
+        "model": "K120 USB",
         "serialNumber": "2308SCS01Q78",
-        "inventoryCode": "TC-MAR-001"
+        "inventoryCode": "TCMAR001"
       },
       "mouse": {
-        "description": "---------- -----------",
-        "brand": "----------",
-        "model": "-----------",
-        "serialNumber": "------------------",
-        "inventoryCode": "---------"
+        "description": "Logitech M90 Optical USB (1000 DPI)",
+        "brand": "Logitech",
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-DES-008"
       }
     },
     "assetCodes": {
@@ -117,18 +117,18 @@
         "resolution": "2560x1440 @ 59Hz"
       },
       "keyboard": {
-        "description": "--------- -----------",
-        "brand": "---------",
-        "model": "-----------",
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
         "serialNumber": "2045SCK05EP8",
-        "inventoryCode": "TC-MAR-003"
+        "inventoryCode": "TCMAR003"
       },
       "mouse": {
-        "description": "---------- -----------",
-        "brand": "----------",
-        "model": "-----------",
-        "serialNumber": "------------------",
-        "inventoryCode": "---------"
+        "description": "Logitech M90 Optical USB (1000 DPI)",
+        "brand": "Logitech",
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-DES-010"
       }
     },
     "assetCodes": {
@@ -185,18 +185,18 @@
         "resolution": "2560x1440 @ 59Hz"
       },
       "keyboard": {
-        "description": "--------- -----------",
-        "brand": "---------",
-        "model": "-----------",
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
         "serialNumber": "2308SCS01QA8",
-        "inventoryCode": "TC-MAR-004"
+        "inventoryCode": "TCMAR004"
       },
       "mouse": {
-        "description": "---------- -----------",
-        "brand": "----------",
-        "model": "-----------",
-        "serialNumber": "------------------",
-        "inventoryCode": "---------"
+        "description": "Logitech M90 Optical USB (1000 DPI)",
+        "brand": "Logitech",
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-DES-011"
       }
     },
     "assetCodes": {
@@ -253,18 +253,18 @@
         "resolution": "2560x1440 @ 59Hz"
       },
       "keyboard": {
-        "description": "--------- -----------",
-        "brand": "---------",
-        "model": "-----------",
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
         "serialNumber": "2227SCS05BD8",
-        "inventoryCode": "TC-MAR-005"
+        "inventoryCode": "TCMAR005"
       },
       "mouse": {
-        "description": "---------- -----------",
-        "brand": "----------",
-        "model": "-----------",
-        "serialNumber": "------------------",
-        "inventoryCode": "---------"
+        "description": "Logitech M90 Optical USB (1000 DPI)",
+        "brand": "Logitech",
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-DES-012"
       }
     },
     "assetCodes": {
@@ -321,18 +321,18 @@
         "resolution": "2560x1440 @ 59Hz"
       },
       "keyboard": {
-        "description": "--------- -----------",
-        "brand": "---------",
-        "model": "-----------",
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
         "serialNumber": "HE013300806K2122",
-        "inventoryCode": "TC-MAR-006"
+        "inventoryCode": "TCMAR006"
       },
       "mouse": {
-        "description": "---------- -----------",
-        "brand": "----------",
-        "model": "-----------",
-        "serialNumber": "------------------",
-        "inventoryCode": "---------"
+        "description": "Logitech M90 Optical USB (1000 DPI)",
+        "brand": "Logitech",
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-DES-013"
       }
     },
     "assetCodes": {
@@ -389,18 +389,18 @@
         "resolution": "2560x1440 @ 59Hz"
       },
       "keyboard": {
-        "description": "--------- -----------",
-        "brand": "---------",
-        "model": "-----------",
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
         "serialNumber": "2308SCS01Q68",
-        "inventoryCode": "TC-MAR-007"
+        "inventoryCode": "TCMAR007"
       },
       "mouse": {
-        "description": "---------- -----------",
-        "brand": "----------",
-        "model": "-----------",
-        "serialNumber": "------------------",
-        "inventoryCode": "---------"
+        "description": "Logitech M90 Optical USB (1000 DPI)",
+        "brand": "Logitech",
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-DES-014"
       }
     },
     "assetCodes": {
@@ -460,15 +460,15 @@
         "description": "Logitech K120 USB",
         "brand": "Logitech",
         "model": "K120 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "TC-DES-015"
       },
       "mouse": {
-        "description": "Logitech M90 / B100 USB",
+        "description": "Logitech M90 Optical USB (1000 DPI)",
         "brand": "Logitech",
-        "model": "M90 / B100 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-DES-015"
       }
     },
     "assetCodes": {
@@ -534,15 +534,15 @@
         "description": "Logitech K120 USB",
         "brand": "Logitech",
         "model": "K120 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "TC-DES-016"
       },
       "mouse": {
-        "description": "Logitech M90 / B100 USB",
+        "description": "Logitech M90 Optical USB (1000 DPI)",
         "brand": "Logitech",
-        "model": "M90 / B100 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-DES-016"
       }
     },
     "assetCodes": {
@@ -608,15 +608,15 @@
         "description": "Logitech K120 USB",
         "brand": "Logitech",
         "model": "K120 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "TC-ADM-0011"
       },
       "mouse": {
-        "description": "Logitech M90 / B100 USB",
+        "description": "Logitech M90 Optical USB (1000 DPI)",
         "brand": "Logitech",
-        "model": "M90 / B100 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-ADM-0011"
       }
     },
     "assetCodes": {
@@ -679,18 +679,18 @@
         "resolution": "1920x1080 @ 60Hz"
       },
       "keyboard": {
-        "description": "LOGITECH -----------",
+        "description": "LOGITECH K120 USB",
         "brand": "LOGITECH",
-        "model": "-----------",
+        "model": "K120 USB",
         "serialNumber": "2306MR02DF58",
-        "inventoryCode": "TC-ADM-002"
+        "inventoryCode": "TCADM002"
       },
       "mouse": {
-        "description": "---------- -----------",
-        "brand": "----------",
-        "model": "-----------",
-        "serialNumber": "------------------",
-        "inventoryCode": "---------"
+        "description": "Logitech M90 Optical USB (1000 DPI)",
+        "brand": "Logitech",
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-ADM-002"
       }
     },
     "assetCodes": {
@@ -753,18 +753,18 @@
         "resolution": "1920x1080 @ 59Hz"
       },
       "keyboard": {
-        "description": "LOGITECH -----------",
+        "description": "LOGITECH K120 USB",
         "brand": "LOGITECH",
-        "model": "-----------",
+        "model": "K120 USB",
         "serialNumber": "2335MR293638",
-        "inventoryCode": "TC-ADM-003"
+        "inventoryCode": "TCADM003"
       },
       "mouse": {
-        "description": "---------- -----------",
-        "brand": "----------",
-        "model": "-----------",
-        "serialNumber": "------------------",
-        "inventoryCode": "---------"
+        "description": "Logitech M90 Optical USB (1000 DPI)",
+        "brand": "Logitech",
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-ADM-003"
       }
     },
     "assetCodes": {
@@ -830,15 +830,15 @@
         "description": "Logitech K120 USB",
         "brand": "Logitech",
         "model": "K120 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "TC-ADM-0041"
       },
       "mouse": {
-        "description": "Logitech M90 / B100 USB",
+        "description": "Logitech M90 Optical USB (1000 DPI)",
         "brand": "Logitech",
-        "model": "M90 / B100 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-ADM-0041"
       }
     },
     "assetCodes": {
@@ -901,18 +901,18 @@
         "resolution": "1920x1080 @ 100Hz"
       },
       "keyboard": {
-        "description": "LOGITECH -----------",
+        "description": "LOGITECH K120 USB",
         "brand": "LOGITECH",
-        "model": "-----------",
+        "model": "K120 USB",
         "serialNumber": "2335MR2AF568",
-        "inventoryCode": "TC-ADM-005"
+        "inventoryCode": "TCADM005"
       },
       "mouse": {
-        "description": "---------- -----------",
-        "brand": "----------",
-        "model": "-----------",
-        "serialNumber": "------------------",
-        "inventoryCode": "---------"
+        "description": "Logitech M90 Optical USB (1000 DPI)",
+        "brand": "Logitech",
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-ADM-005"
       }
     },
     "assetCodes": {
@@ -975,18 +975,18 @@
         "resolution": "1920x1080 @ 100Hz"
       },
       "keyboard": {
-        "description": "LOGITECH -----------",
+        "description": "LOGITECH K120 USB",
         "brand": "LOGITECH",
-        "model": "-----------",
+        "model": "K120 USB",
         "serialNumber": "2337MR2DA9C8",
-        "inventoryCode": "TC-ADM-006"
+        "inventoryCode": "TCADM006"
       },
       "mouse": {
-        "description": "---------- -----------",
-        "brand": "----------",
-        "model": "-----------",
-        "serialNumber": "------------------",
-        "inventoryCode": "---------"
+        "description": "Logitech M90 Optical USB (1000 DPI)",
+        "brand": "Logitech",
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-ADM-006"
       }
     },
     "assetCodes": {
@@ -1052,15 +1052,15 @@
         "description": "Logitech K120 USB",
         "brand": "Logitech",
         "model": "K120 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "TC-ADM-007"
       },
       "mouse": {
-        "description": "Logitech M90 / B100 USB",
+        "description": "Logitech M90 Optical USB (1000 DPI)",
         "brand": "Logitech",
-        "model": "M90 / B100 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-ADM-007"
       }
     },
     "assetCodes": {
@@ -1120,15 +1120,15 @@
         "description": "Logitech K120 USB",
         "brand": "Logitech",
         "model": "K120 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "TC-ADM-007"
       },
       "mouse": {
-        "description": "Logitech M90 / B100 USB",
+        "description": "Logitech M90 Optical USB (1000 DPI)",
         "brand": "Logitech",
-        "model": "M90 / B100 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-ADM-007"
       }
     },
     "assetCodes": {
@@ -1194,15 +1194,15 @@
         "description": "Logitech K120 USB",
         "brand": "Logitech",
         "model": "K120 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "TC-ADM-008"
       },
       "mouse": {
-        "description": "Logitech M90 / B100 USB",
+        "description": "Logitech M90 Optical USB (1000 DPI)",
         "brand": "Logitech",
-        "model": "M90 / B100 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-ADM-008"
       }
     },
     "assetCodes": {
@@ -1268,15 +1268,15 @@
         "description": "Logitech K120 USB",
         "brand": "Logitech",
         "model": "K120 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "TC-ADM-009"
       },
       "mouse": {
-        "description": "Logitech M90 / B100 USB",
+        "description": "Logitech M90 Optical USB (1000 DPI)",
         "brand": "Logitech",
-        "model": "M90 / B100 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-ADM-009"
       }
     },
     "assetCodes": {
@@ -1342,15 +1342,15 @@
         "description": "LOGITECH K120",
         "brand": "LOGITECH",
         "model": "K120",
-        "serialNumber": "------------------",
+        "serialNumber": "S/N Registrado en Ficha",
         "inventoryCode": "TC"
       },
       "mouse": {
-        "description": "---------- -----------",
-        "brand": "----------",
-        "model": "-----------",
-        "serialNumber": "------------------",
-        "inventoryCode": "---------"
+        "description": "Logitech M90 Optical USB (1000 DPI)",
+        "brand": "Logitech",
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-SAL-015"
       }
     },
     "assetCodes": {
@@ -1413,18 +1413,18 @@
         "resolution": "N/D"
       },
       "keyboard": {
-        "description": "MICROSOFT -----------",
-        "brand": "MICROSOFT",
-        "model": "-----------",
+        "description": "Microsoft Wired 600 USB",
+        "brand": "Microsoft",
+        "model": "Wired 600 USB",
         "serialNumber": "0065818035610",
-        "inventoryCode": "TC-VEN-001"
+        "inventoryCode": "TCVEN001"
       },
       "mouse": {
-        "description": "---------- -----------",
-        "brand": "----------",
-        "model": "-----------",
-        "serialNumber": "------------------",
-        "inventoryCode": "---------"
+        "description": "Logitech M90 Optical USB (1000 DPI)",
+        "brand": "Logitech",
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-SAL-016"
       }
     },
     "assetCodes": {
@@ -1490,15 +1490,15 @@
         "description": "Logitech K120 USB",
         "brand": "Logitech",
         "model": "K120 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "TC-SAL-0191"
       },
       "mouse": {
-        "description": "Logitech M90 / B100 USB",
+        "description": "Logitech M90 Optical USB (1000 DPI)",
         "brand": "Logitech",
-        "model": "M90 / B100 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-SAL-0191"
       }
     },
     "assetCodes": {
@@ -1561,18 +1561,18 @@
         "resolution": "1920x1080 @ 60Hz"
       },
       "keyboard": {
-        "description": "--------- -----------",
-        "brand": "---------",
-        "model": "-----------",
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
         "serialNumber": "SIN ASIGNAR",
-        "inventoryCode": "TC-ALM-001"
+        "inventoryCode": "TCALM001"
       },
       "mouse": {
-        "description": "---------- -----------",
-        "brand": "----------",
-        "model": "-----------",
-        "serialNumber": "------------------",
-        "inventoryCode": "---------"
+        "description": "Logitech M90 Optical USB (1000 DPI)",
+        "brand": "Logitech",
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-WAR-001"
       }
     },
     "assetCodes": {
@@ -1632,15 +1632,15 @@
         "description": "Logitech K120 USB",
         "brand": "Logitech",
         "model": "K120 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "TC-IT-002"
       },
       "mouse": {
-        "description": "Logitech M90 / B100 USB",
+        "description": "Logitech M90 Optical USB (1000 DPI)",
         "brand": "Logitech",
-        "model": "M90 / B100 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-IT-002"
       }
     },
     "assetCodes": {
@@ -1703,18 +1703,18 @@
         "resolution": "1920x1080 @ 60Hz"
       },
       "keyboard": {
-        "description": "--------- -----------",
-        "brand": "---------",
-        "model": "-----------",
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
         "serialNumber": "2343MR196848",
-        "inventoryCode": "TC-MAR-002"
+        "inventoryCode": "TCMAR002"
       },
       "mouse": {
-        "description": "---------- -----------",
-        "brand": "----------",
-        "model": "-----------",
-        "serialNumber": "------------------",
-        "inventoryCode": "---------"
+        "description": "Logitech M90 Optical USB (1000 DPI)",
+        "brand": "Logitech",
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-IT-009"
       }
     },
     "assetCodes": {
@@ -1774,15 +1774,15 @@
         "description": "Logitech K120 USB",
         "brand": "Logitech",
         "model": "K120 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "TC-SER-"
       },
       "mouse": {
-        "description": "Logitech M90 / B100 USB",
+        "description": "Logitech M90 Optical USB (1000 DPI)",
         "brand": "Logitech",
-        "model": "M90 / B100 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-SER-"
       }
     },
     "assetCodes": {
@@ -1842,15 +1842,15 @@
         "description": "Logitech K120 USB",
         "brand": "Logitech",
         "model": "K120 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "TC-SER-"
       },
       "mouse": {
-        "description": "Logitech M90 / B100 USB",
+        "description": "Logitech M90 Optical USB (1000 DPI)",
         "brand": "Logitech",
-        "model": "M90 / B100 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-SER-"
       }
     },
     "assetCodes": {
@@ -1910,15 +1910,15 @@
         "description": "Logitech K120 USB",
         "brand": "Logitech",
         "model": "K120 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "TC-SER-"
       },
       "mouse": {
-        "description": "Logitech M90 / B100 USB",
+        "description": "Logitech M90 Optical USB (1000 DPI)",
         "brand": "Logitech",
-        "model": "M90 / B100 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
+        "model": "M90 Optical USB (1000 DPI)",
+        "serialNumber": "S/N Registrado en Ficha",
+        "inventoryCode": "MS-SER-"
       }
     },
     "assetCodes": {
