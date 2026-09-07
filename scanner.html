@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Twins Vantage — Escáner de Celulares Corporativos</title>
+  <link rel="icon" type="image/png" href="logo_twins.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <!-- html5-qrcode for barcode/IMEI camera scanner -->
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+  <!-- html2pdf for instant technical sheet export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --card-bg: #111827;
+      --card-border: #1f293d;
+      --primary: #3b82f6;
+      --primary-glow: rgba(59, 130, 246, 0.25);
+      --accent: #06b6d4;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 12px 40px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 16px 12px;
+      background: linear-gradient(180deg, rgba(31, 41, 61, 0.6) 0%, rgba(17, 24, 39, 0.8) 100%);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .header h1 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+      letter-spacing: -0.5px;
+    }
+
+    .header p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Progress & Scan Card */
+    .scan-status-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .scan-icon-wrapper {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      background: var(--primary-glow);
+      border: 1px solid var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: #60a5fa;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .scan-icon-wrapper .pulse-ring {
+      position: absolute;
+      inset: -4px;
+      border-radius: 18px;
+      border: 2px solid var(--primary);
+      animation: pulse 2s infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.08); opacity: 0; }
+      100% { transform: scale(0.95); opacity: 0; }
+    }
+
+    .scan-text {
+      flex: 1;
+    }
+
+    .scan-text h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .scan-text p {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Cards */
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #93c5fd;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .spec-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .spec-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .spec-value {
+      font-size: 13px;
+      font-weight: 700;
+      color: #f3f4f6;
+      font-family: var(--font-mono);
+      word-break: break-word;
+    }
+
+    .spec-value.highlight {
+      color: #38bdf8;
+    }
+
+    .spec-value.success {
+      color: #34d399;
+    }
+
+    .spec-value.warning {
+      color: #fbbf24;
+    }
+
+    /* Form Inputs */
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .form-control {
+      background: #0d131f;
+      border: 1px solid var(--card-border);
+      color: #ffffff;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-family: var(--font-sans);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+    }
+
+    select.form-control {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px;
+      padding-right: 36px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      width: 100%;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-primary:active {
+      transform: scale(0.98);
+    }
+
+    .btn-secondary {
+      background: #1f293d;
+      color: #e5e7eb;
+      border: 1px solid #374151;
+    }
+
+    .btn-secondary:hover {
+      background: #374151;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #3b82f6;
+      color: #60a5fa;
+    }
+
+    /* Camera Scanner Box */
+    #reader {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px dashed #3b82f6;
+      display: none;
+      margin-top: 10px;
+    }
+
+    /* Battery Bar */
+    .battery-container {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 9999px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .battery-bar {
+      height: 100%;
+      background: #10b981;
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+
+    /* Modal / Result View */
+    .success-banner {
+      display: none;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+      padding: 14px;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* Quick Action Pill */
+    .imei-helper {
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px dashed rgba(6, 182, 212, 0.3);
+      padding: 8px 12px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #a5f3fc;
+      margin-top: 4px;
+    }
+
+    .imei-helper a {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 700;
+      background: rgba(56, 189, 248, 0.15);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 11px;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="printableArea">
+  
+  <!-- Header -->
+  <div class="header">
+    <div class="header-badge">
+      <i class="fa-solid fa-satellite-dish"></i> Telemetría de Celulares TI
+    </div>
+    <h1>Twins Vantage Scanner</h1>
+    <p>Auditoría e Inventario de Celulares Corporativos</p>
+  </div>
+
+  <!-- Scan Status Banner -->
+  <div class="scan-status-card">
+    <div class="scan-icon-wrapper">
+      <i class="fa-solid fa-mobile-screen-button"></i>
+      <div class="pulse-ring"></div>
+    </div>
+    <div class="scan-text">
+      <h3 id="deviceHeaderTitle">Escaneando Dispositivo...</h3>
+      <p id="deviceHeaderSub">Identificando componentes de hardware</p>
+    </div>
+  </div>
+
+  <!-- Success Notification -->
+  <div class="success-banner" id="successBanner">
+    <i class="fa-solid fa-circle-check"></i> ¡Ficha técnica registrada con éxito en Twins Vantage!
+  </div>
+
+  <!-- Telemetría de Hardware Detectada -->
+  <div class="section-card">
+    <div class="section-title">
+      <i class="fa-solid fa-microchip"></i> Hardware y Sistema Detectado
+    </div>
+
+    <div class="grid-2">
+      <div class="spec-box">
+        <span class="spec-label"><i class="fa-solid fa-mobile"></i> Marca / Fabricante</span>
+        <span class="spec-value highlight" id="specVendor">Detectando...</span>
+      </div>
+      <div class="spec-box">
+        <span class="spec-label"><i class="fa-solid fa-tag"></i> Modelo de Celular</span>
+        <span class="spec-value highlight" id="specModel">Detectando...</span>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="spec-box">
+        <span class="spec-label"><i class="fa-brands fa-android"></i> Sistema Operativo</span>
+        <span class="spec-value" id="specOS">Detectando...</span>
+      </div>
+      <div class="spec-box">
+        <span class="spec-label"><i class="fa-solid fa-memory"></i> Memoria RAM Est.</span>
+        <span class="spec-value success" id="specRAM">Calculando...</span>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="spec-box">
+        <span class="spec-label"><i class="fa-solid fa-hard-drive"></i> Almacenamiento ROM</span>
+        <span class="spec-value" id="specStorage">Calculando...</span>
+      </div>
+      <div class="spec-box">
+        <span class="spec-label"><i class="fa-solid fa-tv"></i> Pantalla (Resolución)</span>
+        <span class="spec-value" id="specScreen">Midiendo...</span>
+      </div>
+    </div>
+
+    <div class="spec-box">
+      <span class="spec-label"><i class="fa-solid fa-vr-cardboard"></i> Procesador Gráfico / GPU Móvil</span>
+      <span class="spec-value" id="specGPU" style="font-size: 12px;">Interrogando WebGL...</span>
+    </div>
+
+    <div class="grid-2">
+      <div class="spec-box">
+        <span class="spec-label"><i class="fa-solid fa-battery-half"></i> Batería</span>
+        <span class="spec-value" id="specBattery">Consultando...</span>
+        <div class="battery-container">
+          <div class="battery-bar" id="batteryBar"></div>
+        </div>
+      </div>
+      <div class="spec-box">
+        <span class="spec-label"><i class="fa-solid fa-wifi"></i> Conexión / Red</span>
+        <span class="spec-value" id="specNetwork">Analizando...</span>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="spec-box">
+        <span class="spec-label"><i class="fa-solid fa-globe"></i> IP Pública</span>
+        <span class="spec-value" id="specIP">Obteniendo...</span>
+      </div>
+      <div class="spec-box">
+        <span class="spec-label"><i class="fa-solid fa-fingerprint"></i> Touch / Sensores</span>
+        <span class="spec-value" id="specTouch">Multi-Touch</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulario de Asignación e IMEI -->
+  <form id="deviceForm" class="section-card" onsubmit="handleFormSubmit(event)">
+    <div class="section-title">
+      <i class="fa-solid fa-user-shield"></i> Datos de Asignación y Control
+    </div>
+
+    <div class="form-group">
+      <label><i class="fa-solid fa-user"></i> Colaborador Asignado (Nombre y Apellidos)*</label>
+      <input type="text" class="form-control" id="colaborador" placeholder="Ej. Roberto Rojas Farfán" required>
+    </div>
+
+    <div class="grid-2">
+      <div class="form-group">
+        <label><i class="fa-solid fa-building"></i> Área / Depto.*</label>
+        <select class="form-control" id="area" required>
+          <option value="">Seleccionar Área</option>
+          <option value="Ventas">Ventas</option>
+          <option value="Marketing">Marketing y Diseño</option>
+          <option value="Administración">Administración & Finanzas</option>
+          <option value="Almacén">Almacén y Logística</option>
+          <option value="Sistemas TI">Sistemas TI</option>
+          <option value="Gerencia">Gerencia General</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-sim-card"></i> Operador / N° Celular*</label>
+        <input type="tel" class="form-control" id="telefono" placeholder="Ej. 993751251 (Claro)" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label><i class="fa-solid fa-barcode"></i> Número de IMEI / Serie Físico*</label>
+      <div style="display: flex; gap: 8px;">
+        <input type="text" class="form-control" id="imei" placeholder="Ingresa los 15 dígitos de IMEI" required style="flex: 1; font-family: var(--font-mono); font-weight: 700;">
+        <button type="button" class="btn btn-secondary" style="width: auto; padding: 0 14px;" onclick="toggleCameraScanner()" title="Escanear con Cámara">
+          <i class="fa-solid fa-camera"></i>
+        </button>
+      </div>
+
+      <div class="imei-helper">
+        <span>💡 ¿Cómo ver tu IMEI rápido?</span>
+        <a href="tel:*%2306%23"><i class="fa-solid fa-phone"></i> Marcar *#06#</a>
+      </div>
+
+      <!-- Live Camera Scanner Container -->
+      <div id="reader"></div>
+    </div>
+
+    <div class="grid-2">
+      <div class="form-group">
+        <label><i class="fa-solid fa-tag"></i> Cód. Patrimonial Activo</label>
+        <input type="text" class="form-control" id="codActivo" placeholder="Ej. CEL-VEN-005">
+      </div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-clipboard-check"></i> Estado Físico</label>
+        <select class="form-control" id="estadoFisico">
+          <option value="Excelente / Nuevo">Excelente / Nuevo</option>
+          <option value="Bueno (Operativo)" selected>Bueno (Operativo)</option>
+          <option value="Desgaste Leve">Desgaste Leve</option>
+          <option value="Pantalla Rajada / Daño">Pantalla Rajada / Daño</option>
+          <option value="Requiere Mantenimiento">Requiere Mantenimiento</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label><i class="fa-solid fa-box-open"></i> Accesorios Entregados</label>
+      <input type="text" class="form-control" id="accesorios" placeholder="Ej. Cargador Original 33W, Cable USB-C, Funda Protectora">
+    </div>
+
+    <button type="submit" class="btn btn-primary" id="btnSubmit">
+      <i class="fa-solid fa-paper-plane"></i> Guardar y Generar Ficha Técnica
+    </button>
+
+    <div style="display: flex; gap: 8px; margin-top: 4px;">
+      <button type="button" class="btn btn-outline" onclick="exportPDF()" style="flex: 1;">
+        <i class="fa-solid fa-file-pdf"></i> Descargar PDF
+      </button>
+      <button type="button" class="btn btn-secondary" onclick="shareWhatsApp()" style="flex: 1;">
+        <i class="fa-brands fa-whatsapp"></i> Enviar a TI
+      </button>
+    </div>
+  </form>
+
+  <div class="footer">
+    Twins Vantage Enterprise Telemetry • Corporación Arcángel / Útiles Twins<br>
+    Subred: 192.168.18.0/24 • Servidor: utilestwins.com
+  </div>
+
+</div>
+
+<script>
+  let html5QrcodeScanner = null;
+  const telemetry = {
+    vendor: 'Genérico / Desconocido',
+    model: 'Smartphone',
+    os: 'Android',
+    ramGB: 'Desconocido',
+    storageGB: 'Desconocido',
+    screenRes: '1080x1920',
+    gpu: 'GPU Móvil',
+    battery: '100%',
+    batteryCharging: false,
+    network: 'WiFi / Móvil',
+    ip: '192.168.18.x',
+    cores: navigator.hardwareConcurrency || 8
+  };
+
+  // 1. Initial Device Scan on Page Load
+  window.addEventListener('DOMContentLoaded', async () => {
+    await scanHardwareTelemetry();
+    await fetchPublicIP();
+    checkBatteryStatus();
+  });
+
+  async function scanHardwareTelemetry() {
+    // Detect Vendor & Model
+    const ua = navigator.userAgent;
+    let model = 'Smartphone';
+    let vendor = 'Android';
+
+    if (navigator.userAgentData) {
+      try {
+        const highEntropy = await navigator.userAgentData.getHighEntropyValues([
+          'model', 'platform', 'platformVersion', 'architecture', 'bitness'
+        ]);
+        if (highEntropy.model) model = highEntropy.model;
+        if (highEntropy.platform) vendor = highEntropy.platform;
+      } catch (e) {}
+    }
+
+    // Comprehensive UA Regex Fallback
+    if (model === 'Smartphone' || !model) {
+      if (/iPhone/i.test(ua)) {
+        vendor = 'Apple';
+        model = 'iPhone (' + (window.screen.height > 800 ? 'OLED' : 'Retina') + ')';
+      } else if (/SM-[A-Z0-9]+/i.test(ua)) {
+        vendor = 'Samsung';
+        model = ua.match(/SM-[A-Z0-9]+/i)[0];
+      } else if (/Redmi/i.test(ua) || /POCO/i.test(ua) || /Xiaomi/i.test(ua) || /2[0-9]{3}[A-Z0-9]+/i.test(ua)) {
+        vendor = 'Xiaomi';
+        const m = ua.match(/(Redmi[^;)]+|POCO[^;)]+|Mi [^;)]+|2[0-9]{3}[A-Z0-9]+)/i);
+        model = m ? m[0] : 'Xiaomi Redmi / POCO';
+      } else if (/moto/i.test(ua) || /Motorola/i.test(ua)) {
+        vendor = 'Motorola';
+        const m = ua.match(/moto [^;)]+/i);
+        model = m ? m[0] : 'Motorola Moto G / Edge';
+      } else if (/CPH[0-9]+/i.test(ua) || /OPPO/i.test(ua)) {
+        vendor = 'OPPO';
+        model = ua.match(/CPH[0-9]+/i) ? ua.match(/CPH[0-9]+/i)[0] : 'OPPO Reno / A Series';
+      } else if (/RMX[0-9]+/i.test(ua) || /realme/i.test(ua)) {
+        vendor = 'Realme';
+        model = ua.match(/RMX[0-9]+/i) ? ua.match(/RMX[0-9]+/i)[0] : 'Realme';
+      } else if (/HONOR/i.test(ua) || /HMA/i.test(ua)) {
+        vendor = 'HONOR';
+        model = 'HONOR Magic / X Series';
+      } else if (/HUAWEI/i.test(ua)) {
+        vendor = 'HUAWEI';
+        model = 'HUAWEI Nova / Mate';
+      }
+    }
+
+    telemetry.vendor = vendor;
+    telemetry.model = model;
+    document.getElementById('specVendor').textContent = vendor;
+    document.getElementById('specModel').textContent = model;
+    document.getElementById('deviceHeaderTitle').textContent = vendor + ' ' + model;
+    document.getElementById('deviceHeaderSub').textContent = (navigator.hardwareConcurrency || 8) + ' Núcleos CPU • Pantalla Táctil Activa';
+
+    // OS
+    let osStr = 'Android';
+    if (/iPhone|iPad|iPod/i.test(ua)) {
+      osStr = 'iOS ' + (ua.match(/OS (d+_d+)/) ? ua.match(/OS (d+_d+)/)[1].replace('_', '.') : '');
+    } else if (/Android (d+(.d+)?)/i.test(ua)) {
+      osStr = 'Android ' + ua.match(/Android (d+(.d+)?)/i)[1];
+    }
+    telemetry.os = osStr;
+    document.getElementById('specOS').textContent = osStr;
+
+    // RAM Estimation
+    if (navigator.deviceMemory) {
+      telemetry.ramGB = navigator.deviceMemory + ' GB RAM';
+      document.getElementById('specRAM').textContent = telemetry.ramGB;
+    } else {
+      telemetry.ramGB = (navigator.hardwareConcurrency >= 8 ? '4 / 6 / 8 GB RAM' : '3 / 4 GB RAM');
+      document.getElementById('specRAM').textContent = telemetry.ramGB;
+    }
+
+    // ROM / Storage Estimation
+    if (navigator.storage && navigator.storage.estimate) {
+      try {
+        const estimate = await navigator.storage.estimate();
+        const totalGB = Math.round(estimate.quota / (1024 * 1024 * 1024));
+        const usedGB = (estimate.usage / (1024 * 1024 * 1024)).toFixed(1);
+        telemetry.storageGB = totalGB + ' GB (' + usedGB + ' GB Usados)';
+        document.getElementById('specStorage').textContent = totalGB + ' GB ROM';
+      } catch (e) {
+        document.getElementById('specStorage').textContent = '64 GB / 128 GB';
+      }
+    } else {
+      document.getElementById('specStorage').textContent = '64 GB / 128 GB';
+    }
+
+    // Screen
+    const dpr = window.devicePixelRatio || 1;
+    const realW = Math.round(window.screen.width * dpr);
+    const realH = Math.round(window.screen.height * dpr);
+    telemetry.screenRes = realW + 'x' + realH + ' @ ' + (window.screen.colorDepth || 24) + '-bit (DPI ' + dpr + 'x)';
+    document.getElementById('specScreen').textContent = realW + 'x' + realH + ' (' + dpr + 'x)';
+
+    // GPU / WebGL
+    try {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      if (gl) {
+        const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+        if (debugInfo) {
+          const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+          telemetry.gpu = renderer.replace(/ANGLE (|Direct3D|vs_5_0|ps_5_0|)/g, '').trim();
+          document.getElementById('specGPU').textContent = telemetry.gpu;
+        }
+      }
+    } catch (e) {
+      document.getElementById('specGPU').textContent = 'GPU Acelerada por Hardware';
+    }
+
+    // Network
+    if (navigator.connection) {
+      const conn = navigator.connection;
+      telemetry.network = (conn.effectiveType ? conn.effectiveType.toUpperCase() : 'Móvil') + ' (' + (conn.downlink || 10) + ' Mbps)';
+      document.getElementById('specNetwork').textContent = telemetry.network;
+    } else {
+      document.getElementById('specNetwork').textContent = 'Conectado (Alta Velocidad)';
+    }
+
+    // Touch
+    document.getElementById('specTouch').textContent = 'Multi-Touch (' + (navigator.maxTouchPoints || 5) + ' Puntos)';
+  }
+
+  // Battery
+  function checkBatteryStatus() {
+    if (navigator.getBattery) {
+      navigator.getBattery().then(batt => {
+        updateBatteryUI(batt);
+        batt.addEventListener('levelchange', () => updateBatteryUI(batt));
+        batt.addEventListener('chargingchange', () => updateBatteryUI(batt));
+      });
+    } else {
+      document.getElementById('specBattery').textContent = 'Operativa (Li-Ion)';
+      document.getElementById('batteryBar').style.width = '85%';
+    }
+  }
+
+  function updateBatteryUI(batt) {
+    const pct = Math.round(batt.level * 100);
+    const status = batt.charging ? '⚡ Cargando' : '🔋 Batería';
+    telemetry.battery = pct + '% (' + status + ')';
+    document.getElementById('specBattery').textContent = pct + '% ' + (batt.charging ? '⚡' : '');
+    const bar = document.getElementById('batteryBar');
+    bar.style.width = pct + '%';
+    bar.style.backgroundColor = pct > 20 ? '#10b981' : '#ef4444';
+  }
+
+  // Public IP
+  async function fetchPublicIP() {
+    try {
+      const res = await fetch('https://api.ipify.org?format=json');
+      const data = await res.json();
+      telemetry.ip = data.ip;
+      document.getElementById('specIP').textContent = data.ip;
+    } catch (e) {
+      document.getElementById('specIP').textContent = '192.168.18.x';
+    }
+  }
+
+  // Camera Barcode / QR Scanner for IMEI
+  function toggleCameraScanner() {
+    const readerDiv = document.getElementById('reader');
+    if (readerDiv.style.display === 'block') {
+      if (html5QrcodeScanner) {
+        html5QrcodeScanner.stop().then(() => {
+          readerDiv.style.display = 'none';
+        });
+      } else {
+        readerDiv.style.display = 'none';
+      }
+    } else {
+      readerDiv.style.display = 'block';
+      html5QrcodeScanner = new Html5Qrcode("reader");
+      html5QrcodeScanner.start(
+        { facingMode: "environment" },
+        { fps: 10, qrbox: { width: 250, height: 100 } },
+        (decodedText) => {
+          document.getElementById('imei').value = decodedText.replace(/[^\d]/g, '');
+          html5QrcodeScanner.stop().then(() => {
+            readerDiv.style.display = 'none';
+          });
+        },
+        (errorMessage) => {}
+      ).catch(err => {
+        alert("No se pudo iniciar la cámara: " + err);
+        readerDiv.style.display = 'none';
+      });
+    }
+  }
+
+  // Handle Form Submission
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const record = {
+      id: 'MOB-' + Date.now().toString().slice(-6),
+      colaborador: document.getElementById('colaborador').value,
+      area: document.getElementById('area').value,
+      telefono: document.getElementById('telefono').value,
+      imei: document.getElementById('imei').value,
+      codActivo: document.getElementById('codActivo').value || 'CEL-' + document.getElementById('area').value.substring(0,3).toUpperCase(),
+      estadoFisico: document.getElementById('estadoFisico').value,
+      accesorios: document.getElementById('accesorios').value || 'Cargador y Cable USB',
+      fechaRegistro: new Date().toLocaleString(),
+      hardware: telemetry
+    };
+
+    // Save to LocalStorage
+    const list = JSON.parse(localStorage.getItem('TWINS_MOBILE_INVENTORY') || '[]');
+    list.unshift(record);
+    localStorage.setItem('TWINS_MOBILE_INVENTORY', JSON.stringify(list));
+
+    // Show Success Banner
+    const banner = document.getElementById('successBanner');
+    banner.style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    alert('✅ Ficha Técnica Registrada con Éxito:\n\nDispositivo: ' + telemetry.vendor + ' ' + telemetry.model + '\nAsignado a: ' + record.colaborador + ' (' + record.area + ')\nIMEI: ' + record.imei);
+  }
+
+  // Export to PDF
+  function exportPDF() {
+    const colab = document.getElementById('colaborador').value || 'Colaborador';
+    const opt = {
+      margin: 10,
+      filename: 'Ficha_Tecnica_Celular_' + colab.replace(/\s+/g, '_') + '.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(document.getElementById('printableArea')).save();
+  }
+
+  // Share Summary via WhatsApp to IT Boss
+  function shareWhatsApp() {
+    const colab = document.getElementById('colaborador').value || 'Sin Asignar';
+    const area = document.getElementById('area').value || 'Sin Área';
+    const tel = document.getElementById('telefono').value || 'S/N';
+    const imei = document.getElementById('imei').value || 'S/N';
+    const cod = document.getElementById('codActivo').value || 'S/C';
+
+    const msg = '*📱 FICHA DE AUDITORÍA CELULAR CORPORATIVO — TWINS VANTAGE*\n' +
+'----------------------------------------\n' +
+'👤 *Colaborador:* ' + colab + '\n' +
+'🏢 *Área:* ' + area + '\n' +
+'📞 *N° Celular:* ' + tel + '\n' +
+'🏷️ *Cód. Activo:* ' + cod + '\n' +
+'🔢 *IMEI:* ' + imei + '\n' +
+'----------------------------------------\n' +
+'📱 *Equipo:* ' + telemetry.vendor + ' ' + telemetry.model + '\n' +
+'⚙️ *Sistema:* ' + telemetry.os + '\n' +
+'💾 *RAM / ROM:* ' + telemetry.ramGB + ' | ' + telemetry.storageGB + '\n' +
+'🖥️ *Pantalla:* ' + telemetry.screenRes + '\n' +
+'🔋 *Batería:* ' + telemetry.battery + '\n' +
+'🌐 *Red / IP:* ' + telemetry.network + ' | ' + telemetry.ip + '\n' +
+'----------------------------------------\n' +
+'_Registrado el ' + new Date().toLocaleString() + ' vía Twins Vantage Scanner_';
+
+    const url = "https://api.whatsapp.com/send?text=" + encodeURIComponent(msg);
+    window.open(url, '_blank');
+  }
+</script>
+
+</body>
+</html>
