@@ -1,7 +1,7 @@
 {
   "version": "4.0.0-PRO",
-  "lastUpdated": "2026-09-07T13:33:23.892Z",
-  "epochMs": 1788788003892,
+  "lastUpdated": "2026-09-07T13:57:01.307Z",
+  "epochMs": 1788789421307,
   "collectorHost": "ARCNTID002",
   "collectorStatus": "HEALTHY",
   "network": {
@@ -88,7 +88,7 @@
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "LG UltraWide 29\" IPS (2560x1080)",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNMRKD009",
@@ -106,7 +106,7 @@
       "ramChannelType": "dual",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNMRKD010",
@@ -124,7 +124,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe Gen4 1TB",
       "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNMRKD011",
@@ -142,7 +142,7 @@
       "ramChannelType": "dual",
       "storage": "SSD SATA / HDD",
       "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNMRKD012",
@@ -160,7 +160,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe Gen4 1TB",
       "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNMRKD013",
@@ -178,7 +178,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe Gen4 1TB",
       "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNMRKD014",
@@ -196,7 +196,7 @@
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNMRKD015",
@@ -214,7 +214,7 @@
       "ramChannelType": "single",
       "storage": "NVMe Gen4 1TB",
       "monitor": "ASUS Frameless 24\" IPS FHD",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNMRKD016",
@@ -232,7 +232,7 @@
       "ramChannelType": "single",
       "storage": "NVMe Gen4 1TB",
       "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ADMINISTRADOR",
@@ -250,7 +250,7 @@
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNADM007",
@@ -268,7 +268,7 @@
       "ramChannelType": "dual",
       "storage": "SSD SATA / HDD",
       "monitor": "ASUS Eye Care 22\" FHD",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNADMD001-1",
@@ -286,7 +286,7 @@
       "ramChannelType": "single",
       "storage": "NVMe Gen4 1TB",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNADMD002",
@@ -304,7 +304,7 @@
       "ramChannelType": "single",
       "storage": "NVMe Gen4 1TB",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNADMD003",
@@ -322,7 +322,7 @@
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "ASUS Frameless 24\" IPS FHD",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNADMD004-1",
@@ -340,7 +340,7 @@
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNADMD005",
@@ -358,7 +358,7 @@
       "ramChannelType": "single",
       "storage": "NVMe Gen4 2TB",
       "monitor": "LG FHD 24\" IPS (100Hz)",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNADMD006",
@@ -376,7 +376,7 @@
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "LG FHD 24\" IPS (100Hz)",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNADMD007",
@@ -394,7 +394,7 @@
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNADMD008",
@@ -412,7 +412,7 @@
       "ramChannelType": "single",
       "storage": "NVMe Gen4 1TB",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNADMD009",
@@ -430,7 +430,7 @@
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "LG FHD 24\" IPS (100Hz)",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNVNTD015",
@@ -448,7 +448,7 @@
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNVNTD016",
@@ -466,7 +466,7 @@
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNVNTD019-1",
@@ -484,7 +484,7 @@
       "ramChannelType": "single",
       "storage": "NVMe Gen4 1TB",
       "monitor": "LG FHD 24\" IPS (100Hz)",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNALMD001",
@@ -502,7 +502,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe Gen4 1TB",
       "monitor": "ASUS Eye Care 22\" FHD",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "ARCNTID002",
@@ -520,7 +520,7 @@
       "ramChannelType": "single",
       "storage": "NVMe Gen4 1TB",
       "monitor": "LG FHD 27\" IPS (601TFFP0F099)",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "SERVIDOR",
@@ -538,7 +538,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe Gen4 + SSD + HDD RAID (10.4 TB Total)",
       "monitor": "Consola Rackmount 19\" 1U KVM (1366x768)",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "SERVERDB",
@@ -556,7 +556,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe Gen4 Ultra-Speed + SSD RAID1 (3 TB)",
       "monitor": "Consola KVM Compartida 19\"",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     },
     {
       "id": "SERVERAPP",
@@ -574,7 +574,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe Gen4 + SSD Enterprise (3 TB)",
       "monitor": "Consola KVM Compartida 19\"",
-      "lastAudit": "2026-09-07T13:33:23.892Z"
+      "lastAudit": "2026-09-07T13:57:01.307Z"
     }
   ]
 }

@@ -352,18 +352,35 @@ const server = http.createServer((req, res) => {
   });
 });
 
-// 6. Start Telemetry Engine
-server.listen(CONFIG.PORT, '0.0.0.0', () => {
-  console.log(`================================================================`);
-  console.log(`  🛡️ TWINS VANTAGE — TELEMETRY COLLECTOR ENGINE PRO v4.0`);
-  console.log(`  Nodo Maestro: ${CONFIG.HOST_ID} | Subred: utilestwins.com`);
-  console.log(`  Escucha HTTP/REST en: http://0.0.0.0:${CONFIG.PORT}`);
-  console.log(`  Acceso LAN Móvil:     http://192.168.18.88:${CONFIG.PORT}`);
-  console.log(`================================================================`);
-  
-  // Initial sweep immediately
-  performTelemetrySweep();
-  
-  // Recurring polling loop
-  setInterval(performTelemetrySweep, CONFIG.POLL_INTERVAL_MS);
+// 6. Start Telemetry Engine (Primary Port 80, Secondary Port 3000)
+const PRIMARY_PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 80;
+const FALLBACK_PORT = 3000;
+
+function startServer(portToUse) {
+  server.listen(portToUse, '0.0.0.0', () => {
+    console.log(`================================================================`);
+    console.log(`  🛡️ TWINS VANTAGE — TELEMETRY COLLECTOR ENGINE PRO v4.0`);
+    console.log(`  Nodo Maestro: ${CONFIG.HOST_ID} | Subred: utilestwins.com`);
+    console.log(`  Puerto Activo: HTTP ${portToUse}`);
+    console.log(`  Acceso Directo:       http://192.168.18.88${portToUse === 80 ? '' : ':' + portToUse}`);
+    console.log(`  Acceso Local:         http://localhost${portToUse === 80 ? '' : ':' + portToUse}`);
+    console.log(`================================================================`);
+    
+    // Initial sweep immediately
+    performTelemetrySweep();
+    
+    // Recurring polling loop
+    setInterval(performTelemetrySweep, CONFIG.POLL_INTERVAL_MS);
+  });
+}
+
+server.on('error', (err) => {
+  if (err.code === 'EACCES' || err.code === 'EADDRINUSE') {
+    console.warn(`[COLLECTOR] Puerto ${PRIMARY_PORT} ocupado o requiere elevación. Conmutando a puerto ${FALLBACK_PORT}...`);
+    startServer(FALLBACK_PORT);
+  } else {
+    console.error('[COLLECTOR] Error en servidor HTTP:', err.message);
+  }
 });
+
+startServer(PRIMARY_PORT);
