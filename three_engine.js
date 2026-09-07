@@ -492,3 +492,175 @@ function mountInteractive3DViewport(containerId, deviceData) {
   active3DScenes.set(containerId, { scene, camera, renderer, controls, animId });
   return { scene, camera, renderer, controls };
 }
+
+
+// ============================================================
+// BESPOKE PROCEDURAL 3D SMARTPHONE MODELING ENGINE (THREE.JS)
+// ============================================================
+function buildSmartphone3DGroup(dev) {
+  const phoneGroup = new THREE.Group();
+  
+  // Dimensions according to model
+  let width = 1.4;
+  let height = 2.8;
+  let depth = 0.16;
+  let cornerRadius = 0.15;
+  
+  let bodyColor = 0x1e293b;
+  let frameColor = 0x64748b;
+  let metalness = 0.85;
+  let roughness = 0.2;
+  
+  if (dev.marca === 'Apple') {
+    bodyColor = 0x2b2b2e; // Natural Titanium
+    frameColor = 0x8e8e93;
+    metalness = 0.92;
+    roughness = 0.18;
+  } else if (dev.marca === 'Samsung') {
+    if (dev.dispositivo.includes('S23') || dev.dispositivo.includes('S22')) {
+      bodyColor = 0x0f172a; // Phantom Black
+      frameColor = 0x334155;
+      cornerRadius = 0.04; // Sharp note corners
+    } else {
+      bodyColor = 0x1e1b4b;
+      frameColor = 0x4338ca;
+    }
+  } else if (dev.marca === 'Xiaomi') {
+    bodyColor = 0x18181b;
+    frameColor = 0xf59e0b;
+  } else if (dev.marca === 'Huawei') {
+    bodyColor = 0x0f172a;
+    frameColor = 0xf43f5e;
+  }
+
+  // 1. Phone Body Chassis (Rounded Box)
+  const bodyGeo = new THREE.BoxGeometry(width, height, depth);
+  const bodyMat = new THREE.MeshStandardMaterial({
+    color: bodyColor,
+    metalness: metalness,
+    roughness: roughness
+  });
+  const body = new THREE.Mesh(bodyGeo, bodyMat);
+  body.castShadow = true;
+  body.receiveShadow = true;
+  phoneGroup.add(body);
+
+  // 2. Metallic Frame Edge Bezel
+  const frameGeo = new THREE.BoxGeometry(width + 0.02, height + 0.02, depth - 0.02);
+  const frameMat = new THREE.MeshStandardMaterial({
+    color: frameColor,
+    metalness: 0.95,
+    roughness: 0.1
+  });
+  const frame = new THREE.Mesh(frameGeo, frameMat);
+  phoneGroup.add(frame);
+
+  // 3. Screen Glass Front
+  const screenGeo = new THREE.PlaneGeometry(width - 0.08, height - 0.12);
+  const screenMat = new THREE.MeshStandardMaterial({
+    color: 0x020617,
+    roughness: 0.05,
+    metalness: 0.9
+  });
+  const screen = new THREE.Mesh(screenGeo, screenMat);
+  screen.position.z = depth / 2 + 0.005;
+  phoneGroup.add(screen);
+
+  // Screen UI Neon Glow Accent
+  const uiGeo = new THREE.PlaneGeometry(width - 0.14, height - 0.2);
+  const uiMat = new THREE.MeshBasicMaterial({
+    color: dev.marca === 'Apple' ? 0x38bdf8 : (dev.marca === 'Samsung' ? 0x00f0ff : 0xa855f7),
+    transparent: true,
+    opacity: 0.15
+  });
+  const ui = new THREE.Mesh(uiGeo, uiMat);
+  ui.position.z = depth / 2 + 0.007;
+  phoneGroup.add(ui);
+
+  // 4. Camera Bump Module on Rear
+  const bumpW = width * 0.45;
+  const bumpH = height * 0.32;
+  const bumpD = 0.05;
+  const bumpGeo = new THREE.BoxGeometry(bumpW, bumpH, bumpD);
+  const bumpMat = new THREE.MeshStandardMaterial({
+    color: bodyColor,
+    metalness: 0.9,
+    roughness: 0.15
+  });
+  const bump = new THREE.Mesh(bumpGeo, bumpMat);
+  bump.position.set(-width / 4, height / 3.4, -depth / 2 - bumpD / 2);
+  phoneGroup.add(bump);
+
+  // 3 Camera Lenses with Sapphire Glass Rings
+  const lensGeo = new THREE.CylinderGeometry(0.08, 0.08, 0.03, 24);
+  const lensRingGeo = new THREE.CylinderGeometry(0.095, 0.095, 0.02, 24);
+  const lensMat = new THREE.MeshStandardMaterial({ color: 0x000000, roughness: 0.02, metalness: 0.98 });
+  const ringMat = new THREE.MeshStandardMaterial({ color: frameColor, metalness: 0.95, roughness: 0.1 });
+
+  for (let i = 0; i < 3; i++) {
+    const lens = new THREE.Mesh(lensGeo, lensMat);
+    const ring = new THREE.Mesh(lensRingGeo, ringMat);
+    lens.rotation.x = Math.PI / 2;
+    ring.rotation.x = Math.PI / 2;
+
+    const posY = (height / 3.4) + (i === 0 ? 0.22 : (i === 1 ? 0 : -0.22));
+    const posX = -width / 4 + (i === 2 ? 0.12 : -0.06);
+
+    lens.position.set(posX, posY, -depth / 2 - bumpD - 0.015);
+    ring.position.set(posX, posY, -depth / 2 - bumpD - 0.01);
+    phoneGroup.add(lens);
+    phoneGroup.add(ring);
+  }
+
+  // Floating Elevation Animation
+  phoneGroup.rotation.y = 0.35;
+  phoneGroup.rotation.x = 0.15;
+
+  return phoneGroup;
+}
+
+function initMobile3DViewport(containerId, dev) {
+  const container = document.getElementById(containerId);
+  if (!container || typeof THREE === 'undefined') return;
+
+  container.innerHTML = '';
+  const width = container.clientWidth || 400;
+  const height = container.clientHeight || 260;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+  camera.position.set(0, 0, 5.2);
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  container.appendChild(renderer.domElement);
+
+  // Lights
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+  scene.add(ambientLight);
+
+  const keyLight = new THREE.DirectionalLight(0x00f0ff, 2.5);
+  keyLight.position.set(5, 5, 4);
+  scene.add(keyLight);
+
+  const rimLight = new THREE.DirectionalLight(0xa855f7, 2.0);
+  rimLight.position.set(-5, -3, -4);
+  scene.add(rimLight);
+
+  const phone = buildSmartphone3DGroup(dev);
+  scene.add(phone);
+
+  let reqId;
+  function animate() {
+    reqId = requestAnimationFrame(animate);
+    phone.rotation.y += 0.008;
+    phone.position.y = Math.sin(Date.now() * 0.002) * 0.08;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  active3DScenes.set(containerId, { renderer, reqId });
+}

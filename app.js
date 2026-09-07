@@ -2299,6 +2299,7 @@ function renderMobileTable() {
   if (window.lucide) window.lucide.createIcons();
 }
 
+
 function openMobileDrawer(devId) {
   playTechSound('click');
   const dev = allMobileDevices.find(d => d.id === devId);
@@ -2309,147 +2310,173 @@ function openMobileDrawer(devId) {
   if (!drawer || !content) return;
 
   content.innerHTML = `
-    <!-- Header -->
-    <div class="p-6 border-b border-white/10 flex items-start justify-between bg-gradient-to-r from-[#0d152a] to-[#040711]">
-      <div class="flex items-center gap-3">
-        <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold font-mono text-base shadow-[0_0_20px_rgba(0,240,255,0.2)]">
+    <!-- Header with Cyber Glitch Title -->
+    <div class="p-6 border-b border-white/10 flex items-start justify-between bg-gradient-to-r from-[#0d152a] via-[#080d1e] to-[#040711] sticky top-0 z-20 backdrop-blur-xl">
+      <div class="flex items-center gap-3.5">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 font-bold font-mono text-base shadow-[0_0_20px_rgba(0,240,255,0.3)]">
           <i data-lucide="smartphone" class="w-6 h-6"></i>
         </div>
         <div>
           <div class="flex items-center gap-2">
             <h2 class="text-base font-black text-white tracking-tight">${dev.dispositivo}</h2>
-            <span class="badge-online text-[10px] font-mono px-2 py-0.5 rounded">100% Homologado</span>
+            <span class="badge-online text-[10px] font-mono px-2 py-0.5 rounded font-bold">100% Homologado</span>
           </div>
-          <div class="text-xs text-slate-400 font-mono mt-0.5">
-            ${dev.modeloExacto} &bull; <span class="text-cyan-400 font-bold">${dev.activo}</span>
+          <div class="text-xs text-slate-400 font-mono mt-0.5 flex items-center gap-2">
+            <span>${dev.modeloExacto}</span>
+            <span class="text-slate-600">&bull;</span>
+            <span class="text-cyan-400 font-bold">${dev.activo}</span>
           </div>
         </div>
       </div>
-      <button onclick="closeDeviceDrawer()" class="p-2 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-white transition-colors">
+      <button onclick="closeDeviceDrawer()" class="p-2 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-white transition-colors border border-white/5">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
     </div>
 
-    <!-- Body Content -->
-    <div class="p-6 space-y-6 flex-1 text-xs">
+    <!-- Body Content with High-Tech Viewports -->
+    <div class="p-6 space-y-5 flex-1 text-xs overflow-y-auto">
       
-      <!-- User & Assignment Card -->
-      <div class="vantage-card p-4 space-y-3">
-        <div class="text-[10px] font-mono uppercase tracking-widest text-slate-500 font-bold flex items-center gap-1.5">
+      <!-- 3D Holographic WebGL Viewport Container -->
+      <div class="vantage-card p-4 space-y-2 relative overflow-hidden bg-gradient-to-b from-[#02050e] to-[#080f24] border-cyan-500/30">
+        <div class="flex items-center justify-between border-b border-white/5 pb-2">
+          <span class="text-[10px] font-mono uppercase tracking-widest text-cyan-400 font-bold flex items-center gap-1.5">
+            <i data-lucide="box" class="w-3.5 h-3.5"></i> Gemelo Digital 3D WebGL (Three.js)
+          </span>
+          <span class="text-[10px] font-mono text-slate-400">Rotación Automática 60 FPS</span>
+        </div>
+        <div id="mobile3DBox" class="w-full h-56 rounded-xl overflow-hidden flex items-center justify-center relative shadow-inner">
+          <!-- 3D WebGL Canvas rendered by initMobile3DViewport -->
+        </div>
+        <div class="flex justify-between items-center text-[10px] font-mono text-slate-400 pt-1">
+          <span>Acabado: <strong class="text-white">${dev.colorEquipo}</strong></span>
+          <span>Panel: <strong class="text-cyan-300">${dev.pantalla.split('(')[0]}</strong></span>
+        </div>
+      </div>
+
+      <!-- Collaborator Assignment Card -->
+      <div class="vantage-card p-4 space-y-3 border-l-4 border-l-cyan-500">
+        <div class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold flex items-center gap-1.5">
           <i data-lucide="user-check" class="w-3.5 h-3.5 text-cyan-400"></i> Asignación y Control Patrimonial
         </div>
         <div class="grid grid-cols-2 gap-3 text-xs">
           <div>
-            <span class="text-slate-500 block">Colaborador Asignado:</span>
+            <span class="text-slate-500 block text-[11px]">Colaborador Asignado:</span>
             <span class="font-bold text-white text-sm">${dev.colaborador}</span>
           </div>
           <div>
-            <span class="text-slate-500 block">Área / Cargo:</span>
-            <span class="text-slate-300 font-medium">${dev.cargo} (${dev.area})</span>
+            <span class="text-slate-500 block text-[11px]">Área / Posición:</span>
+            <span class="text-slate-300 font-medium">${dev.cargo} (<strong class="text-cyan-400">${dev.area}</strong>)</span>
           </div>
           <div>
-            <span class="text-slate-500 block">Línea Móvil:</span>
-            <span class="font-mono font-bold text-cyan-400 text-sm">${dev.linea}</span>
+            <span class="text-slate-500 block text-[11px]">Línea Móvil Corporativa:</span>
+            <span class="font-mono font-bold text-cyan-300 text-sm">${dev.linea}</span>
           </div>
           <div>
-            <span class="text-slate-500 block">Operador Telecom:</span>
+            <span class="text-slate-500 block text-[11px]">Operador Telecom:</span>
             <span class="text-slate-300 font-semibold">${dev.operador}</span>
           </div>
         </div>
       </div>
 
-      <!-- Photo & Visual Card -->
-      <div class="vantage-card p-4 space-y-3">
-        <div class="text-[10px] font-mono uppercase tracking-widest text-slate-500 font-bold flex items-center gap-1.5">
-          <i data-lucide="camera" class="w-3.5 h-3.5 text-purple-400"></i> Fotografía &amp; Acabado Físico
+      <!-- Telemetry Silicio & Storage Grid -->
+      <div class="grid grid-cols-2 gap-3">
+        <!-- CPU / SoC -->
+        <div class="vantage-card p-3.5 space-y-1.5">
+          <div class="flex items-center gap-2 text-cyan-400 text-[10px] font-mono font-bold uppercase">
+            <i data-lucide="cpu" class="w-3.5 h-3.5"></i> Procesador / SoC
+          </div>
+          <div class="text-sm font-black text-white font-mono leading-tight">${dev.soc.split('(')[0]}</div>
+          <div class="text-[10px] text-slate-400 font-mono truncate">${dev.gpu}</div>
         </div>
-        <div class="w-full h-52 rounded-xl bg-[#02050e] border border-white/5 overflow-hidden flex items-center justify-center p-2">
-          <img src="${dev.image}" alt="${dev.dispositivo}" class="w-full h-full object-cover rounded-lg" />
-        </div>
-        <div class="flex justify-between text-[11px] font-mono text-slate-400">
-          <span>Color: <strong class="text-white">${dev.colorEquipo}</strong></span>
-          <span>Pantalla: <strong class="text-cyan-400">${dev.pantalla.split('(')[0]}</strong></span>
+
+        <!-- RAM & ROM -->
+        <div class="vantage-card p-3.5 space-y-1.5">
+          <div class="flex items-center gap-2 text-purple-400 text-[10px] font-mono font-bold uppercase">
+            <i data-lucide="memory-stick" class="w-3.5 h-3.5"></i> Memoria & Flash
+          </div>
+          <div class="text-sm font-black text-white font-mono leading-tight">
+            <span class="text-emerald-400">${dev.ramTotalGB} GB</span> &bull; <span class="text-purple-400">${dev.romTotalGB} GB</span>
+          </div>
+          <div class="text-[10px] text-slate-400 font-mono">${dev.romUsado} usados / ${dev.romLibre} libres</div>
         </div>
       </div>
 
-      <!-- Forensic Specs Table -->
-      <div class="vantage-card p-4 space-y-3">
-        <div class="text-[10px] font-mono uppercase tracking-widest text-slate-500 font-bold flex items-center gap-1.5">
-          <i data-lucide="layers" class="w-3.5 h-3.5 text-emerald-400"></i> Telemetría de Silicio &amp; Almacenamiento
+      <!-- Battery & Thermal Diagnostic Gauge -->
+      <div class="vantage-card p-4 space-y-2.5 border-l-4 border-l-emerald-500">
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold flex items-center gap-1.5">
+            <i data-lucide="battery-charging" class="w-3.5 h-3.5 text-emerald-400"></i> Batería &amp; Diagnóstico Eléctrico
+          </span>
+          <span class="text-emerald-400 font-black font-mono text-sm">${dev.bateriaSalud}</span>
         </div>
-        <div class="space-y-2 divide-y divide-white/5">
-          <div class="pt-1.5 flex justify-between">
-            <span class="text-slate-400">Procesador & GPU:</span>
-            <span class="font-mono text-white text-right max-w-[280px] truncate">${dev.soc}</span>
-          </div>
-          <div class="pt-1.5 flex justify-between">
-            <span class="text-slate-400">Memoria RAM:</span>
-            <span class="font-mono text-emerald-400 font-bold">${dev.ramTotalGB} GB (${dev.ramTipo})</span>
-          </div>
-          <div class="pt-1.5 flex justify-between">
-            <span class="text-slate-400">Almacenamiento (ROM):</span>
-            <span class="font-mono text-purple-400 font-bold">${dev.romTotalGB} GB (${dev.romTipo})</span>
-          </div>
-          <div class="pt-1.5 flex justify-between">
-            <span class="text-slate-400">Batería & Salud:</span>
-            <span class="font-mono text-white">${dev.bateria} &bull; <strong class="text-emerald-400">${dev.bateriaSalud}</strong></span>
-          </div>
-          <div class="pt-1.5 flex justify-between">
-            <span class="text-slate-400">Sistema Operativo:</span>
-            <span class="font-mono text-slate-300">${dev.so}</span>
-          </div>
+        <div class="flex justify-between items-center text-xs font-mono">
+          <span class="text-white font-bold">${dev.bateria}</span>
+          <span class="text-slate-400">${dev.bateriaCarga}</span>
+        </div>
+        <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden p-0.5 border border-white/5">
+          <div class="bg-gradient-to-r from-emerald-500 to-cyan-400 h-full rounded-full" style="width: 100%"></div>
         </div>
       </div>
 
-      <!-- IMEI & Serial Matrix with Copy Buttons -->
-      <div class="vantage-card p-4 space-y-3">
-        <div class="text-[10px] font-mono uppercase tracking-widest text-slate-500 font-bold flex items-center gap-1.5">
-          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-cyan-400"></i> Certificados IMEI &amp; Número de Serie
+      <!-- Camera Array -->
+      <div class="vantage-card p-4 space-y-1.5">
+        <div class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold flex items-center gap-1.5">
+          <i data-lucide="camera" class="w-3.5 h-3.5 text-pink-400"></i> Sistema Óptico &amp; Sensores
         </div>
-        <div class="space-y-2 font-mono">
-          <div class="p-2.5 rounded-lg bg-slate-900/80 border border-white/5 flex items-center justify-between">
+        <p class="text-slate-200 text-xs leading-relaxed font-sans">${dev.camaras}</p>
+      </div>
+
+      <!-- IMEI & Factory Serial Numbers with 1-Click Copy -->
+      <div class="vantage-card p-4 space-y-2.5 border border-cyan-500/20">
+        <div class="text-[10px] font-mono uppercase tracking-widest text-cyan-400 font-bold flex items-center gap-1.5">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Identificadores Hardware Certificados
+        </div>
+        <div class="space-y-2 font-mono text-xs">
+          
+          <div class="p-2.5 rounded-xl bg-slate-950/80 border border-white/5 flex items-center justify-between">
             <div>
-              <span class="text-[10px] text-slate-500 block">IMEI 1 (SIM 1):</span>
-              <span class="text-xs font-bold text-white">${dev.imei1}</span>
+              <span class="text-[10px] text-slate-500 font-bold block">IMEI 1 (SIM PRINCIPAL):</span>
+              <span class="font-bold text-white tracking-wider">${dev.imei1}</span>
             </div>
-            <button onclick="copyMobileText('${dev.imei1}', 'IMEI 1 copiado')" class="px-2 py-1 rounded bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 text-[10px] font-bold border border-cyan-500/30 transition">
-              Copiar
+            <button onclick="copyMobileText('${dev.imei1}', 'IMEI 1 copiado')" class="px-2.5 py-1 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/25 text-cyan-300 text-[11px] font-bold border border-cyan-500/30 transition flex items-center gap-1">
+              <i data-lucide="copy" class="w-3 h-3"></i> Copiar
             </button>
           </div>
 
-          <div class="p-2.5 rounded-lg bg-slate-900/80 border border-white/5 flex items-center justify-between">
+          <div class="p-2.5 rounded-xl bg-slate-950/80 border border-white/5 flex items-center justify-between">
             <div>
-              <span class="text-[10px] text-slate-500 block">IMEI 2 (SIM 2 / eSIM):</span>
-              <span class="text-xs font-bold text-slate-300">${dev.imei2}</span>
+              <span class="text-[10px] text-slate-500 font-bold block">IMEI 2 (SIM 2 / eSIM):</span>
+              <span class="font-bold text-slate-300 tracking-wider">${dev.imei2}</span>
             </div>
-            <button onclick="copyMobileText('${dev.imei2}', 'IMEI 2 copiado')" class="px-2 py-1 rounded bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 text-[10px] font-bold border border-cyan-500/30 transition">
-              Copiar
+            <button onclick="copyMobileText('${dev.imei2}', 'IMEI 2 copiado')" class="px-2.5 py-1 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/25 text-cyan-300 text-[11px] font-bold border border-cyan-500/30 transition flex items-center gap-1">
+              <i data-lucide="copy" class="w-3 h-3"></i> Copiar
             </button>
           </div>
 
-          <div class="p-2.5 rounded-lg bg-slate-900/80 border border-white/5 flex items-center justify-between">
+          <div class="p-2.5 rounded-xl bg-slate-950/80 border border-white/5 flex items-center justify-between">
             <div>
-              <span class="text-[10px] text-slate-500 block">Número de Serie Fábrica (SN):</span>
-              <span class="text-xs font-bold text-slate-300">${dev.serial}</span>
+              <span class="text-[10px] text-slate-500 font-bold block">NÚMERO DE SERIE FÁBRICA (SN):</span>
+              <span class="font-bold text-slate-300 tracking-wider">${dev.serial}</span>
             </div>
-            <button onclick="copyMobileText('${dev.serial}', 'Serial copiado')" class="px-2 py-1 rounded bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 text-[10px] font-bold border border-cyan-500/30 transition">
-              Copiar
+            <button onclick="copyMobileText('${dev.serial}', 'Serial copiado')" class="px-2.5 py-1 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/25 text-cyan-300 text-[11px] font-bold border border-cyan-500/30 transition flex items-center gap-1">
+              <i data-lucide="copy" class="w-3 h-3"></i> Copiar
             </button>
           </div>
+
         </div>
       </div>
 
-      <!-- Observations -->
-      <div class="vantage-card p-4 space-y-2">
-        <div class="text-[10px] font-mono uppercase tracking-widest text-cyan-400 font-bold">Dictamen Técnico TI</div>
-        <p class="text-xs text-slate-300 leading-relaxed">${dev.observaciones}</p>
+      <!-- Technical Dictamen -->
+      <div class="vantage-card p-4 space-y-1.5 bg-gradient-to-r from-[#0d152a] to-[#040711]">
+        <div class="text-[10px] font-mono uppercase tracking-widest text-cyan-400 font-bold">Dictamen Técnico &amp; Certificación TI</div>
+        <p class="text-slate-300 text-xs leading-relaxed">${dev.observaciones}</p>
       </div>
 
     </div>
 
     <!-- Footer Actions -->
-    <div class="p-4 border-t border-white/10 bg-[#030610] flex items-center justify-between gap-3 shrink-0">
-      <a href="${dev.pdfReport}" target="_blank" class="w-full cyber-btn-primary py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2">
+    <div class="p-4 border-t border-white/10 bg-[#030610] sticky bottom-0 z-20 flex items-center justify-between gap-3 shrink-0">
+      <a href="${dev.pdfReport}" target="_blank" class="w-full cyber-btn-primary py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,240,255,0.3)]">
         <i data-lucide="file-text" class="w-4 h-4"></i>
         <span>Abrir Acta Oficial de Auditoría (PDF)</span>
       </a>
@@ -2462,6 +2489,11 @@ function openMobileDrawer(devId) {
   if (backdrop) backdrop.classList.remove('hidden');
 
   if (window.lucide) window.lucide.createIcons();
+
+  // Initialize WebGL 3D Realtime Smartphone Viewport
+  setTimeout(() => {
+    initMobile3DViewport('mobile3DBox', dev);
+  }, 100);
 }
 
 function copyMobileText(text, msg) {
