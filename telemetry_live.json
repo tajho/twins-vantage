@@ -1,7 +1,7 @@
 {
   "version": "4.0.0-PRO",
-  "lastUpdated": "2026-09-07T15:23:00.172Z",
-  "epochMs": 1788794580176,
+  "lastUpdated": "2026-09-07T15:28:45.179Z",
+  "epochMs": 1788794925182,
   "collectorHost": "ARCNTID002",
   "collectorStatus": "HEALTHY",
   "network": {
@@ -20,7 +20,7 @@
       "name": "SERVIDOR",
       "ip": "192.168.18.200",
       "status": "ONLINE",
-      "rttMs": 2,
+      "rttMs": 1,
       "ports": [
         53,
         80,
@@ -36,7 +36,7 @@
       "name": "SERVERDB",
       "ip": "192.168.18.253",
       "status": "ONLINE",
-      "rttMs": 2,
+      "rttMs": 1,
       "ports": [
         135,
         139,
@@ -49,7 +49,7 @@
       "name": "SERVERAPP",
       "ip": "192.168.18.254",
       "status": "ONLINE",
-      "rttMs": 2,
+      "rttMs": 1,
       "ports": [
         80,
         135,
@@ -61,14 +61,14 @@
     }
   },
   "localMetrics": {
-    "cpuLoad": 62,
+    "cpuLoad": 50,
     "memPercent": 75,
-    "memUsedGB": 23.9,
+    "memUsedGB": 23.7,
     "memTotalGB": 31.8,
     "diskCPercent": 30,
-    "diskCFreeGB": 654.3,
+    "diskCFreeGB": 654.2,
     "diskCTotalGB": 930.5,
-    "uptime": "23d 1h 37m",
+    "uptime": "23d 1h 42m",
     "osName": "Microsoft Windows 11 Pro"
   },
   "devices": [
