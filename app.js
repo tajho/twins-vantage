@@ -2193,9 +2193,9 @@ function renderMobileFleetGrid() {
           </div>
 
           <!-- Product Image & Quick User Bar -->
-          <div class="relative w-full h-44 rounded-xl bg-[#02050e] border border-white/5 mb-3.5 overflow-hidden flex items-center justify-center p-2 group-hover:border-cyan-500/30 transition-all">
-            <img src="${dev.image}" alt="${dev.dispositivo}" class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=400&q=80'" />
-            <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between bg-black/80 backdrop-blur-md px-2.5 py-1.5 rounded-lg border border-white/10 text-[10px] font-mono">
+          <div class="relative w-full h-48 rounded-xl bg-[#02050e] border border-white/5 mb-3.5 overflow-hidden flex items-center justify-center p-3 group-hover:border-cyan-500/30 transition-all shadow-inner">
+            <img src="${dev.image}" alt="${dev.dispositivo}" class="w-full h-full object-contain filter drop-shadow-[0_10px_15px_rgba(0,0,0,0.8)] group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg'" />
+            <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between bg-black/85 backdrop-blur-md px-2.5 py-1.5 rounded-lg border border-white/10 text-[10px] font-mono shadow-md">
               <span class="text-slate-200 font-bold truncate flex items-center gap-1.5">
                 <i data-lucide="user" class="w-3 h-3 text-cyan-400"></i>
                 <span class="truncate">${dev.colaborador}</span>
@@ -2206,6 +2206,10 @@ function renderMobileFleetGrid() {
 
           <!-- Telemetry Spec Matrix -->
           <div class="space-y-1.5 text-xs">
+            <div class="flex items-center justify-between text-slate-300">
+              <span class="text-slate-500 flex items-center gap-1"><i data-lucide="palette" class="w-3 h-3 text-slate-400"></i> Color:</span>
+              <span class="font-medium text-slate-300 truncate max-w-[150px]">${dev.colorEquipo}</span>
+            </div>
             <div class="flex items-center justify-between text-slate-300">
               <span class="text-slate-500 flex items-center gap-1"><i data-lucide="cpu" class="w-3 h-3 text-slate-400"></i> Silicio:</span>
               <span class="font-semibold text-slate-200 truncate max-w-[150px]" title="${dev.soc}">${dev.soc.split('(')[0]}</span>

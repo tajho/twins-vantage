@@ -1,7 +1,7 @@
 {
   "version": "4.0.0-PRO",
-  "lastUpdated": "2026-09-07T22:18:51.729Z",
-  "epochMs": 1788819531729,
+  "lastUpdated": "2026-09-07T22:25:23.242Z",
+  "epochMs": 1788819923242,
   "collectorHost": "ARCNTID002",
   "collectorStatus": "HEALTHY",
   "network": {
@@ -61,14 +61,14 @@
     }
   },
   "localMetrics": {
-    "cpuLoad": 73,
-    "memPercent": 79,
-    "memUsedGB": 25.1,
+    "cpuLoad": 71,
+    "memPercent": 78,
+    "memUsedGB": 24.9,
     "memTotalGB": 31.8,
     "diskCPercent": 30,
-    "diskCFreeGB": 651.9,
+    "diskCFreeGB": 651.7,
     "diskCTotalGB": 930.5,
-    "uptime": "23d 8h 33m",
+    "uptime": "23d 8h 38m",
     "osName": "Microsoft Windows 11 Pro"
   },
   "devices": [
@@ -81,14 +81,14 @@
       "activeUser": "frank",
       "status": "En Linea",
       "isOnline": true,
-      "rttMs": 0,
+      "rttMs": 1,
       "healthScore": 88,
       "cpu": "AMD Ryzen 5 5600G (6C/12T)",
       "ramTotalGB": 16,
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "LG UltraWide 29\" IPS (2560x1080)",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.241Z"
     },
     {
       "id": "ARCNMRKD009",
@@ -106,7 +106,7 @@
       "ramChannelType": "dual",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNMRKD010",
@@ -124,7 +124,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe Gen4 1TB",
       "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNMRKD011",
@@ -135,14 +135,14 @@
       "activeUser": "adrian",
       "status": "En Linea",
       "isOnline": true,
-      "rttMs": 0,
+      "rttMs": 3,
       "healthScore": 95,
       "cpu": "Intel Core i5-11400F (11va Gen)",
       "ramTotalGB": 16,
       "ramChannelType": "dual",
       "storage": "SSD SATA / HDD",
       "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNMRKD012",
@@ -153,14 +153,14 @@
       "activeUser": "anjali",
       "status": "En Linea",
       "isOnline": true,
-      "rttMs": 0,
+      "rttMs": 2,
       "healthScore": 95,
       "cpu": "AMD Ryzen 7 5700X (8C/16T)",
       "ramTotalGB": 16,
       "ramChannelType": "dual",
       "storage": "NVMe Gen4 1TB",
       "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNMRKD013",
@@ -171,14 +171,14 @@
       "activeUser": "zahir",
       "status": "En Linea",
       "isOnline": true,
-      "rttMs": 0,
+      "rttMs": 2,
       "healthScore": 95,
       "cpu": "AMD Ryzen 7 5700X (8C/16T)",
       "ramTotalGB": 16,
       "ramChannelType": "dual",
       "storage": "NVMe Gen4 1TB",
       "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNMRKD014",
@@ -189,14 +189,14 @@
       "activeUser": "sergio",
       "status": "En Linea",
       "isOnline": true,
-      "rttMs": 0,
+      "rttMs": 1,
       "healthScore": 88,
       "cpu": "N/D",
       "ramTotalGB": 16,
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNMRKD015",
@@ -207,14 +207,14 @@
       "activeUser": "adby",
       "status": "En Linea",
       "isOnline": true,
-      "rttMs": 0,
+      "rttMs": 1,
       "healthScore": 88,
       "cpu": "AMD Ryzen 7 5700X (8C/16T)",
       "ramTotalGB": 16,
       "ramChannelType": "single",
       "storage": "NVMe Gen4 1TB",
       "monitor": "ASUS Frameless 24\" IPS FHD",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNMRKD016",
@@ -232,7 +232,7 @@
       "ramChannelType": "single",
       "storage": "NVMe Gen4 1TB",
       "monitor": "ASUS ProArt PA278CV 27\" 2K IPS",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ADMINISTRADOR",
@@ -243,14 +243,14 @@
       "activeUser": "administrador_pc",
       "status": "En Linea",
       "isOnline": true,
-      "rttMs": 0,
+      "rttMs": 2,
       "healthScore": 88,
       "cpu": "N/D",
       "ramTotalGB": 16,
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNADM007",
@@ -268,7 +268,7 @@
       "ramChannelType": "dual",
       "storage": "SSD SATA / HDD",
       "monitor": "ASUS Eye Care 22\" FHD",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNADMD001-1",
@@ -286,7 +286,7 @@
       "ramChannelType": "single",
       "storage": "NVMe Gen4 1TB",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNADMD002",
@@ -304,7 +304,7 @@
       "ramChannelType": "single",
       "storage": "NVMe Gen4 1TB",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNADMD003",
@@ -322,7 +322,7 @@
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "ASUS Frameless 24\" IPS FHD",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNADMD004-1",
@@ -340,7 +340,7 @@
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNADMD005",
@@ -358,7 +358,7 @@
       "ramChannelType": "single",
       "storage": "NVMe Gen4 2TB",
       "monitor": "LG FHD 24\" IPS (100Hz)",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNADMD006",
@@ -369,14 +369,14 @@
       "activeUser": "nelson",
       "status": "En Linea",
       "isOnline": true,
-      "rttMs": 0,
+      "rttMs": 1,
       "healthScore": 88,
       "cpu": "AMD Ryzen 5 5600G (6C/12T)",
       "ramTotalGB": 16,
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "LG FHD 24\" IPS (100Hz)",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNADMD007",
@@ -387,14 +387,14 @@
       "activeUser": "administracion_aux",
       "status": "En Linea",
       "isOnline": true,
-      "rttMs": 0,
+      "rttMs": 2,
       "healthScore": 88,
       "cpu": "N/D",
       "ramTotalGB": 16,
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNADMD008",
@@ -405,14 +405,14 @@
       "activeUser": "liz",
       "status": "En Linea",
       "isOnline": true,
-      "rttMs": 0,
+      "rttMs": 1,
       "healthScore": 88,
       "cpu": "Intel Core i5-12400 (12va Gen)",
       "ramTotalGB": 16,
       "ramChannelType": "single",
       "storage": "NVMe Gen4 1TB",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNADMD009",
@@ -423,14 +423,14 @@
       "activeUser": "tania",
       "status": "En Linea",
       "isOnline": true,
-      "rttMs": 0,
+      "rttMs": 1,
       "healthScore": 88,
       "cpu": "AMD Ryzen 5 5600G (6C/12T)",
       "ramTotalGB": 16,
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "LG FHD 24\" IPS (100Hz)",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNVNTD015",
@@ -448,7 +448,7 @@
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNVNTD016",
@@ -466,7 +466,7 @@
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350 24\" IPS FHD",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNVNTD019-1",
@@ -484,7 +484,7 @@
       "ramChannelType": "single",
       "storage": "NVMe Gen4 1TB",
       "monitor": "LG FHD 24\" IPS (100Hz)",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNALMD001",
@@ -502,7 +502,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe Gen4 1TB",
       "monitor": "ASUS Eye Care 22\" FHD",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "ARCNTID002",
@@ -520,7 +520,7 @@
       "ramChannelType": "single",
       "storage": "NVMe Gen4 1TB",
       "monitor": "LG FHD 27\" IPS (601TFFP0F099)",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "SERVIDOR",
@@ -538,7 +538,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe Gen4 + SSD + HDD RAID (10.4 TB Total)",
       "monitor": "Consola Rackmount 19\" 1U KVM (1366x768)",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "SERVERDB",
@@ -556,7 +556,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe Gen4 Ultra-Speed + SSD RAID1 (3 TB)",
       "monitor": "Consola KVM Compartida 19\"",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     },
     {
       "id": "SERVERAPP",
@@ -574,7 +574,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe Gen4 + SSD Enterprise (3 TB)",
       "monitor": "Consola KVM Compartida 19\"",
-      "lastAudit": "2026-09-07T22:18:51.729Z"
+      "lastAudit": "2026-09-07T22:25:23.242Z"
     }
   ]
 }
