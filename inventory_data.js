@@ -2330,3 +2330,8 @@ const MOBILE_INVENTORY_DATA = [
 if (typeof module !== "undefined" && module.exports) {
   module.exports = { INVENTORY_DATA, MOBILE_INVENTORY_DATA };
 }
+
+if (typeof window !== "undefined") {
+  window.INVENTORY_DATA = INVENTORY_DATA;
+  window.MOBILE_INVENTORY_DATA = MOBILE_INVENTORY_DATA;
+}

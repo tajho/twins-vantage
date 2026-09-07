@@ -9,6 +9,7 @@ let currentStatusFilter = 'all';
 let selectedDevice = null;
 let livePollingInterval = null;
 let deferredPrompt = null;
+// Mobile state variables initialized at top
 // Clean corporate silent interface - zero audio clutter
 function playTechSound() {}
 function toggleAudio() {}
@@ -67,6 +68,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   } catch (e) {}
   filteredMobileDevices = [...allMobileDevices];
   initMobileFleet();
+  if (currentTab === 'mobile' || document.getElementById('view-mobile')) {
+    applyMobileFilters();
+  }
   
   initNavigation();
   initSearchAndFilters();
@@ -142,7 +146,9 @@ function switchTab(tabId) {
     }
   });
 
-  // Lazy render only on first visit for instantaneous 0ms tab switching
+  if (tabId === 'mobile') {
+    applyMobileFilters();
+  }
   if (!renderedTabs.has(tabId)) {
     renderedTabs.add(tabId);
     if (tabId === 'mobile') {
