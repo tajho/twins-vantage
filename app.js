@@ -391,11 +391,15 @@ function applyFilters() {
     if (currentStatusFilter === 'online') matchStatus = dev.isOnline;
     else if (currentStatusFilter === 'offline') matchStatus = !dev.isOnline;
     else if (currentStatusFilter === 'single_ram') matchStatus = dev.isOnline && dev.ramChannelType === 'single';
-    else if (currentStatusFilter === 'critical') matchStatus = dev.isOnline && dev.alerts.some(a => a.type === 'critical');
+    else if (currentStatusFilter === 'critical') matchStatus = dev.isOnline && dev.alerts && dev.alerts.some(a => a.type === 'critical');
 
     let matchQuery = true;
     if (searchVal) {
-      const searchBlob = `${dev.computerName} ${dev.activeUser} ${dev.ip} ${dev.department} ${dev.cpu} ${dev.gpu} ${dev.motherboard} ${dev.storage}`.toLowerCase();
+      const monStr = dev.peripherals && dev.peripherals.monitor ? `${dev.peripherals.monitor.description} ${dev.peripherals.monitor.serialNumber} ${dev.peripherals.monitor.inventoryCode}` : '';
+      const kbdStr = dev.peripherals && dev.peripherals.keyboard ? `${dev.peripherals.keyboard.description} ${dev.peripherals.keyboard.serialNumber} ${dev.peripherals.keyboard.inventoryCode}` : '';
+      const mouStr = dev.peripherals && dev.peripherals.mouse ? `${dev.peripherals.mouse.description} ${dev.peripherals.mouse.serialNumber} ${dev.peripherals.mouse.inventoryCode}` : '';
+      const locStr = dev.location ? `${dev.location.floor} ${dev.location.branch} ${dev.location.city}` : '';
+      const searchBlob = `${dev.computerName} ${dev.activeUser} ${dev.userFullName || ''} ${dev.jobTitle || ''} ${locStr} ${monStr} ${kbdStr} ${mouStr} ${dev.ip} ${dev.department} ${dev.cpu} ${dev.gpu} ${dev.motherboard} ${dev.storage}`.toLowerCase();
       matchQuery = searchBlob.includes(searchVal);
     }
 
@@ -441,11 +445,15 @@ function renderFleetGrid() {
       ? `<span class="bg-purple-500/20 text-purple-300 border border-purple-500/40 text-[10px] font-bold px-2 py-0.5 rounded shadow-[0_0_10px_rgba(168,85,247,0.25)] flex items-center gap-1"><i data-lucide="zap" class="w-3 h-3"></i> GPU Dedicada</span>`
       : '';
 
-    const criticalBadge = dev.alerts.some(a => a.type === 'critical')
+    const criticalBadge = dev.alerts && dev.alerts.some(a => a.type === 'critical')
       ? `<span class="badge-critical text-[10px] font-black px-2 py-0.5 rounded animate-pulse shadow-[0_0_12px_rgba(244,63,94,0.4)] flex items-center gap-1"><i data-lucide="alert-triangle" class="w-3 h-3"></i> Disco C: Crítico</span>`
       : '';
 
     const photoHtml = renderDeviceImage(dev.deviceVisual, dev.computerName, isOnline, dev);
+    const userDisplay = dev.userFullName ? dev.userFullName : dev.activeUser;
+    const roleDisplay = dev.jobTitle ? dev.jobTitle : dev.department;
+    const floorDisplay = dev.location ? dev.location.floor : 'Piso 4';
+    const monitorDesc = dev.peripherals && dev.peripherals.monitor && dev.peripherals.monitor.description ? dev.peripherals.monitor.description : dev.monitor;
 
     return `
       <div class="vantage-card p-5 flex flex-col justify-between group cursor-pointer" onclick="openDeviceDrawer('${dev.id}')">
@@ -457,10 +465,14 @@ function renderFleetGrid() {
                 <h3 class="text-base font-black text-white group-hover:text-cyan-400 transition-colors font-mono tracking-tight">${dev.computerName}</h3>
                 ${statusBadge}
               </div>
-              <p class="text-xs text-slate-400 flex items-center gap-1 mt-1 font-medium">
-                <i data-lucide="user" class="w-3 h-3 text-cyan-400"></i> ${dev.activeUser}
-                <span class="text-slate-600">•</span>
-                <span class="text-slate-400">${dev.department}</span>
+              <p class="text-xs text-slate-300 flex items-center gap-1 mt-1 font-semibold truncate max-w-[220px]" title="${userDisplay}">
+                <i data-lucide="user" class="w-3.5 h-3.5 text-cyan-400 shrink-0"></i> 
+                <span class="truncate text-white font-bold">${userDisplay}</span>
+              </p>
+              <p class="text-[11px] text-slate-400 flex items-center gap-1 mt-0.5 font-medium">
+                <span class="px-1.5 py-0.2 bg-slate-800 text-cyan-300 font-mono rounded text-[10px] border border-white/5">${floorDisplay}</span>
+                <span class="text-slate-500">•</span>
+                <span class="truncate text-slate-400">${roleDisplay}</span>
               </p>
             </div>
             <div class="text-right">
@@ -493,8 +505,8 @@ function renderFleetGrid() {
               <span class="font-bold font-mono text-cyan-400">${dev.ramTotalGB > 0 ? dev.ramTotalGB + ' GB' : 'N/D'}</span>
             </div>
             <div class="flex items-center justify-between text-slate-300">
-              <span class="text-slate-500 flex items-center gap-1"><i data-lucide="hard-drive" class="w-3 h-3 text-slate-400"></i> Disco:</span>
-              <span class="font-medium text-slate-300 truncate max-w-[160px]" title="${dev.storage}">${dev.storageType || dev.storage}</span>
+              <span class="text-slate-500 flex items-center gap-1"><i data-lucide="tv" class="w-3 h-3 text-slate-400"></i> Pantalla:</span>
+              <span class="font-medium text-slate-300 truncate max-w-[160px]" title="${monitorDesc}">${monitorDesc}</span>
             </div>
             <div class="flex items-center justify-between text-slate-300">
               <span class="text-slate-500 flex items-center gap-1"><i data-lucide="network" class="w-3 h-3 text-slate-400"></i> IP:</span>
@@ -676,10 +688,81 @@ function openDeviceDrawer(deviceId) {
         ${alertsHtml}
       </div>
 
+      <!-- Physical & Peripheral Inventory Sheet (100% Real Audited) -->
+      <div>
+        <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-300 mb-3 flex items-center gap-1.5 font-mono">
+          <i data-lucide="map-pin" class="w-4 h-4 text-[#00ff88]"></i> Ubicación, Periféricos & Activos Físicos (Auditado)
+        </h3>
+        <div class="vantage-card divide-y divide-white/5 text-xs">
+          
+          <div class="p-3.5 grid grid-cols-3 gap-2 bg-slate-900/40">
+            <span class="text-slate-400 font-medium flex items-center gap-1.5"><i data-lucide="user-check" class="w-3.5 h-3.5 text-cyan-400"></i> Usuario Asignado:</span>
+            <div class="col-span-2">
+              <div class="text-white font-bold text-sm">${dev.userFullName || dev.activeUser}</div>
+              <div class="text-cyan-400 text-[11px] font-medium mt-0.5">${dev.jobTitle || dev.department} • Dominio: ${dev.fullUser || 'UTILESTWINS\\' + dev.activeUser}</div>
+            </div>
+          </div>
+
+          <div class="p-3.5 grid grid-cols-3 gap-2">
+            <span class="text-slate-400 font-medium flex items-center gap-1.5"><i data-lucide="building" class="w-3.5 h-3.5 text-emerald-400"></i> Ubicación Física:</span>
+            <div class="col-span-2">
+              <div class="text-white font-semibold">${dev.location ? dev.location.floor : 'Piso 4 - Principal'}</div>
+              <div class="text-slate-400 text-[11px] mt-0.5 font-mono">${dev.location ? dev.location.branch : 'Sede Principal (San Martín de Porres / Lima)'}</div>
+            </div>
+          </div>
+
+          <div class="p-3.5 grid grid-cols-3 gap-2">
+            <span class="text-slate-400 font-medium flex items-center gap-1.5"><i data-lucide="tv" class="w-3.5 h-3.5 text-blue-400"></i> Pantalla / Monitor:</span>
+            <div class="col-span-2 space-y-1">
+              <div class="text-white font-bold">${dev.peripherals && dev.peripherals.monitor ? dev.peripherals.monitor.description : dev.monitor}</div>
+              <div class="flex flex-wrap items-center gap-2 text-[11px] font-mono text-slate-300">
+                <span class="px-2 py-0.5 bg-slate-900 rounded border border-white/5 text-cyan-300">S/N: ${dev.peripherals && dev.peripherals.monitor && dev.peripherals.monitor.serialNumber ? dev.peripherals.monitor.serialNumber : 'N/D'}</span>
+                <span class="px-2 py-0.5 bg-slate-900 rounded border border-white/5 text-purple-300">Cód: ${dev.peripherals && dev.peripherals.monitor && dev.peripherals.monitor.inventoryCode ? dev.peripherals.monitor.inventoryCode : 'N/D'}</span>
+                <span class="text-slate-400">${dev.resolution || '1920x1080'}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-3.5 grid grid-cols-3 gap-2">
+            <span class="text-slate-400 font-medium flex items-center gap-1.5"><i data-lucide="keyboard" class="w-3.5 h-3.5 text-purple-400"></i> Teclado:</span>
+            <div class="col-span-2 space-y-1">
+              <div class="text-white font-medium">${dev.peripherals && dev.peripherals.keyboard ? dev.peripherals.keyboard.description : 'Teclado USB Corporativo'}</div>
+              <div class="flex flex-wrap items-center gap-2 text-[11px] font-mono text-slate-300">
+                <span class="px-2 py-0.5 bg-slate-900 rounded border border-white/5 text-slate-400">S/N: ${dev.peripherals && dev.peripherals.keyboard && dev.peripherals.keyboard.serialNumber ? dev.peripherals.keyboard.serialNumber : 'N/D'}</span>
+                <span class="px-2 py-0.5 bg-slate-900 rounded border border-white/5 text-slate-400">Cód: ${dev.peripherals && dev.peripherals.keyboard && dev.peripherals.keyboard.inventoryCode ? dev.peripherals.keyboard.inventoryCode : 'N/D'}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-3.5 grid grid-cols-3 gap-2">
+            <span class="text-slate-400 font-medium flex items-center gap-1.5"><i data-lucide="mouse" class="w-3.5 h-3.5 text-amber-400"></i> Mouse / Ratón:</span>
+            <div class="col-span-2 space-y-1">
+              <div class="text-white font-medium">${dev.peripherals && dev.peripherals.mouse ? dev.peripherals.mouse.description : 'Mouse Óptico USB'}</div>
+              <div class="flex flex-wrap items-center gap-2 text-[11px] font-mono text-slate-300">
+                <span class="px-2 py-0.5 bg-slate-900 rounded border border-white/5 text-slate-400">S/N: ${dev.peripherals && dev.peripherals.mouse && dev.peripherals.mouse.serialNumber ? dev.peripherals.mouse.serialNumber : 'N/D'}</span>
+                <span class="px-2 py-0.5 bg-slate-900 rounded border border-white/5 text-slate-400">Cód: ${dev.peripherals && dev.peripherals.mouse && dev.peripherals.mouse.inventoryCode ? dev.peripherals.mouse.inventoryCode : 'N/D'}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-3.5 grid grid-cols-3 gap-2">
+            <span class="text-slate-400 font-medium flex items-center gap-1.5"><i data-lucide="cpu" class="w-3.5 h-3.5 text-cyan-400"></i> Activo Torre / PC:</span>
+            <div class="col-span-2">
+              <div class="text-white font-mono font-medium">${dev.assetCodes && dev.assetCodes.pcBrand ? dev.assetCodes.pcBrand + ' • ' + dev.assetCodes.pcModel : dev.motherboard}</div>
+              <div class="flex flex-wrap items-center gap-2 text-[11px] font-mono text-slate-300 mt-1">
+                <span class="px-2 py-0.5 bg-slate-900 rounded border border-white/5 text-slate-400">S/N: ${dev.assetCodes && dev.assetCodes.pcSerial ? dev.assetCodes.pcSerial : 'N/D'}</span>
+                <span class="px-2 py-0.5 bg-slate-900 rounded border border-white/5 text-purple-300">Cód: ${dev.assetCodes && dev.assetCodes.pcCode ? dev.assetCodes.pcCode : 'N/D'}</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
       <!-- Hardware Components Specs Sheet -->
       <div>
-        <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-300 mb-3 flex items-center gap-1.5">
-          <i data-lucide="cpu" class="w-4 h-4 text-cyan-400"></i> Especificaciones de Hardware Detalladas
+        <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-300 mb-3 flex items-center gap-1.5 font-mono">
+          <i data-lucide="microchip" class="w-4 h-4 text-cyan-400"></i> Arquitectura de Silicio & Componentes Internos
         </h3>
         <div class="vantage-card divide-y divide-white/5 text-xs">
           
@@ -712,14 +795,6 @@ function openDeviceDrawer(deviceId) {
           <div class="p-3.5 grid grid-cols-3 gap-2">
             <span class="text-slate-400 font-medium">Tarjeta Gráfica:</span>
             <span class="col-span-2 text-white font-bold">${dev.gpu}</span>
-          </div>
-
-          <div class="p-3.5 grid grid-cols-3 gap-2">
-            <span class="text-slate-400 font-medium">Monitor & Panel:</span>
-            <div class="col-span-2">
-              <div class="text-white font-medium">${dev.monitor}</div>
-              <div class="text-cyan-400 font-mono text-[11px] mt-0.5 font-bold">${dev.resolution}</div>
-            </div>
           </div>
 
           <div class="p-3.5 grid grid-cols-3 gap-2">

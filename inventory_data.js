@@ -1,7 +1,7 @@
 // TWINS VANTAGE ENTERPRISE — MASTER INVENTORY DATABASE (28 NODOS)
 // Dominio: utilestwins.com (Subred: 192.168.18.0/24)
 // Total Nodos: 28 (25 Workstations + 3 Servidores)
-// Estado Real: 23 En Línea | 5 Apagadas
+// 100% Datos Reales Auditados: Usuarios, Ubicación, Hardware, Monitores, Teclados y Mouse
 
 const INVENTORY_DATA = [
   {
@@ -50,7 +50,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "creator_tower",
     "notes": "",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "La Chira Gatica, Frank Joel",
+    "jobTitle": "Analista de Marketing",
+    "location": {
+      "floor": "Piso 4",
+      "branch": "Principal",
+      "city": "San Martín de Porres / Lima"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "LG 29WQ600",
+        "brand": "LG",
+        "model": "29WQ600",
+        "serialNumber": "312NTNH6X335",
+        "inventoryCode": "MN-MAR-001",
+        "resolution": "2560x1080 @ 75Hz"
+      },
+      "keyboard": {
+        "description": "LOGITECH -----------",
+        "brand": "LOGITECH",
+        "model": "-----------",
+        "serialNumber": "2308SCS01Q78",
+        "inventoryCode": "TC-MAR-001"
+      },
+      "mouse": {
+        "description": "---------- -----------",
+        "brand": "----------",
+        "model": "-----------",
+        "serialNumber": "------------------",
+        "inventoryCode": "---------"
+      }
+    },
+    "assetCodes": {
+      "pcCode": "PC-MAR-001",
+      "pcSerial": "Sin número de serie",
+      "pcBrand": "Compatible",
+      "pcModel": "Antryx"
+    }
   },
   {
     "id": "ARCNMRKD009",
@@ -98,7 +135,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "creator_tower",
     "notes": "",
-    "rttMs": null
+    "rttMs": null,
+    "userFullName": "Sayas Herrera, Jesus Alejandro",
+    "jobTitle": "Publicista",
+    "location": {
+      "floor": "Piso 4",
+      "branch": "Principal",
+      "city": "San Martín de Porres / Lima"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "ASUS PA278CV",
+        "brand": "ASUS",
+        "model": "PA278CV",
+        "serialNumber": "N6LMQS138773",
+        "inventoryCode": "MN-MAR-002",
+        "resolution": "1920x1080 @ 60Hz"
+      },
+      "keyboard": {
+        "description": "--------- -----------",
+        "brand": "---------",
+        "model": "-----------",
+        "serialNumber": "2343MR196848",
+        "inventoryCode": "TC-MAR-002"
+      },
+      "mouse": {
+        "description": "---------- -----------",
+        "brand": "----------",
+        "model": "-----------",
+        "serialNumber": "------------------",
+        "inventoryCode": "---------"
+      }
+    },
+    "assetCodes": {
+      "pcCode": "PC-MAR-002",
+      "pcSerial": "Sin número de serie",
+      "pcBrand": "Compatible",
+      "pcModel": "Compatible"
+    }
   },
   {
     "id": "ARCNMRKD010",
@@ -146,7 +220,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "creator_tower",
     "notes": "",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "Chang Huancaya, Mailing Mijaru",
+    "jobTitle": "Diseñador Gráfico",
+    "location": {
+      "floor": "Piso 4",
+      "branch": "Principal",
+      "city": "San Martín de Porres / Lima"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "ASUS PA278CGV",
+        "brand": "ASUS",
+        "model": "PA278CGV",
+        "serialNumber": "R9LMQS039161",
+        "inventoryCode": "MN-MAR-003",
+        "resolution": "2560x1440 @ 75Hz (Calman Verified)"
+      },
+      "keyboard": {
+        "description": "--------- -----------",
+        "brand": "---------",
+        "model": "-----------",
+        "serialNumber": "2045SCK05EP8",
+        "inventoryCode": "TC-MAR-003"
+      },
+      "mouse": {
+        "description": "---------- -----------",
+        "brand": "----------",
+        "model": "-----------",
+        "serialNumber": "------------------",
+        "inventoryCode": "---------"
+      }
+    },
+    "assetCodes": {
+      "pcCode": "PC-MAR-003",
+      "pcSerial": "Sin número de serie",
+      "pcBrand": "Compatible",
+      "pcModel": "Antryx"
+    }
   },
   {
     "id": "ARCNMRKD011",
@@ -194,7 +305,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "creator_tower",
     "notes": "",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "Chamorro Morales, Eduardo Antonio",
+    "jobTitle": "Diseñador Gráfico",
+    "location": {
+      "floor": "Piso 4",
+      "branch": "Principal",
+      "city": "San Martín de Porres / Lima"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "ASUS PA278CV",
+        "brand": "ASUS",
+        "model": "PA278CV",
+        "serialNumber": "N6LMQS125185",
+        "inventoryCode": "MN-MAR-004",
+        "resolution": "2560x1440 @ 75Hz (Calman Verified)"
+      },
+      "keyboard": {
+        "description": "--------- -----------",
+        "brand": "---------",
+        "model": "-----------",
+        "serialNumber": "2308SCS01QA8",
+        "inventoryCode": "TC-MAR-004"
+      },
+      "mouse": {
+        "description": "---------- -----------",
+        "brand": "----------",
+        "model": "-----------",
+        "serialNumber": "------------------",
+        "inventoryCode": "---------"
+      }
+    },
+    "assetCodes": {
+      "pcCode": "PC-MAR-004",
+      "pcSerial": "Sin número de serie",
+      "pcBrand": "Compatible",
+      "pcModel": "MS-7D15"
+    }
   },
   {
     "id": "ARCNMRKD012",
@@ -242,7 +390,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "creator_tower",
     "notes": "",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "Ramos Ramirez, Anjali Nayu",
+    "jobTitle": "Diseñador Gráfico",
+    "location": {
+      "floor": "Piso 4",
+      "branch": "Principal",
+      "city": "San Martín de Porres / Lima"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "ASUS PA278CV",
+        "brand": "ASUS",
+        "model": "PA278CV",
+        "serialNumber": "N6LMQS168042",
+        "inventoryCode": "MN-MAR-005",
+        "resolution": "2560x1440 @ 75Hz (Calman Verified)"
+      },
+      "keyboard": {
+        "description": "--------- -----------",
+        "brand": "---------",
+        "model": "-----------",
+        "serialNumber": "2227SCS05BD8",
+        "inventoryCode": "TC-MAR-005"
+      },
+      "mouse": {
+        "description": "---------- -----------",
+        "brand": "----------",
+        "model": "-----------",
+        "serialNumber": "------------------",
+        "inventoryCode": "---------"
+      }
+    },
+    "assetCodes": {
+      "pcCode": "PC-MAR-005",
+      "pcSerial": "Sin número de serie",
+      "pcBrand": "Compatible",
+      "pcModel": "Antryx"
+    }
   },
   {
     "id": "ARCNMRKD013",
@@ -290,7 +475,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "creator_tower",
     "notes": "",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "Baldeón Onofre, Susana",
+    "jobTitle": "Diseñador Gráfico",
+    "location": {
+      "floor": "Piso 4",
+      "branch": "Principal",
+      "city": "San Martín de Porres / Lima"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "ASUS PA278CV",
+        "brand": "ASUS",
+        "model": "PA278CV",
+        "serialNumber": "N6LMQS138650",
+        "inventoryCode": "MN-MAR-006",
+        "resolution": "2560x1440 @ 75Hz (Calman Verified)"
+      },
+      "keyboard": {
+        "description": "--------- -----------",
+        "brand": "---------",
+        "model": "-----------",
+        "serialNumber": "HE013300806K2122",
+        "inventoryCode": "TC-MAR-006"
+      },
+      "mouse": {
+        "description": "---------- -----------",
+        "brand": "----------",
+        "model": "-----------",
+        "serialNumber": "------------------",
+        "inventoryCode": "---------"
+      }
+    },
+    "assetCodes": {
+      "pcCode": "PC-MAR-006",
+      "pcSerial": "Sin número de serie",
+      "pcBrand": "Compatible",
+      "pcModel": "Compatible"
+    }
   },
   {
     "id": "ARCNMRKD014",
@@ -338,7 +560,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "creator_tower",
     "notes": "",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "Vivas Azabache, Sergio Aaron",
+    "jobTitle": "Realizador Audiovisual",
+    "location": {
+      "floor": "Piso 4",
+      "branch": "Principal",
+      "city": "San Martín de Porres / Lima"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "LG PA278CV",
+        "brand": "LG",
+        "model": "PA278CV",
+        "serialNumber": "N6LMQS125182",
+        "inventoryCode": "MN-MAR-007",
+        "resolution": "1920x1080 @ 60Hz"
+      },
+      "keyboard": {
+        "description": "--------- -----------",
+        "brand": "---------",
+        "model": "-----------",
+        "serialNumber": "2308SCS01Q68",
+        "inventoryCode": "TC-MAR-007"
+      },
+      "mouse": {
+        "description": "---------- -----------",
+        "brand": "----------",
+        "model": "-----------",
+        "serialNumber": "------------------",
+        "inventoryCode": "---------"
+      }
+    },
+    "assetCodes": {
+      "pcCode": "PC-MAR-007",
+      "pcSerial": "Sin número de serie",
+      "pcBrand": "Compatible",
+      "pcModel": "Antryx"
+    }
   },
   {
     "id": "ARCNMRKD015",
@@ -386,7 +645,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "creator_tower",
     "notes": "",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "adby",
+    "jobTitle": "Marketing y Diseno",
+    "location": {
+      "floor": "Piso 4 - Principal",
+      "branch": "Sede Principal (San Martín de Porres / Lima)",
+      "city": "Lima, Perú"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "ASUS Frameless 24\" IPS FHD",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": "",
+        "resolution": "1920x1080 @ 75Hz"
+      },
+      "keyboard": {
+        "description": "Teclado USB Estándar Corporativo",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      },
+      "mouse": {
+        "description": "Mouse Óptico USB",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      }
+    },
+    "assetCodes": {
+      "pcCode": "",
+      "pcSerial": "N/D",
+      "pcBrand": "Compatible / Custom Build",
+      "pcModel": "Gigabyte Technology Co., Ltd. B550 AORUS ELITE AX V2"
+    }
   },
   {
     "id": "ARCNMRKD016",
@@ -434,7 +730,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "creator_tower",
     "notes": "",
-    "rttMs": null
+    "rttMs": null,
+    "userFullName": "danna",
+    "jobTitle": "Marketing y Diseno",
+    "location": {
+      "floor": "Piso 4 - Principal",
+      "branch": "Sede Principal (San Martín de Porres / Lima)",
+      "city": "Lima, Perú"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "ASUS ProArt PA278CV 27\" 2K IPS",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": "",
+        "resolution": "2560x1440 @ 75Hz (Calman Verified)"
+      },
+      "keyboard": {
+        "description": "Teclado USB Estándar Corporativo",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      },
+      "mouse": {
+        "description": "Mouse Óptico USB",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      }
+    },
+    "assetCodes": {
+      "pcCode": "",
+      "pcSerial": "N/D",
+      "pcBrand": "Compatible / Custom Build",
+      "pcModel": "ASUSTeK COMPUTER INC. PRIME B760M-A D4"
+    }
   },
   {
     "id": "ADMINISTRADOR",
@@ -482,7 +815,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "office_tower",
     "notes": "",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "administrador_pc",
+    "jobTitle": "Administracion",
+    "location": {
+      "floor": "Piso 4 - Principal",
+      "branch": "Sede Principal (San Martín de Porres / Lima)",
+      "city": "Lima, Perú"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "Samsung S24R350 24\" IPS FHD",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": "",
+        "resolution": "1920x1080 @ 60Hz"
+      },
+      "keyboard": {
+        "description": "Teclado USB Estándar Corporativo",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      },
+      "mouse": {
+        "description": "Mouse Óptico USB",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      }
+    },
+    "assetCodes": {
+      "pcCode": "",
+      "pcSerial": "N/D",
+      "pcBrand": "Compatible / Custom Build",
+      "pcModel": "N/D"
+    }
   },
   {
     "id": "ARCNADM007",
@@ -530,7 +900,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "office_tower",
     "notes": "",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "luis",
+    "jobTitle": "Administracion",
+    "location": {
+      "floor": "Piso 4 - Principal",
+      "branch": "Sede Principal (San Martín de Porres / Lima)",
+      "city": "Lima, Perú"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "ASUS Eye Care 22\" FHD",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": "",
+        "resolution": "1920x1080 @ 60Hz"
+      },
+      "keyboard": {
+        "description": "Teclado USB Estándar Corporativo",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      },
+      "mouse": {
+        "description": "Mouse Óptico USB",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      }
+    },
+    "assetCodes": {
+      "pcCode": "",
+      "pcSerial": "N/D",
+      "pcBrand": "Compatible / Custom Build",
+      "pcModel": "ASUSTeK COMPUTER INC. H110M-E/M.2"
+    }
   },
   {
     "id": "ARCNADMD001-1",
@@ -578,7 +985,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "office_tower",
     "notes": "ROBERTO CARLOS ROJAS FARFÁN (Administración / SAP)",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "roberto",
+    "jobTitle": "Administracion",
+    "location": {
+      "floor": "Piso 4 - Principal",
+      "branch": "Sede Principal (San Martín de Porres / Lima)",
+      "city": "Lima, Perú"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "Samsung S24R350 24\" IPS FHD",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": "",
+        "resolution": "1920x1080 @ 60Hz"
+      },
+      "keyboard": {
+        "description": "Teclado USB Estándar Corporativo",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      },
+      "mouse": {
+        "description": "Mouse Óptico USB",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      }
+    },
+    "assetCodes": {
+      "pcCode": "",
+      "pcSerial": "N/D",
+      "pcBrand": "Compatible / Custom Build",
+      "pcModel": "Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)"
+    }
   },
   {
     "id": "ARCNADMD002",
@@ -626,7 +1070,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "office_tower",
     "notes": "",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "Quispe Cruz, Lyly Fiorela",
+    "jobTitle": "Analista Contable",
+    "location": {
+      "floor": "Piso 4",
+      "branch": "Principal",
+      "city": "San Martín de Porres / Lima"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "Samsung S24R350FZN",
+        "brand": "Samsung",
+        "model": "S24R350FZN",
+        "serialNumber": "4PMFH4CW807255P",
+        "inventoryCode": "MN-ADM-002",
+        "resolution": "1920x1080 @ 60Hz"
+      },
+      "keyboard": {
+        "description": "LOGITECH -----------",
+        "brand": "LOGITECH",
+        "model": "-----------",
+        "serialNumber": "2306MR02DF58",
+        "inventoryCode": "TC-ADM-002"
+      },
+      "mouse": {
+        "description": "---------- -----------",
+        "brand": "----------",
+        "model": "-----------",
+        "serialNumber": "------------------",
+        "inventoryCode": "---------"
+      }
+    },
+    "assetCodes": {
+      "pcCode": "PC-ADM-002",
+      "pcSerial": "Sin número de serie",
+      "pcBrand": "Compatible",
+      "pcModel": "Compatible"
+    }
   },
   {
     "id": "ARCNADMD003",
@@ -674,7 +1155,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "office_tower",
     "notes": "",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "Aranda Llauce, Mayra Isolina",
+    "jobTitle": "Asistente de Créditos y Cobranzas",
+    "location": {
+      "floor": "Piso 4",
+      "branch": "Principal",
+      "city": "San Martín de Porres / Lima"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "Samsung S24R350FZN",
+        "brand": "Samsung",
+        "model": "S24R350FZN",
+        "serialNumber": "4PMFH4CW808919B",
+        "inventoryCode": "MN-ADM-003",
+        "resolution": "1920x1080 @ 75Hz"
+      },
+      "keyboard": {
+        "description": "LOGITECH -----------",
+        "brand": "LOGITECH",
+        "model": "-----------",
+        "serialNumber": "2335MR293638",
+        "inventoryCode": "TC-ADM-003"
+      },
+      "mouse": {
+        "description": "---------- -----------",
+        "brand": "----------",
+        "model": "-----------",
+        "serialNumber": "------------------",
+        "inventoryCode": "---------"
+      }
+    },
+    "assetCodes": {
+      "pcCode": "PC-ADM-003",
+      "pcSerial": "Sin número de serie",
+      "pcBrand": "Compatible",
+      "pcModel": "Asus"
+    }
   },
   {
     "id": "ARCNADMD004-1",
@@ -722,7 +1240,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "office_tower",
     "notes": "",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "fiorela_2",
+    "jobTitle": "Administracion",
+    "location": {
+      "floor": "Piso 4 - Principal",
+      "branch": "Sede Principal (San Martín de Porres / Lima)",
+      "city": "Lima, Perú"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "Samsung S24R350 24\" IPS FHD",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": "",
+        "resolution": "1920x1080 @ 60Hz"
+      },
+      "keyboard": {
+        "description": "Teclado USB Estándar Corporativo",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      },
+      "mouse": {
+        "description": "Mouse Óptico USB",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      }
+    },
+    "assetCodes": {
+      "pcCode": "",
+      "pcSerial": "N/D",
+      "pcBrand": "Compatible / Custom Build",
+      "pcModel": "N/D"
+    }
   },
   {
     "id": "ARCNADMD005",
@@ -770,7 +1325,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "office_tower",
     "notes": "",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "Símbala Carlos, Kelly Vanessa",
+    "jobTitle": "Asistente de Créditos y Cobranzas",
+    "location": {
+      "floor": "Piso 4",
+      "branch": "Principal",
+      "city": "San Martín de Porres / Lima"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "LG 24MS500",
+        "brand": "LG",
+        "model": "24MS500",
+        "serialNumber": "403NTMXD5131",
+        "inventoryCode": "MN-ADM-005",
+        "resolution": "1920x1080 @ 100Hz"
+      },
+      "keyboard": {
+        "description": "LOGITECH -----------",
+        "brand": "LOGITECH",
+        "model": "-----------",
+        "serialNumber": "2335MR2AF568",
+        "inventoryCode": "TC-ADM-005"
+      },
+      "mouse": {
+        "description": "---------- -----------",
+        "brand": "----------",
+        "model": "-----------",
+        "serialNumber": "------------------",
+        "inventoryCode": "---------"
+      }
+    },
+    "assetCodes": {
+      "pcCode": "PC-ADM-005",
+      "pcSerial": "Sin número de serie",
+      "pcBrand": "Compatible",
+      "pcModel": "Micro-star"
+    }
   },
   {
     "id": "ARCNADMD006",
@@ -818,7 +1410,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "office_tower",
     "notes": "",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "Placido Escate, Martha Sofia",
+    "jobTitle": "Auxiliar de Cobranzas",
+    "location": {
+      "floor": "Piso 4",
+      "branch": "Principal",
+      "city": "San Martín de Porres / Lima"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "Samsung S24R350FZN",
+        "brand": "Samsung",
+        "model": "S24R350FZN",
+        "serialNumber": "4PMFH4CW806146N",
+        "inventoryCode": "MN-ADM-006",
+        "resolution": "1920x1080 @ 100Hz"
+      },
+      "keyboard": {
+        "description": "LOGITECH -----------",
+        "brand": "LOGITECH",
+        "model": "-----------",
+        "serialNumber": "2337MR2DA9C8",
+        "inventoryCode": "TC-ADM-006"
+      },
+      "mouse": {
+        "description": "---------- -----------",
+        "brand": "----------",
+        "model": "-----------",
+        "serialNumber": "------------------",
+        "inventoryCode": "---------"
+      }
+    },
+    "assetCodes": {
+      "pcCode": "PC-ADM-006",
+      "pcSerial": "Sin número de serie",
+      "pcBrand": "Compatible",
+      "pcModel": "Compatible"
+    }
   },
   {
     "id": "ARCNADMD007",
@@ -866,7 +1495,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "office_tower",
     "notes": "",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "administracion_aux",
+    "jobTitle": "Administracion",
+    "location": {
+      "floor": "Piso 4 - Principal",
+      "branch": "Sede Principal (San Martín de Porres / Lima)",
+      "city": "Lima, Perú"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "Samsung S24R350 24\" IPS FHD",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": "",
+        "resolution": "1920x1080 @ 60Hz"
+      },
+      "keyboard": {
+        "description": "Teclado USB Estándar Corporativo",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      },
+      "mouse": {
+        "description": "Mouse Óptico USB",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      }
+    },
+    "assetCodes": {
+      "pcCode": "",
+      "pcSerial": "N/D",
+      "pcBrand": "Compatible / Custom Build",
+      "pcModel": "N/D"
+    }
   },
   {
     "id": "ARCNADMD008",
@@ -914,7 +1580,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "office_tower",
     "notes": "",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "liz",
+    "jobTitle": "Administracion",
+    "location": {
+      "floor": "Piso 4 - Principal",
+      "branch": "Sede Principal (San Martín de Porres / Lima)",
+      "city": "Lima, Perú"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "Samsung S24R350 24\" IPS FHD",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": "",
+        "resolution": "1920x1080 @ 60Hz"
+      },
+      "keyboard": {
+        "description": "Teclado USB Estándar Corporativo",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      },
+      "mouse": {
+        "description": "Mouse Óptico USB",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      }
+    },
+    "assetCodes": {
+      "pcCode": "",
+      "pcSerial": "N/D",
+      "pcBrand": "Compatible / Custom Build",
+      "pcModel": "Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)"
+    }
   },
   {
     "id": "ARCNADMD009",
@@ -962,7 +1665,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "office_tower",
     "notes": "",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "tania",
+    "jobTitle": "Administracion",
+    "location": {
+      "floor": "Piso 4 - Principal",
+      "branch": "Sede Principal (San Martín de Porres / Lima)",
+      "city": "Lima, Perú"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "LG FHD 24\" IPS (100Hz)",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": "",
+        "resolution": "1920x1080 @ 100Hz"
+      },
+      "keyboard": {
+        "description": "Teclado USB Estándar Corporativo",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      },
+      "mouse": {
+        "description": "Mouse Óptico USB",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      }
+    },
+    "assetCodes": {
+      "pcCode": "",
+      "pcSerial": "N/D",
+      "pcBrand": "Compatible / Custom Build",
+      "pcModel": "Gigabyte Technology Co., Ltd. B450M DS3H V2"
+    }
   },
   {
     "id": "ARCNVNTD015",
@@ -1010,7 +1750,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "office_tower",
     "notes": "",
-    "rttMs": null
+    "rttMs": null,
+    "userFullName": "Garcia Chavez, Paula Patricia",
+    "jobTitle": "Vendedor de Campo",
+    "location": {
+      "floor": "Piso 4",
+      "branch": "Principal",
+      "city": "San Martín de Porres / Lima"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "LG 24MS500",
+        "brand": "LG",
+        "model": "24MS500",
+        "serialNumber": "406NTVSB4983",
+        "inventoryCode": "MN-VN-002",
+        "resolution": "1920x1080 @ 60Hz"
+      },
+      "keyboard": {
+        "description": "LOGITECH K120",
+        "brand": "LOGITECH",
+        "model": "K120",
+        "serialNumber": "------------------",
+        "inventoryCode": "TC"
+      },
+      "mouse": {
+        "description": "---------- -----------",
+        "brand": "----------",
+        "model": "-----------",
+        "serialNumber": "------------------",
+        "inventoryCode": "---------"
+      }
+    },
+    "assetCodes": {
+      "pcCode": "PC-VEN-002",
+      "pcSerial": "------------------",
+      "pcBrand": "Compatible",
+      "pcModel": "Compatible"
+    }
   },
   {
     "id": "ARCNVNTD016",
@@ -1058,7 +1835,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "office_tower",
     "notes": "",
-    "rttMs": null
+    "rttMs": null,
+    "userFullName": "Mauricio Ciriaco, Shaulin Jhayro",
+    "jobTitle": "Vendedor de Campo",
+    "location": {
+      "floor": "Piso 4",
+      "branch": "Principal",
+      "city": "San Martín de Porres / Lima"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "Samsung LS20D300NHPE",
+        "brand": "Samsung",
+        "model": "LS20D300NHPE",
+        "serialNumber": "ZZCWH4LJ10664P",
+        "inventoryCode": "MN-VEN-001",
+        "resolution": "1920x1080 @ 60Hz"
+      },
+      "keyboard": {
+        "description": "MICROSOFT -----------",
+        "brand": "MICROSOFT",
+        "model": "-----------",
+        "serialNumber": "0065818035610",
+        "inventoryCode": "TC-VEN-001"
+      },
+      "mouse": {
+        "description": "---------- -----------",
+        "brand": "----------",
+        "model": "-----------",
+        "serialNumber": "------------------",
+        "inventoryCode": "---------"
+      }
+    },
+    "assetCodes": {
+      "pcCode": "PC-VEN-001",
+      "pcSerial": "Sin número de serie",
+      "pcBrand": "Compatible",
+      "pcModel": "Compatible"
+    }
   },
   {
     "id": "ARCNVNTD019-1",
@@ -1106,7 +1920,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "office_tower",
     "notes": "",
-    "rttMs": null
+    "rttMs": null,
+    "userFullName": "jhenyfer",
+    "jobTitle": "Ventas",
+    "location": {
+      "floor": "Piso 4 - Principal",
+      "branch": "Sede Principal (San Martín de Porres / Lima)",
+      "city": "Lima, Perú"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "LG FHD 24\" IPS (100Hz)",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": "",
+        "resolution": "1920x1080 @ 100Hz"
+      },
+      "keyboard": {
+        "description": "Teclado USB Estándar Corporativo",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      },
+      "mouse": {
+        "description": "Mouse Óptico USB",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      }
+    },
+    "assetCodes": {
+      "pcCode": "",
+      "pcSerial": "N/D",
+      "pcBrand": "Compatible / Custom Build",
+      "pcModel": "Micro-Star International Co., Ltd. PRO H610M-S DDR4 (MS-7E44)"
+    }
   },
   {
     "id": "ARCNALMD001",
@@ -1154,7 +2005,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "office_tower",
     "notes": "",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "Oblitas Salva, Juan Carlos",
+    "jobTitle": "Operario de Almacén",
+    "location": {
+      "floor": "Piso 1",
+      "branch": "Principal",
+      "city": "San Martín de Porres / Lima"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "LG 22M38H-B",
+        "brand": "LG",
+        "model": "22M38H-B",
+        "serialNumber": "701NTHMBQ713",
+        "inventoryCode": "MN-ALM-007",
+        "resolution": "1920x1080 @ 60Hz"
+      },
+      "keyboard": {
+        "description": "--------- -----------",
+        "brand": "---------",
+        "model": "-----------",
+        "serialNumber": "SIN ASIGNAR",
+        "inventoryCode": "TC-ALM-001"
+      },
+      "mouse": {
+        "description": "---------- -----------",
+        "brand": "----------",
+        "model": "-----------",
+        "serialNumber": "------------------",
+        "inventoryCode": "---------"
+      }
+    },
+    "assetCodes": {
+      "pcCode": "PC-ALM-002",
+      "pcSerial": "Sin número de serie",
+      "pcBrand": "Compatible",
+      "pcModel": "Compatible"
+    }
   },
   {
     "id": "ARCNTID002",
@@ -1202,7 +2090,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "office_tower",
     "notes": "JEFE DE TI - UTILESTWINS",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "tajho",
+    "jobTitle": "Sistemas TI",
+    "location": {
+      "floor": "Piso 4 - Principal",
+      "branch": "Sede Principal (San Martín de Porres / Lima)",
+      "city": "Lima, Perú"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "LG FHD 27\" IPS (601TFFP0F099)",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": "",
+        "resolution": "1920x1080 @ 100Hz"
+      },
+      "keyboard": {
+        "description": "Teclado USB Estándar Corporativo",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      },
+      "mouse": {
+        "description": "Mouse Óptico USB",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      }
+    },
+    "assetCodes": {
+      "pcCode": "",
+      "pcSerial": "N/D",
+      "pcBrand": "Compatible / Custom Build",
+      "pcModel": "Gigabyte Technology Co., Ltd. B760M D3HP DDR4"
+    }
   },
   {
     "id": "SERVIDOR",
@@ -1262,7 +2187,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "server_pc",
     "notes": "Servidor 1: PDC / Domain Controller utilestwins.com & SMB (192.168.18.200)",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "Administrador (DC01)",
+    "jobTitle": "Servidores & Datacenter",
+    "location": {
+      "floor": "Piso 4 - Principal",
+      "branch": "Sede Principal (San Martín de Porres / Lima)",
+      "city": "Lima, Perú"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "Consola Rackmount 19\" 1U KVM (1366x768)",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": "",
+        "resolution": "1366x768 @ 60Hz"
+      },
+      "keyboard": {
+        "description": "Teclado USB Estándar Corporativo",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      },
+      "mouse": {
+        "description": "Mouse Óptico USB",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      }
+    },
+    "assetCodes": {
+      "pcCode": "",
+      "pcSerial": "N/D",
+      "pcBrand": "Compatible / Custom Build",
+      "pcModel": "Micro-Star International Co., Ltd. PRO B760M-P (MS-7E02)"
+    }
   },
   {
     "id": "SERVERDB",
@@ -1316,7 +2278,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "server_pc",
     "notes": "Servidor 2: Base de Datos SQL Server & SAP B1 (192.168.18.253)",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "SYSTEM (SQL Server Engine)",
+    "jobTitle": "Servidores & Datacenter",
+    "location": {
+      "floor": "Piso 4 - Principal",
+      "branch": "Sede Principal (San Martín de Porres / Lima)",
+      "city": "Lima, Perú"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "Consola KVM Compartida 19\"",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": "",
+        "resolution": "1920x1080 @ 60Hz"
+      },
+      "keyboard": {
+        "description": "Teclado USB Estándar Corporativo",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      },
+      "mouse": {
+        "description": "Mouse Óptico USB",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      }
+    },
+    "assetCodes": {
+      "pcCode": "",
+      "pcSerial": "N/D",
+      "pcBrand": "Compatible / Custom Build",
+      "pcModel": "ASUS Pro WS W680-ACE Enterprise Server"
+    }
   },
   {
     "id": "SERVERAPP",
@@ -1370,7 +2369,44 @@ const INVENTORY_DATA = [
     ],
     "deviceVisual": "server_pc",
     "notes": "Servidor 3: Servidor de Aplicaciones SAP B1 & Web API (192.168.18.254)",
-    "rttMs": 1
+    "rttMs": 1,
+    "userFullName": "SYSTEM (SAP Application Server)",
+    "jobTitle": "Servidores & Datacenter",
+    "location": {
+      "floor": "Piso 4 - Principal",
+      "branch": "Sede Principal (San Martín de Porres / Lima)",
+      "city": "Lima, Perú"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "Consola KVM Compartida 19\"",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": "",
+        "resolution": "1920x1080 @ 60Hz"
+      },
+      "keyboard": {
+        "description": "Teclado USB Estándar Corporativo",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      },
+      "mouse": {
+        "description": "Mouse Óptico USB",
+        "brand": "",
+        "model": "",
+        "serialNumber": "",
+        "inventoryCode": ""
+      }
+    },
+    "assetCodes": {
+      "pcCode": "",
+      "pcSerial": "N/D",
+      "pcBrand": "Compatible / Custom Build",
+      "pcModel": "Gigabyte C246-WU4 Server Board"
+    }
   }
 ];
 
