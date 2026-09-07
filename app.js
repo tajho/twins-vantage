@@ -193,7 +193,7 @@ async function fetchLiveTelemetry() {
   if (!payload) {
     payload = {
       collectorHost: 'ARCNTID002',
-      fleetSummary: { total: 28, online: 28, offline: 0, overallHealthPercent: 98 },
+      fleetSummary: { total: 28, online: 23, offline: 5, overallHealthPercent: 98 },
       localMetrics: {
         cpuLoad: 12,
         memPercent: 48,
@@ -322,26 +322,33 @@ function initSearchAndFilters() {
 }
 
 function openFleetStatusPicker() {
+  const onlineCount = allDevices.filter(d => d.isOnline).length;
+  const offlineCount = allDevices.filter(d => !d.isOnline).length;
+  const singleRamCount = allDevices.filter(d => d.isOnline && d.ramChannelType === 'single').length;
+  const criticalCount = allDevices.filter(d => d.isOnline && d.alerts && d.alerts.some(a => a.type === 'critical')).length;
+
   const options = [
-    { value: 'all', label: 'Todos los Estados', sub: '26 computadoras registradas', icon: 'layers', badge: '26 PCs', badgeClass: 'badge-online' },
-    { value: 'online', label: 'En Línea', sub: 'Equipos con enlace activo y telemetría', icon: 'check-circle-2', badge: '26 Online', badgeClass: 'badge-online' },
-    { value: 'single_ram', label: 'Alerta: Single Channel RAM', sub: '1 módulo (Pérdida de ancho de banda 64-bit)', icon: 'alert-circle', badge: '11 PCs', badgeClass: 'badge-warning' },
-    { value: 'critical', label: 'Alerta: Espacio Disco Crítico', sub: 'Partición C: menor a 15GB libres', icon: 'alert-triangle', badge: '1 PC', badgeClass: 'badge-critical' }
+    { value: 'all', label: 'Todos los Estados', sub: `${allDevices.length} computadoras registradas`, icon: 'layers', badge: `${allDevices.length} PCs`, badgeClass: 'badge-online' },
+    { value: 'online', label: 'En Línea (Operativas)', sub: `${onlineCount} PCs con telemetría activa`, icon: 'check-circle-2', badge: `${onlineCount} Online`, badgeClass: 'badge-online' },
+    { value: 'offline', label: 'Apagadas / Standby', sub: `${offlineCount} computadoras apagadas o desconectadas`, icon: 'power-off', badge: `${offlineCount} Off`, badgeClass: 'badge-offline' },
+    { value: 'single_ram', label: 'Alerta: Single Channel RAM', sub: '1 módulo (Pérdida de ancho de banda 64-bit)', icon: 'alert-circle', badge: `${singleRamCount} PCs`, badgeClass: 'badge-warning' },
+    { value: 'critical', label: 'Alerta: Espacio Disco Crítico', sub: 'Partición C: menor a 15GB libres', icon: 'alert-triangle', badge: `${criticalCount} PC`, badgeClass: 'badge-critical' }
   ];
 
   if (typeof TwinsModal !== 'undefined' && TwinsModal.showSelectModal) {
     TwinsModal.showSelectModal({
       title: 'ESTADO OPERATIVO DE FLOTA',
-      subtitle: 'Filtrar cuadrícula por condición de hardware',
+      subtitle: 'Filtrar cuadrícula por condición de hardware y enlace',
       selectedValue: currentStatusFilter,
       options,
       onSelect: (val) => {
         currentStatusFilter = val;
         const labels = {
-          all: 'Todos los Estados (26)',
-          online: 'En Línea (26)',
-          single_ram: 'Single Channel (11)',
-          critical: 'Disco Crítico (1)'
+          all: `Todos los Estados (${allDevices.length})`,
+          online: `En Línea (${onlineCount})`,
+          offline: `Apagadas (${offlineCount})`,
+          single_ram: `Single Channel (${singleRamCount})`,
+          critical: `Disco Crítico (${criticalCount})`
         };
         const lbl = document.getElementById('customFleetStatusLabel');
         if (lbl) lbl.innerText = labels[val] || val;
