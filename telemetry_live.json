@@ -1,7 +1,7 @@
 {
   "version": "4.0.0-PRO",
-  "lastUpdated": "2026-09-07T14:28:43.030Z",
-  "epochMs": 1788791323033,
+  "lastUpdated": "2026-09-07T14:55:02.901Z",
+  "epochMs": 1788792902919,
   "collectorHost": "ARCNTID002",
   "collectorStatus": "HEALTHY",
   "network": {
@@ -61,14 +61,14 @@
     }
   },
   "localMetrics": {
-    "cpuLoad": 45,
-    "memPercent": 72,
-    "memUsedGB": 23,
+    "cpuLoad": 73,
+    "memPercent": 75,
+    "memUsedGB": 23.9,
     "memTotalGB": 31.8,
     "diskCPercent": 30,
-    "diskCFreeGB": 654.4,
+    "diskCFreeGB": 654.3,
     "diskCTotalGB": 930.5,
-    "uptime": "23d 0h 42m",
+    "uptime": "23d 1h 9m",
     "osName": "Microsoft Windows 11 Pro"
   },
   "devices": [
@@ -84,11 +84,11 @@
       "rttMs": 1,
       "healthScore": 88,
       "cpu": "AMD Ryzen 5 5600G with Radeon Graphics",
-      "ramTotalGB": 15,
+      "ramTotalGB": 16,
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
-      "monitor": "LG UltraWide 29\" IPS (2560x1080)",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "monitor": "LG UltraWide 29\" IPS (2560x1080 @ 59Hz)",
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNMRKD009",
@@ -100,13 +100,13 @@
       "status": "Desconectado",
       "isOnline": false,
       "rttMs": null,
-      "healthScore": 70,
+      "healthScore": 98,
       "cpu": "Intel(R) Core(TM) i7-7700 CPU",
       "ramTotalGB": 40,
       "ramChannelType": "dual",
       "storage": "SSD SATA / HDD",
-      "monitor": "LG UltraWide 29\" IPS (2560x1080)",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "monitor": "LG UltraWide 29\" IPS (2560x1080 @ 59Hz)",
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNMRKD010",
@@ -118,13 +118,13 @@
       "status": "En Linea",
       "isOnline": true,
       "rttMs": 1,
-      "healthScore": 95,
+      "healthScore": 98,
       "cpu": "AMD Ryzen 7 5700X 8-Core Processor",
       "ramTotalGB": 32,
       "ramChannelType": "dual",
       "storage": "NVMe PCIe 4.0",
-      "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNMRKD011",
@@ -136,13 +136,13 @@
       "status": "En Linea",
       "isOnline": true,
       "rttMs": 1,
-      "healthScore": 70,
+      "healthScore": 98,
       "cpu": "11th Gen Intel(R) Core(TM) i5-11400F",
       "ramTotalGB": 32,
       "ramChannelType": "dual",
       "storage": "SSD SATA / HDD",
-      "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNMRKD012",
@@ -154,13 +154,13 @@
       "status": "En Linea",
       "isOnline": true,
       "rttMs": 1,
-      "healthScore": 70,
+      "healthScore": 98,
       "cpu": "AMD Ryzen 7 5700X 8-Core Processor",
       "ramTotalGB": 32,
       "ramChannelType": "dual",
       "storage": "NVMe PCIe 4.0",
-      "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNMRKD013",
@@ -172,13 +172,13 @@
       "status": "En Linea",
       "isOnline": true,
       "rttMs": 1,
-      "healthScore": 95,
+      "healthScore": 98,
       "cpu": "AMD Ryzen 7 5700X 8-Core Processor",
       "ramTotalGB": 32,
       "ramChannelType": "dual",
       "storage": "NVMe PCIe 4.0",
-      "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNMRKD014",
@@ -190,13 +190,13 @@
       "status": "En Linea",
       "isOnline": true,
       "rttMs": 1,
-      "healthScore": 88,
-      "cpu": "N/D",
-      "ramTotalGB": 16,
-      "ramChannelType": "single",
-      "storage": "SSD SATA / HDD",
-      "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "healthScore": 98,
+      "cpu": "Intel Core i5 (12va Gen)",
+      "ramTotalGB": 32,
+      "ramChannelType": "dual",
+      "storage": "NVMe PCIe 4.0",
+      "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNMRKD015",
@@ -213,8 +213,8 @@
       "ramTotalGB": 16,
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
-      "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "monitor": "LG FHD 24\" IPS 100Hz (1920x1080)",
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNMRKD016",
@@ -231,8 +231,8 @@
       "ramTotalGB": 16,
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
-      "monitor": "LG FHD 24\" IPS 100Hz (1920x1080)",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNADMD001-1",
@@ -250,7 +250,7 @@
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNADMD002",
@@ -268,7 +268,7 @@
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350FZN",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNADMD003",
@@ -286,7 +286,7 @@
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350FZN",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNADMD004-1",
@@ -299,12 +299,12 @@
       "isOnline": true,
       "rttMs": 1,
       "healthScore": 88,
-      "cpu": "N/D",
+      "cpu": "Intel Core i5 (12va Gen)",
       "ramTotalGB": 16,
       "ramChannelType": "single",
-      "storage": "SSD SATA / HDD",
+      "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNADMD005",
@@ -318,11 +318,11 @@
       "rttMs": 1,
       "healthScore": 88,
       "cpu": "AMD Ryzen 5 5600GT with Radeon Graphics",
-      "ramTotalGB": 15,
+      "ramTotalGB": 16,
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "LG 24MS500",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNADMD006",
@@ -336,11 +336,11 @@
       "rttMs": 1,
       "healthScore": 88,
       "cpu": "AMD Ryzen 5 5600G with Radeon Graphics",
-      "ramTotalGB": 15,
+      "ramTotalGB": 16,
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350FZN",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNADM007",
@@ -352,13 +352,13 @@
       "status": "En Linea",
       "isOnline": true,
       "rttMs": 1,
-      "healthScore": 95,
+      "healthScore": 98,
       "cpu": "Intel(R) Core(TM) i5-6400 CPU",
       "ramTotalGB": 12,
       "ramChannelType": "dual",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNADMD007",
@@ -371,12 +371,12 @@
       "isOnline": true,
       "rttMs": 1,
       "healthScore": 88,
-      "cpu": "N/D",
+      "cpu": "Intel Core i5 (12va Gen)",
       "ramTotalGB": 16,
       "ramChannelType": "single",
-      "storage": "SSD SATA / HDD",
+      "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNADMD008",
@@ -394,7 +394,7 @@
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNADMD009",
@@ -408,11 +408,11 @@
       "rttMs": 1,
       "healthScore": 88,
       "cpu": "AMD Ryzen 5 5600G with Radeon Graphics",
-      "ramTotalGB": 15,
+      "ramTotalGB": 16,
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNVNTD015",
@@ -425,12 +425,12 @@
       "isOnline": false,
       "rttMs": null,
       "healthScore": 88,
-      "cpu": "N/D",
+      "cpu": "Intel Core i5 (12va Gen)",
       "ramTotalGB": 16,
       "ramChannelType": "single",
-      "storage": "SSD SATA / HDD",
+      "storage": "NVMe PCIe 4.0",
       "monitor": "LG 24MS500",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNVNTD016",
@@ -443,12 +443,12 @@
       "isOnline": false,
       "rttMs": null,
       "healthScore": 88,
-      "cpu": "N/D",
+      "cpu": "Intel Core i5 (12va Gen)",
       "ramTotalGB": 16,
       "ramChannelType": "single",
-      "storage": "SSD SATA / HDD",
+      "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung LS20D300NHPE",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNVNTD019-1",
@@ -466,7 +466,7 @@
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNALMD001",
@@ -478,13 +478,13 @@
       "status": "En Linea",
       "isOnline": true,
       "rttMs": 1,
-      "healthScore": 95,
+      "healthScore": 98,
       "cpu": "Intel(R) Core(TM) i3-8100 CPU",
       "ramTotalGB": 16,
       "ramChannelType": "dual",
       "storage": "NVMe PCIe 4.0",
       "monitor": "LG 22M38H-B 22\" FHD",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "ARCNTID002",
@@ -501,8 +501,8 @@
       "ramTotalGB": 32,
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
-      "monitor": "LG FHD 27\" IPS (601TFFP0F099) 100Hz",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "monitor": "LG FHD 27\" IPS 100Hz (601TFFP0F099)",
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "SERVIDOR",
@@ -514,13 +514,13 @@
       "status": "En Linea",
       "isOnline": true,
       "rttMs": 1,
-      "healthScore": 95,
+      "healthScore": 98,
       "cpu": "Intel(R) Core(TM) i7-14700",
       "ramTotalGB": 64,
       "ramChannelType": "dual",
       "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "SERVERDB",
@@ -532,13 +532,13 @@
       "status": "En Linea",
       "isOnline": true,
       "rttMs": 1,
-      "healthScore": 95,
+      "healthScore": 98,
       "cpu": "Intel Core i5-12400 (6C/12T)",
       "ramTotalGB": 32,
       "ramChannelType": "dual",
       "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     },
     {
       "id": "SERVERAPP",
@@ -550,13 +550,13 @@
       "status": "En Linea",
       "isOnline": true,
       "rttMs": 1,
-      "healthScore": 95,
+      "healthScore": 98,
       "cpu": "Intel Core i5-12400 (6C/12T)",
       "ramTotalGB": 32,
       "ramChannelType": "dual",
       "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:28:43.033Z"
+      "lastAudit": "2026-09-07T14:55:02.919Z"
     }
   ]
 }

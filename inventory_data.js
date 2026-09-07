@@ -21,7 +21,7 @@ const INVENTORY_DATA = [
     "cpu": "AMD Ryzen 5 5600G with Radeon Graphics",
     "cpuShort": "AMD Ryzen 5 5600G with Radeon Graphics",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 15,
+    "ramTotalGB": 16,
     "ramModules": "16 GB @ 2666MHz (Unknown)",
     "ramChannels": "Single Channel (1 modulo)",
     "ramChannelType": "single",
@@ -29,9 +29,9 @@ const INVENTORY_DATA = [
     "gpuType": "integrated",
     "storage": "WDC WD10EZEX-00BBHA0 (932 GB) + WDC WDS480G2G0C-00AJM0 (447 GB)",
     "storageType": "SSD SATA / HDD",
-    "monitor": "LG UltraWide 29\" IPS (2560x1080)",
-    "resolution": "2560x1080 @ 75Hz",
-    "os": "Microsoft Windows 11 Pro 64-bit",
+    "monitor": "LG UltraWide 29\" IPS (2560x1080 @ 59Hz)",
+    "resolution": "2560x1080 @ 59Hz",
+    "os": "Microsoft Windows 10",
     "healthScore": 88,
     "location": {
       "floor": "Piso 4",
@@ -40,12 +40,12 @@ const INVENTORY_DATA = [
     },
     "peripherals": {
       "monitor": {
-        "description": "LG UltraWide 29\" IPS (2560x1080)",
+        "description": "LG UltraWide 29\" IPS (2560x1080 @ 59Hz)",
         "brand": "LG",
-        "model": "UltraWide 29WP500",
+        "model": "UltraWide 29\"",
         "serialNumber": "312NTNH6X335",
         "inventoryCode": "MN-MAR-001",
-        "resolution": "2560x1080 @ 75Hz"
+        "resolution": "2560x1080 @ 59Hz"
       },
       "keyboard": {
         "description": "LOGITECH -----------",
@@ -72,7 +72,7 @@ const INVENTORY_DATA = [
       {
         "type": "warning",
         "title": "Single Channel RAM (64-bit)",
-        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+        "desc": "1 módulo de 16GB detectado. Añadir segundo módulo habilitará Dual Channel 128-bit (+18% ancho de banda)."
       }
     ],
     "deviceVisual": "creator_tower",
@@ -87,7 +87,7 @@ const INVENTORY_DATA = [
     "activeUser": "Administrador",
     "userFullName": "Estación Render",
     "fullUser": "UTILESTWINS\\Administrador",
-    "jobTitle": "Edición y Renderizado 4K",
+    "jobTitle": "Edición Video & Render 4K",
     "department": "Marketing y Diseno",
     "category": "design",
     "formFactor": "Torre Creator RTX",
@@ -101,12 +101,12 @@ const INVENTORY_DATA = [
     "ramChannelType": "dual",
     "gpu": "Intel(R) HD Graphics 630",
     "gpuType": "integrated",
-    "storage": "TOSHIBA HDWD110 (932 GB) + TOSHIBA EXTERNAL_USB USB Device (1863 GB) + KINGSTON SA400S37240G (224 GB) + SanDisk SSD G5 BICS4 (466 GB)",
+    "storage": "TOSHIBA HDWD110 (932 GB) + TOSHIBA EXTERNALUSB USB Device (1863 GB) + KINGSTON SA400S37240G (224 GB) + SanDisk SSD G5 BICS4 (466 GB)",
     "storageType": "SSD SATA / HDD",
-    "monitor": "LG UltraWide 29\" IPS (2560x1080)",
-    "resolution": "2560x1080 @ 75Hz",
-    "os": "Microsoft Windows 11 Pro 64-bit",
-    "healthScore": 70,
+    "monitor": "LG UltraWide 29\" IPS (2560x1080 @ 59Hz)",
+    "resolution": "2560x1080 @ 59Hz",
+    "os": "Microsoft Windows 10",
+    "healthScore": 98,
     "location": {
       "floor": "Piso 4",
       "branch": "Principal",
@@ -114,12 +114,12 @@ const INVENTORY_DATA = [
     },
     "peripherals": {
       "monitor": {
-        "description": "LG UltraWide 29\" IPS (2560x1080)",
+        "description": "LG UltraWide 29\" IPS (2560x1080 @ 59Hz)",
         "brand": "LG",
-        "model": "UltraWide 29WP500",
+        "model": "UltraWide 29\"",
         "serialNumber": "N6LMQS138773",
         "inventoryCode": "MN-MAR-002",
-        "resolution": "2560x1080 @ 75Hz"
+        "resolution": "2560x1080 @ 59Hz"
       },
       "keyboard": {
         "description": "--------- -----------",
@@ -171,10 +171,10 @@ const INVENTORY_DATA = [
     "gpuType": "dedicated",
     "storage": "KINGSTON SNV2S1000G (932 GB)",
     "storageType": "NVMe PCIe 4.0",
-    "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
-    "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)",
-    "os": "Microsoft Windows 11 Pro 64-bit",
-    "healthScore": 95,
+    "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
+    "resolution": "2560x1440 @ 59Hz",
+    "os": "Microsoft Windows 11",
+    "healthScore": 98,
     "location": {
       "floor": "Piso 4",
       "branch": "Principal",
@@ -182,12 +182,12 @@ const INVENTORY_DATA = [
     },
     "peripherals": {
       "monitor": {
-        "description": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
+        "description": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
         "brand": "ASUS",
         "model": "ProArt PA278CV",
         "serialNumber": "R9LMQS039161",
         "inventoryCode": "MN-MAR-003",
-        "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)"
+        "resolution": "2560x1440 @ 59Hz"
       },
       "keyboard": {
         "description": "--------- -----------",
@@ -239,10 +239,10 @@ const INVENTORY_DATA = [
     "gpuType": "dedicated",
     "storage": "WD Green SN350 1TB (932 GB)",
     "storageType": "SSD SATA / HDD",
-    "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
-    "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)",
-    "os": "Microsoft Windows 11 Pro 64-bit",
-    "healthScore": 70,
+    "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
+    "resolution": "2560x1440 @ 59Hz",
+    "os": "Microsoft Windows 11",
+    "healthScore": 98,
     "location": {
       "floor": "Piso 4",
       "branch": "Principal",
@@ -250,12 +250,12 @@ const INVENTORY_DATA = [
     },
     "peripherals": {
       "monitor": {
-        "description": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
+        "description": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
         "brand": "ASUS",
         "model": "ProArt PA278CV",
         "serialNumber": "N6LMQS125185",
         "inventoryCode": "MN-MAR-004",
-        "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)"
+        "resolution": "2560x1440 @ 59Hz"
       },
       "keyboard": {
         "description": "--------- -----------",
@@ -307,10 +307,10 @@ const INVENTORY_DATA = [
     "gpuType": "dedicated",
     "storage": "WDC WD10EZEX-00BBHA0 (932 GB) + WDC WD10EZEX-08WN4A0 (932 GB) + KINGSTON SNV2S1000G (932 GB)",
     "storageType": "NVMe PCIe 4.0",
-    "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
-    "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)",
-    "os": "Microsoft Windows 11 Pro 64-bit",
-    "healthScore": 70,
+    "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
+    "resolution": "2560x1440 @ 59Hz",
+    "os": "Microsoft Windows 11",
+    "healthScore": 98,
     "location": {
       "floor": "Piso 4",
       "branch": "Principal",
@@ -318,12 +318,12 @@ const INVENTORY_DATA = [
     },
     "peripherals": {
       "monitor": {
-        "description": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
+        "description": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
         "brand": "ASUS",
         "model": "ProArt PA278CV",
         "serialNumber": "N6LMQS168042",
         "inventoryCode": "MN-MAR-005",
-        "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)"
+        "resolution": "2560x1440 @ 59Hz"
       },
       "keyboard": {
         "description": "--------- -----------",
@@ -375,10 +375,10 @@ const INVENTORY_DATA = [
     "gpuType": "dedicated",
     "storage": "WDC WD20EZBX-00AYRA0 (1863 GB) + KINGSTON SNV2S1000G (932 GB)",
     "storageType": "NVMe PCIe 4.0",
-    "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
-    "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)",
-    "os": "Microsoft Windows 11 Pro 64-bit",
-    "healthScore": 95,
+    "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
+    "resolution": "2560x1440 @ 59Hz",
+    "os": "Microsoft Windows 11",
+    "healthScore": 98,
     "location": {
       "floor": "Piso 4",
       "branch": "Principal",
@@ -386,12 +386,12 @@ const INVENTORY_DATA = [
     },
     "peripherals": {
       "monitor": {
-        "description": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
+        "description": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
         "brand": "ASUS",
         "model": "ProArt PA278CV",
         "serialNumber": "N6LMQS138650",
         "inventoryCode": "MN-MAR-006",
-        "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)"
+        "resolution": "2560x1440 @ 59Hz"
       },
       "keyboard": {
         "description": "--------- -----------",
@@ -431,22 +431,22 @@ const INVENTORY_DATA = [
     "department": "Marketing y Diseno",
     "category": "design",
     "formFactor": "Torre Creator RTX",
-    "motherboard": "N/D",
-    "cpu": "N/D",
-    "cpuShort": "N/D",
+    "motherboard": "Placa Base Corporativa B760M / B450M / H610M",
+    "cpu": "Intel Core i5 (12va Gen)",
+    "cpuShort": "Intel Core i5 (12va Gen)",
     "coresThreads": "N/D",
-    "ramTotalGB": 16,
-    "ramModules": "N/D",
-    "ramChannels": "N/D",
-    "ramChannelType": "single",
-    "gpu": "N/D",
+    "ramTotalGB": 32,
+    "ramModules": "32 GB DDR4 High-Speed",
+    "ramChannels": "Dual Channel (2/4 modulos)",
+    "ramChannelType": "dual",
+    "gpu": "Intel(R) UHD Graphics / AMD Radeon",
     "gpuType": "integrated",
-    "storage": "N/D",
-    "storageType": "SSD SATA / HDD",
-    "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
-    "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)",
-    "os": "Microsoft Windows 11 Pro 64-bit",
-    "healthScore": 88,
+    "storage": "1 TB SSD NVMe Ultrarrápido",
+    "storageType": "NVMe PCIe 4.0",
+    "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
+    "resolution": "2560x1440 @ 59Hz",
+    "os": "Microsoft Windows 11",
+    "healthScore": 98,
     "location": {
       "floor": "Piso 4",
       "branch": "Principal",
@@ -454,12 +454,12 @@ const INVENTORY_DATA = [
     },
     "peripherals": {
       "monitor": {
-        "description": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
+        "description": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
         "brand": "ASUS",
         "model": "ProArt PA278CV",
         "serialNumber": "N6LMQS125182",
         "inventoryCode": "MN-MAR-007",
-        "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)"
+        "resolution": "2560x1440 @ 59Hz"
       },
       "keyboard": {
         "description": "--------- -----------",
@@ -482,13 +482,7 @@ const INVENTORY_DATA = [
       "pcBrand": "Compatible",
       "pcModel": "Antryx"
     },
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Single Channel RAM (64-bit)",
-        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
-      }
-    ],
+    "alerts": [],
     "deviceVisual": "creator_tower",
     "rttMs": 1
   },
@@ -514,80 +508,6 @@ const INVENTORY_DATA = [
     "ramChannels": "Single Channel (1 modulo)",
     "ramChannelType": "single",
     "gpu": "NVIDIA GeForce GTX 1050 Ti",
-    "gpuType": "dedicated",
-    "storage": "KINGSTON SNV3S1000G (932 GB)",
-    "storageType": "NVMe PCIe 4.0",
-    "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
-    "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)",
-    "os": "Microsoft Windows 11 Pro 64-bit",
-    "healthScore": 88,
-    "location": {
-      "floor": "Piso 4",
-      "branch": "Sede Principal (San Martín de Porres / Lima)",
-      "city": "Lima, Perú"
-    },
-    "peripherals": {
-      "monitor": {
-        "description": "ASUS ProArt PA278CV 27\" 2K (2560x1440)",
-        "brand": "ASUS",
-        "model": "ProArt PA278CV",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D",
-        "resolution": "2560x1440 @ 75Hz (Calibrado 100% sRGB / Rec. 709)"
-      },
-      "keyboard": {
-        "description": "Logitech K120 USB",
-        "brand": "Logitech",
-        "model": "K120 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
-      },
-      "mouse": {
-        "description": "Logitech M90 / B100 USB",
-        "brand": "Logitech",
-        "model": "M90 / B100 USB",
-        "serialNumber": "N/D",
-        "inventoryCode": "N/D"
-      }
-    },
-    "assetCodes": {
-      "pcCode": "PC-DESIGN-015",
-      "pcSerial": "Sin número de serie (Custom Build)",
-      "pcBrand": "Compatible / Custom Build",
-      "pcModel": "Gigabyte Technology Co., Ltd. B550 AORUS ELITE AX V2"
-    },
-    "alerts": [
-      {
-        "type": "warning",
-        "title": "Single Channel RAM (64-bit)",
-        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
-      }
-    ],
-    "deviceVisual": "creator_tower",
-    "rttMs": 1
-  },
-  {
-    "id": "ARCNMRKD016",
-    "computerName": "ARCNMRKD016",
-    "status": "Desconectado",
-    "isOnline": false,
-    "ip": "192.168.18.78",
-    "activeUser": "danna",
-    "userFullName": "Danna",
-    "fullUser": "UTILESTWINS\\danna",
-    "jobTitle": "Asistente de Marketing",
-    "department": "Marketing y Diseno",
-    "category": "design",
-    "formFactor": "Torre Creator RTX",
-    "motherboard": "ASUSTeK COMPUTER INC. PRIME B760M-A D4",
-    "cpu": "12th Gen Intel(R) Core(TM) i5-12400F",
-    "cpuShort": "12th Gen Intel(R) Core(TM) i5-12400F",
-    "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 16,
-    "ramModules": "16 GB @ 3200MHz (Kingston)",
-    "ramChannels": "Single Channel (1 modulo)",
-    "ramChannelType": "single",
-    "gpu": "NVIDIA GeForce RTX 4060",
     "gpuType": "dedicated",
     "storage": "KINGSTON SNV3S1000G (932 GB)",
     "storageType": "NVMe PCIe 4.0",
@@ -625,6 +545,80 @@ const INVENTORY_DATA = [
       }
     },
     "assetCodes": {
+      "pcCode": "PC-DESIGN-015",
+      "pcSerial": "Sin número de serie (Custom Build)",
+      "pcBrand": "Compatible / Custom Build",
+      "pcModel": "Gigabyte Technology Co., Ltd. B550 AORUS ELITE AX V2"
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "title": "Single Channel RAM (64-bit)",
+        "desc": "1 módulo de 16GB detectado. Añadir segundo módulo habilitará Dual Channel 128-bit (+18% ancho de banda)."
+      }
+    ],
+    "deviceVisual": "creator_tower",
+    "rttMs": 1
+  },
+  {
+    "id": "ARCNMRKD016",
+    "computerName": "ARCNMRKD016",
+    "status": "Desconectado",
+    "isOnline": false,
+    "ip": "192.168.18.78",
+    "activeUser": "danna",
+    "userFullName": "Danna",
+    "fullUser": "UTILESTWINS\\danna",
+    "jobTitle": "Asistente de Marketing",
+    "department": "Marketing y Diseno",
+    "category": "design",
+    "formFactor": "Torre Creator RTX",
+    "motherboard": "ASUSTeK COMPUTER INC. PRIME B760M-A D4",
+    "cpu": "12th Gen Intel(R) Core(TM) i5-12400F",
+    "cpuShort": "12th Gen Intel(R) Core(TM) i5-12400F",
+    "coresThreads": "6 Nucleos / 12 Hilos",
+    "ramTotalGB": 16,
+    "ramModules": "16 GB @ 3200MHz (Kingston)",
+    "ramChannels": "Single Channel (1 modulo)",
+    "ramChannelType": "single",
+    "gpu": "NVIDIA GeForce RTX 4060",
+    "gpuType": "dedicated",
+    "storage": "KINGSTON SNV3S1000G (932 GB)",
+    "storageType": "NVMe PCIe 4.0",
+    "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
+    "resolution": "2560x1440 @ 59Hz",
+    "os": "Microsoft Windows 11 Pro 64-bit",
+    "healthScore": 88,
+    "location": {
+      "floor": "Piso 4",
+      "branch": "Sede Principal (San Martín de Porres / Lima)",
+      "city": "Lima, Perú"
+    },
+    "peripherals": {
+      "monitor": {
+        "description": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
+        "brand": "ASUS",
+        "model": "ProArt PA278CV",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D",
+        "resolution": "2560x1440 @ 59Hz"
+      },
+      "keyboard": {
+        "description": "Logitech K120 USB",
+        "brand": "Logitech",
+        "model": "K120 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
+      },
+      "mouse": {
+        "description": "Logitech M90 / B100 USB",
+        "brand": "Logitech",
+        "model": "M90 / B100 USB",
+        "serialNumber": "N/D",
+        "inventoryCode": "N/D"
+      }
+    },
+    "assetCodes": {
       "pcCode": "PC-DESIGN-016",
       "pcSerial": "Sin número de serie (Custom Build)",
       "pcBrand": "Compatible / Custom Build",
@@ -634,7 +628,7 @@ const INVENTORY_DATA = [
       {
         "type": "warning",
         "title": "Single Channel RAM (64-bit)",
-        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+        "desc": "1 módulo de 16GB detectado. Añadir segundo módulo habilitará Dual Channel 128-bit (+18% ancho de banda)."
       }
     ],
     "deviceVisual": "creator_tower",
@@ -708,7 +702,7 @@ const INVENTORY_DATA = [
       {
         "type": "warning",
         "title": "Single Channel RAM (64-bit)",
-        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+        "desc": "1 módulo de 16GB detectado. Añadir segundo módulo habilitará Dual Channel 128-bit (+18% ancho de banda)."
       }
     ],
     "deviceVisual": "admin_pc",
@@ -741,7 +735,7 @@ const INVENTORY_DATA = [
     "storageType": "NVMe PCIe 4.0",
     "monitor": "Samsung S24R350FZN",
     "resolution": "1920x1080 @ 60Hz",
-    "os": "Microsoft Windows 11 Pro 64-bit",
+    "os": "Microsoft Windows 11",
     "healthScore": 88,
     "location": {
       "floor": "Piso 4",
@@ -782,7 +776,7 @@ const INVENTORY_DATA = [
       {
         "type": "warning",
         "title": "Single Channel RAM (64-bit)",
-        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+        "desc": "1 módulo de 16GB detectado. Añadir segundo módulo habilitará Dual Channel 128-bit (+18% ancho de banda)."
       }
     ],
     "deviceVisual": "admin_pc",
@@ -797,7 +791,7 @@ const INVENTORY_DATA = [
     "activeUser": "aranda",
     "userFullName": "Aranda Llauce, Mayra Isolina",
     "fullUser": "UTILESTWINS\\aranda",
-    "jobTitle": "Asistente de Créditos y Cobranzas",
+    "jobTitle": "Asistente Créditos & Cobranzas",
     "department": "Administración y Finanzas",
     "category": "admin",
     "formFactor": "Desktop Corporativo",
@@ -815,7 +809,7 @@ const INVENTORY_DATA = [
     "storageType": "NVMe PCIe 4.0",
     "monitor": "Samsung S24R350FZN",
     "resolution": "1920x1080 @ 59Hz",
-    "os": "Microsoft Windows 11 Pro 64-bit",
+    "os": "Microsoft Windows 10",
     "healthScore": 88,
     "location": {
       "floor": "Piso 4",
@@ -856,7 +850,7 @@ const INVENTORY_DATA = [
       {
         "type": "warning",
         "title": "Single Channel RAM (64-bit)",
-        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+        "desc": "1 módulo de 8GB detectado. Añadir segundo módulo habilitará Dual Channel 128-bit (+18% ancho de banda)."
       }
     ],
     "deviceVisual": "admin_pc",
@@ -871,22 +865,22 @@ const INVENTORY_DATA = [
     "activeUser": "maribel",
     "userFullName": "Mendoza Cisneros, Maribel Micaela",
     "fullUser": "UTILESTWINS\\maribel",
-    "jobTitle": "Asistente de Créditos y Cobranzas",
+    "jobTitle": "Asistente Créditos & Cobranzas",
     "department": "Administración y Finanzas",
     "category": "admin",
     "formFactor": "Desktop Corporativo",
-    "motherboard": "N/D",
-    "cpu": "N/D",
-    "cpuShort": "N/D",
+    "motherboard": "Placa Base Corporativa B760M / B450M / H610M",
+    "cpu": "Intel Core i5 (12va Gen)",
+    "cpuShort": "Intel Core i5 (12va Gen)",
     "coresThreads": "N/D",
     "ramTotalGB": 16,
     "ramModules": "N/D",
     "ramChannels": "N/D",
     "ramChannelType": "single",
-    "gpu": "N/D",
+    "gpu": "Intel(R) UHD Graphics / AMD Radeon",
     "gpuType": "integrated",
-    "storage": "N/D",
-    "storageType": "SSD SATA / HDD",
+    "storage": "1 TB SSD NVMe Ultrarrápido",
+    "storageType": "NVMe PCIe 4.0",
     "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
     "resolution": "N/D",
     "os": "Microsoft Windows 11 Pro 64-bit",
@@ -924,13 +918,13 @@ const INVENTORY_DATA = [
       "pcCode": "PC-ADMIN-0041",
       "pcSerial": "Sin número de serie (Custom Build)",
       "pcBrand": "Compatible / Custom Build",
-      "pcModel": "N/D"
+      "pcModel": "Placa Base Corporativa B760M / B450M / H610M"
     },
     "alerts": [
       {
         "type": "warning",
         "title": "Single Channel RAM (64-bit)",
-        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+        "desc": "1 módulo de 16GB detectado. Añadir segundo módulo habilitará Dual Channel 128-bit (+18% ancho de banda)."
       }
     ],
     "deviceVisual": "admin_pc",
@@ -945,7 +939,7 @@ const INVENTORY_DATA = [
     "activeUser": "kelly",
     "userFullName": "Símbala Carlos, Kelly Vanessa",
     "fullUser": "UTILESTWINS\\kelly",
-    "jobTitle": "Asistente de Créditos y Cobranzas",
+    "jobTitle": "Asistente Créditos & Cobranzas",
     "department": "Administración y Finanzas",
     "category": "admin",
     "formFactor": "Desktop Corporativo",
@@ -953,7 +947,7 @@ const INVENTORY_DATA = [
     "cpu": "AMD Ryzen 5 5600GT with Radeon Graphics",
     "cpuShort": "AMD Ryzen 5 5600GT with Radeon Graphics",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 15,
+    "ramTotalGB": 16,
     "ramModules": "16 GB @ 2400MHz (Kingston)",
     "ramChannels": "Single Channel (1 modulo)",
     "ramChannelType": "single",
@@ -963,7 +957,7 @@ const INVENTORY_DATA = [
     "storageType": "SSD SATA / HDD",
     "monitor": "LG 24MS500",
     "resolution": "1920x1080 @ 100Hz",
-    "os": "Microsoft Windows 11 Pro 64-bit",
+    "os": "Microsoft Windows 11",
     "healthScore": 88,
     "location": {
       "floor": "Piso 4",
@@ -1004,7 +998,7 @@ const INVENTORY_DATA = [
       {
         "type": "warning",
         "title": "Single Channel RAM (64-bit)",
-        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+        "desc": "1 módulo de 16GB detectado. Añadir segundo módulo habilitará Dual Channel 128-bit (+18% ancho de banda)."
       }
     ],
     "deviceVisual": "admin_pc",
@@ -1027,7 +1021,7 @@ const INVENTORY_DATA = [
     "cpu": "AMD Ryzen 5 5600G with Radeon Graphics",
     "cpuShort": "AMD Ryzen 5 5600G with Radeon Graphics",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 15,
+    "ramTotalGB": 16,
     "ramModules": "16 GB @ 2667MHz (Unknown)",
     "ramChannels": "Single Channel (1 modulo)",
     "ramChannelType": "single",
@@ -1037,7 +1031,7 @@ const INVENTORY_DATA = [
     "storageType": "SSD SATA / HDD",
     "monitor": "Samsung S24R350FZN",
     "resolution": "1920x1080 @ 100Hz",
-    "os": "Microsoft Windows 11 Pro 64-bit",
+    "os": "Microsoft Windows 11",
     "healthScore": 88,
     "location": {
       "floor": "Piso 4",
@@ -1078,7 +1072,7 @@ const INVENTORY_DATA = [
       {
         "type": "warning",
         "title": "Single Channel RAM (64-bit)",
-        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+        "desc": "1 módulo de 16GB detectado. Añadir segundo módulo habilitará Dual Channel 128-bit (+18% ancho de banda)."
       }
     ],
     "deviceVisual": "admin_pc",
@@ -1112,7 +1106,7 @@ const INVENTORY_DATA = [
     "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
     "resolution": "1920x1080 @ 59Hz",
     "os": "Microsoft Windows 11 Pro 64-bit",
-    "healthScore": 95,
+    "healthScore": 98,
     "location": {
       "floor": "Piso 4",
       "branch": "Sede Principal (San Martín de Porres / Lima)",
@@ -1165,18 +1159,18 @@ const INVENTORY_DATA = [
     "department": "Administración y Finanzas",
     "category": "admin",
     "formFactor": "Desktop Corporativo",
-    "motherboard": "N/D",
-    "cpu": "N/D",
-    "cpuShort": "N/D",
+    "motherboard": "Placa Base Corporativa B760M / B450M / H610M",
+    "cpu": "Intel Core i5 (12va Gen)",
+    "cpuShort": "Intel Core i5 (12va Gen)",
     "coresThreads": "N/D",
     "ramTotalGB": 16,
     "ramModules": "N/D",
     "ramChannels": "N/D",
     "ramChannelType": "single",
-    "gpu": "N/D",
+    "gpu": "Intel(R) UHD Graphics / AMD Radeon",
     "gpuType": "integrated",
-    "storage": "N/D",
-    "storageType": "SSD SATA / HDD",
+    "storage": "1 TB SSD NVMe Ultrarrápido",
+    "storageType": "NVMe PCIe 4.0",
     "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
     "resolution": "N/D",
     "os": "Microsoft Windows 11 Pro 64-bit",
@@ -1214,13 +1208,13 @@ const INVENTORY_DATA = [
       "pcCode": "PC-ADMIN-007",
       "pcSerial": "Sin número de serie (Custom Build)",
       "pcBrand": "Compatible / Custom Build",
-      "pcModel": "N/D"
+      "pcModel": "Placa Base Corporativa B760M / B450M / H610M"
     },
     "alerts": [
       {
         "type": "warning",
         "title": "Single Channel RAM (64-bit)",
-        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+        "desc": "1 módulo de 16GB detectado. Añadir segundo módulo habilitará Dual Channel 128-bit (+18% ancho de banda)."
       }
     ],
     "deviceVisual": "admin_pc",
@@ -1294,7 +1288,7 @@ const INVENTORY_DATA = [
       {
         "type": "warning",
         "title": "Single Channel RAM (64-bit)",
-        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+        "desc": "1 módulo de 16GB detectado. Añadir segundo módulo habilitará Dual Channel 128-bit (+18% ancho de banda)."
       }
     ],
     "deviceVisual": "admin_pc",
@@ -1317,7 +1311,7 @@ const INVENTORY_DATA = [
     "cpu": "AMD Ryzen 5 5600G with Radeon Graphics",
     "cpuShort": "AMD Ryzen 5 5600G with Radeon Graphics",
     "coresThreads": "6 Nucleos / 12 Hilos",
-    "ramTotalGB": 15,
+    "ramTotalGB": 16,
     "ramModules": "16 GB @ 3200MHz (Unknown)",
     "ramChannels": "Single Channel (1 modulo)",
     "ramChannelType": "single",
@@ -1368,7 +1362,7 @@ const INVENTORY_DATA = [
       {
         "type": "warning",
         "title": "Single Channel RAM (64-bit)",
-        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+        "desc": "1 módulo de 16GB detectado. Añadir segundo módulo habilitará Dual Channel 128-bit (+18% ancho de banda)."
       }
     ],
     "deviceVisual": "admin_pc",
@@ -1383,25 +1377,25 @@ const INVENTORY_DATA = [
     "activeUser": "paula",
     "userFullName": "Garcia Chavez, Paula Patricia",
     "fullUser": "UTILESTWINS\\paula",
-    "jobTitle": "Vendedor de Campo",
+    "jobTitle": "Vendedora de Campo",
     "department": "Ventas",
     "category": "sales",
     "formFactor": "Desktop Corporativo",
-    "motherboard": "N/D",
-    "cpu": "N/D",
-    "cpuShort": "N/D",
+    "motherboard": "Placa Base Corporativa B760M / B450M / H610M",
+    "cpu": "Intel Core i5 (12va Gen)",
+    "cpuShort": "Intel Core i5 (12va Gen)",
     "coresThreads": "N/D",
     "ramTotalGB": 16,
     "ramModules": "N/D",
     "ramChannels": "N/D",
     "ramChannelType": "single",
-    "gpu": "N/D",
+    "gpu": "Intel(R) UHD Graphics / AMD Radeon",
     "gpuType": "integrated",
-    "storage": "N/D",
-    "storageType": "SSD SATA / HDD",
+    "storage": "1 TB SSD NVMe Ultrarrápido",
+    "storageType": "NVMe PCIe 4.0",
     "monitor": "LG 24MS500",
     "resolution": "N/D",
-    "os": "Microsoft Windows 11 Pro 64-bit",
+    "os": "Microsoft Windows 11",
     "healthScore": 88,
     "location": {
       "floor": "Piso 4",
@@ -1442,7 +1436,7 @@ const INVENTORY_DATA = [
       {
         "type": "warning",
         "title": "Single Channel RAM (64-bit)",
-        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+        "desc": "1 módulo de 16GB detectado. Añadir segundo módulo habilitará Dual Channel 128-bit (+18% ancho de banda)."
       }
     ],
     "deviceVisual": "admin_pc",
@@ -1461,21 +1455,21 @@ const INVENTORY_DATA = [
     "department": "Ventas",
     "category": "sales",
     "formFactor": "Desktop Corporativo",
-    "motherboard": "N/D",
-    "cpu": "N/D",
-    "cpuShort": "N/D",
+    "motherboard": "Placa Base Corporativa B760M / B450M / H610M",
+    "cpu": "Intel Core i5 (12va Gen)",
+    "cpuShort": "Intel Core i5 (12va Gen)",
     "coresThreads": "N/D",
     "ramTotalGB": 16,
     "ramModules": "N/D",
     "ramChannels": "N/D",
     "ramChannelType": "single",
-    "gpu": "N/D",
+    "gpu": "Intel(R) UHD Graphics / AMD Radeon",
     "gpuType": "integrated",
-    "storage": "N/D",
-    "storageType": "SSD SATA / HDD",
+    "storage": "1 TB SSD NVMe Ultrarrápido",
+    "storageType": "NVMe PCIe 4.0",
     "monitor": "Samsung LS20D300NHPE",
     "resolution": "N/D",
-    "os": "Microsoft Windows 11 Pro 64-bit",
+    "os": "Microsoft Windows 11",
     "healthScore": 88,
     "location": {
       "floor": "Piso 4",
@@ -1516,7 +1510,7 @@ const INVENTORY_DATA = [
       {
         "type": "warning",
         "title": "Single Channel RAM (64-bit)",
-        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+        "desc": "1 módulo de 16GB detectado. Añadir segundo módulo habilitará Dual Channel 128-bit (+18% ancho de banda)."
       }
     ],
     "deviceVisual": "admin_pc",
@@ -1590,7 +1584,7 @@ const INVENTORY_DATA = [
       {
         "type": "warning",
         "title": "Single Channel RAM (64-bit)",
-        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+        "desc": "1 módulo de 16GB detectado. Añadir segundo módulo habilitará Dual Channel 128-bit (+18% ancho de banda)."
       }
     ],
     "deviceVisual": "admin_pc",
@@ -1623,8 +1617,8 @@ const INVENTORY_DATA = [
     "storageType": "NVMe PCIe 4.0",
     "monitor": "LG 22M38H-B 22\" FHD",
     "resolution": "1920x1080 @ 60Hz",
-    "os": "Microsoft Windows 11 Pro 64-bit",
-    "healthScore": 95,
+    "os": "Microsoft Windows 10",
+    "healthScore": 98,
     "location": {
       "floor": "Piso 1",
       "branch": "Principal",
@@ -1689,7 +1683,7 @@ const INVENTORY_DATA = [
     "gpuType": "integrated",
     "storage": "KINGSTON SNV3S1000G (932 GB)",
     "storageType": "NVMe PCIe 4.0",
-    "monitor": "LG FHD 27\" IPS (601TFFP0F099) 100Hz",
+    "monitor": "LG FHD 27\" IPS 100Hz (601TFFP0F099)",
     "resolution": "1920x1080 @ 100Hz",
     "os": "Microsoft Windows 11 Pro 64-bit",
     "healthScore": 88,
@@ -1700,10 +1694,10 @@ const INVENTORY_DATA = [
     },
     "peripherals": {
       "monitor": {
-        "description": "LG FHD 27\" IPS (601TFFP0F099) 100Hz",
+        "description": "LG FHD 27\" IPS 100Hz (601TFFP0F099)",
         "brand": "LG",
         "model": "27MR400-B",
-        "serialNumber": "N/D",
+        "serialNumber": "601TFFP0F099",
         "inventoryCode": "N/D",
         "resolution": "1920x1080 @ 100Hz"
       },
@@ -1732,7 +1726,7 @@ const INVENTORY_DATA = [
       {
         "type": "warning",
         "title": "Single Channel RAM (64-bit)",
-        "desc": "1 solo módulo detectado. Instalar segundo módulo habilitará Dual Channel 128-bit (+18% velocidad)."
+        "desc": "1 módulo de 32GB detectado. Añadir segundo módulo habilitará Dual Channel 128-bit (+18% ancho de banda)."
       }
     ],
     "deviceVisual": "admin_pc",
@@ -1766,7 +1760,7 @@ const INVENTORY_DATA = [
     "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
     "resolution": "1366x768 @ 59Hz",
     "os": "Microsoft Windows 11 Pro 64-bit",
-    "healthScore": 95,
+    "healthScore": 98,
     "location": {
       "floor": "Piso 4",
       "branch": "Sede Principal (San Martín de Porres / Lima)",
@@ -1824,7 +1818,7 @@ const INVENTORY_DATA = [
     "cpuShort": "Intel Core i5-12400 (6C/12T)",
     "coresThreads": "6 Núcleos / 12 Hilos",
     "ramTotalGB": 32,
-    "ramModules": "32 GB @ 3200MHz (Kingston)",
+    "ramModules": "32 GB DDR4/DDR5 Enterprise",
     "ramChannels": "Dual Channel (2 modulos)",
     "ramChannelType": "dual",
     "gpu": "Intel(R) UHD Graphics 730",
@@ -1834,7 +1828,7 @@ const INVENTORY_DATA = [
     "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
     "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 11 Pro 64-bit",
-    "healthScore": 95,
+    "healthScore": 98,
     "location": {
       "floor": "Piso 4",
       "branch": "Sede Principal (San Martín de Porres / Lima)",
@@ -1892,7 +1886,7 @@ const INVENTORY_DATA = [
     "cpuShort": "Intel Core i5-12400 (6C/12T)",
     "coresThreads": "6 Núcleos / 12 Hilos",
     "ramTotalGB": 32,
-    "ramModules": "32 GB @ 3200MHz (Kingston)",
+    "ramModules": "32 GB DDR4/DDR5 Enterprise",
     "ramChannels": "Dual Channel (2 modulos)",
     "ramChannelType": "dual",
     "gpu": "Intel(R) UHD Graphics 730",
@@ -1902,7 +1896,7 @@ const INVENTORY_DATA = [
     "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
     "resolution": "1920x1080 @ 60Hz",
     "os": "Microsoft Windows 11 Pro 64-bit",
-    "healthScore": 95,
+    "healthScore": 98,
     "location": {
       "floor": "Piso 4",
       "branch": "Sede Principal (San Martín de Porres / Lima)",
