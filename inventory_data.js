@@ -1,8 +1,3 @@
-// TWINS VANTAGE ENTERPRISE — MASTER INVENTORY DATABASE (28 NODOS)
-// Dominio: utilestwins.com (Subred: 192.168.18.0/24)
-// Total Nodos: 28 (25 Workstations + 3 Servidores)
-// Estado Real: 22 En Línea | 5 Apagadas
-
 const INVENTORY_DATA = [
   {
     "id": "ARCNMRKD008",
@@ -1938,6 +1933,6 @@ const INVENTORY_DATA = [
   }
 ];
 
-if (typeof module !== 'undefined' && module.exports) {
+if (typeof module !== "undefined" && module.exports) {
   module.exports = { INVENTORY_DATA };
 }
