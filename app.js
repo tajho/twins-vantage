@@ -254,6 +254,7 @@ async function fetchLiveTelemetry() {
       }
     });
 
+    renderFleetOverview();
     if (currentTab === 'fleet') {
       applyFilters();
     }
@@ -273,6 +274,28 @@ function startLiveTelemetry() {
 }
 
 function renderFleetOverview() {
+  const onlineCount = allDevices.filter(d => d.isOnline).length;
+  const offlineCount = allDevices.filter(d => !d.isOnline).length;
+  const alertsCount = allDevices.filter(d => d.alerts && d.alerts.length > 0).length;
+
+  const homeOnlineEl = document.getElementById('homeOnlineCount');
+  if (homeOnlineEl) homeOnlineEl.innerText = onlineCount;
+
+  const homeOfflineEl = document.getElementById('homeOfflineCount');
+  if (homeOfflineEl) homeOfflineEl.innerText = offlineCount;
+
+  const homeAlertsEl = document.getElementById('homeAlertsCount');
+  if (homeAlertsEl) homeAlertsEl.innerText = alertsCount;
+
+  const homeTotalEl = document.getElementById('homeTotalCount');
+  if (homeTotalEl) homeTotalEl.innerText = `${allDevices.length} Nodos`;
+
+  const sidebarOnlineEl = document.getElementById('sidebarOnlineCount');
+  if (sidebarOnlineEl) sidebarOnlineEl.innerText = `${onlineCount} Online`;
+
+  const sidebarOfflineEl = document.getElementById('sidebarOfflineCount');
+  if (sidebarOfflineEl) sidebarOfflineEl.innerText = `${offlineCount} Standby`;
+
   const twinBox = document.getElementById('homeTwinContainer');
   if (twinBox) {
     const masterDev = allDevices.find(d => d.id === 'ARCNTID002') || allDevices[0];
