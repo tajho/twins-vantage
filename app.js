@@ -2164,96 +2164,117 @@ function renderMobileFleetGrid() {
   }
 
   container.innerHTML = filteredMobileDevices.map(dev => {
+    const isOnline = dev.isOnline !== false;
     const brandColors = {
-      'Apple': 'border-slate-700 bg-slate-900/90 text-white',
+      'Apple': 'border-slate-600 bg-slate-900/90 text-white',
       'Samsung': 'border-blue-500/40 bg-blue-950/60 text-blue-300',
       'Xiaomi': 'border-amber-500/40 bg-amber-950/60 text-amber-300',
       'Huawei': 'border-rose-500/40 bg-rose-950/60 text-rose-300'
     };
     const brandClass = brandColors[dev.marca] || 'border-cyan-500/40 bg-cyan-950/60 text-cyan-300';
 
+    const photoHtml = typeof renderMobileDeviceImage === 'function' 
+      ? renderMobileDeviceImage(dev) 
+      : `<div class="relative w-full h-full bg-[#02050e] rounded-xl overflow-hidden flex items-center justify-center p-2"><img src="${dev.image}" class="w-full h-full object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.85)]"></div>`;
+
+    const has5G = (dev.red || '').includes('5G');
+    const hasRayTracing = (dev.gpu || '').toLowerCase().includes('ray tracing') || (dev.soc || '').includes('A17 Pro') || (dev.soc || '').includes('Gen 2');
+    const hasSPen = (dev.red || '').includes('S-Pen') || (dev.pantalla || '').includes('S-Pen');
+
+    const badge5G = has5G ? `<span class="bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 text-[9px] font-mono font-bold px-1.5 py-0.5 rounded flex items-center gap-1"><i data-lucide="zap" class="w-2.5 h-2.5"></i> 5G NR</span>` : '';
+    const badgeRT = hasRayTracing ? `<span class="bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 text-[9px] font-mono font-bold px-1.5 py-0.5 rounded flex items-center gap-1"><i data-lucide="cpu" class="w-2.5 h-2.5"></i> RT Silicon</span>` : '';
+    const badgeSPen = hasSPen ? `<span class="bg-purple-500/15 text-purple-300 border border-purple-500/30 text-[9px] font-mono font-bold px-1.5 py-0.5 rounded flex items-center gap-1"><i data-lucide="edit-3" class="w-2.5 h-2.5"></i> S-Pen</span>` : '';
+
     return `
-      <div class="vantage-card p-5 flex flex-col justify-between group hover:border-cyan-500/50 transition-all cursor-pointer" onclick="openMobileDrawer('${dev.id}')">
-        
+      <div class="vantage-card p-5 flex flex-col justify-between group cursor-pointer" onclick="openMobileDrawer('${dev.id}')">
         <div>
           <!-- Header Info -->
           <div class="flex items-start justify-between gap-2 mb-3">
             <div>
-              <span class="font-mono text-[10px] font-bold text-cyan-400 bg-cyan-500/10 border border-cyan-500/30 px-2 py-0.5 rounded">
-                ${dev.activo}
-              </span>
-              <h3 class="text-sm font-black text-white mt-1.5 group-hover:text-cyan-300 transition-colors leading-tight">
+              <div class="flex items-center gap-1.5">
+                <span class="font-mono text-[10px] font-black text-cyan-400 bg-cyan-500/10 border border-cyan-500/30 px-2 py-0.5 rounded">
+                  ${dev.activo}
+                </span>
+                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded border ${brandClass}">
+                  ${dev.marca}
+                </span>
+              </div>
+              <h3 class="text-base font-black text-white mt-1 group-hover:text-cyan-400 transition-colors font-mono tracking-tight leading-tight">
                 ${dev.dispositivo}
               </h3>
-              <p class="text-[11px] text-slate-400 font-mono truncate">${dev.modeloExacto}</p>
+              <p class="text-xs text-slate-300 flex items-center gap-1 mt-1 font-semibold truncate max-w-[220px]">
+                <i data-lucide="user" class="w-3.5 h-3.5 text-cyan-400 shrink-0"></i>
+                <span class="truncate text-white font-bold">${dev.colaborador}</span>
+              </p>
+              <p class="text-[11px] text-slate-400 flex items-center gap-1 mt-0.5 font-medium">
+                <span class="px-1.5 py-0.2 bg-slate-800 text-cyan-300 font-mono rounded text-[10px] border border-white/5">${dev.area}</span>
+                <span class="text-slate-500">•</span>
+                <span class="truncate text-slate-400 font-mono">${dev.modeloExacto}</span>
+              </p>
             </div>
-            <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded border ${brandClass} shrink-0">
-              ${dev.marca}
-            </span>
-          </div>
-
-          <!-- Product Image & Quick User Bar -->
-          <div class="relative w-full h-48 rounded-xl bg-[#02050e] border border-white/5 mb-3.5 overflow-hidden flex items-center justify-center p-3 group-hover:border-cyan-500/30 transition-all shadow-inner">
-            <img src="${dev.image}" alt="${dev.dispositivo}" class="w-full h-full object-contain filter drop-shadow-[0_10px_15px_rgba(0,0,0,0.8)] group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg'" />
-            <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between bg-black/85 backdrop-blur-md px-2.5 py-1.5 rounded-lg border border-white/10 text-[10px] font-mono shadow-md">
-              <span class="text-slate-200 font-bold truncate flex items-center gap-1.5">
-                <i data-lucide="user" class="w-3 h-3 text-cyan-400"></i>
-                <span class="truncate">${dev.colaborador}</span>
+            <div class="text-right shrink-0">
+              <span class="text-xs font-mono font-bold text-[#00ff88]">
+                100%
               </span>
-              <span class="text-emerald-400 font-bold shrink-0 ml-2">${dev.romTotalGB} GB</span>
             </div>
           </div>
 
-          <!-- Telemetry Spec Matrix -->
+          <!-- Studio Photo with Top & Bottom HUD Bars (Mismo mecanismo exacto que PC) -->
+          <div class="relative w-full h-44 bg-[#040711] rounded-xl border border-white/5 mb-3 overflow-hidden shadow-inner group-hover:border-cyan-500/40 transition-colors">
+            ${photoHtml}
+          </div>
+
+          <!-- Badges Bar -->
+          <div class="flex flex-wrap gap-1 mb-3">
+            ${badge5G}
+            ${badgeRT}
+            ${badgeSPen}
+          </div>
+
+          <!-- Specs List -->
           <div class="space-y-1.5 text-xs">
             <div class="flex items-center justify-between text-slate-300">
-              <span class="text-slate-500 flex items-center gap-1"><i data-lucide="palette" class="w-3 h-3 text-slate-400"></i> Color:</span>
-              <span class="font-medium text-slate-300 truncate max-w-[150px]">${dev.colorEquipo}</span>
-            </div>
-            <div class="flex items-center justify-between text-slate-300">
               <span class="text-slate-500 flex items-center gap-1"><i data-lucide="cpu" class="w-3 h-3 text-slate-400"></i> Silicio:</span>
-              <span class="font-semibold text-slate-200 truncate max-w-[150px]" title="${dev.soc}">${dev.soc.split('(')[0]}</span>
+              <span class="font-semibold text-slate-200 truncate max-w-[160px]" title="${dev.soc}">${dev.soc.split('(')[0]}</span>
             </div>
             <div class="flex items-center justify-between text-slate-300">
-              <span class="text-slate-500 flex items-center gap-1"><i data-lucide="memory-stick" class="w-3 h-3 text-slate-400"></i> RAM / ROM:</span>
-              <span class="font-bold font-mono text-cyan-400">${dev.ramTotalGB}GB &bull; ${dev.romTotalGB}GB</span>
+              <span class="text-slate-500 flex items-center gap-1"><i data-lucide="memory-stick" class="w-3 h-3 text-slate-400"></i> Memoria:</span>
+              <span class="font-bold font-mono text-cyan-400">${dev.ramTotalGB}GB RAM &bull; <span class="text-purple-400">${dev.romTotalGB}GB ROM</span></span>
             </div>
             <div class="flex items-center justify-between text-slate-300">
-              <span class="text-slate-500 flex items-center gap-1"><i data-lucide="battery" class="w-3 h-3 text-emerald-400"></i> Batería:</span>
+              <span class="text-slate-500 flex items-center gap-1"><i data-lucide="battery-charging" class="w-3 h-3 text-emerald-400"></i> Batería:</span>
               <span class="font-mono text-emerald-400 font-bold">${dev.bateria.split(' ')[0]} mAh (${dev.bateriaSalud})</span>
             </div>
             <div class="flex items-center justify-between text-slate-300">
-              <span class="text-slate-500 flex items-center gap-1"><i data-lucide="phone" class="w-3 h-3 text-twins-400"></i> Línea:</span>
-              <span class="font-mono text-white font-bold">${dev.linea}</span>
+              <span class="text-slate-500 flex items-center gap-1"><i data-lucide="phone" class="w-3 h-3 text-cyan-400"></i> Línea:</span>
+              <span class="font-mono text-white font-bold">${dev.linea} (${dev.operador.split(' ')[0]})</span>
             </div>
           </div>
 
-          <!-- Dual IMEI Snippet with Copy -->
-          <div class="mt-3 p-2 rounded-xl bg-slate-950/60 border border-white/5 font-mono text-[10px] space-y-1">
+          <!-- Dual IMEI Certified Snippet -->
+          <div class="mt-3 p-2 rounded-xl bg-slate-950/80 border border-white/5 font-mono text-[10px] space-y-1">
             <div class="flex items-center justify-between">
               <span class="text-slate-500 font-bold">IMEI 1:</span>
-              <span class="text-slate-300 font-bold">${dev.imei1}</span>
+              <span class="text-slate-200 font-bold tracking-wider">${dev.imei1}</span>
             </div>
             <div class="flex items-center justify-between border-t border-white/5 pt-1">
               <span class="text-slate-500 font-bold">SERIAL:</span>
-              <span class="text-slate-400">${dev.serial}</span>
+              <span class="text-cyan-300 font-bold">${dev.serial}</span>
             </div>
           </div>
-
         </div>
 
         <!-- Footer Actions -->
         <div class="pt-3.5 mt-3.5 border-t border-white/5 flex items-center justify-between gap-2" onclick="event.stopPropagation()">
-          <button onclick="openMobileDrawer('${dev.id}')" class="flex-1 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 hover:text-white text-xs font-bold border border-white/5 transition flex items-center justify-center gap-1.5">
-            <i data-lucide="info" class="w-3.5 h-3.5 text-cyan-400"></i>
+          <button onclick="openMobileDrawer('${dev.id}')" class="flex-1 py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white text-xs font-bold border border-white/10 transition flex items-center justify-center gap-1.5 shadow-sm">
+            <i data-lucide="smartphone" class="w-3.5 h-3.5 text-cyan-400"></i>
             <span>Ficha Vantage</span>
           </button>
-          <a href="${dev.pdfReport}" target="_blank" class="flex-1 py-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-[0_0_12px_rgba(0,240,255,0.15)]">
+          <a href="${dev.pdfReport}" target="_blank" class="flex-1 py-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-[0_0_12px_rgba(0,240,255,0.2)]">
             <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
-            <span>Acta Oficial</span>
+            <span>Acta Oficial PDF</span>
           </a>
         </div>
-
       </div>
     `;
   }).join('');
@@ -2298,7 +2319,7 @@ function renderMobileTable() {
           <button onclick="openMobileDrawer('${dev.id}')" class="p-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg transition" title="Ficha Técnica">
             <i data-lucide="eye" class="w-4 h-4"></i>
           </button>
-          <a href="${dev.pdfReport}" target="_blank" class="p-1.5 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 rounded-lg transition" title="Abrir Acta PDF">
+          <a href="${dev.pdfReport}" target="_blank" class="p-1.5 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 rounded-lg border border-cyan-500/40 transition" title="Acta Oficial PDF">
             <i data-lucide="file-text" class="w-4 h-4"></i>
           </a>
         </div>
@@ -2309,15 +2330,19 @@ function renderMobileTable() {
   if (window.lucide) window.lucide.createIcons();
 }
 
+let selectedMobileDevice = null;
 
 function openMobileDrawer(devId) {
   playTechSound('click');
   const dev = allMobileDevices.find(d => d.id === devId);
   if (!dev) return;
+  selectedMobileDevice = dev;
 
   const drawer = document.getElementById('deviceDrawer');
   const content = document.getElementById('drawerContent');
   if (!drawer || !content) return;
+
+  const twinSvg = typeof generateMobileVirtualTwinSVG === 'function' ? generateMobileVirtualTwinSVG(dev) : '';
 
   content.innerHTML = `
     <!-- Header with Cyber Glitch Title -->
@@ -2328,38 +2353,78 @@ function openMobileDrawer(devId) {
         </div>
         <div>
           <div class="flex items-center gap-2">
-            <h2 class="text-base font-black text-white tracking-tight">${dev.dispositivo}</h2>
-            <span class="badge-online text-[10px] font-mono px-2 py-0.5 rounded font-bold">100% Homologado</span>
+            <span class="text-[10px] font-mono font-bold bg-cyan-500/15 text-cyan-300 px-2 py-0.5 rounded border border-cyan-500/30 uppercase">
+              ID: ${dev.id}
+            </span>
+            <span class="text-[10px] font-mono font-bold text-slate-300 bg-slate-800/80 px-2 py-0.5 rounded border border-white/5">${dev.activo}</span>
           </div>
-          <div class="text-xs text-slate-400 font-mono mt-0.5 flex items-center gap-2">
-            <span>${dev.modeloExacto}</span>
-            <span class="text-slate-600">&bull;</span>
-            <span class="text-cyan-400 font-bold">${dev.activo}</span>
-          </div>
+          <h2 class="text-base font-black text-white font-mono flex items-center gap-2 mt-0.5">
+            ${dev.dispositivo}
+            <span class="text-xs font-bold px-2 py-0.5 rounded-full badge-online">
+              100% Homologado
+            </span>
+          </h2>
+          <p class="text-xs text-slate-400 font-medium">${dev.modeloExacto} • ${dev.marca}</p>
         </div>
       </div>
-      <button onclick="closeDeviceDrawer()" class="p-2 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-white transition-colors border border-white/5">
+      <button onclick="closeDeviceDrawer()" class="w-9 h-9 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-colors border border-white/10">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
     </div>
 
-    <!-- Body Content with High-Tech Viewports -->
+    <!-- Body Content with High-Tech Viewports (Mismo selector que PC) -->
     <div class="p-6 space-y-5 flex-1 text-xs overflow-y-auto">
       
-      <!-- 3D Holographic WebGL Viewport Container -->
-      <div class="vantage-card p-4 space-y-2 relative overflow-hidden bg-gradient-to-b from-[#02050e] to-[#080f24] border-cyan-500/30">
-        <div class="flex items-center justify-between border-b border-white/5 pb-2">
-          <span class="text-[10px] font-mono uppercase tracking-widest text-cyan-400 font-bold flex items-center gap-1.5">
-            <i data-lucide="box" class="w-3.5 h-3.5"></i> Gemelo Digital 3D WebGL (Three.js)
-          </span>
-          <span class="text-[10px] font-mono text-slate-400">Rotación Automática 60 FPS</span>
+      <!-- PHOTO, SVG BLUEPRINT & 3D HARDWARE VIEWPORT -->
+      <div class="vantage-card p-4 space-y-3">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono text-cyan-400">
+          <span class="flex items-center gap-1.5 font-bold"><i data-lucide="smartphone" class="w-4 h-4"></i> DISPOSITIVO MÓVIL CERTIFICADO</span>
+          <div class="flex items-center gap-1 overflow-x-auto pb-0.5 no-scrollbar">
+            <button id="btnMobPhoto" onclick="showMobileDrawerMedia('photo')" class="px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold text-[10px] border border-cyan-500/40 shrink-0">FOTO REAL HD</button>
+            <button id="btnMobTwin" onclick="showMobileDrawerMedia('twin')" class="px-2.5 py-1 rounded bg-slate-900 text-slate-400 font-bold text-[10px] border border-white/10 hover:text-white shrink-0">ESQUEMA SVG</button>
+            <button id="btnMob3D" onclick="showMobileDrawerMedia('3d')" class="px-2.5 py-1 rounded bg-slate-900 text-slate-400 font-bold text-[10px] border border-white/10 hover:text-white shrink-0">3D WEBGL 360°</button>
+          </div>
         </div>
-        <div id="mobile3DBox" class="w-full h-56 rounded-xl overflow-hidden flex items-center justify-center relative shadow-inner">
-          <!-- 3D WebGL Canvas rendered by initMobile3DViewport -->
+
+        <!-- 1. Real Studio Photo Viewport -->
+        <div id="drawerMobPhotoBox" class="w-full h-64 rounded-xl bg-[#02050e] border border-cyan-500/40 overflow-hidden shadow-inner relative flex items-center justify-center p-3">
+          <img src="${dev.image}" alt="${dev.dispositivo}" class="w-full h-full object-contain filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.9)] transition-transform duration-700 hover:scale-105">
+          <div class="absolute bottom-2 left-2 right-2 bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 flex items-center justify-between text-xs font-mono">
+            <span class="text-white font-bold flex items-center gap-1.5 truncate">
+              <i data-lucide="palette" class="w-3.5 h-3.5 text-cyan-400 shrink-0"></i>
+              <span class="truncate">${dev.colorEquipo}</span>
+            </span>
+            <span class="text-[#00ff88] font-bold shrink-0 ml-2">${dev.pantalla.split('(')[0]}</span>
+          </div>
         </div>
-        <div class="flex justify-between items-center text-[10px] font-mono text-slate-400 pt-1">
-          <span>Acabado: <strong class="text-white">${dev.colorEquipo}</strong></span>
-          <span>Panel: <strong class="text-cyan-300">${dev.pantalla.split('(')[0]}</strong></span>
+
+        <!-- 2. Precision Virtual Twin SVG Blueprint Viewport -->
+        <div id="drawerMobTwinBox" class="hidden w-full h-64 rounded-xl bg-[#040711] border border-white/10 overflow-hidden shadow-inner relative p-1 flex items-center justify-center">
+          ${twinSvg}
+        </div>
+
+        <!-- 3. Interactive WebGL 3D 360 Viewport -->
+        <div id="drawerMob3DBox" class="hidden w-full h-64 rounded-xl bg-[#040711] border border-cyan-500/30 overflow-hidden shadow-inner cursor-grab active:cursor-grabbing relative flex items-center justify-center">
+        </div>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 text-center">
+          <div class="text-[10px] text-slate-500 font-mono">BATERÍA SALUD</div>
+          <div class="text-base font-black text-[#00ff88] font-mono">${dev.bateriaSalud}</div>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 text-center">
+          <div class="text-[10px] text-slate-500 font-mono">RAM TOTAL</div>
+          <div class="text-base font-black text-cyan-400 font-mono">${dev.ramTotalGB} GB</div>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 text-center">
+          <div class="text-[10px] text-slate-500 font-mono">ALMACENAMIENTO</div>
+          <div class="text-base font-black text-purple-400 font-mono">${dev.romTotalGB} GB</div>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 text-center">
+          <div class="text-[10px] text-slate-500 font-mono">OPERADOR</div>
+          <div class="text-xs font-bold text-white truncate mt-1">${dev.operador}</div>
         </div>
       </div>
 
@@ -2382,8 +2447,8 @@ function openMobileDrawer(devId) {
             <span class="font-mono font-bold text-cyan-300 text-sm">${dev.linea}</span>
           </div>
           <div>
-            <span class="text-slate-500 block text-[11px]">Operador Telecom:</span>
-            <span class="text-slate-300 font-semibold">${dev.operador}</span>
+            <span class="text-slate-500 block text-[11px]">Código de Activo:</span>
+            <span class="text-amber-400 font-mono font-bold">${dev.activo}</span>
           </div>
         </div>
       </div>
@@ -2405,7 +2470,7 @@ function openMobileDrawer(devId) {
             <i data-lucide="memory-stick" class="w-3.5 h-3.5"></i> Memoria & Flash
           </div>
           <div class="text-sm font-black text-white font-mono leading-tight">
-            <span class="text-emerald-400">${dev.ramTotalGB} GB</span> &bull; <span class="text-purple-400">${dev.romTotalGB} GB</span>
+            <span class="text-cyan-400">${dev.ramTotalGB} GB</span> &bull; <span class="text-purple-400">${dev.romTotalGB} GB</span>
           </div>
           <div class="text-[10px] text-slate-400 font-mono">${dev.romUsado} usados / ${dev.romLibre} libres</div>
         </div>
@@ -2415,7 +2480,7 @@ function openMobileDrawer(devId) {
       <div class="vantage-card p-4 space-y-2.5 border-l-4 border-l-emerald-500">
         <div class="flex items-center justify-between">
           <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold flex items-center gap-1.5">
-            <i data-lucide="battery-charging" class="w-3.5 h-3.5 text-emerald-400"></i> Batería &amp; Diagnóstico Eléctrico
+            <i data-lucide="battery-charging" class="w-3.5 h-3.5 text-emerald-400"></i> Batería & Diagnóstico Eléctrico
           </span>
           <span class="text-emerald-400 font-black font-mono text-sm">${dev.bateriaSalud}</span>
         </div>
@@ -2431,7 +2496,7 @@ function openMobileDrawer(devId) {
       <!-- Camera Array -->
       <div class="vantage-card p-4 space-y-1.5">
         <div class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold flex items-center gap-1.5">
-          <i data-lucide="camera" class="w-3.5 h-3.5 text-pink-400"></i> Sistema Óptico &amp; Sensores
+          <i data-lucide="camera" class="w-3.5 h-3.5 text-pink-400"></i> Sistema Óptico & Sensores
         </div>
         <p class="text-slate-200 text-xs leading-relaxed font-sans">${dev.camaras}</p>
       </div>
@@ -2466,7 +2531,7 @@ function openMobileDrawer(devId) {
           <div class="p-2.5 rounded-xl bg-slate-950/80 border border-white/5 flex items-center justify-between">
             <div>
               <span class="text-[10px] text-slate-500 font-bold block">NÚMERO DE SERIE FÁBRICA (SN):</span>
-              <span class="font-bold text-slate-300 tracking-wider">${dev.serial}</span>
+              <span class="font-bold text-cyan-300 tracking-wider">${dev.serial}</span>
             </div>
             <button onclick="copyMobileText('${dev.serial}', 'Serial copiado')" class="px-2.5 py-1 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/25 text-cyan-300 text-[11px] font-bold border border-cyan-500/30 transition flex items-center gap-1">
               <i data-lucide="copy" class="w-3 h-3"></i> Copiar
@@ -2478,7 +2543,7 @@ function openMobileDrawer(devId) {
 
       <!-- Technical Dictamen -->
       <div class="vantage-card p-4 space-y-1.5 bg-gradient-to-r from-[#0d152a] to-[#040711]">
-        <div class="text-[10px] font-mono uppercase tracking-widest text-cyan-400 font-bold">Dictamen Técnico &amp; Certificación TI</div>
+        <div class="text-[10px] font-mono uppercase tracking-widest text-cyan-400 font-bold">Dictamen Técnico & Certificación TI</div>
         <p class="text-slate-300 text-xs leading-relaxed">${dev.observaciones}</p>
       </div>
 
@@ -2499,11 +2564,42 @@ function openMobileDrawer(devId) {
   if (backdrop) backdrop.classList.remove('hidden');
 
   if (window.lucide) window.lucide.createIcons();
+}
 
-  // Initialize WebGL 3D Realtime Smartphone Viewport
-  setTimeout(() => {
-    initMobile3DViewport('mobile3DBox', dev);
-  }, 100);
+function showMobileDrawerMedia(type) {
+  playTechSound('click');
+  const photoBox = document.getElementById('drawerMobPhotoBox');
+  const twinBox = document.getElementById('drawerMobTwinBox');
+  const threeBox = document.getElementById('drawerMob3DBox');
+
+  const btnPhoto = document.getElementById('btnMobPhoto');
+  const btnTwin = document.getElementById('btnMobTwin');
+  const btn3D = document.getElementById('btnMob3D');
+
+  const inactiveBtn = 'px-2.5 py-1 rounded bg-slate-900 text-slate-400 font-bold text-[10px] border border-white/10 hover:text-white shrink-0';
+  const activeBtn = 'px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold text-[10px] border border-cyan-500/40 shrink-0';
+
+  if (btnPhoto) btnPhoto.className = inactiveBtn;
+  if (btnTwin) btnTwin.className = inactiveBtn;
+  if (btn3D) btn3D.className = inactiveBtn;
+
+  if (photoBox) photoBox.classList.add('hidden');
+  if (twinBox) twinBox.classList.add('hidden');
+  if (threeBox) threeBox.classList.add('hidden');
+
+  if (type === 'photo') {
+    if (photoBox) photoBox.classList.remove('hidden');
+    if (btnPhoto) btnPhoto.className = activeBtn;
+  } else if (type === 'twin') {
+    if (twinBox) twinBox.classList.remove('hidden');
+    if (btnTwin) btnTwin.className = activeBtn;
+  } else if (type === '3d') {
+    if (threeBox) threeBox.classList.remove('hidden');
+    if (btn3D) btn3D.className = activeBtn;
+    if (selectedMobileDevice && typeof initMobile3DViewport === 'function') {
+      initMobile3DViewport('drawerMob3DBox', selectedMobileDevice);
+    }
+  }
 }
 
 function copyMobileText(text, msg) {

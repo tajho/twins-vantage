@@ -1,5 +1,5 @@
-// TWINS VANTAGE PRO — Official Real Workstation Setups (Monitor + PC al lado)
-// Fotografías de estudio 8K del setup completo: Monitor Real + Chasis PC correspondiente al lado
+// TWINS VANTAGE PRO — Official Real Workstation & Mobile Device Image Engine
+// Fotografías de estudio 8K y renders de hardware certificado para PC Workstations y Flota Móvil
 
 const WORKSTATION_SETUPS = {
   itMaster: 'images/setup_it_master.jpg',
@@ -93,14 +93,14 @@ function getMonitorModelLabel(dev) {
   return dev.monitor || 'Monitor IPS Full HD';
 }
 
+// PC WORKSTATION CARD IMAGE RENDERER
 function renderDeviceImage(visualType, computerName, isOnline, dev) {
   const setupPhotoUrl = getDeviceSetupPhoto(dev);
   const monitorLabel = getMonitorModelLabel(dev);
-  const cpuText = dev.cpuShort || dev.cpu || '';
 
   return `
     <div class="relative w-full h-full bg-[#02050e] rounded-xl overflow-hidden group/img flex items-center justify-center p-1">
-      <img src="${setupPhotoUrl}" alt="${computerName} Setup" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover/img:scale-105 ${!isOnline ? 'grayscale opacity-40' : ''}" loading="lazy">
+      <img src="${setupPhotoUrl}" alt="${computerName} Setup" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover/img:scale-105 ${!isOnline ? 'grayscale opacity-40' : ''}" loading="lazy" decoding="async">
       
       <!-- Top Badges Bar -->
       <div class="absolute top-2 left-2 right-2 flex items-center justify-between z-10 pointer-events-none">
@@ -128,6 +128,55 @@ function renderDeviceImage(visualType, computerName, isOnline, dev) {
   `;
 }
 
+// MOBILE FLEET CARD IMAGE RENDERER (MISMO MECANISMO EXACTO QUE LAS PC)
+function renderMobileDeviceImage(dev) {
+  if (!dev) return '';
+  const isOnline = dev.isOnline !== false;
+  const imgUrl = dev.image || 'images/phone_iphone15_promax_titanium.png';
+  const displayLabel = dev.pantalla ? dev.pantalla.split('(')[0].trim() : 'Display AMOLED';
+  const activeCode = dev.activo || 'ACT-MOV';
+  const collaborator = dev.colaborador || '';
+
+  return `
+    <div class="relative w-full h-full bg-[#02050e] rounded-xl overflow-hidden group/img flex items-center justify-center p-2">
+      <!-- Phone Studio Hardware Photo -->
+      <img src="${imgUrl}" alt="${dev.dispositivo}" class="w-full h-full object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.85)] transition-transform duration-700 group-hover/img:scale-105 ${!isOnline ? 'grayscale opacity-40' : ''}" loading="lazy" decoding="async">
+      
+      <!-- Top Badges Bar -->
+      <div class="absolute top-2 left-2 right-2 flex items-center justify-between z-10 pointer-events-none">
+        <span class="text-[9px] font-mono font-bold bg-black/85 backdrop-blur-md text-cyan-300 px-2 py-0.5 rounded border border-cyan-500/30 flex items-center gap-1 shadow-sm truncate max-w-[210px]">
+          <i data-lucide="smartphone" class="w-2.5 h-2.5 text-cyan-400 shrink-0"></i>
+          <span class="truncate">${displayLabel}</span>
+        </span>
+        <span class="text-[9px] font-mono font-bold bg-cyan-950/80 backdrop-blur-md text-cyan-300 px-1.5 py-0.5 rounded border border-cyan-500/30">
+          ${activeCode}
+        </span>
+      </div>
+
+      <!-- Bottom Status Bar -->
+      <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between z-10 pointer-events-none">
+        <span class="text-[10px] font-mono font-bold text-white bg-black/85 backdrop-blur-md px-2 py-0.5 rounded border border-white/10 shadow-sm flex items-center gap-1.5 truncate max-w-[200px]">
+          <i data-lucide="user" class="w-3 h-3 text-cyan-400 shrink-0"></i>
+          <span class="truncate">${collaborator}</span>
+        </span>
+        <span class="${isOnline ? 'text-[#00ff88]' : 'text-slate-400'} text-[10px] font-mono font-bold bg-black/85 backdrop-blur-md px-2 py-0.5 rounded border border-white/10 flex items-center gap-1 shadow-sm shrink-0 ml-1">
+          <span class="w-1.5 h-1.5 rounded-full ${isOnline ? 'bg-[#00ff88] pulse-led' : 'bg-slate-500'}"></span>
+          ${isOnline ? 'ACTIVO' : 'BAJA'}
+        </span>
+      </div>
+    </div>
+  `;
+}
+
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { renderDeviceImage, getDevicePhoto, getDeviceSetupPhoto, getDeviceMonitorPhoto, getMonitorModelLabel, WORKSTATION_SETUPS, REAL_MONITOR_IMAGES };
+  module.exports = { 
+    renderDeviceImage, 
+    renderMobileDeviceImage, 
+    getDevicePhoto, 
+    getDeviceSetupPhoto, 
+    getDeviceMonitorPhoto, 
+    getMonitorModelLabel, 
+    WORKSTATION_SETUPS, 
+    REAL_MONITOR_IMAGES 
+  };
 }
