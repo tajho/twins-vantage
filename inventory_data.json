@@ -44,13 +44,14 @@
       }
     ],
     "deviceVisual": "creator_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD009",
     "computerName": "ARCNMRKD009",
-    "status": "En Linea",
-    "isOnline": true,
+    "status": "Desconectado",
+    "isOnline": false,
     "ip": "192.168.18.71",
     "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "Administrador (MKT-Render)",
@@ -91,7 +92,8 @@
       }
     ],
     "deviceVisual": "creator_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": null
   },
   {
     "id": "ARCNMRKD010",
@@ -138,7 +140,8 @@
       }
     ],
     "deviceVisual": "creator_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD011",
@@ -185,7 +188,8 @@
       }
     ],
     "deviceVisual": "creator_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD012",
@@ -232,7 +236,8 @@
       }
     ],
     "deviceVisual": "creator_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD013",
@@ -279,7 +284,8 @@
       }
     ],
     "deviceVisual": "creator_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD014",
@@ -326,7 +332,8 @@
       }
     ],
     "deviceVisual": "creator_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD015",
@@ -373,13 +380,14 @@
       }
     ],
     "deviceVisual": "creator_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD016",
     "computerName": "ARCNMRKD016",
-    "status": "En Linea",
-    "isOnline": true,
+    "status": "Desconectado",
+    "isOnline": false,
     "ip": "192.168.18.78",
     "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "danna",
@@ -420,7 +428,8 @@
       }
     ],
     "deviceVisual": "creator_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": null
   },
   {
     "id": "ADMINISTRADOR",
@@ -467,7 +476,8 @@
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNADM007",
@@ -514,7 +524,8 @@
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD001-1",
@@ -561,7 +572,8 @@
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": "ROBERTO CARLOS ROJAS FARFÁN (Administración / SAP)"
+    "notes": "ROBERTO CARLOS ROJAS FARFÁN (Administración / SAP)",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD002",
@@ -608,7 +620,8 @@
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD003",
@@ -655,7 +668,8 @@
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD004-1",
@@ -702,7 +716,8 @@
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD005",
@@ -749,7 +764,8 @@
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD006",
@@ -796,7 +812,8 @@
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD007",
@@ -843,7 +860,8 @@
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD008",
@@ -890,7 +908,8 @@
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD009",
@@ -937,13 +956,14 @@
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNVNTD015",
     "computerName": "ARCNVNTD015",
-    "status": "En Linea",
-    "isOnline": true,
+    "status": "Desconectado",
+    "isOnline": false,
     "ip": "192.168.18.12",
     "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "ventas_campo1",
@@ -984,13 +1004,14 @@
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": null
   },
   {
     "id": "ARCNVNTD016",
     "computerName": "ARCNVNTD016",
-    "status": "En Linea",
-    "isOnline": true,
+    "status": "Desconectado",
+    "isOnline": false,
     "ip": "192.168.18.42",
     "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "ventas_campo2",
@@ -1031,13 +1052,14 @@
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": null
   },
   {
     "id": "ARCNVNTD019-1",
     "computerName": "ARCNVNTD019-1",
-    "status": "En Linea",
-    "isOnline": true,
+    "status": "Desconectado",
+    "isOnline": false,
     "ip": "192.168.18.100",
     "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "jhenyfer",
@@ -1078,7 +1100,8 @@
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": null
   },
   {
     "id": "ARCNALMD001",
@@ -1125,7 +1148,8 @@
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNTID002",
@@ -1172,7 +1196,8 @@
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": "JEFE DE TI - UTILESTWINS"
+    "notes": "JEFE DE TI - UTILESTWINS",
+    "rttMs": 1
   },
   {
     "id": "SERVIDOR",
@@ -1231,7 +1256,8 @@
       }
     ],
     "deviceVisual": "server_pc",
-    "notes": "Servidor 1: PDC / Domain Controller utilestwins.com & SMB (192.168.18.200)"
+    "notes": "Servidor 1: PDC / Domain Controller utilestwins.com & SMB (192.168.18.200)",
+    "rttMs": 1
   },
   {
     "id": "SERVERDB",
@@ -1284,7 +1310,8 @@
       }
     ],
     "deviceVisual": "server_pc",
-    "notes": "Servidor 2: Base de Datos SQL Server & SAP B1 (192.168.18.253)"
+    "notes": "Servidor 2: Base de Datos SQL Server & SAP B1 (192.168.18.253)",
+    "rttMs": 1
   },
   {
     "id": "SERVERAPP",
@@ -1337,6 +1364,7 @@
       }
     ],
     "deviceVisual": "server_pc",
-    "notes": "Servidor 3: Servidor de Aplicaciones SAP B1 & Web API (192.168.18.254)"
+    "notes": "Servidor 3: Servidor de Aplicaciones SAP B1 & Web API (192.168.18.254)",
+    "rttMs": 1
   }
 ]

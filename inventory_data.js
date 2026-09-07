@@ -1,3 +1,8 @@
+// TWINS VANTAGE ENTERPRISE — MASTER INVENTORY DATABASE (28 NODOS)
+// Dominio: utilestwins.com (Subred: 192.168.18.0/24)
+// Total Nodos: 28 (25 Workstations + 3 Servidores)
+// Estado Real: 23 En Línea | 5 Apagadas
+
 const INVENTORY_DATA = [
   {
     "id": "ARCNMRKD008",
@@ -44,13 +49,14 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "creator_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD009",
     "computerName": "ARCNMRKD009",
-    "status": "En Linea",
-    "isOnline": true,
+    "status": "Desconectado",
+    "isOnline": false,
     "ip": "192.168.18.71",
     "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "Administrador (MKT-Render)",
@@ -91,7 +97,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "creator_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": null
   },
   {
     "id": "ARCNMRKD010",
@@ -138,7 +145,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "creator_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD011",
@@ -185,7 +193,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "creator_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD012",
@@ -232,7 +241,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "creator_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD013",
@@ -279,7 +289,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "creator_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD014",
@@ -326,7 +337,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "creator_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD015",
@@ -373,13 +385,14 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "creator_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNMRKD016",
     "computerName": "ARCNMRKD016",
-    "status": "En Linea",
-    "isOnline": true,
+    "status": "Desconectado",
+    "isOnline": false,
     "ip": "192.168.18.78",
     "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "danna",
@@ -420,7 +433,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "creator_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": null
   },
   {
     "id": "ADMINISTRADOR",
@@ -467,7 +481,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNADM007",
@@ -514,7 +529,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD001-1",
@@ -561,7 +577,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": "ROBERTO CARLOS ROJAS FARFÁN (Administración / SAP)"
+    "notes": "ROBERTO CARLOS ROJAS FARFÁN (Administración / SAP)",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD002",
@@ -608,7 +625,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD003",
@@ -655,7 +673,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD004-1",
@@ -702,7 +721,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD005",
@@ -749,7 +769,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD006",
@@ -796,7 +817,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD007",
@@ -843,7 +865,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD008",
@@ -890,7 +913,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNADMD009",
@@ -937,13 +961,14 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNVNTD015",
     "computerName": "ARCNVNTD015",
-    "status": "En Linea",
-    "isOnline": true,
+    "status": "Desconectado",
+    "isOnline": false,
     "ip": "192.168.18.12",
     "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "ventas_campo1",
@@ -984,13 +1009,14 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": null
   },
   {
     "id": "ARCNVNTD016",
     "computerName": "ARCNVNTD016",
-    "status": "En Linea",
-    "isOnline": true,
+    "status": "Desconectado",
+    "isOnline": false,
     "ip": "192.168.18.42",
     "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "ventas_campo2",
@@ -1031,13 +1057,14 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": null
   },
   {
     "id": "ARCNVNTD019-1",
     "computerName": "ARCNVNTD019-1",
-    "status": "En Linea",
-    "isOnline": true,
+    "status": "Desconectado",
+    "isOnline": false,
     "ip": "192.168.18.100",
     "mac": "d8-43-ae-9d-cb-1f",
     "activeUser": "jhenyfer",
@@ -1078,7 +1105,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": null
   },
   {
     "id": "ARCNALMD001",
@@ -1125,7 +1153,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": ""
+    "notes": "",
+    "rttMs": 1
   },
   {
     "id": "ARCNTID002",
@@ -1172,7 +1201,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "office_tower",
-    "notes": "JEFE DE TI - UTILESTWINS"
+    "notes": "JEFE DE TI - UTILESTWINS",
+    "rttMs": 1
   },
   {
     "id": "SERVIDOR",
@@ -1231,7 +1261,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "server_pc",
-    "notes": "Servidor 1: PDC / Domain Controller utilestwins.com & SMB (192.168.18.200)"
+    "notes": "Servidor 1: PDC / Domain Controller utilestwins.com & SMB (192.168.18.200)",
+    "rttMs": 1
   },
   {
     "id": "SERVERDB",
@@ -1284,7 +1315,8 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "server_pc",
-    "notes": "Servidor 2: Base de Datos SQL Server & SAP B1 (192.168.18.253)"
+    "notes": "Servidor 2: Base de Datos SQL Server & SAP B1 (192.168.18.253)",
+    "rttMs": 1
   },
   {
     "id": "SERVERAPP",
@@ -1337,7 +1369,11 @@ const INVENTORY_DATA = [
       }
     ],
     "deviceVisual": "server_pc",
-    "notes": "Servidor 3: Servidor de Aplicaciones SAP B1 & Web API (192.168.18.254)"
+    "notes": "Servidor 3: Servidor de Aplicaciones SAP B1 & Web API (192.168.18.254)",
+    "rttMs": 1
   }
 ];
-if (typeof module !== 'undefined' && module.exports) { module.exports = INVENTORY_DATA; }
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { INVENTORY_DATA };
+}
