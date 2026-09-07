@@ -1,7 +1,7 @@
 {
   "version": "4.0.0-PRO",
-  "lastUpdated": "2026-09-07T14:55:02.901Z",
-  "epochMs": 1788792902919,
+  "lastUpdated": "2026-09-07T15:00:56.355Z",
+  "epochMs": 1788793256356,
   "collectorHost": "ARCNTID002",
   "collectorStatus": "HEALTHY",
   "network": {
@@ -61,14 +61,14 @@
     }
   },
   "localMetrics": {
-    "cpuLoad": 73,
+    "cpuLoad": 52,
     "memPercent": 75,
-    "memUsedGB": 23.9,
+    "memUsedGB": 24,
     "memTotalGB": 31.8,
     "diskCPercent": 30,
-    "diskCFreeGB": 654.3,
+    "diskCFreeGB": 654.5,
     "diskCTotalGB": 930.5,
-    "uptime": "23d 1h 9m",
+    "uptime": "23d 1h 15m",
     "osName": "Microsoft Windows 11 Pro"
   },
   "devices": [
@@ -88,7 +88,7 @@
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "LG UltraWide 29\" IPS (2560x1080 @ 59Hz)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNMRKD009",
@@ -96,7 +96,7 @@
       "ip": "192.168.18.71",
       "category": "design",
       "department": "Marketing y Diseno",
-      "activeUser": "Administrador",
+      "activeUser": "jesus",
       "status": "Desconectado",
       "isOnline": false,
       "rttMs": null,
@@ -106,7 +106,7 @@
       "ramChannelType": "dual",
       "storage": "SSD SATA / HDD",
       "monitor": "LG UltraWide 29\" IPS (2560x1080 @ 59Hz)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNMRKD010",
@@ -124,7 +124,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe PCIe 4.0",
       "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNMRKD011",
@@ -142,7 +142,7 @@
       "ramChannelType": "dual",
       "storage": "SSD SATA / HDD",
       "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNMRKD012",
@@ -160,7 +160,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe PCIe 4.0",
       "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNMRKD013",
@@ -178,7 +178,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe PCIe 4.0",
       "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNMRKD014",
@@ -196,7 +196,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe PCIe 4.0",
       "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNMRKD015",
@@ -214,7 +214,7 @@
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
       "monitor": "LG FHD 24\" IPS 100Hz (1920x1080)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNMRKD016",
@@ -232,7 +232,7 @@
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
       "monitor": "ASUS ProArt PA278CV 27\" 2K (2560x1440 @ 59Hz Calibrado sRGB)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNADMD001-1",
@@ -250,7 +250,7 @@
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNADMD002",
@@ -268,7 +268,7 @@
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350FZN",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNADMD003",
@@ -286,7 +286,7 @@
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350FZN",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNADMD004-1",
@@ -304,7 +304,7 @@
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNADMD005",
@@ -322,7 +322,7 @@
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "LG 24MS500",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNADMD006",
@@ -340,7 +340,7 @@
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350FZN",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNADM007",
@@ -358,7 +358,7 @@
       "ramChannelType": "dual",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNADMD007",
@@ -376,7 +376,7 @@
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNADMD008",
@@ -394,7 +394,7 @@
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNADMD009",
@@ -412,7 +412,7 @@
       "ramChannelType": "single",
       "storage": "SSD SATA / HDD",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNVNTD015",
@@ -430,7 +430,7 @@
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
       "monitor": "LG 24MS500",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNVNTD016",
@@ -448,7 +448,7 @@
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung LS20D300NHPE",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNVNTD019-1",
@@ -466,7 +466,7 @@
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNALMD001",
@@ -484,7 +484,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe PCIe 4.0",
       "monitor": "LG 22M38H-B 22\" FHD",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "ARCNTID002",
@@ -502,7 +502,7 @@
       "ramChannelType": "single",
       "storage": "NVMe PCIe 4.0",
       "monitor": "LG FHD 27\" IPS 100Hz (601TFFP0F099)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "SERVIDOR",
@@ -520,7 +520,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "SERVERDB",
@@ -538,7 +538,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     },
     {
       "id": "SERVERAPP",
@@ -556,7 +556,7 @@
       "ramChannelType": "dual",
       "storage": "NVMe PCIe 4.0",
       "monitor": "Samsung S24R350 24\" IPS FHD (1920x1080)",
-      "lastAudit": "2026-09-07T14:55:02.919Z"
+      "lastAudit": "2026-09-07T15:00:56.356Z"
     }
   ]
 }
