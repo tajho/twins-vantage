@@ -1,7 +1,7 @@
 {
   "version": "4.0.0-PRO",
-  "lastUpdated": "2026-09-07T15:28:45.179Z",
-  "epochMs": 1788794925182,
+  "lastUpdated": "2026-09-07T15:29:08.772Z",
+  "epochMs": 1788794948775,
   "collectorHost": "ARCNTID002",
   "collectorStatus": "HEALTHY",
   "network": {
@@ -61,14 +61,14 @@
     }
   },
   "localMetrics": {
-    "cpuLoad": 50,
-    "memPercent": 75,
-    "memUsedGB": 23.7,
+    "cpuLoad": 71,
+    "memPercent": 74,
+    "memUsedGB": 23.6,
     "memTotalGB": 31.8,
     "diskCPercent": 30,
     "diskCFreeGB": 654.2,
     "diskCTotalGB": 930.5,
-    "uptime": "23d 1h 42m",
+    "uptime": "23d 1h 43m",
     "osName": "Microsoft Windows 11 Pro"
   },
   "devices": [

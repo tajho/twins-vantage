@@ -796,9 +796,9 @@ const INVENTORY_DATA = [
     "department": "Administración y Finanzas",
     "category": "admin",
     "formFactor": "Desktop Corporativo",
-    "motherboard": "Placa Base Corporativa B760M / B450M / H610M",
-    "cpu": "Intel Core i5 (12va Gen)",
-    "cpuShort": "Intel Core i5 (12va Gen)",
+    "motherboard": "Micro-Star PRO H610M-S DDR4",
+    "cpu": "12th Gen Intel(R) Core(TM) i5-12400 (6C/12T)",
+    "cpuShort": "12th Gen Intel(R) Core(TM) i5-12400 (6C/12T)",
     "coresThreads": "N/D",
     "ramTotalGB": 16,
     "ramModules": "N/D",
@@ -845,7 +845,7 @@ const INVENTORY_DATA = [
       "pcCode": "PC-ADMIN-0041",
       "pcSerial": "Sin número de serie (Custom Build)",
       "pcBrand": "Compatible / Custom Build",
-      "pcModel": "Placa Base Corporativa B760M / B450M / H610M"
+      "pcModel": "Micro-Star PRO H610M-S DDR4"
     },
     "alerts": [
       {
@@ -1086,9 +1086,9 @@ const INVENTORY_DATA = [
     "department": "Administración y Finanzas",
     "category": "admin",
     "formFactor": "Desktop Corporativo",
-    "motherboard": "Placa Base Corporativa B760M / B450M / H610M",
-    "cpu": "Intel Core i5 (12va Gen)",
-    "cpuShort": "Intel Core i5 (12va Gen)",
+    "motherboard": "Micro-Star PRO H610M-S DDR4",
+    "cpu": "12th Gen Intel(R) Core(TM) i5-12400 (6C/12T)",
+    "cpuShort": "12th Gen Intel(R) Core(TM) i5-12400 (6C/12T)",
     "coresThreads": "N/D",
     "ramTotalGB": 16,
     "ramModules": "N/D",
@@ -1135,7 +1135,7 @@ const INVENTORY_DATA = [
       "pcCode": "PC-ADMIN-007",
       "pcSerial": "Sin número de serie (Custom Build)",
       "pcBrand": "Compatible / Custom Build",
-      "pcModel": "Placa Base Corporativa B760M / B450M / H610M"
+      "pcModel": "Micro-Star PRO H610M-S DDR4"
     },
     "alerts": [
       {
@@ -1308,9 +1308,9 @@ const INVENTORY_DATA = [
     "department": "Ventas",
     "category": "sales",
     "formFactor": "Desktop Corporativo",
-    "motherboard": "Placa Base Corporativa B760M / B450M / H610M",
-    "cpu": "Intel Core i5 (12va Gen)",
-    "cpuShort": "Intel Core i5 (12va Gen)",
+    "motherboard": "Micro-Star PRO H610M-S DDR4",
+    "cpu": "12th Gen Intel(R) Core(TM) i5-12400 (6C/12T)",
+    "cpuShort": "12th Gen Intel(R) Core(TM) i5-12400 (6C/12T)",
     "coresThreads": "N/D",
     "ramTotalGB": 16,
     "ramModules": "N/D",
@@ -1382,9 +1382,9 @@ const INVENTORY_DATA = [
     "department": "Ventas",
     "category": "sales",
     "formFactor": "Desktop Corporativo",
-    "motherboard": "Placa Base Corporativa B760M / B450M / H610M",
-    "cpu": "Intel Core i5 (12va Gen)",
-    "cpuShort": "Intel Core i5 (12va Gen)",
+    "motherboard": "Micro-Star PRO H610M-S DDR4",
+    "cpu": "12th Gen Intel(R) Core(TM) i5-12400 (6C/12T)",
+    "cpuShort": "12th Gen Intel(R) Core(TM) i5-12400 (6C/12T)",
     "coresThreads": "N/D",
     "ramTotalGB": 16,
     "ramModules": "N/D",
@@ -1808,9 +1808,9 @@ const INVENTORY_DATA = [
     "department": "Servidores & Datacenter",
     "category": "servers",
     "formFactor": "Servidor Rackmount",
-    "motherboard": "Micro-Star PRO H610M-S DDR4",
-    "cpu": "Intel Core i5-12400 (6C/12T)",
-    "cpuShort": "Intel Core i5-12400 (6C/12T)",
+    "motherboard": "Micro-Star International Co., Ltd. PRO H610M-S DDR4",
+    "cpu": "Intel(R) Core(TM) i5-12400 (6C/12T)",
+    "cpuShort": "Intel(R) Core(TM) i5-12400 (6C/12T)",
     "coresThreads": "6 Núcleos / 12 Hilos",
     "ramTotalGB": 32,
     "ramModules": "32 GB DDR4/DDR5 Enterprise",
@@ -1857,7 +1857,7 @@ const INVENTORY_DATA = [
       "pcCode": "PC-SERVERS-",
       "pcSerial": "Sin número de serie (Custom Build)",
       "pcBrand": "Compatible / Custom Build",
-      "pcModel": "Micro-Star PRO H610M-S DDR4"
+      "pcModel": "Micro-Star International Co., Ltd. PRO H610M-S DDR4"
     },
     "alerts": [],
     "deviceVisual": "server_rack",
@@ -1876,9 +1876,9 @@ const INVENTORY_DATA = [
     "department": "Servidores & Datacenter",
     "category": "servers",
     "formFactor": "Servidor Rackmount",
-    "motherboard": "Micro-Star PRO H610M-S DDR4",
-    "cpu": "Intel Core i5-12400 (6C/12T)",
-    "cpuShort": "Intel Core i5-12400 (6C/12T)",
+    "motherboard": "Micro-Star International Co., Ltd. PRO H610M-S DDR4",
+    "cpu": "Intel(R) Core(TM) i5-12400 (6C/12T)",
+    "cpuShort": "Intel(R) Core(TM) i5-12400 (6C/12T)",
     "coresThreads": "6 Núcleos / 12 Hilos",
     "ramTotalGB": 32,
     "ramModules": "32 GB DDR4/DDR5 Enterprise",
@@ -1925,7 +1925,7 @@ const INVENTORY_DATA = [
       "pcCode": "PC-SERVERS-",
       "pcSerial": "Sin número de serie (Custom Build)",
       "pcBrand": "Compatible / Custom Build",
-      "pcModel": "Micro-Star PRO H610M-S DDR4"
+      "pcModel": "Micro-Star International Co., Ltd. PRO H610M-S DDR4"
     },
     "alerts": [],
     "deviceVisual": "server_rack",
