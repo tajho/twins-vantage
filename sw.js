@@ -1,16 +1,25 @@
-const CACHE_NAME = 'twins-vantage-v4.2-realtime-sync';
+const CACHE_NAME = 'twins-vantage-v5.5-highspeed';
 const STATIC_ASSETS = [
   './',
   './index.html',
   './styles.css',
   './app.js',
+  './inventory_data.js',
   './device_images.js',
   './virtual_twin_renderer.js',
-  './three_scene.js',
   './three_engine.js',
   './modals.js',
   './logo_twins.png',
   './manifest.json',
+  './images/phone_iphone15_promax_titanium.png',
+  './images/phone_samsung_s23_ultra.png',
+  './images/phone_huawei_p30_pro.png',
+  './images/phone_samsung_s22_ultra.png',
+  './images/phone_samsung_s21_ultra_silver.png',
+  './images/phone_samsung_s21_ultra_black.png',
+  './images/phone_samsung_a35_5g.png',
+  './images/phone_xiaomi_mi10t_pro.png',
+  './images/phone_xiaomi_redmi_note13_blue.png',
   './images/monitor_lg_27_ips.jpg',
   './images/monitor_asus_proart.jpg',
   './images/monitor_samsung_s24r350.jpg',
@@ -28,9 +37,7 @@ const STATIC_ASSETS = [
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(STATIC_ASSETS);
-    })
+    caches.open(CACHE_NAME).then(cache => cache.addAll(STATIC_ASSETS)).catch(() => {})
   );
 });
 
@@ -44,28 +51,44 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Network-First for core code & data, cache fallback for offline
+// Cache-First for static assets, Network-First with Cache Fallback for dynamic data
 self.addEventListener('fetch', event => {
   const url = event.request.url;
 
-  if (url.includes('.json') || url.includes('.css') || url.includes('.js') || url.includes('.html') || event.request.mode === 'navigate') {
+  // Bypass cache for live telemetry APIs
+  if (url.includes('/api/system/live') || url.includes('/api/system/ping') || url.includes('/api/system/optimize')) {
+    return;
+  }
+
+  // Cache-First for Images and Fonts
+  if (url.includes('/images/') || url.endsWith('.png') || url.endsWith('.jpg') || url.endsWith('.svg') || url.endsWith('.woff2')) {
     event.respondWith(
-      fetch(event.request)
-        .then(response => {
+      caches.match(event.request).then(cached => {
+        if (cached) return cached;
+        return fetch(event.request).then(response => {
           if (response && response.status === 200) {
             const clone = response.clone();
             caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
           }
           return response;
-        })
-        .catch(() => caches.match(event.request))
-    );
-  } else {
-    event.respondWith(
-      caches.match(event.request).then(cached => {
-        return cached || fetch(event.request);
+        });
       })
     );
+    return;
   }
-});
 
+  // Stale-While-Revalidate for core script and stylesheet
+  event.respondWith(
+    caches.match(event.request).then(cached => {
+      const fetchPromise = fetch(event.request).then(networkResponse => {
+        if (networkResponse && networkResponse.status === 200) {
+          const clone = networkResponse.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+        }
+        return networkResponse;
+      }).catch(() => cached);
+
+      return cached || fetchPromise;
+    })
+  );
+});

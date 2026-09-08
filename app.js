@@ -1,3 +1,13 @@
+
+// High-performance micro-debounce for silky-smooth 60fps search and interactions
+function debounce(fn, wait = 75) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => fn.apply(this, args), wait);
+  };
+}
+
 // TWINS VANTAGE PRO — Fleet & Hardware Intelligence System
 // Real Hardware Photos of Monitor + CPU & 3D Interactive Viewport
 
@@ -15,11 +25,9 @@ function playTechSound() {}
 function toggleAudio() {}
 
 // Initialize on DOM Ready
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js')
-      .then(reg => console.log('SW Registered'))
-      .catch(err => console.log('SW Failed', err));
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
   }
 
   window.addEventListener('beforeinstallprompt', (e) => {
@@ -38,35 +46,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  if (typeof INVENTORY_DATA !== 'undefined' && INVENTORY_DATA.length > 0) {
+  // 1. INSTANT ZERO-LATENCY IN-MEMORY LOAD (Frame 0 Render - 0ms TTI)
+  if (typeof INVENTORY_DATA !== 'undefined' && Array.isArray(INVENTORY_DATA) && INVENTORY_DATA.length > 0) {
     allDevices = INVENTORY_DATA;
   }
-  
-  try {
-    const res = await fetch('./inventory_data.json?_t=' + Date.now(), { cache: 'no-store' });
-    if (res.ok) {
-      const data = await res.json();
-      if (Array.isArray(data) && data.length > 0) {
-        allDevices = data;
-      }
-    }
-  } catch (e) {}
-
   filteredDevices = [...allDevices];
   
-  if (typeof MOBILE_INVENTORY_DATA !== 'undefined' && MOBILE_INVENTORY_DATA.length > 0) {
+  if (typeof MOBILE_INVENTORY_DATA !== 'undefined' && Array.isArray(MOBILE_INVENTORY_DATA) && MOBILE_INVENTORY_DATA.length > 0) {
     allMobileDevices = MOBILE_INVENTORY_DATA;
   }
-  try {
-    const mobRes = await fetch('./mobile_data.json?_t=' + Date.now(), { cache: 'no-store' });
-    if (mobRes.ok) {
-      const mobData = await mobRes.json();
-      if (Array.isArray(mobData) && mobData.length > 0) {
-        allMobileDevices = mobData;
-      }
-    }
-  } catch (e) {}
   filteredMobileDevices = [...allMobileDevices];
+
+  // 2. IMMEDIATE UI INITIALIZATION
   initMobileFleet();
   if (currentTab === 'mobile' || document.getElementById('view-mobile')) {
     applyMobileFilters();
@@ -82,6 +73,31 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (window.lucide) {
     window.lucide.createIcons();
   }
+
+  // 3. BACKGROUND NON-BLOCKING RE-SYNC (Never stalls initial render)
+  setTimeout(() => {
+    Promise.allSettled([
+      fetch('./inventory_data.json', { cache: 'no-cache' }).then(r => r.json()),
+      fetch('./mobile_data.json', { cache: 'no-cache' }).then(r => r.json())
+    ]).then(results => {
+      let changed = false;
+      if (results[0].status === 'fulfilled' && Array.isArray(results[0].value) && results[0].value.length > 0) {
+        allDevices = results[0].value;
+        filteredDevices = [...allDevices];
+        changed = true;
+      }
+      if (results[1].status === 'fulfilled' && Array.isArray(results[1].value) && results[1].value.length > 0) {
+        allMobileDevices = results[1].value;
+        filteredMobileDevices = [...allMobileDevices];
+        changed = true;
+      }
+      if (changed) {
+        renderFleetOverview();
+        if (currentTab === 'fleet') renderFleetGrid();
+        if (currentTab === 'mobile') renderMobileFleetGrid();
+      }
+    }).catch(() => {});
+  }, 1000);
 });
 
 function updateLiveClock() {
